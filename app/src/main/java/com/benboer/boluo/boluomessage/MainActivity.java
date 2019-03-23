@@ -1,6 +1,5 @@
 package com.benboer.boluo.boluomessage;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.benboer.boluo.common.app.BaseActivity;
