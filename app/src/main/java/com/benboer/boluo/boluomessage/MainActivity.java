@@ -1,19 +1,23 @@
 package com.benboer.boluo.boluomessage;
 
-import android.os.Bundle;
+import android.widget.TextView;
 
 import com.benboer.boluo.common.app.BaseActivity;
 
-public class MainActivity extends BaseActivity {
+import butterknife.BindView;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+public class MainActivity extends BaseActivity {
+    @BindView(R.id.txt_test)
+    TextView mTextView;
 
     @Override
     protected int getContentLayoutId() {
-        return 0;
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initWidget() {
+        super.initWidget();
+        mTextView.setText("test");
     }
 }
