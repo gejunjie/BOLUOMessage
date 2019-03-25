@@ -19,7 +19,7 @@ import butterknife.Unbinder;
 
 /**
  * @ClassName: RecyclerAdapter
- * @Description: java类作用描述
+ * @Description: 自定义RecyclerView的适配器
  * @Author:  BenBoerBoluojiushiwo
  * @CreateDate: 2019/3/23 3:59 PM
  * @Version: 1.0
