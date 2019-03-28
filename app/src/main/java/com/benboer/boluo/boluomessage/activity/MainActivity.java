@@ -1,7 +1,8 @@
-package com.benboer.boluo.boluomessage;
+package com.benboer.boluo.boluomessage.activity;
 
 import android.widget.TextView;
 
+import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.common.app.BaseActivity;
 
 import butterknife.BindView;
