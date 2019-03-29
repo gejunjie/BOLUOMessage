@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Created by Gjj on 2019/3/21.
+ * Created by BenBoerBoluojiushiwo on 2019/3/21.
  */
 public abstract class BaseFragment extends Fragment {
     protected View mRoot;

@@ -3,13 +3,14 @@ package com.benboer.boluo.boluomessage.tool;
 import android.content.Context;
 import android.util.SparseArray;
 
+import com.benboer.boluo.common.app.BaseFragment;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 /**
  *  解决对Fragment的调度与重用问题，
- *  达到最优的Fragment切换
  *
  * Created by BenBoerBoluojiushiwo on 2019/3/28.
  */
@@ -36,12 +37,12 @@ public class NavHelper<T> {
     }
 
     /**
-     * 添加Tab
+     * 链式添加Tab
      *
      * @param menuId Tab对应的菜单Id
      * @param tab    Tab
      */
-    public NavHelper<T> add(int menuId, Tab<T> tab) {
+    public NavHelper<T> addTab(int menuId, Tab<T> tab) {
         tabs.put(menuId, tab);
         return this;
     }
@@ -84,8 +85,7 @@ public class NavHelper<T> {
         if (currentTab != null) {
             oldTab = currentTab;
             if (oldTab == tab) {
-                // 如果说当前的Tab就是点击的Tab，
-                // 那么我们不做处理
+                // 如果当前的Tab就是点击的Tab，不做处理
                 notifyTabReselect(tab);
                 return;
             }
@@ -114,19 +114,19 @@ public class NavHelper<T> {
         if (newTab != null) {
             if (newTab.fragment == null) {
                 // 首次新建
-                Fragment fragment = Fragment.instantiate(context, newTab.clx.getName(), null);
+                Fragment fragment = Fragment.instantiate(context, newTab.clazz.getName(), null);
                 // 缓存起来
                 newTab.fragment = fragment;
                 // 提交到FragmentManger
-                ft.add(containerId, fragment, newTab.clx.getName());
+                ft.add(containerId, fragment, newTab.clazz.getName());
             } else {
                 // 从FragmentManger的缓存空间中重新加载到界面中
                 ft.attach(newTab.fragment);
             }
         }
-        // 提交事务
+
         ft.commit();
-        // 通知回调
+
         notifyTabSelect(newTab, oldTab);
     }
 
@@ -147,19 +147,19 @@ public class NavHelper<T> {
     }
 
     /**
-     * 我们的所有的Tab基础属性
+     * Tab基础属性
      *
      * @param <T> 范型的额外参数
      */
     public static class Tab<T> {
-        public Tab(Class<?> clx, T extra) {
-            this.clx = clx;
+        public Tab(Class<? extends BaseFragment> clazz, T extra) {
+            this.clazz = clazz;
             this.extra = extra;
         }
 
         // Fragment对应的Class信息
-        public Class<?> clx;
-        // 额外的字段，用户自己设定需要使用
+        public Class<? extends BaseFragment> clazz;
+
         public T extra;
 
         // 内部缓存的对应的Fragment，
@@ -171,6 +171,7 @@ public class NavHelper<T> {
      * 定义事件处理完成后的回调接口
      */
     public interface OnTabChangedListener<T> {
+
         void onTabChanged(Tab<T> newTab, Tab<T> oldTab);
     }
 }

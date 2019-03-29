@@ -1,13 +1,19 @@
 package com.benboer.boluo.boluomessage.fragment.main;
 
+import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.common.app.BaseFragment;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/3/28.
  */
 public class GroupFragment extends BaseFragment {
+
+    public GroupFragment(){
+
+    }
+
     @Override
     protected int getContentLayoutId() {
-        return 0;
+        return R.layout.fragment_group;
     }
 }
