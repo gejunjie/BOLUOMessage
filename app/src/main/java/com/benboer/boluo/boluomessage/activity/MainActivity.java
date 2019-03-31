@@ -29,6 +29,7 @@ import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener,
@@ -88,6 +89,16 @@ public class MainActivity extends BaseActivity
                         this.view.setBackground(resource.getCurrent());
                     }
                 });
+    }
+
+    @OnClick(R.id.im_search)
+    void onSearchMenuClick(){
+
+    }
+
+    @OnClick(R.id.btn_action)
+    void onActionClick(){
+        AccountActivity.show(this);
     }
 
     @Override
