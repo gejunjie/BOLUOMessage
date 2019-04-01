@@ -12,8 +12,8 @@ import butterknife.BindView;
  * Created by BenBoerBoluojiushiwo on 2019/3/28.
  */
 public class ActiveFragment extends BaseFragment {
-    @BindView(R.id.gallery)
-    GalleyView galleyView;
+//    @BindView(R.id.galleryView)
+//    GalleyView galleyView;
 
     public ActiveFragment(){
 
@@ -27,16 +27,11 @@ public class ActiveFragment extends BaseFragment {
     @Override
     protected void initData() {
         super.initData();
-        galleyView.setUp(getLoaderManager(), new GalleyView.SelectedChangeListener() {
-            @Override
-            public void onSelectedCountChanged(int count) {
-
-            }
-        });
-    }
-
-    @Override
-    protected void initWidget(View root) {
-        super.initWidget(root);
+//        galleyView.setUp(getLoaderManager(), new GalleyView.SelectedChangeListener() {
+//            @Override
+//            public void onSelectedCountChanged(int count) {
+//
+//            }
+//        });
     }
 }

@@ -93,7 +93,6 @@ public class NavHelper<T> {
         // 赋值并调用切换方法
         currentTab = tab;
         doTabChanged(currentTab, oldTab);
-
     }
 
     /**
@@ -106,7 +105,6 @@ public class NavHelper<T> {
 
         if (oldTab != null) {
             if (oldTab.fragment != null) {
-                // 从界面移除，但是还在Fragment的缓存空间中
                 ft.detach(oldTab.fragment);
             }
         }
@@ -131,7 +129,7 @@ public class NavHelper<T> {
     }
 
     /**
-     * 回调我们的监听器
+     * Tab选择监听器
      *
      * @param newTab 新的Tab<T>
      * @param oldTab 旧的Tab<T>

@@ -93,7 +93,7 @@ public class MainActivity extends BaseActivity
 
     @OnClick(R.id.im_search)
     void onSearchMenuClick(){
-
+        AccountActivity.show(this);
     }
 
     @OnClick(R.id.btn_action)
@@ -132,17 +132,15 @@ public class MainActivity extends BaseActivity
                 .setInterpolator(new AnticipateOvershootInterpolator(1))
                 .setDuration(480)
                 .start();
-
-
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        mNavHelper.performClickMenu(menuItem.getItemId());
-        return true;
+
+        return mNavHelper.performClickMenu(menuItem.getItemId());
     }
 
-    public static void startMainActivity(Context context){
+    public static void show(Context context){
         context.startActivity(new Intent(context, MainActivity.class));
     }
 
