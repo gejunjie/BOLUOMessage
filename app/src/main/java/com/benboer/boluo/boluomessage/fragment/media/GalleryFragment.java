@@ -99,7 +99,7 @@ public class GalleryFragment extends BottomSheetDialogFragment
             }
             //屏幕高度
             int screenHeight = getContext().getResources().getDisplayMetrics().heightPixels;
-            
+
         }
     }
 
