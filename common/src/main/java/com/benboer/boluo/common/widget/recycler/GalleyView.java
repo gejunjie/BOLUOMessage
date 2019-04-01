@@ -198,14 +198,15 @@ public class GalleyView extends RecyclerView {
 
         @NonNull
         @Override
-        public Loader onCreateLoader(int id, @Nullable Bundle args) {
+        public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
             if (id == LOADER_ID){
                 return new CursorLoader(getContext(),
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                         IMAGE_PROJECTION,
                         null,
                         null,
-                        IMAGE_PROJECTION[2] + "DESC");//倒叙查询
+                        //TODO DESC倒叙查询 抛出异常
+                        IMAGE_PROJECTION[2]);//倒叙查询
             }
             return null;
         }

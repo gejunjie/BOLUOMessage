@@ -2,6 +2,7 @@ package com.benboer.boluo.boluomessage.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -71,7 +72,7 @@ public class MainActivity extends BaseActivity
     @Override
     protected void initWidget() {
         super.initWidget();
-        mNavHelper = new NavHelper<>(this, R.id.navigation,
+        mNavHelper = new NavHelper<>(this, R.id.lay_container,
                 getSupportFragmentManager(), this);
 
         mNavHelper.addTab(R.id.action_home, new NavHelper.Tab<>(ActiveFragment.class, R.string.title_home))
@@ -93,7 +94,7 @@ public class MainActivity extends BaseActivity
 
     @OnClick(R.id.im_search)
     void onSearchMenuClick(){
-        AccountActivity.show(this);
+
     }
 
     @OnClick(R.id.btn_action)
@@ -136,7 +137,7 @@ public class MainActivity extends BaseActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
+        Log.e("NavigationItemSelected", "onNavigationItemSelected");
         return mNavHelper.performClickMenu(menuItem.getItemId());
     }
 

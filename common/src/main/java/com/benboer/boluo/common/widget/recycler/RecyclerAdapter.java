@@ -256,4 +256,6 @@ public abstract class RecyclerAdapter<T>
 
         }
     }
+
+
 }
