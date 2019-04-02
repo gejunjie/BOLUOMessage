@@ -24,8 +24,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".LaunchActivity"/>
-        <activity android:name="com.benboer.boluo.boluomessage.activity.MainActivity">
+        <activity android:name=".LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,9 +32,12 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.benboer.boluo.boluomessage.activity.MainActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".activity.AccountActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Account"/>
+
         <activity android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>

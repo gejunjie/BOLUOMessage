@@ -1,6 +1,7 @@
 package com.benboer.boluo.boluomessage;
 
 import com.benboer.boluo.boluomessage.activity.MainActivity;
+import com.benboer.boluo.boluomessage.fragment.assist.PermissionsFragment;
 import com.benboer.boluo.common.app.BaseActivity;
 
 /**
@@ -15,6 +16,10 @@ public class LaunchActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-//        MainActivity.startMainActivity(this);
+        if (PermissionsFragment.haveAllPerm(this, getSupportFragmentManager())) {
+            MainActivity.show(this);
+            finish();
+        }
+
     }
 }

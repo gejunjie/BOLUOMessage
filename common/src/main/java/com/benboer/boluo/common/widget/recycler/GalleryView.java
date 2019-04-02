@@ -3,7 +3,6 @@ package com.benboer.boluo.common.widget.recycler;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.print.PageRange;
 import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.view.View;
@@ -36,7 +35,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @CreateDate: 2019/3/30 10:40 AM
  * @Version: 1.0
  */
-public class GalleyView extends RecyclerView {
+public class GalleryView extends RecyclerView {
 
     private static final int MAX_IMAGE_COUNT = 3;
 
@@ -52,17 +51,17 @@ public class GalleyView extends RecyclerView {
 
     private static final int MIN_IMAGE_FILE_SIZE = 10*1024;
 
-    public GalleyView(@NonNull Context context) {
+    public GalleryView(@NonNull Context context) {
         super(context);
         init();
     }
 
-    public GalleyView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public GalleryView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public GalleyView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyle) {
+    public GalleryView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
@@ -113,7 +112,7 @@ public class GalleyView extends RecyclerView {
      *点击事件
      *
      * @param image
-     * @return true数据更改，需要刷新
+     * @return true 数据更改，需要刷新
      */
     private boolean onItemSelectClick(Image image){
         boolean notifyRefreash;
@@ -157,7 +156,7 @@ public class GalleyView extends RecyclerView {
 
         @Override
         protected ViewHolder<Image> onCreateViewHolder(View root, int viewType) {
-            return new GalleyView.ViewHolder(root);
+            return new GalleryView.ViewHolder(root);
         }
     }
 

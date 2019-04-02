@@ -1,12 +1,7 @@
 package com.benboer.boluo.boluomessage.fragment.main;
 
-import android.view.View;
-
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.common.app.BaseFragment;
-import com.benboer.boluo.common.widget.recycler.GalleyView;
-
-import butterknife.BindView;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/3/28.
