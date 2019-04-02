@@ -79,9 +79,10 @@ public abstract class RecyclerAdapter<T>
         ViewHolder<T> viewHolder = onCreateViewHolder(view, viewType);
         //设置点击事件
         view.setOnClickListener(this);
+//        viewHolder.itemView.setOnClickListener(this);
         view.setOnLongClickListener(this);
         //设置View的Tag为ViewHolder，进行双向绑定
-        view.setTag(R.id.tag_recycler_holder);
+        view.setTag(R.id.tag_recycler_holder, viewHolder);
         //界面注解绑定
         viewHolder.unbinder = ButterKnife.bind(viewHolder, view);
         viewHolder.callback = this;
@@ -161,7 +162,7 @@ public abstract class RecyclerAdapter<T>
         int pos = holder.getAdapterPosition();
         if (pos >= 0){
             mDataList.remove(pos);
-            mDataList.add(pos,data);
+            mDataList.add(pos, data);
             notifyItemChanged(pos);
         }
     }
@@ -206,7 +207,7 @@ public abstract class RecyclerAdapter<T>
      * @param <T>
      */
     public static abstract class ViewHolder<T> extends RecyclerView.ViewHolder{
-        private Unbinder unbinder;
+        Unbinder unbinder;
         private AdapterCallback<T> callback;
         protected T data;
 
@@ -224,7 +225,7 @@ public abstract class RecyclerAdapter<T>
         }
 
         /**
-         * 绑定数据的回调
+         * 当触发绑定数据的时候的回调,必须复写
          * @param data
          */
         protected abstract void onBind(T data);
@@ -241,7 +242,7 @@ public abstract class RecyclerAdapter<T>
     }
 
     /**
-     *
+     * 包装AapterListener,不用两个方法都重写
      * @param <T>
      */
     public static abstract class AdapterListenerImpl<T> implements AdapterListener<T>{

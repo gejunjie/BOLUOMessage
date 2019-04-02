@@ -11,6 +11,7 @@ import com.benboer.boluo.common.app.Application;
 import com.benboer.boluo.common.app.BaseFragment;
 import com.benboer.boluo.common.widget.PortraitView;
 import com.benboer.boluo.factory.Factory;
+import com.benboer.boluo.factory.net.UploadHelper;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.file_descriptor.FileDescriptorUriLoader;
 import com.yalantis.ucrop.UCrop;
@@ -57,7 +58,10 @@ public class UpdateInfoFragment extends BaseFragment {
                         .withOptions(options) // 相关参数
                         .start(getActivity());
             }
-        }).show(getChildFragmentManager(), GalleryFragment.class.getName());
+        })
+                // show 的时候建议使用getChildFragmentManager
+                // tag GalleryFragment class 名
+                .show(getChildFragmentManager(), GalleryFragment.class.getName());
     }
 
     @Override

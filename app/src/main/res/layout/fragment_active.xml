@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.benboer.boluo.boluomessage.fragment.main.ActiveFragment">
-    <com.benboer.boluo.common.widget.recycler.GalleyView
+    <com.benboer.boluo.common.widget.recycler.GalleryView
         android:id="@+id/gallery"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
