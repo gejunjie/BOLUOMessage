@@ -85,7 +85,7 @@ public class UpdateInfoFragment extends BaseFragment {
      * @param uri Uri
      */
     private void loadPortrait(Uri uri) {
-        Glide.with(getContext())
+        Glide.with(this)
                 .load(uri)
                 .asBitmap()
                 .centerCrop()

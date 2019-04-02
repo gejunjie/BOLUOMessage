@@ -29,6 +29,7 @@ import net.qiujuer.genius.ui.widget.FloatActionButton;
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import butterknife.BindView;
 import butterknife.OnClick;
 
