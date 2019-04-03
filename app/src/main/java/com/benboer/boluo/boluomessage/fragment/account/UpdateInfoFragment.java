@@ -1,11 +1,15 @@
 package com.benboer.boluo.boluomessage.fragment.account;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 
 import com.benboer.boluo.boluomessage.R;
+import com.benboer.boluo.boluomessage.activity.AccountActivity;
 import com.benboer.boluo.boluomessage.fragment.media.GalleryFragment;
 import com.benboer.boluo.common.app.Application;
 import com.benboer.boluo.common.app.BaseFragment;
@@ -13,11 +17,13 @@ import com.benboer.boluo.common.widget.PortraitView;
 import com.benboer.boluo.factory.Factory;
 import com.benboer.boluo.factory.net.UploadHelper;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.model.file_descriptor.FileDescriptorUriLoader;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -29,6 +35,11 @@ import static android.app.Activity.RESULT_OK;
  * Created by BenBoerBoluojiushiwo on 2019/3/28.
  */
 public class UpdateInfoFragment extends BaseFragment {
+
+    private boolean refreshPortrait;
+    private Uri resultUri;
+
+
     @BindView(R.id.im_portrait)
     PortraitView mPortraitView;
 
@@ -65,19 +76,29 @@ public class UpdateInfoFragment extends BaseFragment {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (resultCode == RESULT_OK && requestCode == UCrop.REQUEST_CROP) {
-            // 通过UCrop得到对应的Uri
-            final Uri resultUri = UCrop.getOutput(data);
-            if (resultUri != null) {
-                loadPortrait(resultUri);
-            }
-
-        } else if (resultCode == UCrop.RESULT_ERROR) {
-            final Throwable cropError = UCrop.getError(data);
-        }
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
+
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//
+//        if (resultCode == RESULT_OK && requestCode == UCrop.REQUEST_CROP) {
+//
+//            // 通过UCrop得到对应的Uri
+//            final Uri resultUri = UCrop.getOutput(data);
+//            if (resultUri != null) {
+//                if (isAdded()){
+//                    loadPortrait(resultUri);
+//                }
+////                loadPortrait(resultUri);
+//                refreshPortrait = true;
+//                this.resultUri = resultUri;
+//            }
+//        } else if (resultCode == UCrop.RESULT_ERROR) {
+//            final Throwable cropError = UCrop.getError(data);
+//        }
+//    }
 
     /**
      * 加载Uri到当前的头像中
@@ -85,11 +106,13 @@ public class UpdateInfoFragment extends BaseFragment {
      * @param uri Uri
      */
     private void loadPortrait(Uri uri) {
-        Glide.with(this)
-                .load(uri)
-                .asBitmap()
-                .centerCrop()
-                .into(mPortraitView);
+
+            Glide.with(this)
+                    .load(uri)
+                    .centerCrop()
+//                .apply(bitmapTransform(new CropCircleTransformation()))
+                    .into(mPortraitView);
+
 
 
         // 拿到本地文件的地址
@@ -105,4 +128,16 @@ public class UpdateInfoFragment extends BaseFragment {
             }
         });
     }
+
+    //Todo 在Activity的onActivityResult回调时无法更新图片,glide无法拿到fragment依附的activity
+    @Override
+    public void onResume() {
+        super.onResume();
+        AccountActivity accountActivity = (AccountActivity) getActivity();
+        Uri uri = accountActivity.getResultUri();
+        if (uri != null){
+            loadPortrait(uri);
+        }
+    }
+
 }

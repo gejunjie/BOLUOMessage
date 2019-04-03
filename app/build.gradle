@@ -44,4 +44,5 @@ dependencies {
     implementation "pub.devrel:easypermissions:$rootProject.ext.easyPMVersion"
     implementation project(':common')
     implementation project(':factory')
+
 }

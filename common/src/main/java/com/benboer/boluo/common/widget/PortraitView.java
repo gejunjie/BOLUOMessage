@@ -6,6 +6,8 @@ import android.util.AttributeSet;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
+ * 圆形头像
+ *
  * Created by BenBoerBoluojiushiwo on 2019/3/29.
  */
 public class PortraitView extends CircleImageView {

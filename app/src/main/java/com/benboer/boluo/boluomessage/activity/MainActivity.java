@@ -2,6 +2,8 @@ package com.benboer.boluo.boluomessage.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,10 +20,10 @@ import com.benboer.boluo.boluomessage.tool.NavHelper;
 import com.benboer.boluo.common.app.BaseActivity;
 import com.benboer.boluo.common.widget.PortraitView;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.ViewTarget;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.yalantis.ucrop.UCrop;
 
 import net.qiujuer.genius.ui.Ui;
 import net.qiujuer.genius.ui.widget.FloatActionButton;
@@ -30,6 +32,7 @@ import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -82,15 +85,17 @@ public class MainActivity extends BaseActivity
 
         mNavigation.setOnNavigationItemSelectedListener(this);
 
-        Glide.with(this)
-                .load(R.drawable.bg_src_morning)
-                .centerCrop()
-                .into(new ViewTarget<View, GlideDrawable>(mLayAppbar) {
-                    @Override
-                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                        this.view.setBackground(resource.getCurrent());
-                    }
-                });
+//        Glide.with(this)
+//                .load(R.drawable.bg_src_morning)
+//                .centerCrop()
+//                .into(new SimpleTarget<Drawable>() {
+//                    @Override
+//                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+//                        this.setBackground(resource.getCurrent());
+//                    }
+//
+//
+//                });
     }
 
     @OnClick(R.id.im_search)
@@ -145,5 +150,6 @@ public class MainActivity extends BaseActivity
     public static void show(Context context){
         context.startActivity(new Intent(context, MainActivity.class));
     }
+
 
 }

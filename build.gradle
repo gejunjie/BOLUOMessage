@@ -30,14 +30,14 @@ task clean(type: Delete) {
 ext{
     //版本号相关
     versionCode = 1
-    versionName = '1.0.0'
+    versionName = '1.0.2'
 
     //相关依赖库版本
     supportVersion = '1.0.0-beta01'
     butterknifeVersion = '10.1.0'
 
     geniusVersion = '2.0.0'
-    glideVersion = '3.7.0'
+    glideVersion = '4.9.0'
     circleimageviewVersion = '2.1.0'
     ucropVersion = "2.2.0-native"
     easyPMVersion = "0.3.0"
