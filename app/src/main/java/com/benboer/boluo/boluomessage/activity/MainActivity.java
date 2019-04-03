@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.benboer.boluo.boluomessage.R;
@@ -20,8 +21,11 @@ import com.benboer.boluo.boluomessage.tool.NavHelper;
 import com.benboer.boluo.common.app.BaseActivity;
 import com.benboer.boluo.common.widget.PortraitView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomViewTarget;
+import com.bumptech.glide.request.target.DrawableImageViewTarget;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.yalantis.ucrop.UCrop;
 
@@ -41,7 +45,7 @@ public class MainActivity extends BaseActivity
         NavHelper.OnTabChangedListener<Integer> {
 
     @BindView(R.id.appbar)
-    View mLayAppbar;
+    AppBarLayout mLayAppbar;
 
     @BindView(R.id.im_portrait)
     PortraitView mPortrait;
@@ -85,17 +89,25 @@ public class MainActivity extends BaseActivity
 
         mNavigation.setOnNavigationItemSelectedListener(this);
 
-//        Glide.with(this)
-//                .load(R.drawable.bg_src_morning)
-//                .centerCrop()
-//                .into(new SimpleTarget<Drawable>() {
-//                    @Override
-//                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-//                        this.setBackground(resource.getCurrent());
-//                    }
-//
-//
-//                });
+        Glide.with(this)
+                .load(R.drawable.bg_src_morning)
+                .centerCrop()
+                .into(new CustomViewTarget<AppBarLayout, Drawable>(mLayAppbar) {
+                    @Override
+                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
+
+                    }
+
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                        this.view.setBackground(resource.getCurrent());
+                    }
+
+                    @Override
+                    protected void onResourceCleared(@Nullable Drawable placeholder) {
+
+                    }
+                });
     }
 
     @OnClick(R.id.im_search)
