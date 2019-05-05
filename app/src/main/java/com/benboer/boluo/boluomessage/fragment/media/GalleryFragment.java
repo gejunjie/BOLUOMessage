@@ -10,6 +10,7 @@ import android.view.Window;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.common.widget.recycler.GalleryView;
+import com.benboer.boluo.tools.UiTool;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -99,15 +100,14 @@ public class GalleryFragment extends BottomSheetDialogFragment
             if (window == null){
                 return;
             }
-            //屏幕高度
-            int screenHeight = getContext().getResources().getDisplayMetrics().heightPixels;
-            // 得到状态栏的高度
-//            int statusHeight = getContext().getStatusBarHeight(getOwnerActivity());
-
-//            // 计算dialog的高度并设置
-//            int dialogHeight = screenHeight - statusHeight;
-//            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
-//                    dialogHeight <= 0 ? ViewGroup.LayoutParams.MATCH_PARENT : dialogHeight);
+            // 屏幕高度
+            int screenHeight = UiTool.getScreenHeight(getOwnerActivity());
+            // 状态栏的高度
+            int statusHeight = UiTool.getStatusBarHeight(getOwnerActivity());
+            // 计算dialog的高度并设置
+            int dialogHeight = screenHeight - statusHeight;
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
+                    dialogHeight <= 0 ? ViewGroup.LayoutParams.MATCH_PARENT : dialogHeight);
         }
     }
 

@@ -1,11 +1,8 @@
 package com.benboer.boluo.boluomessage.fragment.account;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Bundle;
 import android.util.Log;
 
 import com.benboer.boluo.boluomessage.R;
@@ -15,19 +12,13 @@ import com.benboer.boluo.common.app.Application;
 import com.benboer.boluo.common.app.BaseFragment;
 import com.benboer.boluo.common.widget.PortraitView;
 import com.benboer.boluo.factory.Factory;
-import com.benboer.boluo.factory.net.UploadHelper;
 import com.bumptech.glide.Glide;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static android.app.Activity.RESULT_OK;
 
 /**
  * 用户更新界面
