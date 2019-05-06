@@ -19,9 +19,10 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
-
-        maven { url "https//www.jitpack.io" }
+        mavenCentral()
+        maven { url "https://www.jitpack.io" }
+        //个推私有Maven URL地址
+        maven { url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/" }
     }
 }
 
@@ -42,9 +43,10 @@ ext{
     glideVersion = '4.9.0'
     circleimageviewVersion = '2.1.0'
     ucropVersion = "2.2.0-native"
-    easyPMVersion = "0.3.0"
+    easyPMVersion = "3.0.0"
     ossVersion = '2.3.0'
 
     retrofitVersion = '2.5.0'
     gsonVersion = '2.8.5'
+    dbflow_version = '1.0.3'
 }

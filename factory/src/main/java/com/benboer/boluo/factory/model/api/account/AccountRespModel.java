@@ -1,14 +1,12 @@
 package com.benboer.boluo.factory.model.api.account;
 
-import com.benboer.boluo.factory.model.api.user.User;
-
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/5.
  */
 public class AccountRespModel {
 
     // 用户基本信息
-    private User user;
+    private UserUpdateModel user;
     // 当前登录的账号
     private String account;
     // 当前登录成功后获取的Token,
@@ -17,11 +15,11 @@ public class AccountRespModel {
     // 标示是否已经绑定到了设备PushId
     private boolean isBind;
 
-    public User getUser() {
+    public UserUpdateModel getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserUpdateModel user) {
         this.user = user;
     }
 

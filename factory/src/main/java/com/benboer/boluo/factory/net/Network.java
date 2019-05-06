@@ -57,7 +57,6 @@ public class Network {
 
         Retrofit.Builder builder = new Retrofit.Builder();
 
-        // 设置电脑链接
         instance.retrofit = builder.baseUrl(Common.Constance.API_URL)
                 // 设置client
                 .client(client)
