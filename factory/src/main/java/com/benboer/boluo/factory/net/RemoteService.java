@@ -1,7 +1,7 @@
 package com.benboer.boluo.factory.net;
 
 import com.benboer.boluo.factory.model.api.RspModel;
-import com.benboer.boluo.factory.model.api.account.AccountRespModel;
+import com.benboer.boluo.factory.model.api.account.AccountRspModel;
 import com.benboer.boluo.factory.model.api.account.LoginModel;
 import com.benboer.boluo.factory.model.api.account.RegisterModel;
 
@@ -21,7 +21,7 @@ public interface RemoteService {
      * @return
      */
     @POST("account/register")
-    Call<RspModel<AccountRespModel>> accountRegister(@Body RegisterModel model);
+    Call<RspModel<AccountRspModel>> accountRegister(@Body RegisterModel model);
 
     /**
      * 用户登录
@@ -29,7 +29,7 @@ public interface RemoteService {
      * @return
      */
     @POST("account/login")
-    Call<RspModel<AccountRespModel>> accountLogin(@Body LoginModel model);
+    Call<RspModel<AccountRspModel>> accountLogin(@Body LoginModel model);
 
     /**
      * 绑定设备id
@@ -37,7 +37,6 @@ public interface RemoteService {
      * @return
      */
     @POST("account/bind/{pushId}")
-    Call<RspModel<AccountRespModel>> accountBind(@Path(encoded = true, value = "pushId") String pushId);
-
+    Call<RspModel<AccountRspModel>> accountBind(@Path(encoded = true, value = "pushId") String pushId);
 
 }

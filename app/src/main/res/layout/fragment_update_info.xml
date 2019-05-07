@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.benboer.boluo.boluomessage.fragment.account.UpdateInfoFragment">
+    tools:context="com.benboer.boluo.boluomessage.fragment.user.UpdateInfoFragment">
 
     <com.benboer.boluo.common.widget.PortraitView
         android:id="@+id/im_portrait"

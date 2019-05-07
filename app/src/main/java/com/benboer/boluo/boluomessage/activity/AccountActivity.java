@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.fragment.account.UpdateInfoFragment;
+import com.benboer.boluo.boluomessage.fragment.user.UpdateInfoFragment;
 import com.benboer.boluo.common.app.BaseActivity;
 import com.yalantis.ucrop.UCrop;
 

@@ -1,4 +1,4 @@
-package com.benboer.boluo.tools;
+package com.benboer.boluo.common.tools;
 
 import android.app.Activity;
 import android.content.res.Resources;

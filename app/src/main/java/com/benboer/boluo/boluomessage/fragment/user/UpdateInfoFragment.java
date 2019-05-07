@@ -1,4 +1,4 @@
-package com.benboer.boluo.boluomessage.fragment.account;
+package com.benboer.boluo.boluomessage.fragment.user;
 
 import android.content.Context;
 import android.graphics.Bitmap;
