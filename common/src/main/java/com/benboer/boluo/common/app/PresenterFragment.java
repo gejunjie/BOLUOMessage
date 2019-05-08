@@ -23,7 +23,7 @@ public abstract class PresenterFragment<Presenter extends BaseContract.Presenter
 
     @Override
     public void showError(int str) {
-
+        Application.showToast(str);
     }
 
     @Override

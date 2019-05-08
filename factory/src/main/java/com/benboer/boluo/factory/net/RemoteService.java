@@ -4,10 +4,13 @@ import com.benboer.boluo.factory.model.api.RspModel;
 import com.benboer.boluo.factory.model.api.account.AccountRspModel;
 import com.benboer.boluo.factory.model.api.account.LoginModel;
 import com.benboer.boluo.factory.model.api.account.RegisterModel;
+import com.benboer.boluo.factory.model.api.user.UserUpdateModel;
+import com.benboer.boluo.factory.model.card.UserCard;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 /**
@@ -38,5 +41,13 @@ public interface RemoteService {
      */
     @POST("account/bind/{pushId}")
     Call<RspModel<AccountRspModel>> accountBind(@Path(encoded = true, value = "pushId") String pushId);
+
+    /**
+     * 用户更新
+     * @param model
+     * @return
+     */
+    @PUT
+    Call<RspModel<UserCard>> updateUser(@Body UserUpdateModel model);
 
 }

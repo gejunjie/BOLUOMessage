@@ -51,7 +51,7 @@ public class Factory {
     }
 
     /**
-     * 返回一个全局的Gson，在这可以进行Gson的一些全局的初始化
+     * 返回一个全局的Gson
      *
      * @return Gson
      */
@@ -136,6 +136,15 @@ public class Factory {
      */
     private void logout() {
 
+    }
+
+    /**
+     * 处理推送来的消息
+     *
+     * @param message 消息
+     */
+    public static void dispatchPush(String message) {
+        // TODO
     }
 
 }

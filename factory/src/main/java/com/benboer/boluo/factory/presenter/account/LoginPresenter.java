@@ -1,7 +1,9 @@
 package com.benboer.boluo.factory.presenter.account;
 
+import android.app.Activity;
 import android.text.TextUtils;
 
+import com.benboer.boluo.common.app.Application;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.data.DataSource;
 import com.benboer.boluo.factory.data.helper.AccountHelper;
@@ -23,13 +25,19 @@ public class LoginPresenter extends BasePresenter<LoginContract.View>
     //成功
     @Override
     public void onDataLoaded(User user) {
+        final LoginContract.View view = getView();
+        if (view == null) return;
 
+        view.loginSuccess();
     }
 
     //失败
     @Override
     public void onDataNotAvailable(int strRes) {
+        final LoginContract.View view = getView();
+        if (view == null) return;
 
+        view.showError(strRes);
     }
 
     @Override

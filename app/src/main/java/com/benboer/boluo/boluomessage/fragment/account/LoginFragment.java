@@ -3,6 +3,7 @@ package com.benboer.boluo.boluomessage.fragment.account;
 import android.content.Context;
 
 import com.benboer.boluo.boluomessage.R;
+import com.benboer.boluo.boluomessage.activity.MainActivity;
 import com.benboer.boluo.common.app.PresenterFragment;
 import com.benboer.boluo.factory.presenter.account.LoginContract;
 import com.benboer.boluo.factory.presenter.account.LoginPresenter;
@@ -59,6 +60,7 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
 
     @Override
     public void loginSuccess() {
-
+        MainActivity.show(getContext());
+        getActivity().finish();
     }
 }

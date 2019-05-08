@@ -35,7 +35,7 @@ dependencies {
     implementation "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
     implementation "com.yalantis:ucrop:$rootProject.ext.ucropVersion"
-//    implementation "pub.devrel:easypermissions:$rootProject.ext.easyPMVersion"
+    implementation "pub.devrel:easypermissions:$rootProject.ext.easyPMVersion"
     implementation "net.qiujuer.genius:ui:$rootProject.ext.geniusVersion"
     implementation "net.qiujuer.genius:res:$rootProject.ext.geniusVersion"
     implementation "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"

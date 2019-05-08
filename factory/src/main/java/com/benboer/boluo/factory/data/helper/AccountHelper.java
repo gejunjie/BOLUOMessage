@@ -3,6 +3,7 @@ package com.benboer.boluo.factory.data.helper;
 import android.text.TextUtils;
 
 import com.benboer.boluo.factory.Factory;
+import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.data.DataSource;
 import com.benboer.boluo.factory.model.api.RspModel;
 import com.benboer.boluo.factory.model.api.account.AccountRspModel;
@@ -20,7 +21,7 @@ import retrofit2.Response;
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/6.
  *
- * 网络请求的所有接口
+ * account网络请求的接口
  */
 public class AccountHelper {
 
@@ -114,7 +115,7 @@ public class AccountHelper {
 
         @Override
         public void onFailure(Call<RspModel<AccountRspModel>> call, Throwable t) {
-
+            callback.onDataNotAvailable(R.string.data_network_error);
         }
     }
 
