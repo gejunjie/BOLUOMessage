@@ -5,8 +5,13 @@ import androidx.annotation.StringRes;
 import com.benboer.boluo.common.app.Application;
 import com.benboer.boluo.factory.data.DataSource;
 import com.benboer.boluo.factory.model.api.RspModel;
+import com.benboer.boluo.factory.model.db.AppDatabase;
+import com.benboer.boluo.factory.persistence.Account;
+import com.benboer.boluo.factory.utils.DBFlowExclusionStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.grosner.dbflow.config.BaseDatabaseDefinition;
+import com.grosner.dbflow.config.FlowManager;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -42,8 +47,20 @@ public class Factory {
                 // 设置时间格式
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")
                 // 设置一个过滤器，数据库级别的Model不进行Json转换
-//                .setExclusionStrategies(new DBFlowExclusionStrategy())
+                .setExclusionStrategies(new DBFlowExclusionStrategy())
                 .create();
+    }
+
+    /**
+     * Factory 中的初始化
+     */
+    public static void setup() {
+        // 初始化数据库
+        BaseDatabaseDefinition db = FlowManager.getDatabase(AppDatabase.NAME);
+//        FlowManager.init(app());
+
+        // 持久化的数据进行初始化
+        Account.load(app());
     }
 
     public static void runOnAsync(Runnable runnable){

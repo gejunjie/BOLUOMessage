@@ -1,9 +1,7 @@
 package com.benboer.boluo.factory.presenter.account;
 
-import android.app.Activity;
 import android.text.TextUtils;
 
-import com.benboer.boluo.common.app.Application;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.data.DataSource;
 import com.benboer.boluo.factory.data.helper.AccountHelper;

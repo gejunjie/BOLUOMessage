@@ -14,6 +14,7 @@ import butterknife.ButterKnife;
  * Created by Gjj on 2019/3/21.
  */
 public abstract class BaseActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

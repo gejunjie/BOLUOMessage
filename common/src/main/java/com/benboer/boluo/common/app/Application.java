@@ -3,12 +3,12 @@ package com.benboer.boluo.common.app;
 import android.os.SystemClock;
 import android.widget.Toast;
 
+import androidx.annotation.StringRes;
+
 import net.qiujuer.genius.kit.handler.Run;
 import net.qiujuer.genius.kit.handler.runable.Action;
 
 import java.io.File;
-
-import androidx.annotation.StringRes;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/4/1.
@@ -101,7 +101,6 @@ public class Application extends android.app.Application {
         Run.onUiAsync(new Action() {
             @Override
             public void call() {
-                // 这里进行回调的时候一定就是主线程状态了
                 Toast.makeText(instance, msg, Toast.LENGTH_SHORT).show();
             }
         });
