@@ -31,7 +31,7 @@ public class UserHelper {
                 if (rspModel.success()){
                     UserCard userCard = rspModel.getResult();
                     User user = userCard.build();
-                    user.save(true);
+                    user.save();
                     callback.onDataLoaded(userCard);
                 }else {
                     Factory.decodeRspCode(rspModel, callback);

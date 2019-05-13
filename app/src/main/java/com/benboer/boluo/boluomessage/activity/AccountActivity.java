@@ -4,15 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.fragment.account.AccountTrigger;
-import com.benboer.boluo.boluomessage.fragment.account.RegisterFragment;
-import com.benboer.boluo.boluomessage.fragment.user.UpdateInfoFragment;
-import com.benboer.boluo.common.app.BaseActivity;
-import com.yalantis.ucrop.UCrop;
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.benboer.boluo.boluomessage.R;
+import com.benboer.boluo.boluomessage.fragment.account.AccountTrigger;
+import com.benboer.boluo.boluomessage.fragment.account.LoginFragment;
+import com.benboer.boluo.boluomessage.fragment.account.RegisterFragment;
+import com.benboer.boluo.common.app.BaseActivity;
+import com.yalantis.ucrop.UCrop;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/3/28.
@@ -37,10 +37,10 @@ public class AccountActivity extends BaseActivity implements AccountTrigger {
     @Override
     protected void initWidget() {
         super.initWidget();
-        mCurFragment = new UpdateInfoFragment();
+        mCurFragment = mLoginFragment = new LoginFragment();
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.lay_container, new UpdateInfoFragment())
+                .add(R.id.lay_container, mCurFragment)
                 .commit();
     }
 
@@ -73,7 +73,7 @@ public class AccountActivity extends BaseActivity implements AccountTrigger {
 
         // 重新赋值当前正在显示的Fragment
         mCurFragment = fragment;
-        // 切换显示ø
+        // 切换显示
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.lay_container, fragment)
                 .commit();

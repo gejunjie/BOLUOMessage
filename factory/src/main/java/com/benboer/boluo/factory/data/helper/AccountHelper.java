@@ -90,7 +90,7 @@ public class AccountHelper {
                 AccountRspModel accountRspModel = rspModel.getResult();
                 User user = accountRspModel.getUser();
                 // 1.直接保存
-                user.save(true);
+                user.save();
                 // 2.通过ModelAdapter
 
                 // 3.事务中

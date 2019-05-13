@@ -1,6 +1,8 @@
 package com.benboer.boluo.boluomessage.fragment.account;
 
 import android.content.Context;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.MainActivity;
@@ -8,8 +10,6 @@ import com.benboer.boluo.common.app.PresenterFragment;
 import com.benboer.boluo.factory.presenter.account.LoginContract;
 import com.benboer.boluo.factory.presenter.account.LoginPresenter;
 
-import net.qiujuer.genius.ui.widget.Button;
-import net.qiujuer.genius.ui.widget.EditText;
 import net.qiujuer.genius.ui.widget.Loading;
 
 import butterknife.BindView;
@@ -25,6 +25,7 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
 
     @BindView(R.id.edit_phone)
     EditText mPhone;
+
     @BindView(R.id.edit_password)
     EditText mPassword;
 

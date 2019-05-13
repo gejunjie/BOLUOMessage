@@ -51,6 +51,6 @@ ext{
 
     retrofitVersion = '2.5.0'
     gsonVersion = '2.8.5'
-    dbflow_version = '1.0.3'
+    dbflow_version = '4.2.4'
     getuiVersion = '2.9.3.0'
 }

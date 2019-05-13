@@ -1,6 +1,7 @@
 package com.benboer.boluo.factory.model.db;
 
-import com.grosner.dbflow.annotation.Database;
+
+import com.raizlabs.android.dbflow.annotation.Database;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/6.

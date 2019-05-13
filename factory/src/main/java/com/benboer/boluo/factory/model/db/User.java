@@ -1,23 +1,24 @@
 package com.benboer.boluo.factory.model.db;
 
-import com.grosner.dbflow.annotation.Column;
-import com.grosner.dbflow.annotation.Table;
-import com.grosner.dbflow.structure.BaseModel;
+
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import java.util.Date;
 
-import static com.grosner.dbflow.annotation.Column.PRIMARY_KEY;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/6.
  */
-@Table(databaseName = AppDatabase.NAME)
+@Table(database = AppDatabase.class)
 public class User extends BaseModel {
     public static final int SEX_MAN = 1;
     public static final int SEX_WOMAN = 2;
 
     // 主键
-    @Column(columnType = PRIMARY_KEY)
+    @PrimaryKey
     private String id;
     @Column
     private String name;

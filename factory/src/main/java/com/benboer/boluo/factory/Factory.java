@@ -5,13 +5,11 @@ import androidx.annotation.StringRes;
 import com.benboer.boluo.common.app.Application;
 import com.benboer.boluo.factory.data.DataSource;
 import com.benboer.boluo.factory.model.api.RspModel;
-import com.benboer.boluo.factory.model.db.AppDatabase;
 import com.benboer.boluo.factory.persistence.Account;
 import com.benboer.boluo.factory.utils.DBFlowExclusionStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.grosner.dbflow.config.BaseDatabaseDefinition;
-import com.grosner.dbflow.config.FlowManager;
+import com.raizlabs.android.dbflow.config.FlowManager;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -56,9 +54,11 @@ public class Factory {
      */
     public static void setup() {
         // 初始化数据库
-        BaseDatabaseDefinition db = FlowManager.getDatabase(AppDatabase.NAME);
-//        FlowManager.init(app());
-
+//        FlowManager.init(new FlowConfig.Builder(app())
+//                .openDatabasesOnInit(true) // 数据库初始化的时候就开始打开
+//                .build());
+        FlowManager.init(app());
+//        FlowManager.init(new FlowConfig.Builder(app()).build());
         // 持久化的数据进行初始化
         Account.load(app());
     }

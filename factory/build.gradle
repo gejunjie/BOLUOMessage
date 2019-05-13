@@ -35,13 +35,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
     implementation "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
-
-//    // if only using Java, use this. If using Kotlin do NOT use this.
-//    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor::${rootProject.ext.dbflow_version}"
-//    // core set of libraries
-//    implementation "com.github.Raizlabs.DBFlow:dbflow-core::${rootProject.ext.dbflow_version}"
-//    implementation "com.github.Raizlabs.DBFlow:dbflow:${rootProject.ext.dbflow_version}"
-
+    implementation 'com.github.Raizlabs.DBFlow:dbflow:4.2.4'
     implementation project(':common')
-    implementation 'com.github.agrosner:DBFlow:1.0.3'
+
 }

@@ -2,7 +2,7 @@ package com.benboer.boluo.factory.utils;
 
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
-import com.grosner.dbflow.structure.ModelAdapter;
+import com.raizlabs.android.dbflow.structure.ModelAdapter;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/6.

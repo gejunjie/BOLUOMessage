@@ -50,8 +50,8 @@ dependencies {
     implementation "com.yalantis:ucrop:$rootProject.ext.ucropVersion"
     // 个推
     implementation "com.getui:sdk:$rootProject.ext.getuiVersion"
-    implementation "com.github.agrosner:DBFlow:$rootProject.ext.dbflow_version"
 
+    implementation 'com.github.Raizlabs.DBFlow:dbflow:4.2.4'
     implementation project(':common')
     implementation project(':factory')
 
