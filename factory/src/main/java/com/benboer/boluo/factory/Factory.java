@@ -9,6 +9,7 @@ import com.benboer.boluo.factory.persistence.Account;
 import com.benboer.boluo.factory.utils.DBFlowExclusionStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
 import java.util.concurrent.Executor;
@@ -54,10 +55,10 @@ public class Factory {
      */
     public static void setup() {
         // 初始化数据库
-//        FlowManager.init(new FlowConfig.Builder(app())
-//                .openDatabasesOnInit(true) // 数据库初始化的时候就开始打开
-//                .build());
-        FlowManager.init(app());
+        FlowManager.init(new FlowConfig.Builder(app())
+                .openDatabasesOnInit(true) // 数据库初始化的时候就开始打开
+                .build());
+//        FlowManager.init(app());
 //        FlowManager.init(new FlowConfig.Builder(app()).build());
         // 持久化的数据进行初始化
         Account.load(app());

@@ -18,6 +18,7 @@ import retrofit2.http.Path;
  * 网络请求的所有的接口
  */
 public interface RemoteService {
+
     /**
      * 用户注册接口
      * @param model

@@ -36,6 +36,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
     implementation "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
     implementation 'com.github.Raizlabs.DBFlow:dbflow:4.2.4'
-    implementation project(':common')
 
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation project(':common')
 }

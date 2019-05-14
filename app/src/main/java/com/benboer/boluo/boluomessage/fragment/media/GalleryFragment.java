@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.common.widget.recycler.GalleryView;
+import com.benboer.boluo.common.widget.GalleryView;
 import com.benboer.boluo.common.tools.UiTool;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;

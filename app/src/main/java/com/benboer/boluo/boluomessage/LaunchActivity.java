@@ -57,6 +57,7 @@ public class LaunchActivity extends BaseActivity {
             public void run() {
                 // 检查等待状态
                 waitPushReceiverId();
+//                skip();
             }
         });
     }
@@ -122,7 +123,7 @@ public class LaunchActivity extends BaseActivity {
     }
 
     /**
-     * 给背景设置一个动画
+     * 背景动画
      *
      * @param endProgress 动画的结束进度
      * @param endCallback 动画结束时触发

@@ -39,7 +39,7 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
     void onSubmitClick(){
         String phone = mPhone.getText().toString();
         String passWord = mPassword.getText().toString();
-        mPresemter.login(phone, passWord);
+        mPresenter.login(phone, passWord);
     }
 
     @Override

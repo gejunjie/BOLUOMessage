@@ -11,7 +11,7 @@ public abstract class PresenterFragment<Presenter extends BaseContract.Presenter
         extends BaseFragment
         implements BaseContract.View<Presenter>{
 
-    protected Presenter mPresemter;
+    protected Presenter mPresenter;
 
     @Override
     public void onAttach(Context context) {
@@ -33,6 +33,6 @@ public abstract class PresenterFragment<Presenter extends BaseContract.Presenter
 
     @Override
     public void setPresenter(Presenter presenter) {
-        mPresemter = presenter;
+        mPresenter = presenter;
     }
 }

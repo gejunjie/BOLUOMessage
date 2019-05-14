@@ -41,7 +41,7 @@ public class RegisterFragment extends PresenterFragment<RegisterContract.Present
         String phone = mPhone.getText().toString();
         String name = mName.getText().toString();
         String password = mPassword.getText().toString();
-        mPresemter.register(phone, name, password);
+        mPresenter.register(phone, name, password);
     }
 
     @OnClick(R.id.txt_go_login)

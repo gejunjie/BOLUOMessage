@@ -10,6 +10,7 @@ import com.alibaba.sdk.android.oss.common.auth.OSSPlainTextAKSKCredentialProvide
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.benboer.boluo.factory.Factory;
+import com.benboer.boluo.utils.HashUtil;
 
 import java.io.File;
 import java.util.Date;
@@ -74,16 +75,16 @@ public class UploadHelper {
 //        return upload(key, path);
 //    }
 //
-//    /**
-//     * 上传头像
-//     *
-//     * @param path 本地地址
-//     * @return 服务器地址
-//     */
-//    public static String uploadPortrait(String path) {
-//        String key = getPortraitObjKey(path);
-//        return upload(key, path);
-//    }
+    /**
+     * 上传头像
+     *
+     * @param path 本地地址
+     * @return 服务器地址
+     */
+    public static String uploadPortrait(String path) {
+        String key = getPortraitObjKey(path);
+        return upload(key, path);
+    }
 //
 //    /**
 //     * 上传音频
@@ -96,14 +97,14 @@ public class UploadHelper {
 //        return upload(key, path);
 //    }
 //
-//    /**
-//     * 分月存储，避免一个文件夹太多
-//     *
-//     * @return yyyyMM
-//     */
-//    private static String getDateString() {
-//        return DateFormat.format("yyyyMM", new Date()).toString();
-//    }
+    /**
+     * 分月存储，避免一个文件夹太多
+     *
+     * @return yyyyMM
+     */
+    private static String getDateString() {
+        return DateFormat.format("yyyyMM", new Date()).toString();
+    }
 
 //    // image/201703/dawewqfas243rfawr234.jpg
 //    private static String getImageObjKey(String path) {
@@ -112,12 +113,12 @@ public class UploadHelper {
 //        return String.format("image/%s/%s.jpg", dateString, fileMd5);
 //    }
 //
-//    // portrait/201703/dawewqfas243rfawr234.jpg
-//    private static String getPortraitObjKey(String path) {
-//        String fileMd5 = HashUtil.getMD5String(new File(path));
-//        String dateString = getDateString();
-//        return String.format("portrait/%s/%s.jpg", dateString, fileMd5);
-//    }
+    // portrait/201703/dawewqfas243rfawr234.jpg
+    private static String getPortraitObjKey(String path) {
+        String fileMd5 = HashUtil.getMD5String(new File(path));
+        String dateString = getDateString();
+        return String.format("portrait/%s/%s.jpg", dateString, fileMd5);
+    }
 //
 //    // audio/201703/dawewqfas243rfawr234.mp3
 //    private static String getAudioObjKey(String path) {
