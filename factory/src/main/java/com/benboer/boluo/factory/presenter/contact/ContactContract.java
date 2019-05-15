@@ -6,7 +6,7 @@ import com.benboer.boluo.factory.presenter.BaseContract;
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/14.
  */
-public class ContactContract {
+public interface ContactContract {
 
     interface Presenter extends BaseContract.Presenter{
 

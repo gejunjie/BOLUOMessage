@@ -126,4 +126,12 @@ public class Account {
     public static String getToken() {
         return token;
     }
+
+    /**
+     * 获取userId
+     * @return
+     */
+    public static String getUserId(){
+        return userId;
+    }
 }

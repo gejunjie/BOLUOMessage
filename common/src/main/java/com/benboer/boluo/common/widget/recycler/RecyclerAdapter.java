@@ -4,6 +4,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.benboer.boluo.common.R;
 
 import java.util.ArrayList;
@@ -11,9 +15,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -101,6 +102,16 @@ public abstract class RecyclerAdapter<T>
     public int getItemCount() {
         return mDataList.size();
     }
+
+    /**
+     * 返回整个集合
+     *
+     * @return List<Data>
+     */
+    public List<T> getItems() {
+        return mDataList;
+    }
+
 
     /**
      * 插入一条数据并通知更新

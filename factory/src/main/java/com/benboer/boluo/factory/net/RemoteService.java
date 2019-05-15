@@ -7,8 +7,11 @@ import com.benboer.boluo.factory.model.api.account.RegisterModel;
 import com.benboer.boluo.factory.model.api.user.UserUpdateModel;
 import com.benboer.boluo.factory.model.card.UserCard;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -50,5 +53,11 @@ public interface RemoteService {
      */
     @PUT
     Call<RspModel<UserCard>> updateUser(@Body UserUpdateModel model);
+
+    /**
+     * 获取联系人列表
+     */
+    @GET("user/contact")
+    Call<RspModel<List<UserCard>>> userContacts();
 
 }

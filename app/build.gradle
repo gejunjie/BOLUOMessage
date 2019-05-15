@@ -51,7 +51,12 @@ dependencies {
     // 个推
     implementation "com.getui:sdk:$rootProject.ext.getuiVersion"
 
-    implementation 'com.github.Raizlabs.DBFlow:dbflow:4.2.4'
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+
+    // sql-cipher database encryption (optional)
+    // implementation "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflow_version}"
     implementation project(':common')
     implementation project(':factory')
 

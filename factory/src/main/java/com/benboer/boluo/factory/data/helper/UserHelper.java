@@ -10,6 +10,8 @@ import com.benboer.boluo.factory.model.db.User;
 import com.benboer.boluo.factory.net.Network;
 import com.benboer.boluo.factory.net.RemoteService;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,6 +42,29 @@ public class UserHelper {
 
             @Override
             public void onFailure(Call<RspModel<UserCard>> call, Throwable t) {
+                callback.onDataNotAvailable(R.string.data_network_error);
+            }
+        });
+    }
+
+    // 刷新联系人的操作
+    public static void refreshContacts(final DataSource.Callback<List<UserCard>> callback){
+        RemoteService service = Network.remote();
+        Call<RspModel<List<UserCard>>> call = service.userContacts();
+        call.enqueue(new Callback<RspModel<List<UserCard>>>() {
+            @Override
+            public void onResponse(Call<RspModel<List<UserCard>>> call, Response<RspModel<List<UserCard>>> response) {
+                RspModel<List<UserCard>> rspModel = response.body();
+                if (rspModel.success()){
+                    List<UserCard> userCards = rspModel.getResult();
+                    callback.onDataLoaded(userCards);
+                }else {
+                    Factory.decodeRspCode(rspModel, callback);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RspModel<List<UserCard>>> call, Throwable t) {
                 callback.onDataNotAvailable(R.string.data_network_error);
             }
         });

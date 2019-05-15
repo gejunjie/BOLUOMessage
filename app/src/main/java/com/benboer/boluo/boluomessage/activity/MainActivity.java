@@ -3,15 +3,15 @@ package com.benboer.boluo.boluomessage.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.fragment.main.ActiveFragment;
@@ -20,23 +20,18 @@ import com.benboer.boluo.boluomessage.fragment.main.GroupFragment;
 import com.benboer.boluo.boluomessage.tool.NavHelper;
 import com.benboer.boluo.common.app.BaseActivity;
 import com.benboer.boluo.common.widget.PortraitView;
+import com.benboer.boluo.factory.persistence.Account;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomViewTarget;
-import com.bumptech.glide.request.target.DrawableImageViewTarget;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.yalantis.ucrop.UCrop;
 
 import net.qiujuer.genius.ui.Ui;
 import net.qiujuer.genius.ui.widget.FloatActionButton;
 
 import java.util.Objects;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -118,6 +113,12 @@ public class MainActivity extends BaseActivity
     @OnClick(R.id.btn_action)
     void onActionClick(){
         AccountActivity.show(this);
+    }
+
+
+    @OnClick(R.id.im_portrait)
+    void onPortraitClick() {
+        PersonalActivity.show(this, Account.getUserId());
     }
 
     @Override

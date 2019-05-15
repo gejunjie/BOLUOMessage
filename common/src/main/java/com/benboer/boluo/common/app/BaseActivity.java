@@ -2,9 +2,12 @@ package com.benboer.boluo.common.app;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import com.benboer.boluo.common.widget.convention.PlaceHolderView;
 
 import java.util.List;
 
@@ -14,6 +17,8 @@ import butterknife.ButterKnife;
  * Created by Gjj on 2019/3/21.
  */
 public abstract class BaseActivity extends AppCompatActivity {
+
+    protected PlaceHolderView mPlaceHolderView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,7 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             // 得到界面Id并设置到Activity界面中
             int layId = getContentLayoutId();
             setContentView(layId);
-
+            initBefore();
             initWidget();
             initData();
         } else {
@@ -37,6 +42,13 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化窗口
      */
     protected void initWidows() {
+
+    }
+
+    /**
+     * 初始化控件调用之前
+     */
+    protected void initBefore() {
 
     }
 
@@ -67,8 +79,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 初始化数据
      */
-    protected void
-    initData() {
+    protected void initData() {
 
     }
 
@@ -101,5 +112,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         super.onBackPressed();
         finish();
+    }
+
+    /**
+     * 设置占位布局
+     */
+    public void setPlaceHolderView(PlaceHolderView placeHolderView) {
+        this.mPlaceHolderView = placeHolderView;
     }
 }
