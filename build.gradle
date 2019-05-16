@@ -42,7 +42,7 @@ ext{
 
     recyclerviewVersion = '1.1.0-alpha05'
 
-    geniusVersion = '2.0.0'
+    geniusVersion = '2.1.1'
     glideVersion = '4.9.0'
     circleimageviewVersion = '2.1.0'
     ucropVersion = "2.2.0-native"

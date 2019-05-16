@@ -3,6 +3,7 @@ package com.benboer.boluo.boluomessage.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -73,6 +74,17 @@ public class MainActivity extends BaseActivity
     }
 
     @Override
+    protected boolean initArgs(Bundle bundle) {
+        if (Account.isComplete()){
+            return super.initArgs(bundle);
+        }else{
+            UserActivity.show(this);
+            return false;
+        }
+
+    }
+
+    @Override
     protected void initWidget() {
         super.initWidget();
         mNavHelper = new NavHelper<>(this, R.id.lay_container,
@@ -107,7 +119,9 @@ public class MainActivity extends BaseActivity
 
     @OnClick(R.id.im_search)
     void onSearchMenuClick(){
-
+        int type = Objects.equals(mNavHelper.getCurrentTab().extra, R.string.title_group) ?
+                SearchActivity.TYPE_GROUP : SearchActivity.TYPE_USER;
+        SearchActivity.show(this, type);
     }
 
     @OnClick(R.id.btn_action)

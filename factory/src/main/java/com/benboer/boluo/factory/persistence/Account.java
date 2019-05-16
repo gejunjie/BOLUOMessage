@@ -6,6 +6,9 @@ import android.text.TextUtils;
 
 import com.benboer.boluo.factory.Factory;
 import com.benboer.boluo.factory.model.api.account.AccountRspModel;
+import com.benboer.boluo.factory.model.db.User;
+import com.benboer.boluo.factory.model.db.User_Table;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/5.
@@ -99,6 +102,37 @@ public class Account {
                 .putString(KEY_ACCOUNT, account)
                 .apply();
     }
+
+    /**
+     * 是否已经完善了用户信息
+     *
+     * @return True 是完成了
+     */
+    public static boolean isComplete() {
+
+        if (isLogin()) {
+            User self = getUser();
+            return !TextUtils.isEmpty(self.getDesc())
+                    && !TextUtils.isEmpty(self.getPortrait())
+                    && self.getSex() != 0;
+        }
+        // 未登录返回信息不完全
+        return false;
+    }
+
+    /**
+     * 获取当前登录的用户信息
+     *
+     * @return User
+     */
+    public static User getUser() {
+        // 如果为null返回一个new的User，其次从数据库查询
+        return TextUtils.isEmpty(userId) ? new User() : SQLite.select()
+                .from(User.class)
+                .where(User_Table.id.eq(userId))
+                .querySingle();
+    }
+
 
     /**
      * 设置并存储设备的Id

@@ -1,21 +1,32 @@
 package com.benboer.boluo.boluomessage.fragment.user;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.benboer.boluo.boluomessage.App;
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.MainActivity;
+import com.benboer.boluo.boluomessage.fragment.media.GalleryFragment;
+import com.benboer.boluo.common.app.Application;
 import com.benboer.boluo.common.app.PresenterFragment;
 import com.benboer.boluo.common.widget.PortraitView;
 import com.benboer.boluo.factory.presenter.user.UpdateInfoContract;
 import com.benboer.boluo.factory.presenter.user.UpdateInfoPresenter;
+import com.bumptech.glide.Glide;
+import com.yalantis.ucrop.UCrop;
 
 import net.qiujuer.genius.ui.widget.Button;
 import net.qiujuer.genius.ui.widget.Loading;
 
+import java.io.File;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * 用户更新界面
@@ -44,16 +55,27 @@ public class UpdateInfoFragment extends PresenterFragment<UpdateInfoContract.Pre
     private String mPortraitPath;
     private boolean isMan = true;
 
-
-
     public UpdateInfoFragment(){
 
     }
 
     @OnClick(R.id.im_portrait)
     void onPortraitClick() {
-
-
+        new GalleryFragment().setOnSelectedListener(new GalleryFragment.OnSelectedListener() {
+            @Override
+            public void onSelectedImage(String path) {
+                UCrop.Options options = new UCrop.Options();
+                options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
+                options.setCompressionQuality(96);
+                File dPath = App.getPortraitTmpFile();
+                // 发起剪切
+                UCrop.of(Uri.fromFile(new File(path)), Uri.fromFile(dPath))
+                        .withAspectRatio(1, 1) // 1比1比例
+                        .withMaxResultSize(520, 520) // 返回最大的尺寸
+                        .withOptions(options) // 相关参数
+                        .start(getActivity());
+            }
+        }).show(getChildFragmentManager(), GalleryFragment.class.getName());
     }
 
     @OnClick(R.id.btn_submit)
@@ -65,6 +87,30 @@ public class UpdateInfoFragment extends PresenterFragment<UpdateInfoContract.Pre
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == UCrop.REQUEST_CROP){
+            // 通过UCrop得到对应的Uri
+            final Uri resultUri = UCrop.getOutput(data);
+            if (resultUri != null) {
+                loadPortrait(resultUri);
+            }
+        } else if (resultCode == UCrop.RESULT_ERROR) {
+            Application.showToast(R.string.data_rsp_error_unknown);
+        }
+    }
+
+    /**
+     * 加载Uri到当前的头像中
+     *
+     * @param uri Uri
+     */
+    private void loadPortrait(Uri uri) {
+        // 得到头像地址
+        mPortraitPath = uri.getPath();
+
+        Glide.with(this)
+                .load(uri)
+                .centerCrop()
+                .into(mPortrait);
     }
 
     @Override

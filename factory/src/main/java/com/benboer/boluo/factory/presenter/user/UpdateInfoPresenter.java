@@ -12,6 +12,9 @@ import com.benboer.boluo.factory.model.db.User;
 import com.benboer.boluo.factory.net.UploadHelper;
 import com.benboer.boluo.factory.presenter.BasePresenter;
 
+import net.qiujuer.genius.kit.handler.Run;
+import net.qiujuer.genius.kit.handler.runable.Action;
+
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/8.
  */
@@ -27,27 +30,25 @@ public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.View>
         final UpdateInfoContract.View view = getView();
         if (view == null)
             return;
-//         强制执行在主线程中
-//        Run.onUiAsync(new Action() {
-//            @Override
-//            public void call() {
-//                view.updateSucceed();
-//            }
-//        });
+        Run.onUiAsync(new Action() {
+            @Override
+            public void call() {
+                view.updateSucceed();
+            }
+        });
     }
 
     @Override
-    public void onDataNotAvailable(int strRes) {
-        UpdateInfoContract.View view = getView();
+    public void onDataNotAvailable(final int strRes) {
+        final UpdateInfoContract.View view = getView();
         if (view == null)
             return;
-        // 强制执行在主线程中
-//        Run.onUiAsync(new Action() {
-//            @Override
-//            public void call() {
-//                view.showError(strRes);
-//            }
-//        });
+        Run.onUiAsync(new Action() {
+            @Override
+            public void call() {
+                view.showError(strRes);
+            }
+        });
     }
 
     @Override

@@ -7,14 +7,14 @@
     tools:background="@drawable/bg_src_tianjin"
     tools:context="com.benboer.boluo.boluomessage.fragment.user.UpdateInfoFragment">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_gradient_black"
         android:paddingBottom="@dimen/len_32"
         android:paddingTop="@dimen/statusBarSize">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1" />
 
 
-        <net.qiujuer.italker.common.widget.PortraitView
+        <com.benboer.boluo.common.widget.PortraitView
             android:id="@+id/im_portrait"
             android:layout_width="@dimen/len_92"
             android:layout_height="@dimen/len_92"
@@ -90,7 +90,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Space
         android:layout_width="0dp"

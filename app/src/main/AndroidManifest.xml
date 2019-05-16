@@ -58,6 +58,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity android:name=".activity.PersonalActivity" />
+        <activity android:name=".activity.UserActivity" />
     </application>
 
 
