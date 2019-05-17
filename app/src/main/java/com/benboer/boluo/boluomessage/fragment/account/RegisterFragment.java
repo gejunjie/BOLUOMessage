@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.benboer.boluo.boluomessage.R;
+import com.benboer.boluo.boluomessage.activity.MainActivity;
 import com.benboer.boluo.common.app.PresenterFragment;
 import com.benboer.boluo.factory.presenter.account.RegisterContract;
 import com.benboer.boluo.factory.presenter.account.RegisterPresenter;
@@ -73,6 +74,7 @@ public class RegisterFragment extends PresenterFragment<RegisterContract.Present
 
     @Override
     public void registerSuccess() {
-
+        MainActivity.show(getContext());
+        getActivity().finish();
     }
 }

@@ -52,10 +52,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View>
             // 密码需要大于6位
             view.showError(R.string.data_account_register_invalid_parameter_password);
         } else {
-            // 进行网络请求
-            // 构造Model，进行请求调用
             RegisterModel model = new RegisterModel(phone, password, name, Account.getPushId());
-            // 进行网络请求，并设置回送接口为自己
             AccountHelper.register(model, this);
         }
     }

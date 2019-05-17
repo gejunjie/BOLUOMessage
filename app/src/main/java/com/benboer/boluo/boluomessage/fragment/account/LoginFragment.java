@@ -37,12 +37,19 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
     @BindView(R.id.btn_submit)
     Button mSubmit;
 
-    @OnClick
+    @OnClick(R.id.btn_submit)
     void onSubmitClick(){
         String phone = mPhone.getText().toString();
         String passWord = mPassword.getText().toString();
         mPresenter.login(phone, passWord);
     }
+
+    @OnClick(R.id.txt_go_register)
+    void onShowRegisterClick() {
+        // 让AccountActivity进行界面切换
+        mAccountTrigger.triggerView();
+    }
+
 
     @Override
     public void onAttach(Context context) {

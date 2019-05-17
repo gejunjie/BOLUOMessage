@@ -128,4 +128,33 @@ public class UpdateInfoFragment extends PresenterFragment<UpdateInfoContract.Pre
         MainActivity.show(getContext());
         getActivity().finish();
     }
+
+    @Override
+    public void showLoading() {
+        super.showLoading();
+        // 正在进行时，正在进行注册，界面不可操作
+        // 开始Loading
+        mLoading.start();
+        // 让控件不可以输入
+        mDesc.setEnabled(false);
+        mPortrait.setEnabled(false);
+        mSex.setEnabled(false);
+        // 提交按钮不可以继续点击
+        mSubmit.setEnabled(false);
+    }
+
+    @Override
+    public void showError(int str) {
+        super.showError(str);
+        // 当需要显示错误的时候触发，一定是结束了
+
+        // 停止Loading
+        mLoading.stop();
+        // 让控件可以输入
+        mDesc.setEnabled(true);
+        mPortrait.setEnabled(true);
+        mSex.setEnabled(true);
+        // 提交按钮可以继续点击
+        mSubmit.setEnabled(true);
+    }
 }

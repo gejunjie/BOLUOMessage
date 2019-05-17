@@ -1,7 +1,6 @@
 package com.benboer.boluo.boluomessage.fragment.assist;
 
 import android.Manifest;
-import android.app.Application;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -9,15 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentManager;
+
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.common.app.BaseFragment;
+import com.benboer.boluo.boluomessage.activity.AccountActivity;
+import com.benboer.boluo.boluomessage.activity.MainActivity;
+import com.benboer.boluo.factory.persistence.Account;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentManager;
+import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -53,6 +56,10 @@ public class PermissionsFragment extends BottomSheetDialogFragment
 
     }
 
+    /**
+     * 申请权限的方法
+     */
+    @AfterPermissionGranted(RC)
     private void requestPerm() {
         String[] perms = new String[]{
                 Manifest.permission.INTERNET,
@@ -96,7 +103,8 @@ public class PermissionsFragment extends BottomSheetDialogFragment
     @Override
     public void onResume() {
         super.onResume();
-
+        // 界面显示的时候进行刷新
+        refreshState(getView());
     }
 
     @Override
@@ -106,7 +114,12 @@ public class PermissionsFragment extends BottomSheetDialogFragment
 
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
-
+        if (Account.isLogin()) {
+            MainActivity.show(getContext());
+        } else {
+            AccountActivity.show(getContext());
+        }
+        getActivity().finish();
     }
 
     @Override

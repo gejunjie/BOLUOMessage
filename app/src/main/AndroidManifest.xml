@@ -59,6 +59,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".activity.PersonalActivity" />
         <activity android:name=".activity.UserActivity" />
+        <activity android:name=".activity.SearchActivity" />
     </application>
 
 
