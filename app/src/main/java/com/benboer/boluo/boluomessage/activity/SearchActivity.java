@@ -26,4 +26,11 @@ public class SearchActivity extends ToolbarActivity {
     protected int getContentLayoutId() {
         return R.layout.activity_search;
     }
+
+    /**
+     * 搜索的Fragment必须继承的接口
+     */
+    public interface SearchFragment {
+        void search(String content);
+    }
 }

@@ -56,8 +56,7 @@ public class UserHelper {
             public void onResponse(Call<RspModel<List<UserCard>>> call, Response<RspModel<List<UserCard>>> response) {
                 RspModel<List<UserCard>> rspModel = response.body();
                 if (rspModel.success()){
-                    List<UserCard> userCards = rspModel.getResult();
-                    callback.onDataLoaded(userCards);
+                    callback.onDataLoaded(rspModel.getResult());
                 }else {
                     Factory.decodeRspCode(rspModel, callback);
                 }
@@ -68,5 +67,27 @@ public class UserHelper {
                 callback.onDataNotAvailable(R.string.data_network_error);
             }
         });
+    }
+
+    public static Call userSearch(String name, final DataSource.Callback<List<UserCard>> callback){
+        RemoteService service = Network.remote();
+        Call<RspModel<List<UserCard>>> call = service.userSearch(name);
+        call.enqueue(new Callback<RspModel<List<UserCard>>>() {
+            @Override
+            public void onResponse(Call<RspModel<List<UserCard>>> call, Response<RspModel<List<UserCard>>> response) {
+                RspModel<List<UserCard>> rspModel = response.body();
+                if (rspModel.success()){
+                    callback.onDataLoaded(rspModel.getResult());
+                }else {
+                    Factory.decodeRspCode(rspModel, callback);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RspModel<List<UserCard>>> call, Throwable t) {
+                callback.onDataNotAvailable(R.string.data_network_error);
+            }
+        });
+        return call;
     }
 }
