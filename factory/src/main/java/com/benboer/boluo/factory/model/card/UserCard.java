@@ -1,5 +1,6 @@
 package com.benboer.boluo.factory.model.card;
 
+import com.benboer.boluo.factory.model.Author;
 import com.benboer.boluo.factory.model.db.User;
 
 import java.util.Date;
@@ -7,7 +8,7 @@ import java.util.Date;
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/6.
  */
-public class UserCard {
+public class UserCard implements Author {
     private String id;
     private String name;
     private String phone;

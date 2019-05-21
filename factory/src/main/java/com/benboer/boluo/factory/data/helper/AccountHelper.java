@@ -46,11 +46,8 @@ public class AccountHelper {
      * @param callback 成功与失败的接口回送
      */
     public static void login(final LoginModel model, final DataSource.Callback<User> callback) {
-        // 调用Retrofit对我们的网络请求接口做代理
         RemoteService service = Network.remote();
-        // 得到一个Call
         Call<RspModel<AccountRspModel>> call = service.accountLogin(model);
-        // 异步的请求
         call.enqueue(new AccountRspCallback(callback));
     }
 
@@ -60,12 +57,8 @@ public class AccountHelper {
      * @param callback Callback
      */
     public static void bindPush(final DataSource.Callback<User> callback) {
-        // 检查是否为空
         String pushId = Account.getPushId();
-        if (TextUtils.isEmpty(pushId))
-            return;
-
-        // 调用Retrofit对我们的网络请求接口做代理
+        if (TextUtils.isEmpty(pushId)) return;
         RemoteService service = Network.remote();
         Call<RspModel<AccountRspModel>> call = service.accountBind(pushId);
         call.enqueue(new AccountRspCallback(callback));
@@ -86,6 +79,7 @@ public class AccountHelper {
         public void onResponse(Call<RspModel<AccountRspModel>> call,
                                Response<RspModel<AccountRspModel>> response) {
             RspModel<AccountRspModel> rspModel = response.body();
+            if (rspModel == null) return;
             if (rspModel.success()){
                 AccountRspModel accountRspModel = rspModel.getResult();
                 User user = accountRspModel.getUser();

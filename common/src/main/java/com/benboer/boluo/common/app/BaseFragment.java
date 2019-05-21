@@ -2,13 +2,16 @@ package com.benboer.boluo.common.app;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.LayoutRes;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.benboer.boluo.common.widget.convention.PlaceHolderView;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -18,6 +21,9 @@ import butterknife.Unbinder;
 public abstract class BaseFragment extends Fragment {
     protected View mRoot;
     protected Unbinder mRootUnBinder;
+    protected PlaceHolderView mPlaceHolderView;
+    // 标示是否第一次初始化数据
+    protected boolean mIsFirstInitData = true;
 
     @Override
     public void onAttach(Context context) {
@@ -91,5 +97,12 @@ public abstract class BaseFragment extends Fragment {
      */
     public boolean onBackPressed() {
         return false;
+    }
+
+    /**
+     * 设置占位布局
+     */
+    public void setPlaceHolderView(PlaceHolderView placeHolderView) {
+        this.mPlaceHolderView = placeHolderView;
     }
 }
