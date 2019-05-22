@@ -1,6 +1,7 @@
 package com.benboer.boluo.factory.presenter.contact;
 
 import com.benboer.boluo.factory.data.DataSource;
+import com.benboer.boluo.factory.data.helper.UserHelper;
 import com.benboer.boluo.factory.model.card.UserCard;
 import com.benboer.boluo.factory.presenter.BasePresenter;
 
@@ -16,7 +17,8 @@ public class FollowPresenter extends BasePresenter<FollowContract.View>
 
     @Override
     public void onDataLoaded(UserCard userCard) {
-
+        FollowContract.View view = getView();
+        view.onFollowSuccess(userCard);
     }
 
     @Override
@@ -25,7 +27,7 @@ public class FollowPresenter extends BasePresenter<FollowContract.View>
     }
 
     @Override
-    public void onFollow() {
-
+    public void follow(String id) {
+        UserHelper.follow(id, this);
     }
 }

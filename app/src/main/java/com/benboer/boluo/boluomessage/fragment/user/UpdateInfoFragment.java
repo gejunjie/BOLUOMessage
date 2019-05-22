@@ -150,11 +150,9 @@ public class UpdateInfoFragment extends PresenterFragment<UpdateInfoContract.Pre
 
         // 停止Loading
         mLoading.stop();
-        // 让控件可以输入
         mDesc.setEnabled(true);
         mPortrait.setEnabled(true);
         mSex.setEnabled(true);
-        // 提交按钮可以继续点击
         mSubmit.setEnabled(true);
     }
 }

@@ -35,7 +35,7 @@ public class User extends BaseModel implements Author, DiffUiDataCallback.UiData
     @Column
     private int sex = 0;
 
-    // 我对某人的备注信息，也应该写入到数据库中
+    //备注信息
     @Column
     private String alias;
 
@@ -47,7 +47,7 @@ public class User extends BaseModel implements Author, DiffUiDataCallback.UiData
     @Column
     private int following;
 
-    // 我与当前User的关系状态，是否已经关注了这个人
+    // 与当前User的关系状态，是否已经关注了这个人
     @Column
     private boolean isFollow;
 

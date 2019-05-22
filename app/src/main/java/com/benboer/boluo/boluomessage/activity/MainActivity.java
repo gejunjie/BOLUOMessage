@@ -126,7 +126,12 @@ public class MainActivity extends BaseActivity
 
     @OnClick(R.id.btn_action)
     void onActionClick(){
-        AccountActivity.show(this);
+        if (Objects.equals(mNavHelper.getCurrentTab().extra, R.string.title_group)) {
+            // TODO 打开群创建界面
+        } else {
+            // 如果是其他，都打开添加用户的界面
+            SearchActivity.show(this, SearchActivity.TYPE_USER);
+        }
     }
 
 

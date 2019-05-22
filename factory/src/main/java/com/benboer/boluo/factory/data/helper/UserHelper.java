@@ -19,7 +19,7 @@ import retrofit2.Response;
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/6.
  *
- * 用户更新网络接口
+ * 用户更新
  */
 public class UserHelper {
     // 异步更新用户信息的操作
@@ -69,6 +69,7 @@ public class UserHelper {
         });
     }
 
+    //搜索用户
     public static Call userSearch(String name, final DataSource.Callback<List<UserCard>> callback){
         RemoteService service = Network.remote();
         Call<RspModel<List<UserCard>>> call = service.userSearch(name);
@@ -89,5 +90,27 @@ public class UserHelper {
             }
         });
         return call;
+    }
+
+    public static void follow(String id, final DataSource.Callback<UserCard> callback){
+        RemoteService service = Network.remote();
+        Call<RspModel<UserCard>> call = service.userFollow(id);
+        call.enqueue(new Callback<RspModel<UserCard>>() {
+            @Override
+            public void onResponse(Call<RspModel<UserCard>> call, Response<RspModel<UserCard>> response) {
+                RspModel<UserCard> rspModel = response.body();
+                if (rspModel == null) return;
+                if (rspModel.success()){
+                    callback.onDataLoaded(rspModel.getResult());
+                }else{
+                    Factory.decodeRspCode(rspModel, callback);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RspModel<UserCard>> call, Throwable t) {
+                callback.onDataNotAvailable(R.string.data_network_error);
+            }
+        });
     }
 }

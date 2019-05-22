@@ -253,7 +253,7 @@ public abstract class RecyclerAdapter<T>
     }
 
     /**
-     * 包装AapterListener,不用两个方法都重写
+     * 包装AapterListener
      * @param <T>
      */
     public static abstract class AdapterListenerImpl<T> implements AdapterListener<T>{

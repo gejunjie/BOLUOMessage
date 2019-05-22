@@ -9,7 +9,7 @@ import com.benboer.boluo.factory.presenter.BaseContract;
 public interface FollowContract {
 
     interface Presenter extends BaseContract.Presenter{
-        void onFollow();
+        void follow(String id);
     }
 
     interface View extends BaseContract.View<Presenter>{
