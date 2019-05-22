@@ -84,7 +84,7 @@ public class SearchActivity extends ToolbarActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 if (TextUtils.isEmpty(newText)) {
-//                    search("");
+                    search("");
                     return true;
                 }
                 return false;

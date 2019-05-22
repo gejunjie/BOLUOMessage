@@ -60,7 +60,7 @@ public class ContactFragment extends PresenterFragment<ContactContract.Presenter
         mAdapter.setAdapterListener(new RecyclerAdapter.AdapterListenerImpl<User>() {
             @Override
             public void onItemClick(RecyclerAdapter.ViewHolder holder, User data) {
-                MessageActivity.show(getContext());
+                MessageActivity.show(getContext(), data);
             }
         });
         // 初始化占位布局
