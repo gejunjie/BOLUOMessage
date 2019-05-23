@@ -8,7 +8,7 @@ import java.util.List;
  * Created by BenBoerBoluojiushiwo on 2019/5/14.
  */
 public class DiffUiDataCallback<T extends DiffUiDataCallback.UiDataDiffer<T>>
-        extends DiffUtil.Callback  {
+        extends DiffUtil.Callback {
 
     private List<T> mOldList, mNewList;
 
@@ -44,7 +44,7 @@ public class DiffUiDataCallback<T extends DiffUiDataCallback.UiDataDiffer<T>>
 
     // 进行比较的数据类型
     public interface UiDataDiffer<T> {
-        // 传递一个旧的数据给，比较是否标示的是同一个数据
+        // 比较是否标示的是同一个数据
         boolean isSame(T old);
 
         // 旧的数据对比，内容是否相同

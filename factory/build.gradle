@@ -40,9 +40,12 @@ dependencies {
     implementation "net.qiujuer.genius:res:$rootProject.ext.geniusVersion"
     implementation "net.qiujuer.genius:kit-handler:$rootProject.ext.geniusVersion"
 
-    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
-    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
-    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+//    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+//    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+//    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:$rootProject.ext.dbflow_version"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-core:$rootProject.ext.dbflow_version"
+    implementation "com.github.Raizlabs.DBFlow:dbflow:$rootProject.ext.dbflow_version"
 
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation project(':common')
