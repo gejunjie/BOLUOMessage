@@ -34,8 +34,7 @@ public class UserHelper {
                 RspModel<UserCard> rspModel = response.body();
                 if (rspModel.success()){
                     UserCard userCard = rspModel.getResult();
-                    User user = userCard.build();
-                    user.save();
+                    Factory.getUserCenter().dispatch(userCard);
                     callback.onDataLoaded(userCard);
                 }else {
                     Factory.decodeRspCode(rspModel, callback);
@@ -50,7 +49,7 @@ public class UserHelper {
     }
 
     // 刷新联系人的操作
-    public static void refreshContacts(final DataSource.Callback<List<UserCard>> callback){
+    public static void refreshContacts(){
         RemoteService service = Network.remote();
         Call<RspModel<List<UserCard>>> call = service.userContacts();
         call.enqueue(new Callback<RspModel<List<UserCard>>>() {
@@ -58,20 +57,27 @@ public class UserHelper {
             public void onResponse(Call<RspModel<List<UserCard>>> call, Response<RspModel<List<UserCard>>> response) {
                 RspModel<List<UserCard>> rspModel = response.body();
                 if (rspModel.success()){
-                    callback.onDataLoaded(rspModel.getResult());
+                    List<UserCard> cards = rspModel.getResult();
+                    if (cards == null || cards.size() == 0) return;
+                    Factory.getUserCenter().dispatch(cards.toArray(new UserCard[0]));
                 }else {
-                    Factory.decodeRspCode(rspModel, callback);
+                    Factory.decodeRspCode(rspModel, null);
                 }
             }
 
             @Override
             public void onFailure(Call<RspModel<List<UserCard>>> call, Throwable t) {
-                callback.onDataNotAvailable(R.string.data_network_error);
+
             }
         });
     }
 
-    //搜索用户
+    /**
+     * 搜索联系人
+     * @param name
+     * @param callback
+     * @return
+     */
     public static Call userSearch(String name, final DataSource.Callback<List<UserCard>> callback){
         RemoteService service = Network.remote();
         Call<RspModel<List<UserCard>>> call = service.userSearch(name);
@@ -94,6 +100,11 @@ public class UserHelper {
         return call;
     }
 
+    /**
+     * 关注网络请求
+     * @param id
+     * @param callback
+     */
     public static void follow(String id, final DataSource.Callback<UserCard> callback){
         RemoteService service = Network.remote();
         Call<RspModel<UserCard>> call = service.userFollow(id);
@@ -103,7 +114,9 @@ public class UserHelper {
                 RspModel<UserCard> rspModel = response.body();
                 if (rspModel == null) return;
                 if (rspModel.success()){
-                    callback.onDataLoaded(rspModel.getResult());
+                    UserCard userCard = rspModel.getResult();
+                    Factory.getUserCenter().dispatch(userCard);
+                    callback.onDataLoaded(userCard);
                 }else{
                     Factory.decodeRspCode(rspModel, callback);
                 }
@@ -143,11 +156,8 @@ public class UserHelper {
             Response<RspModel<UserCard>> response = remoteService.userFind(id).execute();
             UserCard card = response.body().getResult();
             if (card != null) {
-
-                // TODO 数据库的存储但是没有通知
                 User user = card.build();
-                user.save();
-
+                Factory.getUserCenter().dispatch(card);
                 return user;
             }
 

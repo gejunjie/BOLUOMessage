@@ -4,6 +4,10 @@ import androidx.annotation.StringRes;
 
 import com.benboer.boluo.common.app.Application;
 import com.benboer.boluo.factory.data.DataSource;
+import com.benboer.boluo.factory.data.message.MessageCenter;
+import com.benboer.boluo.factory.data.message.MessageDispatcher;
+import com.benboer.boluo.factory.data.user.UserCenter;
+import com.benboer.boluo.factory.data.user.UserDispatcher;
 import com.benboer.boluo.factory.model.api.RspModel;
 import com.benboer.boluo.factory.persistence.Account;
 import com.benboer.boluo.factory.utils.DBFlowExclusionStrategy;
@@ -163,6 +167,18 @@ public class Factory {
      */
     public static void dispatchPush(String message) {
         // TODO
+    }
+
+    /**
+     * 获取用户中心的实现类
+     * @return
+     */
+    public static UserCenter getUserCenter(){
+        return UserDispatcher.instance();
+    }
+
+    public static MessageCenter getMessageCenter(){
+        return MessageDispatcher.instance();
     }
 
 }
