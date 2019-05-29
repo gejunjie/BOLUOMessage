@@ -11,6 +11,7 @@ import com.benboer.boluo.factory.model.card.GroupMemberCard;
  * @Version: 1.0
  */
 public interface GroupCenter {
+
     void dispatch(GroupCard... cards);
 
     void dispatch(GroupMemberCard... cards);

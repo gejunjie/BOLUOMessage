@@ -6,8 +6,6 @@ import com.benboer.boluo.factory.data.helper.DbHelper;
 import com.benboer.boluo.factory.model.card.UserCard;
 import com.benboer.boluo.factory.model.db.User;
 
-import net.qiujuer.genius.kit.handler.Run;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;

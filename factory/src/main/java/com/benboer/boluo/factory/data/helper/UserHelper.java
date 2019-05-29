@@ -72,22 +72,19 @@ public class UserHelper {
         });
     }
 
-    /**
-     * 搜索联系人
-     * @param name
-     * @param callback
-     * @return
-     */
-    public static Call userSearch(String name, final DataSource.Callback<List<UserCard>> callback){
+    // 搜索的方法
+    public static Call userSearch(String name, final DataSource.Callback<List<UserCard>> callback) {
         RemoteService service = Network.remote();
         Call<RspModel<List<UserCard>>> call = service.userSearch(name);
+
         call.enqueue(new Callback<RspModel<List<UserCard>>>() {
             @Override
             public void onResponse(Call<RspModel<List<UserCard>>> call, Response<RspModel<List<UserCard>>> response) {
                 RspModel<List<UserCard>> rspModel = response.body();
-                if (rspModel.success()){
+                if (rspModel.success()) {
+                    // 返回数据
                     callback.onDataLoaded(rspModel.getResult());
-                }else {
+                } else {
                     Factory.decodeRspCode(rspModel, callback);
                 }
             }
@@ -97,8 +94,10 @@ public class UserHelper {
                 callback.onDataNotAvailable(R.string.data_network_error);
             }
         });
+
         return call;
     }
+
 
     /**
      * 关注网络请求
@@ -147,6 +146,18 @@ public class UserHelper {
                 .from(User.class)
                 .where(User_Table.id.eq(id))
                 .querySingle();
+    }
+
+    /**
+     * 搜索一个用户，优先本地缓存，
+     * 没有用然后再从网络拉取
+     */
+    public static User search(String id) {
+        User user = findFromLocal(id);
+        if (user == null) {
+            return findFromNet(id);
+        }
+        return user;
     }
 
     public static User findFromNet(String id) {

@@ -1,6 +1,5 @@
 package com.benboer.boluo.factory.data.message;
 
-import com.benboer.boluo.factory.data.user.UserCenter;
 import com.benboer.boluo.factory.model.card.MessageCard;
 
 import java.util.concurrent.Executor;

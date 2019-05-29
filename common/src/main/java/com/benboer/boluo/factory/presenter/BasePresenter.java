@@ -30,7 +30,7 @@ public class BasePresenter<T extends BaseContract.View> implements BaseContract.
     }
 
     @Override
-    public void destory() {
+    public void destroy() {
         T view = mView;
         mView = null;
         if (view != null) {

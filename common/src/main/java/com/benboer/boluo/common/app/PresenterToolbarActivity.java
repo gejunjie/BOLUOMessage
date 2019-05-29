@@ -23,7 +23,7 @@ public abstract class PresenterToolbarActivity<Presenter extends BaseContract.Pr
     protected void onDestroy() {
         super.onDestroy();
         if (mPresenter != null){
-            mPresenter.destory();
+            mPresenter.destroy();
         }
     }
 

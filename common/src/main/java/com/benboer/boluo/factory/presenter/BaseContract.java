@@ -28,7 +28,7 @@ public interface BaseContract {
 
         void start();
 
-        void destory();
+        void destroy();
     }
 
     // 基本的列表的View的职责

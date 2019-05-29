@@ -45,7 +45,6 @@ public class LaunchActivity extends BaseActivity {
         // 设置给背景
         root.setBackground(drawable);
         mBgDrawable = drawable;
-
     }
 
     @Override
