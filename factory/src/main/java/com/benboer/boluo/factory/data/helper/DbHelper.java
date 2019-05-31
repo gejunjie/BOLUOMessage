@@ -196,7 +196,7 @@ public class DbHelper {
                     Session session = SessionHelper.findFromLocal(identify.id);
 
                     if (session == null) {
-                        // 第一次聊天，创建一个你和对方的一个会话
+                        // 第一次聊天，创建一个和对方的一个会话
                         session = new Session(identify);
                     }
 

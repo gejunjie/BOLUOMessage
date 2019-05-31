@@ -28,7 +28,7 @@ public class AccountHelper {
     /**
      * 注册接口
      *
-     * @param model    传递一个注册的Model进来
+     * @param model    注册的Model
      * @param callback 成功与失败的接口回送
      */
     public static void register(final RegisterModel model, final DataSource.Callback<User> callback) {

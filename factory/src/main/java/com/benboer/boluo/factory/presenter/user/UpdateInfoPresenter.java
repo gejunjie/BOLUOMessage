@@ -28,8 +28,7 @@ public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.View>
     @Override
     public void onDataLoaded(UserCard userCard) {
         final UpdateInfoContract.View view = getView();
-        if (view == null)
-            return;
+        if (view == null) return;
         Run.onUiAsync(new Action() {
             @Override
             public void call() {
@@ -41,8 +40,7 @@ public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.View>
     @Override
     public void onDataNotAvailable(final int strRes) {
         final UpdateInfoContract.View view = getView();
-        if (view == null)
-            return;
+        if (view == null) return;
         Run.onUiAsync(new Action() {
             @Override
             public void call() {

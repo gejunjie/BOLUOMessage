@@ -1,21 +1,50 @@
 package com.benboer.boluo.factory.presenter.contact;
 
-import com.benboer.boluo.factory.presenter.BasePresenter;
+import androidx.recyclerview.widget.DiffUtil;
+
+import com.benboer.boluo.common.widget.recycler.RecyclerAdapter;
+import com.benboer.boluo.factory.data.DataSource;
+import com.benboer.boluo.factory.data.helper.UserHelper;
+import com.benboer.boluo.factory.data.user.ContactDataSource;
+import com.benboer.boluo.factory.data.user.ContactRepository;
+import com.benboer.boluo.factory.model.db.User;
+import com.benboer.boluo.factory.presenter.BaseSourcePresenter;
+import com.benboer.boluo.factory.utils.DiffUiDataCallback;
+
+import java.util.List;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/14.
  */
-public class ContactPresenter extends BasePresenter<ContactContract.View>
-        implements ContactContract.Presenter{
+public class ContactPresenter extends BaseSourcePresenter<User, User, ContactDataSource, ContactContract.View>
+        implements ContactContract.Presenter, DataSource.SucceedCallback<List<User>> {
 
     public ContactPresenter(ContactContract.View view) {
-        super(view);
+        // 初始化数据仓库
+        super(new ContactRepository(), view);
     }
 
     @Override
     public void start() {
         super.start();
+        UserHelper.refreshContacts();
+    }
 
+    @Override
+    public void onDataLoaded(List<User> users) {
+        final ContactContract.View view = getView();
+        if (view == null) return;
+        RecyclerAdapter<User> adapter = view.getRecyclerAdapter();
+        List<User> old = adapter.getItems();
+
+        // 进行数据对比
+        DiffUtil.Callback callback = new DiffUiDataCallback<>(old, users);
+        DiffUtil.DiffResult result = DiffUtil.calculateDiff(callback);
+
+        // 调用基类方法进行界面刷新
+        refreshData(result, users);
+    }
+}
 //        UserHelper.refreshContacts();
 
 //        // 加载本地数据库数据
@@ -77,8 +106,8 @@ public class ContactPresenter extends BasePresenter<ContactContract.View>
 //        // 2.如果刷新数据库，或者从网络刷新，最终刷新的时候是全局刷新
 //        // 3.本地刷新和网络刷新，在添加到界面的时候会有可能冲突；导致数据显示异常
 //        // 4.如何识别已经在数据库中有这样的数据了
-
-    }
+//
+//    }
 //    private void diff(List<User> oldList, List<User> newList) {
 //        // 进行数据对比
 //        DiffUtil.Callback callback = new DiffUiDataCallback<>(oldList, newList);
@@ -91,5 +120,5 @@ public class ContactPresenter extends BasePresenter<ContactContract.View>
 //        result.dispatchUpdatesTo(getView().getRecyclerAdapter());
 //        getView().onAdapterDataChanged();
 //    }
-}
+//}
 
