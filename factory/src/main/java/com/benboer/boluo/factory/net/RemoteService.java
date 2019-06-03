@@ -4,7 +4,9 @@ import com.benboer.boluo.factory.model.api.RspModel;
 import com.benboer.boluo.factory.model.api.account.AccountRspModel;
 import com.benboer.boluo.factory.model.api.account.LoginModel;
 import com.benboer.boluo.factory.model.api.account.RegisterModel;
+import com.benboer.boluo.factory.model.api.message.MsgCreateModel;
 import com.benboer.boluo.factory.model.api.user.UserUpdateModel;
+import com.benboer.boluo.factory.model.card.MessageCard;
 import com.benboer.boluo.factory.model.card.UserCard;
 
 import java.util.List;
@@ -81,4 +83,12 @@ public interface RemoteService {
      */
     @GET("user/{userId}")
     Call<RspModel<UserCard>> userFind(@Path("userId") String userId);
+
+    /**
+     * 消息推送
+     * @param model
+     * @return
+     */
+    @POST("push")
+    Call<RspModel<MessageCard>> push(@Body MsgCreateModel model);
 }
