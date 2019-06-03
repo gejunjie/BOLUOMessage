@@ -53,9 +53,9 @@ public class DbHelper {
                                                                    ChangedListener<Model> changedListener){
         Set<ChangedListener> changedListenerSet = instance.getListeners(clazz);
         if (changedListenerSet == null){
-            Set<ChangedListener> listenerSet = new HashSet<>();
-            listenerSet.add(changedListener);
-            instance.changedListeners.put(clazz, listenerSet);
+            changedListenerSet = new HashSet<>();
+            changedListenerSet.add(changedListener);
+            instance.changedListeners.put(clazz, changedListenerSet);
         }
         changedListenerSet.add(changedListener);
     }
