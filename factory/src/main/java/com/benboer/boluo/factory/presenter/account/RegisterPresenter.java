@@ -11,6 +11,9 @@ import com.benboer.boluo.factory.model.db.User;
 import com.benboer.boluo.factory.persistence.Account;
 import com.benboer.boluo.factory.presenter.BasePresenter;
 
+import net.qiujuer.genius.kit.handler.Run;
+import net.qiujuer.genius.kit.handler.runable.Action;
+
 import java.util.regex.Pattern;
 
 /**
@@ -27,14 +30,24 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View>
     public void onDataLoaded(User user) {
         final RegisterContract.View view = getView();
         if (view == null) return;
-
+        Run.onUiAsync(new Action() {
+            @Override
+            public void call() {
+                view.registerSuccess();
+            }
+        });
     }
 
     @Override
-    public void onDataNotAvailable(int strRes) {
+    public void onDataNotAvailable(final int strRes) {
         final RegisterContract.View view = getView();
         if (view == null) return;
-
+        Run.onUiAsync(new Action() {
+            @Override
+            public void call() {
+                view.showError(strRes);
+            }
+        });
     }
 
     @Override

@@ -19,6 +19,8 @@ import com.benboer.boluo.common.app.ToolbarActivity;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/16.
+ *
+ * 搜索界面
  */
 public class SearchActivity extends ToolbarActivity {
 
