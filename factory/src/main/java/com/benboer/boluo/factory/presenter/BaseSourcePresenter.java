@@ -9,9 +9,9 @@ import java.util.List;
  * Created by BenBoerBoluojiushiwo on 2019/5/29.
  */
 public abstract class BaseSourcePresenter<Data,
-        ViewModel,
-        Source extends DbDataSource<Data>,
-        View extends BaseContract.RecyclerView>
+                                          ViewModel,
+                                          Source extends DbDataSource<Data>,
+                                          View extends BaseContract.RecyclerView>
         extends BaseRecyclerPresenter<ViewModel, View>
         implements DataSource.SucceedCallback<List<Data>> {
 
