@@ -14,11 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.common.app.PresenterToolbarActivity;
-import com.benboer.boluo.common.app.ToolbarActivity;
 import com.benboer.boluo.common.widget.PortraitView;
 import com.benboer.boluo.common.widget.recycler.RecyclerAdapter;
 import com.benboer.boluo.factory.presenter.group.GroupCreateContract;
-import com.benboer.boluo.factory.presenter.group.GroupCreatepPresenter;
+import com.benboer.boluo.factory.presenter.group.GroupCreatePresenter;
 
 import net.qiujuer.genius.ui.widget.EditText;
 
@@ -26,7 +25,7 @@ import butterknife.BindView;
 
 /**
  * @ClassName: GroupCreateActivity
- * @Description: java类作用描述
+ * @Description: 群组界面
  * @Author:  BenBoerBoluojiushiwo
  * @CreateDate: 2019-06-09 13:04
  * @Version: 1.0
@@ -40,7 +39,7 @@ public class GroupCreateActivity extends PresenterToolbarActivity<GroupCreateCon
     @BindView(R.id.edit_name)
     EditText mName;
     @BindView(R.id.im_portrait)
-    private PortraitView mPortrait;
+    PortraitView mPortrait;
     private String mPortraitPath;
 
     private RecyclerAdapter<GroupCreateContract.ViewModel> mAdapter;
@@ -103,7 +102,7 @@ public class GroupCreateActivity extends PresenterToolbarActivity<GroupCreateCon
 
     @Override
     protected GroupCreateContract.Presenter initPresenter() {
-        return new GroupCreatepPresenter(this);
+        return new GroupCreatePresenter(this);
     }
 
     @Override

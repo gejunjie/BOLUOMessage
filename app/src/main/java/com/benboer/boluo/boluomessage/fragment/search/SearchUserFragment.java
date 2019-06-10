@@ -99,7 +99,6 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
 
         private FollowContract.Presenter mPresenter;
 
-
         public ViewHolder(View itemView) {
             super(itemView);
             // 当前View和Presenter绑定

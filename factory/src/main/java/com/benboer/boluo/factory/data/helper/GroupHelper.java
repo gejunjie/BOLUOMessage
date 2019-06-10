@@ -16,4 +16,9 @@ public class GroupHelper {
         // TODO 本地找群信息
         return null;
     }
+
+    // 刷新我的群组列表
+    public static void refreshGroups() {
+
+    }
 }

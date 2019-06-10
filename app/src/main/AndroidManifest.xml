@@ -61,6 +61,7 @@
         <activity android:name=".activity.UserActivity" />
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.MessageActivity" />
+        <activity android:name=".activity.GroupCreateActivity"/>
     </application>
 
 

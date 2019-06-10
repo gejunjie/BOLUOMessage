@@ -106,7 +106,9 @@ public class AccountHelper {
 
         @Override
         public void onFailure(Call<RspModel<AccountRspModel>> call, Throwable t) {
-            callback.onDataNotAvailable(R.string.data_network_error);
+            if(callback != null){
+                callback.onDataNotAvailable(R.string.data_network_error);
+            }
         }
     }
 

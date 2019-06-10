@@ -12,7 +12,6 @@ import com.benboer.boluo.boluomessage.fragment.account.AccountTrigger;
 import com.benboer.boluo.boluomessage.fragment.account.LoginFragment;
 import com.benboer.boluo.boluomessage.fragment.account.RegisterFragment;
 import com.benboer.boluo.common.app.BaseActivity;
-import com.benboer.boluo.factory.persistence.Account;
 import com.yalantis.ucrop.UCrop;
 
 /**
@@ -38,11 +37,11 @@ public class AccountActivity extends BaseActivity implements AccountTrigger {
     @Override
     protected void initWidget() {
         super.initWidget();
-        if (Account.isLogin()){
+//        if (Account.isLogin()){
             mCurFragment = mLoginFragment = new LoginFragment();
-        }else {
-            mCurFragment = mRegisterFragment = new RegisterFragment();
-        }
+//        }else {
+//            mCurFragment = mRegisterFragment = new RegisterFragment();
+//        }
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.lay_container, mCurFragment)
