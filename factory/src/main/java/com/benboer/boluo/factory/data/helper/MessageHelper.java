@@ -74,7 +74,7 @@ public class MessageHelper {
                 Factory.getMessageCenter().dispatch(card);
 
                 RemoteService service = Network.remote();
-                service.push(model).enqueue(new Callback<RspModel<MessageCard>>() {
+                service.msgPush(model).enqueue(new Callback<RspModel<MessageCard>>() {
                     @Override
                     public void onResponse(Call<RspModel<MessageCard>> call, Response<RspModel<MessageCard>> response) {
                         RspModel<MessageCard> model1 = response.body();

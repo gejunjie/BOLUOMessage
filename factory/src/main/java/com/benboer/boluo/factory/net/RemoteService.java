@@ -84,11 +84,17 @@ public interface RemoteService {
     @GET("user/{userId}")
     Call<RspModel<UserCard>> userFind(@Path("userId") String userId);
 
+//    /**
+//     * 消息推送
+//     * @param model
+//     * @return
+//     */
+//    @POST("push")
+//    Call<RspModel<MessageCard>> push(@Body MsgCreateModel model);
+
     /**
-     * 消息推送
-     * @param model
-     * @return
+     *  发送消息的接口
      */
-    @POST("push")
-    Call<RspModel<MessageCard>> push(@Body MsgCreateModel model);
+    @POST("msg")
+    Call<RspModel<MessageCard>> msgPush(@Body MsgCreateModel model);
 }

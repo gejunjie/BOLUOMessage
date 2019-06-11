@@ -29,7 +29,7 @@ public class MessageDispatcher implements MessageCenter {
 
     private final Executor executor = Executors.newSingleThreadExecutor();
 
-    public static MessageDispatcher instance(){
+    public static MessageCenter instance(){
         if (instance == null){
             synchronized (MessageDispatcher.class){
                 if (instance == null){
@@ -37,7 +37,7 @@ public class MessageDispatcher implements MessageCenter {
                 }
             }
         }
-        return instance();
+        return instance;
     }
 
     @Override
@@ -105,7 +105,6 @@ public class MessageDispatcher implements MessageCenter {
                         group = GroupHelper.findFromLocal(card.getGroupId());
                     }
 
-                    // 接收者总有一个
                     if (receiver == null && group == null && sender != null)
                         continue;
 
