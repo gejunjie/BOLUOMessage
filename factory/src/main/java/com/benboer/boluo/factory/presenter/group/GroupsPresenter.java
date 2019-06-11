@@ -3,6 +3,7 @@ package com.benboer.boluo.factory.presenter.group;
 import androidx.recyclerview.widget.DiffUtil;
 
 import com.benboer.boluo.factory.data.group.GroupsDataSource;
+import com.benboer.boluo.factory.data.group.GroupsRepository;
 import com.benboer.boluo.factory.data.helper.GroupHelper;
 import com.benboer.boluo.factory.model.db.Group;
 import com.benboer.boluo.factory.presenter.BaseSourcePresenter;
@@ -13,10 +14,14 @@ import java.util.List;
 /**
  * Created by BenBoerBoluojiushiwo on 2019/6/10.
  */
-public class GroupsPresenter extends BaseSourcePresenter<Group, Group, GroupsDataSource, GroupsContract.View> {
+public class GroupsPresenter extends BaseSourcePresenter<Group,
+                                                         Group,
+                                                         GroupsDataSource,
+                                                         GroupsContract.View>
+            implements GroupsContract.Presenter{
 
-    public GroupsPresenter(GroupsDataSource source, GroupsContract.View view) {
-        super(source, view);
+    public GroupsPresenter(GroupsContract.View view) {
+        super(new GroupsRepository(), view);
     }
 
     @Override

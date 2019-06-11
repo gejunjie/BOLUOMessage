@@ -4,6 +4,9 @@ import com.benboer.boluo.factory.data.DataSource;
 import com.benboer.boluo.factory.model.card.GroupCard;
 import com.benboer.boluo.factory.presenter.BaseRecyclerPresenter;
 
+import net.qiujuer.genius.kit.handler.Run;
+import net.qiujuer.genius.kit.handler.runable.Action;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,8 +24,21 @@ public class GroupCreatePresenter extends BaseRecyclerPresenter<GroupCreateContr
     }
 
     @Override
-    public void onDataLoaded(GroupCard groupCard) {
+    public void start() {
+        super.start();
+    }
 
+    @Override
+    public void onDataLoaded(GroupCard groupCard) {
+        Run.onUiAsync(new Action() {
+            @Override
+            public void call() {
+                GroupCreateContract.View view =getView();
+                if (view != null){
+                    view.onCreateSucceed();
+                }
+            }
+        });
     }
 
     @Override
