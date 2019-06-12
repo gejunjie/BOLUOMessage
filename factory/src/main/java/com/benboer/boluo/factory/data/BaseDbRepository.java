@@ -16,12 +16,12 @@ import java.util.List;
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/23.
  */
-public abstract class BaseDbRepository<Data extends BaseDbModel<Data>> implements DbDataSource<Data>,
-        DbHelper.ChangedListener<Data>,
-        QueryTransaction.QueryResultListCallback<Data> {
+public abstract class BaseDbRepository<Data extends BaseDbModel<Data>>
+        implements DbDataSource<Data>,
+                   DbHelper.ChangedListener<Data>,
+                   QueryTransaction.QueryResultListCallback<Data> {
 
-    // 和Presenter交互的回调
-    private SucceedCallback<List<Data>> callback;
+    private SucceedCallback<List<Data>> callback; // 和Presenter交互的回调
     protected final LinkedList<Data> dataList = new LinkedList<>(); // 当前缓存的数据
     private Class<Data> dataClass; // 当前范型对应的真实的Class信息
 

@@ -19,7 +19,7 @@ public interface DataSource {
     }
 
     /**
-     * 只关注成功的接口
+     * 执行成功的接口
      *
      * @param <T> 任意类型
      */
@@ -30,7 +30,7 @@ public interface DataSource {
     }
 
     /**
-     * 只关注失败的接口
+     * 执行失败的接口
      */
     interface FailedCallback {
         // 数据加载失败, 网络请求失败

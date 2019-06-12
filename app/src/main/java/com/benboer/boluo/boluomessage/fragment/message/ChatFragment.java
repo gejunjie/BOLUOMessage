@@ -36,6 +36,8 @@ import butterknife.OnClick;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/6/6.
+ *
+ * 联系人聊天界面
  */
 public abstract class ChatFragment<InitModel>
         extends PresenterFragment<ChatContract.Presenter>

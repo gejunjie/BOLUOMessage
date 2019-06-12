@@ -23,6 +23,8 @@ import butterknife.BindView;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/3/28.
+ *
+ * 最近两天界面
  */
 public class ActiveFragment extends PresenterFragment<SessionContract.Presenter>
         implements SessionContract.View{
@@ -36,9 +38,14 @@ public class ActiveFragment extends PresenterFragment<SessionContract.Presenter>
     // 适配器，User，可以直接从数据库查询数据
     private RecyclerAdapter<Session> mAdapter;
 
-
     public ActiveFragment() {
 
+    }
+
+    @Override
+    protected void onFirstInit() {
+        super.onFirstInit();
+        mPresenter.start();
     }
 
     @Override
@@ -55,12 +62,10 @@ public class ActiveFragment extends PresenterFragment<SessionContract.Presenter>
     protected void initWidget(View root) {
         super.initWidget(root);
 
-        // 初始化Recycler
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycler.setAdapter(mAdapter = new RecyclerAdapter<Session>() {
             @Override
             protected int getItemViewType(int position, Session session) {
-                // 返回cell的布局id
                 return R.layout.cell_chat_list;
             }
 
@@ -117,7 +122,8 @@ public class ActiveFragment extends PresenterFragment<SessionContract.Presenter>
             mPortraitView.setup(Glide.with(ActiveFragment.this), session.getPicture());
             mName.setText(session.getTitle());
             mContent.setText(TextUtils.isEmpty(session.getContent()) ? "" : session.getContent());
-            mTime.setText(DateTimeUtil.getSampleDate(session.getModifyAt()));
+            mTime.setText( session.getModifyAt() == null ?
+                    "" : DateTimeUtil.getSampleDate(session.getModifyAt()));
         }
     }
 }

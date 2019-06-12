@@ -8,8 +8,10 @@ import com.benboer.boluo.factory.model.api.user.UserUpdateModel;
 import com.benboer.boluo.factory.model.card.UserCard;
 import com.benboer.boluo.factory.model.db.User;
 import com.benboer.boluo.factory.model.db.User_Table;
+import com.benboer.boluo.factory.model.db.view.UserSampleModel;
 import com.benboer.boluo.factory.net.Network;
 import com.benboer.boluo.factory.net.RemoteService;
+import com.benboer.boluo.factory.persistence.Account;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.List;
@@ -177,5 +179,22 @@ public class UserHelper {
         }
 
         return null;
+    }
+
+    /**
+     * 获取一个联系人列表
+     * @return
+     */
+    public static List<UserSampleModel> getSampleContact() {
+        //"select id = ??";
+        //"select User_id = ??";
+        return SQLite.select(User_Table.id.withTable().as("id"),
+                User_Table.name.withTable().as("name"),
+                User_Table.portrait.withTable().as("portrait"))
+                .from(User.class)
+                .where(User_Table.isFollow.eq(true))
+                .and(User_Table.id.notEq(Account.getUserId()))
+                .orderBy(User_Table.name, true)
+                .queryCustomList(UserSampleModel.class);
     }
 }

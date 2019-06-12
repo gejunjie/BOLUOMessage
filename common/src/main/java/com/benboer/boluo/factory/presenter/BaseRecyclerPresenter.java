@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/29.
  */
-public class BaseRecyclerPresenter<ViewMode, View extends BaseContract.RecyclerView>
+public class BaseRecyclerPresenter<ViewModel, View extends BaseContract.RecyclerView>
         extends BasePresenter<View>{
 
     public BaseRecyclerPresenter(View view) {
@@ -23,14 +23,14 @@ public class BaseRecyclerPresenter<ViewMode, View extends BaseContract.RecyclerV
      *
      * @param dataList 新数据
      */
-    protected void refreshData(final List<ViewMode> dataList) {
+    protected void refreshData(final List<ViewModel> dataList) {
         Run.onUiAsync(() -> {
             View view = getView();
             if (view == null)
                 return;
 
             // 基本的更新数据并刷新界面
-            RecyclerAdapter<ViewMode> adapter = view.getRecyclerAdapter();
+            RecyclerAdapter<ViewModel> adapter = view.getRecyclerAdapter();
             adapter.replace(dataList);
             view.onAdapterDataChanged();
         });
@@ -42,7 +42,7 @@ public class BaseRecyclerPresenter<ViewMode, View extends BaseContract.RecyclerV
      * @param diffResult 一个差异的结果集
      * @param dataList   具体的新数据
      */
-    protected void refreshData(final DiffUtil.DiffResult diffResult, final List<ViewMode> dataList) {
+    protected void refreshData(final DiffUtil.DiffResult diffResult, final List<ViewModel> dataList) {
         Run.onUiAsync(() -> {
             // 这里是主线程运行时
             refreshDataOnUiThread(diffResult, dataList);
@@ -50,12 +50,12 @@ public class BaseRecyclerPresenter<ViewMode, View extends BaseContract.RecyclerV
     }
 
 
-    private void refreshDataOnUiThread(final DiffUtil.DiffResult diffResult, final List<ViewMode> dataList) {
+    private void refreshDataOnUiThread(final DiffUtil.DiffResult diffResult, final List<ViewModel> dataList) {
         View view = getView();
         if (view == null)
             return;
         // 基本的更新数据并刷新界面
-        RecyclerAdapter<ViewMode> adapter = view.getRecyclerAdapter();
+        RecyclerAdapter<ViewModel> adapter = view.getRecyclerAdapter();
         // 改变数据集合并不通知界面刷新
         adapter.getItems().clear();
         adapter.getItems().addAll(dataList);

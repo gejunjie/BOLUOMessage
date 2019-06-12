@@ -4,8 +4,10 @@ import com.benboer.boluo.factory.model.api.RspModel;
 import com.benboer.boluo.factory.model.api.account.AccountRspModel;
 import com.benboer.boluo.factory.model.api.account.LoginModel;
 import com.benboer.boluo.factory.model.api.account.RegisterModel;
+import com.benboer.boluo.factory.model.api.group.GroupCreateModel;
 import com.benboer.boluo.factory.model.api.message.MsgCreateModel;
 import com.benboer.boluo.factory.model.api.user.UserUpdateModel;
+import com.benboer.boluo.factory.model.card.GroupCard;
 import com.benboer.boluo.factory.model.card.MessageCard;
 import com.benboer.boluo.factory.model.card.UserCard;
 
@@ -97,4 +99,11 @@ public interface RemoteService {
      */
     @POST("msg")
     Call<RspModel<MessageCard>> msgPush(@Body MsgCreateModel model);
+
+
+    /**
+     *创建群
+     */
+    @POST("group")
+    Call<RspModel<GroupCard>> groupCreate(@Body GroupCreateModel model);
 }
