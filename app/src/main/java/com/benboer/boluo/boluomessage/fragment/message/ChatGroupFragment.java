@@ -1,5 +1,6 @@
 package com.benboer.boluo.boluomessage.fragment.message;
 
+import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.common.widget.recycler.RecyclerAdapter;
 import com.benboer.boluo.factory.model.db.Group;
 import com.benboer.boluo.factory.model.db.Message;
@@ -19,7 +20,7 @@ public class ChatGroupFragment extends ChatFragment<Group>
 
     @Override
     protected int getContentLayoutId() {
-        return 0;
+        return R.layout.fragment_chat_group;
     }
 
     @Override

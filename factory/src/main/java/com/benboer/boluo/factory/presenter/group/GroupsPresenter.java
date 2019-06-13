@@ -18,7 +18,7 @@ public class GroupsPresenter extends BaseSourcePresenter<Group,
                                                          Group,
                                                          GroupsDataSource,
                                                          GroupsContract.View>
-            implements GroupsContract.Presenter{
+            implements GroupsContract.Presenter {
 
     public GroupsPresenter(GroupsContract.View view) {
         super(new GroupsRepository(), view);

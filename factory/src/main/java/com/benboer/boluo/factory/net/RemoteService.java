@@ -8,6 +8,7 @@ import com.benboer.boluo.factory.model.api.group.GroupCreateModel;
 import com.benboer.boluo.factory.model.api.message.MsgCreateModel;
 import com.benboer.boluo.factory.model.api.user.UserUpdateModel;
 import com.benboer.boluo.factory.model.card.GroupCard;
+import com.benboer.boluo.factory.model.card.GroupMemberCard;
 import com.benboer.boluo.factory.model.card.MessageCard;
 import com.benboer.boluo.factory.model.card.UserCard;
 
@@ -106,4 +107,17 @@ public interface RemoteService {
      */
     @POST("group")
     Call<RspModel<GroupCard>> groupCreate(@Body GroupCreateModel model);
+
+    /**
+     * 拉取我的群列表
+     * @param date
+     * @return
+     */
+    @GET("group/list/{date}")
+    Call<RspModel<List<GroupCard>>> groups(@Path(value = "date", encoded = true) String date);
+
+
+    // 我的群的成员列表
+    @GET("group/{groupId}/member")
+    Call<RspModel<List<GroupMemberCard>>> groupMembers(@Path("groupId") String groupId);
 }
