@@ -53,4 +53,5 @@ ext{
     gsonVersion = '2.8.5'
     dbflow_version = '4.2.4'
     getuiVersion = '2.9.3.0'
+    airpanelVersion = "1.1.0"
 }

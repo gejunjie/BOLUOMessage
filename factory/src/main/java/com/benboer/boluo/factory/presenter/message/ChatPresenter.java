@@ -34,14 +34,11 @@ public class ChatPresenter<View extends ChatContract.View>
     public void onDataLoaded(List<Message> messages) {
         ChatContract.View view = getView();
         if (view == null) return;
-        // 拿到老数据
-        List<Message> old = view.getRecyclerAdapter().getItems();
 
-        // 差异计算
+        List<Message> old = view.getRecyclerAdapter().getItems();
         DiffUiDataCallback<Message> callback = new DiffUiDataCallback<>(old, messages);
         final DiffUtil.DiffResult result = DiffUtil.calculateDiff(callback);
 
-        // 进行界面刷新
         refreshData(result, messages);
     }
 
@@ -52,8 +49,6 @@ public class ChatPresenter<View extends ChatContract.View>
                 .receiver(mReceiverId, mReceiverType)
                 .content(content, Message.TYPE_STR)
                 .build();
-
-        // 进行网络发送
         MessageHelper.push(model);
     }
 

@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewStub;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.MessageActivity;
+import com.benboer.boluo.boluomessage.fragment.panel.PanelFragment;
 import com.benboer.boluo.common.app.PresenterFragment;
 import com.benboer.boluo.common.widget.PortraitView;
 import com.benboer.boluo.common.widget.adapter.TextWatcherAdapter;
@@ -28,6 +31,8 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import net.qiujuer.genius.ui.compat.UiCompat;
 import net.qiujuer.genius.ui.widget.Loading;
+import net.qiujuer.widget.airpanel.AirPanel;
+import net.qiujuer.widget.airpanel.Util;
 
 import java.util.Objects;
 
@@ -65,6 +70,16 @@ public abstract class ChatFragment<InitModel>
     @BindView(R.id.btn_submit)
     View mSubmit;
 
+    // 控制顶部面板与软键盘过度的Boss控件
+    private AirPanel.Boss mPanelBoss;
+    private PanelFragment mPanelFragment;
+
+    protected ChatFragment() {
+    }
+
+    // 得到顶部布局的资源Id
+    @LayoutRes
+    protected abstract int getHeaderLayoutId();
 
     @Override
     protected void initArgs(Bundle bundle) {
@@ -73,8 +88,32 @@ public abstract class ChatFragment<InitModel>
     }
 
     @Override
+    protected final int getContentLayoutId() {
+        return R.layout.fragment_chat_common;
+    }
+
+
+    @Override
     protected void initWidget(View root) {
+        // 拿到占位布局
+        // 替换顶部布局一定需要发生在super之前
+        // 防止控件绑定异常
+        ViewStub stub = root.findViewById(R.id.view_stub_header);
+        stub.setLayoutResource(getHeaderLayoutId());
+        stub.inflate();
         super.initWidget(root);
+
+        // 初始化面板操作
+        mPanelBoss = (AirPanel.Boss) root.findViewById(R.id.lay_content);
+        mPanelBoss.setup(new AirPanel.PanelListener() {
+            @Override
+            public void requestHideSoftKeyboard() {
+                // 请求隐藏软键盘
+                Util.hideKeyboard(mContent);
+            }
+        });
+        mPanelFragment = (PanelFragment) getChildFragmentManager().findFragmentById(R.id.frag_panel);
+
 
         initToolbar();
         initAppbar();

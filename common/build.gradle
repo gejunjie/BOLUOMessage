@@ -38,6 +38,7 @@ dependencies {
     implementation "net.qiujuer.genius:ui:$rootProject.ext.geniusVersion"
     implementation "net.qiujuer.genius:res:$rootProject.ext.geniusVersion"
     implementation "net.qiujuer.genius:kit-handler:$rootProject.ext.geniusVersion"
+    implementation "net.qiujuer.widget:airpanel:$rootProject.ext.airpanelVersion"
     implementation "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"
     implementation "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
     implementation project(':lang')

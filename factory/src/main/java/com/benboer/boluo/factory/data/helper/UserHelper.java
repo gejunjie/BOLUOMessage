@@ -142,7 +142,9 @@ public class UserHelper {
         return user;
     }
 
-    // 从本地查询一个用户的信息
+    /**
+     * 从本地查询一个用户的信息
+     */
     public static User findFromLocal(String id) {
         return SQLite.select()
                 .from(User.class)

@@ -5,15 +5,15 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
+
+import net.qiujuer.widget.airpanel.AirPanelLinearLayout;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/31.
  */
-public class MessageLayout extends LinearLayout {
-
+public class MessageLayout extends AirPanelLinearLayout {
     public MessageLayout(Context context) {
         super(context);
     }
@@ -33,10 +33,10 @@ public class MessageLayout extends LinearLayout {
 
     @Override
     protected boolean fitSystemWindows(Rect insets) {
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT){//4.4
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             insets.left = 0;
-            insets.right = 0;
             insets.top = 0;
+            insets.right = 0;
         }
         return super.fitSystemWindows(insets);
     }

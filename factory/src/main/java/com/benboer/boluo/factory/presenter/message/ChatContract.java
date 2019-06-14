@@ -3,7 +3,10 @@ package com.benboer.boluo.factory.presenter.message;
 import com.benboer.boluo.factory.model.db.Group;
 import com.benboer.boluo.factory.model.db.Message;
 import com.benboer.boluo.factory.model.db.User;
+import com.benboer.boluo.factory.model.db.view.MemberUserModel;
 import com.benboer.boluo.factory.presenter.BaseContract;
+
+import java.util.List;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/6/6.
@@ -34,6 +37,10 @@ public interface ChatContract {
 
     // 群聊天的界面
     interface GroupView extends View<Group> {
+        // 显示管理员菜单
+        void showAdminOption(boolean isAdmin);
 
+        // 初始化成员信息
+        void onInitGroupMembers(List<MemberUserModel> members, long moreCount);
     }
 }

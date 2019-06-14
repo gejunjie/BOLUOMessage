@@ -100,8 +100,7 @@ public abstract class BaseFragment extends Fragment {
     /**
      * 返回按键触发时调用
      *
-     * @return 返回True代表我已处理返回逻辑，Activity不用自己finish。
-     * 返回False代表我没有处理逻辑，Activity自己走自己的逻辑
+     * @return 返回True代表fragment已处理返回逻辑，Activity不用自己finish
      */
     public boolean onBackPressed() {
         return false;

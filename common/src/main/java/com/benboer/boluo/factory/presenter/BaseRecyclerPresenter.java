@@ -44,7 +44,6 @@ public class BaseRecyclerPresenter<ViewModel, View extends BaseContract.Recycler
      */
     protected void refreshData(final DiffUtil.DiffResult diffResult, final List<ViewModel> dataList) {
         Run.onUiAsync(() -> {
-            // 这里是主线程运行时
             refreshDataOnUiThread(diffResult, dataList);
         });
     }

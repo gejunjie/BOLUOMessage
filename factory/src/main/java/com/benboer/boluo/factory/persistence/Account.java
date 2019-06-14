@@ -59,7 +59,7 @@ public class Account {
     public static void load(Context context) {
         SharedPreferences sp = context.getSharedPreferences(Account.class.getName(),
                 Context.MODE_PRIVATE);
-        pushId = sp.getString(KEY_PUSH_ID, "122345");
+        pushId = sp.getString(KEY_PUSH_ID, "");
         isBind = sp.getBoolean(KEY_IS_BIND, false);
         token = sp.getString(KEY_TOKEN, "");
         userId = sp.getString(KEY_USER_ID, "");
