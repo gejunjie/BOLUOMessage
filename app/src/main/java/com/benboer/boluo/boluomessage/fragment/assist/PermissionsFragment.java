@@ -17,6 +17,7 @@ import com.benboer.boluo.boluomessage.activity.AccountActivity;
 import com.benboer.boluo.boluomessage.activity.MainActivity;
 import com.benboer.boluo.factory.persistence.Account;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.igexin.sdk.PushManager;
 
 import java.util.List;
 

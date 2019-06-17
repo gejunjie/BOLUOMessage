@@ -52,6 +52,6 @@ ext{
     retrofitVersion = '2.5.0'
     gsonVersion = '2.8.5'
     dbflow_version = '4.2.4'
-    getuiVersion = '2.9.3.0'
+    getuiVersion = '2.13.2.0'
     airpanelVersion = "1.1.0"
 }

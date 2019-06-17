@@ -25,15 +25,20 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <!-- 个推的广播注册 -->
-        <receiver
-            android:name=".MessageReceiver"
-            android:enabled="true"
-            android:exported="true"
-            android:permission="1000">
-            <intent-filter>
-                <action android:name="com.igexin.sdk.action.${GETUI_APP_ID}" />
-            </intent-filter>
-        </receiver>
+        <!--<receiver-->
+            <!--android:name=".MessageReceiver"-->
+            <!--android:enabled="true"-->
+            <!--android:exported="true"-->
+            <!--android:permission="1000">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.igexin.sdk.action.${GETUI_APP_ID}" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
+
+        <!-- android:permission在2.13.1.0版本后必须配置 -->
+        <service
+            android:name="com.benboer.boluo.boluomessage.PushIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
 
         <activity
             android:name=".LaunchActivity"

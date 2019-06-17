@@ -17,6 +17,7 @@ import com.benboer.boluo.boluomessage.activity.MainActivity;
 import com.benboer.boluo.boluomessage.fragment.assist.PermissionsFragment;
 import com.benboer.boluo.common.app.BaseActivity;
 import com.benboer.boluo.factory.persistence.Account;
+import com.igexin.sdk.PushManager;
 
 import net.qiujuer.genius.ui.compat.UiCompat;
 
@@ -49,7 +50,6 @@ public class LaunchActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
         // 动画进入到50%等待PushId获取到
         startAnim(0.5f, new Runnable() {
             @Override
