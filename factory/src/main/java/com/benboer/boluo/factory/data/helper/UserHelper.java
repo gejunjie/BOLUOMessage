@@ -61,7 +61,9 @@ public class UserHelper {
                 if (rspModel.success()){
                     List<UserCard> cards = rspModel.getResult();
                     if (cards == null || cards.size() == 0) return;
-                    Factory.getUserCenter().dispatch(cards.toArray(new UserCard[0]));
+                    UserCard[] cards1 = cards.toArray(new UserCard[0]);
+                    // CollectionUtil.toArray(cards, UserCard.class);
+                    Factory.getUserCenter().dispatch(cards1);
                 }else {
                     Factory.decodeRspCode(rspModel, null);
                 }

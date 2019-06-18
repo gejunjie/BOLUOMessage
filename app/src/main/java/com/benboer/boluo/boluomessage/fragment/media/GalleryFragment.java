@@ -78,7 +78,10 @@ public class GalleryFragment extends BottomSheetDialogFragment
         void onSelectedImage(String path);
     }
 
-    private static class TransStatusBottomSheetDialog extends BottomSheetDialog{
+    /**
+     * 为了解决顶部状态栏变黑而写的TransStatusBottomSheetDialog
+     */
+    public static class TransStatusBottomSheetDialog extends BottomSheetDialog {
 
         public TransStatusBottomSheetDialog(@NonNull Context context) {
             super(context);
@@ -97,18 +100,20 @@ public class GalleryFragment extends BottomSheetDialogFragment
             super.onCreate(savedInstanceState);
 
             final Window window = getWindow();
-            if (window == null){
+            if (window == null)
                 return;
-            }
-            // 屏幕高度
+
+
+            // 得到屏幕高度
             int screenHeight = UiTool.getScreenHeight(getOwnerActivity());
-            // 状态栏的高度
+            // 得到状态栏的高度
             int statusHeight = UiTool.getStatusBarHeight(getOwnerActivity());
+
             // 计算dialog的高度并设置
             int dialogHeight = screenHeight - statusHeight;
             window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
                     dialogHeight <= 0 ? ViewGroup.LayoutParams.MATCH_PARENT : dialogHeight);
+
         }
     }
-
 }

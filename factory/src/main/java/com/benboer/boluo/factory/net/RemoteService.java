@@ -5,6 +5,7 @@ import com.benboer.boluo.factory.model.api.account.AccountRspModel;
 import com.benboer.boluo.factory.model.api.account.LoginModel;
 import com.benboer.boluo.factory.model.api.account.RegisterModel;
 import com.benboer.boluo.factory.model.api.group.GroupCreateModel;
+import com.benboer.boluo.factory.model.api.group.GroupMemberAddModel;
 import com.benboer.boluo.factory.model.api.message.MsgCreateModel;
 import com.benboer.boluo.factory.model.api.user.UserUpdateModel;
 import com.benboer.boluo.factory.model.card.GroupCard;
@@ -87,14 +88,6 @@ public interface RemoteService {
     @GET("user/{userId}")
     Call<RspModel<UserCard>> userFind(@Path("userId") String userId);
 
-//    /**
-//     * 消息推送
-//     * @param model
-//     * @return
-//     */
-//    @POST("push")
-//    Call<RspModel<MessageCard>> push(@Body MsgCreateModel model);
-
     /**
      *  发送消息的接口
      */
@@ -117,7 +110,24 @@ public interface RemoteService {
     Call<RspModel<List<GroupCard>>> groups(@Path(value = "date", encoded = true) String date);
 
 
-    // 我的群的成员列表
+    /**
+     * 我的群的成员列表
+     */
     @GET("group/{groupId}/member")
     Call<RspModel<List<GroupMemberCard>>> groupMembers(@Path("groupId") String groupId);
+
+
+    /**
+     * 群添加成员
+     */
+    @POST("group/{groupId}/member")
+    Call<RspModel<List<GroupMemberCard>>> groupMemberAdd(@Path("groupId") String groupId,
+                                                         @Body GroupMemberAddModel model);
+
+    /**
+     * 群搜索的接口
+     */
+
+    @GET("group/search/{name}")
+    Call<RspModel<List<GroupCard>>> groupSearch(@Path(value = "name", encoded = true) String name);
 }

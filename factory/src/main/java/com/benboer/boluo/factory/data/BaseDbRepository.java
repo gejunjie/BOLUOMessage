@@ -126,7 +126,7 @@ public abstract class BaseDbRepository<Data extends BaseDbModel<Data>>
     }
 
     /**
-     * 检查一个User是否是我需要关注的数据
+     * 检查一个User是否是需要关注的数据
      *
      * @param data Data
      * @return True是我关注的数据

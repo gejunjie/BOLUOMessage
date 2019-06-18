@@ -26,6 +26,7 @@ public class DiffUiDataCallback<T extends DiffUiDataCallback.UiDataDiffer<T>>
     public int getNewListSize() {
         return mNewList.size();
     }
+
     // 两个类是否就是同一个东西，比如Id相等的User
     @Override
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
@@ -33,6 +34,7 @@ public class DiffUiDataCallback<T extends DiffUiDataCallback.UiDataDiffer<T>>
         T newItem = mNewList.get(newItemPosition);
         return newItem.isSame(oldItem);
     }
+
     // 在经过相等判断后，进一步判断是否有数据更改
     // 比如，同一个用户的两个不同实例，其中的name字段不同
     @Override
