@@ -46,7 +46,7 @@ public class Account {
      * @param model AccountRspModel
      */
     public static void login(AccountRspModel model) {
-        // 存储当前登录的账户, token, 用户Id，方便从数据库中查询我的信息
+        // 存储当前登录的账户, token, 用户Id
         Account.token = model.getToken();
         Account.account = model.getAccount();
         Account.userId = model.getUser().getId();

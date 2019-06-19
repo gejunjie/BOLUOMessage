@@ -14,6 +14,8 @@ import com.igexin.sdk.message.GTTransmitMessage;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/6/17.
+ *
+ * 接收个推SDK推送过来的消息
  */
 public class PushIntentService extends GTIntentService {
 
