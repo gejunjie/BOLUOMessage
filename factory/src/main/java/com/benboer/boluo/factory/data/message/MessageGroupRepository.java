@@ -29,7 +29,6 @@ public class MessageGroupRepository extends BaseDbRepository<Message>
     public void load(SucceedCallback<List<Message>> callback) {
         super.load(callback);
 
-
         // 无论是直接发还是别人发，只要是发到这个群的，
         // 那个这个group_id就是receiverId
         SQLite.select()

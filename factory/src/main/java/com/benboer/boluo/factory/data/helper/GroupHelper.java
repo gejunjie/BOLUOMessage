@@ -56,8 +56,36 @@ public class GroupHelper {
                 });
     }
 
+    /**
+     * 查询群的信息，先本地，后网络
+     * @param groupId
+     * @return
+     */
     public static Group find(String groupId) {
-        // TODO 查询群的信息，先本地，后网络
+        Group group = findFromLocal(groupId);
+        if (group == null)
+            group = findFormNet(groupId);
+        return group;
+    }
+
+    private static Group findFormNet(String groupId) {
+        RemoteService remoteService = Network.remote();
+        try {
+            Response<RspModel<GroupCard>> response = remoteService.groupFind(groupId).execute();//同步发起请求
+            GroupCard card = response.body().getResult();
+            if (card != null) {
+                // 数据库的存储并通知
+                Factory.getGroupCenter().dispatch(card);
+
+                User user = UserHelper.search(card.getOwnerId());
+                if (user != null) {
+                    return card.build(user);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 
@@ -95,7 +123,7 @@ public class GroupHelper {
 
             @Override
             public void onFailure(Call<RspModel<List<GroupCard>>> call, Throwable t) {
-                // 不做任何事情
+
             }
         });
     }
@@ -144,7 +172,7 @@ public class GroupHelper {
 
             @Override
             public void onFailure(Call<RspModel<List<GroupMemberCard>>> call, Throwable t) {
-                // 不做任何事情
+
             }
         });
     }

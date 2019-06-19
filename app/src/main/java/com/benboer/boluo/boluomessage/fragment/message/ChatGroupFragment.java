@@ -1,5 +1,6 @@
 package com.benboer.boluo.boluomessage.fragment.message;
 
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -7,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
 import com.benboer.boluo.boluomessage.R;
@@ -17,7 +20,12 @@ import com.benboer.boluo.factory.model.db.view.MemberUserModel;
 import com.benboer.boluo.factory.presenter.message.ChatContract;
 import com.benboer.boluo.factory.presenter.message.ChatGroupPresenter;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomViewTarget;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.ViewTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import java.util.List;
 
@@ -56,15 +64,26 @@ public class ChatGroupFragment extends ChatFragment<Group>
     protected void initWidget(View root) {
         super.initWidget(root);
 
-//        Glide.with(this)
-//                .load(R.drawable.default_banner_group)
-//                .centerCrop()
-//                .into(new ViewTarget<CollapsingToolbarLayout, GlideDrawable>(mCollapsingLayout) {
-//                    @Override
-//                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-//                        this.view.setContentScrim(resource.getCurrent());
-//                    }
-//                });
+        Glide.with(this)
+                .load(R.drawable.default_banner_group)
+                .centerCrop()
+                .into(new CustomViewTarget<CollapsingToolbarLayout, Drawable>(mCollapsingLayout) {
+                    @Override
+                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
+
+                    }
+
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                        this.view.setBackground(resource.getCurrent());
+                    }
+
+                    @Override
+                    protected void onResourceCleared(@Nullable Drawable placeholder) {
+
+                    }
+                });
+
 
     }
 
@@ -165,7 +184,7 @@ public class ChatGroupFragment extends ChatFragment<Group>
                 public boolean onMenuItemClick(MenuItem item) {
                     if (item.getItemId() == R.id.action_add) {
                         // mReceiverId 就是群的Id
-//                        GroupMemberActivity.showAdmin(getContext(), mReceiverId );
+                        GroupMemberActivity.showAdmin(getContext(), mReceiverId );
                         return true;
                     }
                     return false;

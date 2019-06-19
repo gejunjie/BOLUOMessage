@@ -1,12 +1,15 @@
 package com.benboer.boluo.factory.data.group;
 
 import com.benboer.boluo.factory.data.helper.DbHelper;
+import com.benboer.boluo.factory.data.helper.GroupHelper;
 import com.benboer.boluo.factory.data.helper.UserHelper;
 import com.benboer.boluo.factory.model.card.GroupCard;
 import com.benboer.boluo.factory.model.card.GroupMemberCard;
 import com.benboer.boluo.factory.model.db.Group;
+import com.benboer.boluo.factory.model.db.GroupMember;
 import com.benboer.boluo.factory.model.db.User;
 
+import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -54,7 +57,18 @@ public class GroupDispatcher implements GroupCenter {
 
         @Override
         public void run() {
-
+            List<GroupMember> members = new ArrayList<>();
+            for (GroupMemberCard card : cards){
+                User user = UserHelper.search(card.getUserId());
+                Group group = GroupHelper.find(card.getGroupId());
+                if (user != null && group != null) {
+                    GroupMember member = card.build(group, user);
+                    members.add(member);
+                }
+            }
+            if (members.size() > 0){
+                DbHelper.save(GroupMember.class, members.toArray(new GroupMember[0]));
+            }
         }
     }
 

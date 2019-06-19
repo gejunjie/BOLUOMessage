@@ -116,6 +116,12 @@ public interface RemoteService {
     @GET("group/{groupId}/member")
     Call<RspModel<List<GroupMemberCard>>> groupMembers(@Path("groupId") String groupId);
 
+    /**
+     * 拉取群信息
+     */
+    @GET("group/{groupId}")
+    Call<RspModel<GroupCard>> groupFind(@Path("groupId") String groupId);
+
 
     /**
      * 群添加成员

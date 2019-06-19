@@ -274,7 +274,6 @@ public abstract class ChatFragment<InitModel>
         @BindView(R.id.loading)
         Loading mLoading;
 
-
         public BaseHolder(View itemView) {
             super(itemView);
         }

@@ -50,7 +50,7 @@ public class GroupMemberAddFragment extends BottomSheetDialogFragment
     private Callback mCallback;
 
     public GroupMemberAddFragment() {
- 
+
     }
 
     @Override

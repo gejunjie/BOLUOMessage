@@ -89,20 +89,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-//
-//    private IntentFilter intentFilter;
-//    private MessageReceiver messageReceiver;
-//    private static final String action = "com.igexin.sdk.action.Whh1CYPnM165RCPKomsQH3";
-//
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        intentFilter = new IntentFilter();
-//        intentFilter.addAction(action);
-//        messageReceiver = new MessageReceiver();
-//        registerReceiver(messageReceiver, intentFilter);
-//    }
 
     /**
      * 初始化窗口

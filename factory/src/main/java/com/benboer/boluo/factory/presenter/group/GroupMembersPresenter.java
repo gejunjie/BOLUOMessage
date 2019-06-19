@@ -29,8 +29,8 @@ public class GroupMembersPresenter extends BaseRecyclerPresenter<MemberUserModel
                 String groupId = view.getGroupId();
 
                 // 传递数量为-1 代表查询所有
+//                GroupHelper.refreshGroupMember(groupId);
                 List<MemberUserModel> models = GroupHelper.getMemberUsers(groupId, -1);
-
                 refreshData(models);
             }
         });
