@@ -129,7 +129,7 @@ public class PersonalActivity extends PresenterToolbarActivity<PersonalContract.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_follow) {
-            // TODO 进行关注操作
+//            mPresenter
             return true;
         }
         return super.onOptionsItemSelected(item);

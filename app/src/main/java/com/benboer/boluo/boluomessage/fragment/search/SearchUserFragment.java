@@ -33,6 +33,8 @@ import butterknife.OnClick;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/20.
+ *
+ * 搜索用户的Fragment
  */
 public class SearchUserFragment extends PresenterFragment<SearchContract.Presenter>
         implements SearchContract.UserView, SearchActivity.SearchCallback {

@@ -50,7 +50,9 @@ public class UserHelper {
         });
     }
 
-    // 刷新联系人的操作
+    /**
+     * 刷新联系人
+     */
     public static void refreshContacts(){
         RemoteService service = Network.remote();
         Call<RspModel<List<UserCard>>> call = service.userContacts();
@@ -62,7 +64,6 @@ public class UserHelper {
                     List<UserCard> cards = rspModel.getResult();
                     if (cards == null || cards.size() == 0) return;
                     UserCard[] cards1 = cards.toArray(new UserCard[0]);
-                    // CollectionUtil.toArray(cards, UserCard.class);
                     Factory.getUserCenter().dispatch(cards1);
                 }else {
                     Factory.decodeRspCode(rspModel, null);
@@ -76,7 +77,12 @@ public class UserHelper {
         });
     }
 
-    // 搜索的方法
+    /**
+     * 搜索联系人
+     * @param name
+     * @param callback
+     * @return
+     */
     public static Call userSearch(String name, final DataSource.Callback<List<UserCard>> callback) {
         RemoteService service = Network.remote();
         Call<RspModel<List<UserCard>>> call = service.userSearch(name);

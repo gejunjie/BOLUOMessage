@@ -1,5 +1,6 @@
 package com.benboer.boluo.boluomessage.fragment.main;
 
+import android.annotation.SuppressLint;
 import android.view.View;
 import android.widget.TextView;
 
@@ -38,7 +39,7 @@ public class ContactFragment extends PresenterFragment<ContactContract.Presenter
     private RecyclerAdapter<User> mAdapter;
 
     public ContactFragment() {
-        // Required empty public constructor
+
     }
 
     @Override

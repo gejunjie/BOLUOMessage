@@ -7,6 +7,7 @@ import com.benboer.boluo.factory.model.api.RspModel;
 import com.benboer.boluo.factory.model.api.group.GroupCreateModel;
 import com.benboer.boluo.factory.model.card.GroupCard;
 import com.benboer.boluo.factory.model.card.GroupMemberCard;
+import com.benboer.boluo.factory.model.card.UserCard;
 import com.benboer.boluo.factory.model.db.Group;
 import com.benboer.boluo.factory.model.db.GroupMember;
 import com.benboer.boluo.factory.model.db.GroupMember_Table;
@@ -30,7 +31,11 @@ import retrofit2.Response;
  */
 public class GroupHelper {
 
-    // 群的创建
+    /***
+     * 创建群
+     * @param model
+     * @param callback
+     */
     public static void create(GroupCreateModel model, final DataSource.Callback<GroupCard> callback) {
         RemoteService service = Network.remote();
         service.groupCreate(model)
@@ -55,6 +60,38 @@ public class GroupHelper {
                     }
                 });
     }
+
+    /**
+     * 搜索群
+     * @param name
+     * @param callback
+     * @return
+     */
+    public static Call groupSearch(String name, final DataSource.Callback<List<GroupCard>> callback) {
+        RemoteService service = Network.remote();
+        Call<RspModel<List<GroupCard>>> call = service.groupSearch(name);
+
+        call.enqueue(new Callback<RspModel<List<GroupCard>>>() {
+            @Override
+            public void onResponse(Call<RspModel<List<GroupCard>>> call, Response<RspModel<List<GroupCard>>> response) {
+                RspModel<List<GroupCard>> rspModel = response.body();
+                if (rspModel.success()){
+                    callback.onDataLoaded(rspModel.getResult());
+                }else {
+                    Factory.decodeRspCode(rspModel, callback);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RspModel<List<GroupCard>>> call, Throwable t) {
+
+            }
+        });
+
+        return call;
+    }
+
+
 
     /**
      * 查询群的信息，先本地，后网络
