@@ -22,8 +22,8 @@ public class HomeFragment extends PresenterFragment<LogoutContract.Presenter>
 
     @OnClick(R.id.btn_logout)
     void onLogout(){
-
-        mPresenter.logout(Account.getUser().getPhone());
+        mPresenter.logout();
+        getActivity().finish();
     }
 
     @Override
@@ -38,7 +38,6 @@ public class HomeFragment extends PresenterFragment<LogoutContract.Presenter>
 
     @Override
     public void logoutSuccess() {
-
         AccountActivity.show(getActivity());
     }
 }

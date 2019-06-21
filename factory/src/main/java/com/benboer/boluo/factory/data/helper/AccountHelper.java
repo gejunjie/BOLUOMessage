@@ -1,5 +1,6 @@
 package com.benboer.boluo.factory.data.helper;
 
+import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.text.TextUtils;
 
 import com.benboer.boluo.factory.Factory;
@@ -9,10 +10,16 @@ import com.benboer.boluo.factory.model.api.RspModel;
 import com.benboer.boluo.factory.model.api.account.AccountRspModel;
 import com.benboer.boluo.factory.model.api.account.LoginModel;
 import com.benboer.boluo.factory.model.api.account.RegisterModel;
+import com.benboer.boluo.factory.model.db.Group;
+import com.benboer.boluo.factory.model.db.GroupMember;
+import com.benboer.boluo.factory.model.db.Message;
+import com.benboer.boluo.factory.model.db.Session;
 import com.benboer.boluo.factory.model.db.User;
 import com.benboer.boluo.factory.net.Network;
 import com.benboer.boluo.factory.net.RemoteService;
 import com.benboer.boluo.factory.persistence.Account;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
+import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,6 +64,8 @@ public class AccountHelper {
      */
     public static void logout(final DataSource.Callback<User> callback) {
         Account.logout();
+        SQLite.delete().tables(new Class[]{GroupMember.class, Message.class,
+                Group.class, Session.class, User.class});
         callback.onDataLoaded(null);
     }
 

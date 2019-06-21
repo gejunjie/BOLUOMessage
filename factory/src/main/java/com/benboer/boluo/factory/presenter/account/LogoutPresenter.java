@@ -16,12 +16,9 @@ public class LogoutPresenter extends BasePresenter<LogoutContract.View>
     }
 
     @Override
-    public void logout(String phone) {
+    public void logout() {
         start();
-        if (phone != null){
-            AccountHelper.logout(this);
-        }
-
+        AccountHelper.logout(this);
     }
 
     @Override

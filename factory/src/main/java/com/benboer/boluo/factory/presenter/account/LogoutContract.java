@@ -14,6 +14,6 @@ public interface LogoutContract {
 
     interface Presenter extends BaseContract.Presenter{
 
-        void logout(String phone);
+        void logout();
     }
 }
