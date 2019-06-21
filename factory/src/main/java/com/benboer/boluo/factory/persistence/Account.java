@@ -54,6 +54,20 @@ public class Account {
     }
 
     /**
+     * 清除用户信息
+     */
+    public static void logout() {
+        SharedPreferences sp = Factory.app().getSharedPreferences(Account.class.getName(),
+                Context.MODE_PRIVATE);
+        sp.edit()
+                .remove(KEY_PUSH_ID)
+                .remove(KEY_IS_BIND)
+                .remove(KEY_TOKEN)
+                .remove(KEY_USER_ID)
+                .apply();
+    }
+
+    /**
      * 进行数据加载
      */
     public static void load(Context context) {
@@ -167,5 +181,13 @@ public class Account {
      */
     public static String getUserId(){
         return userId;
+    }
+
+    /**
+     * 获取账户名
+     * @return
+     */
+    public static String getAccount(){
+        return account;
     }
 }

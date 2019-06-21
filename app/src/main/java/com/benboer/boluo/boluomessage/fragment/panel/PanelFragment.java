@@ -13,10 +13,10 @@ import com.benboer.boluo.boluomessage.R;
  * Created by BenBoerBoluojiushiwo on 2019/6/14.
  */
 public class PanelFragment extends Fragment {
-    public PanelFragment() {
-        // Required empty public constructor
-    }
 
+    public PanelFragment() {
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

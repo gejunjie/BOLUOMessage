@@ -29,9 +29,9 @@ import butterknife.OnClick;
 import static android.app.Activity.RESULT_OK;
 
 /**
- * 用户更新界面
- *
  * Created by BenBoerBoluojiushiwo on 2019/3/28.
+ *
+ *  用户更新界面
  */
 public class UpdateInfoFragment extends PresenterFragment<UpdateInfoContract.Presenter>
     implements UpdateInfoContract.View{

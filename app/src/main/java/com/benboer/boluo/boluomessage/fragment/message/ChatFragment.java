@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
@@ -178,12 +179,14 @@ public abstract class ChatFragment<InitModel>
 
     @OnClick(R.id.btn_face)
     void onFaceClick() {
-        // TODO
+        mPanelBoss.openPanel();
+        mPanelFragment.showFace();
     }
 
     @OnClick(R.id.btn_record)
     void onRecordClick() {
-        // TODO
+        mPanelBoss.openPanel();
+        mPanelFragment.showRecord();
     }
 
     @OnClick(R.id.btn_submit)
@@ -199,7 +202,8 @@ public abstract class ChatFragment<InitModel>
     }
 
     private void onMoreClick() {
-        // TODO
+        mPanelBoss.openPanel();
+        mPanelFragment.showGallery();
     }
 
     @Override
@@ -209,7 +213,7 @@ public abstract class ChatFragment<InitModel>
 
     @Override
     public void onAdapterDataChanged() {
-        // 界面没有占位布局，Recycler是一直显示的，所有不需要做任何事情
+
     }
 
     // 内容的适配器
@@ -360,6 +364,9 @@ public abstract class ChatFragment<InitModel>
     // 图片的Holder
     class PicHolder extends BaseHolder {
 
+        @BindView(R.id.im_image)
+        ImageView mContent;
+
         public PicHolder(View itemView) {
             super(itemView);
         }
@@ -367,7 +374,13 @@ public abstract class ChatFragment<InitModel>
         @Override
         protected void onBind(Message message) {
             super.onBind(message);
-            // TODO
+            // 当是图片类型的时候，Content中就是具体的地址
+            String content = message.getContent();
+
+            Glide.with(ChatFragment.this)
+                    .load(content)
+                    .fitCenter()
+                    .into(mContent);
         }
     }
 

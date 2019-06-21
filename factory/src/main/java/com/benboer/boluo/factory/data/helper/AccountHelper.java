@@ -52,6 +52,15 @@ public class AccountHelper {
     }
 
     /**
+     * 退出登录
+     *
+     */
+    public static void logout(final DataSource.Callback<User> callback) {
+        Account.logout();
+        callback.onDataLoaded(null);
+    }
+
+    /**
      * 对设备Id进行绑定的操作
      *
      * @param callback Callback

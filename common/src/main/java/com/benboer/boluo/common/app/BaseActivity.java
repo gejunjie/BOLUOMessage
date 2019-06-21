@@ -82,7 +82,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void setRequestedOrientation(int requestedOrientation) {
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.O && isTranslucentOrFloating()) {
-//            XLog.i(XLog.BASE, "avoid calling setRequestedOrientation when Oreo.");
             return;
         }
         super.setRequestedOrientation(requestedOrientation);

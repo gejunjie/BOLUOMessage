@@ -44,6 +44,7 @@ public interface RemoteService {
     @POST("account/login")
     Call<RspModel<AccountRspModel>> accountLogin(@Body LoginModel model);
 
+
     /**
      * 绑定设备id
      * @param pushId

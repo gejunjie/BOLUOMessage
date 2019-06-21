@@ -1,12 +1,14 @@
 package com.benboer.boluo.boluomessage.fragment.account;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.MainActivity;
 import com.benboer.boluo.common.app.PresenterFragment;
+import com.benboer.boluo.factory.persistence.Account;
 import com.benboer.boluo.factory.presenter.account.LoginContract;
 import com.benboer.boluo.factory.presenter.account.LoginPresenter;
 
@@ -56,6 +58,12 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
         super.onAttach(context);
         // Activity的引用
         mAccountTrigger = (AccountTrigger) context;
+    }
+
+    @Override
+    protected void initWidget(View root) {
+        super.initWidget(root);
+        mPhone.setText(Account.getAccount());
     }
 
     @Override

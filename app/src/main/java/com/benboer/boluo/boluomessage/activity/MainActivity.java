@@ -18,6 +18,7 @@ import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.fragment.main.ActiveFragment;
 import com.benboer.boluo.boluomessage.fragment.main.ContactFragment;
 import com.benboer.boluo.boluomessage.fragment.main.GroupFragment;
+import com.benboer.boluo.boluomessage.fragment.main.HomeFragment;
 import com.benboer.boluo.boluomessage.tool.NavHelper;
 import com.benboer.boluo.common.app.BaseActivity;
 import com.benboer.boluo.common.widget.PortraitView;
@@ -70,7 +71,8 @@ public class MainActivity extends BaseActivity
         super.initData();
         //手动的触发第一次点击
         Menu menu = mNavigation.getMenu();
-        menu.performIdentifierAction(R.id.action_home, 0);
+        menu.performIdentifierAction(R.id.action_active, 0);
+        mPortrait.setup(Glide.with(this), Account.getUser());
     }
 
     @Override
@@ -90,9 +92,11 @@ public class MainActivity extends BaseActivity
         mNavHelper = new NavHelper<>(this, R.id.lay_container,
                 getSupportFragmentManager(), this);
 
-        mNavHelper.addTab(R.id.action_home, new NavHelper.Tab<>(ActiveFragment.class, R.string.title_home))
+        mNavHelper.addTab(R.id.action_active, new NavHelper.Tab<>(ActiveFragment.class, R.string.title_home))
                 .addTab(R.id.action_group, new NavHelper.Tab<>(GroupFragment.class, R.string.title_group))
-                .addTab(R.id.action_contact, new NavHelper.Tab<>(ContactFragment.class, R.string.title_contact));
+                .addTab(R.id.action_contact, new NavHelper.Tab<>(ContactFragment.class, R.string.title_contact))
+                .addTab(R.id.action_home, new NavHelper.Tab<>(HomeFragment.class, R.string.title_contact));
+
 
         mNavigation.setOnNavigationItemSelectedListener(this);
 
