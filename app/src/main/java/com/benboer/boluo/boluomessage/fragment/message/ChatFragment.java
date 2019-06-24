@@ -2,6 +2,8 @@ package com.benboer.boluo.boluomessage.fragment.message;
 
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewStub;
@@ -22,6 +24,7 @@ import com.benboer.boluo.common.app.PresenterFragment;
 import com.benboer.boluo.common.widget.PortraitView;
 import com.benboer.boluo.common.widget.adapter.TextWatcherAdapter;
 import com.benboer.boluo.common.widget.recycler.RecyclerAdapter;
+import com.benboer.boluo.face.Face;
 import com.benboer.boluo.factory.model.db.Message;
 import com.benboer.boluo.factory.model.db.User;
 import com.benboer.boluo.factory.persistence.Account;
@@ -30,6 +33,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
+import net.qiujuer.genius.ui.Ui;
 import net.qiujuer.genius.ui.compat.UiCompat;
 import net.qiujuer.genius.ui.widget.Loading;
 import net.qiujuer.widget.airpanel.AirPanel;
@@ -48,7 +52,8 @@ import butterknife.OnClick;
 public abstract class ChatFragment<InitModel>
         extends PresenterFragment<ChatContract.Presenter>
         implements AppBarLayout.OnOffsetChangedListener,
-        ChatContract.View<InitModel> {
+        ChatContract.View<InitModel>,
+        PanelFragment.PanelCallback {
 
     protected String mReceiverId;
     protected Adapter mAdapter;
@@ -114,7 +119,7 @@ public abstract class ChatFragment<InitModel>
             }
         });
         mPanelFragment = (PanelFragment) getChildFragmentManager().findFragmentById(R.id.frag_panel);
-
+        mPanelFragment.setup(this);
 
         initToolbar();
         initAppbar();
@@ -153,15 +158,6 @@ public abstract class ChatFragment<InitModel>
     // 初始化输入框监听
     private void initEditContent() {
         mContent.addTextChangedListener(new TextWatcherAdapter() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -214,6 +210,11 @@ public abstract class ChatFragment<InitModel>
     @Override
     public void onAdapterDataChanged() {
 
+    }
+
+    @Override
+    public EditText getInputEditText() {
+        return mContent;
     }
 
     // 内容的适配器
@@ -319,11 +320,11 @@ public abstract class ChatFragment<InitModel>
         @OnClick(R.id.im_portrait)
         void onRePushClick() {
             // 重新发送
-//            if (mLoading != null && mPresenter.rePush(mData)) {
-//                // 必须是右边的才有可能需要重新发送
-//                // 状态改变需要重新刷新界面当前的信息
-//                updateData(mData);
-//            }
+            if (mLoading != null && mPresenter.rePush(data)) {
+                // 必须是右边的才有可能需要重新发送
+                // 状态改变需要重新刷新界面当前的信息
+                updateData(data);
+            }
 
         }
     }
@@ -340,6 +341,10 @@ public abstract class ChatFragment<InitModel>
         @Override
         protected void onBind(Message message) {
             super.onBind(message);
+            Spannable spannable = new SpannableString(message.getContent());
+
+            // 解析表情
+            Face.decode(mContent, spannable, (int) Ui.dipToPx(getResources(), 20));
 
             // 把内容设置到布局上
             mContent.setText(message.getContent());

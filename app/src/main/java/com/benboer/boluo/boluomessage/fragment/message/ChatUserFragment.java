@@ -1,8 +1,11 @@
 package com.benboer.boluo.boluomessage.fragment.message;
 
+import android.graphics.drawable.Drawable;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
 import com.benboer.boluo.boluomessage.R;
@@ -12,7 +15,11 @@ import com.benboer.boluo.factory.model.db.User;
 import com.benboer.boluo.factory.presenter.message.ChatContract;
 import com.benboer.boluo.factory.presenter.message.ChatUserPresenter;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.target.CustomViewTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -27,7 +34,6 @@ public class ChatUserFragment extends ChatFragment<User> implements ChatContract
     private MenuItem mUserInfoMenuItem;
 
     public ChatUserFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -35,21 +41,29 @@ public class ChatUserFragment extends ChatFragment<User> implements ChatContract
         return R.layout.lay_chat_header_user;
     }
 
-
-
     @Override
     protected void initWidget(View root) {
         super.initWidget(root);
 
-//        Glide.with(this)
-//                .load(R.drawable.default_banner_chat)
-//                .centerCrop()
-//                .into(new ViewTarget<CollapsingToolbarLayout, GlideDrawable>(mCollapsingLayout) {
-//                    @Override
-//                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-//                        this.view.setContentScrim(resource.getCurrent());
-//                    }
-//                });
+        Glide.with(this)
+                .load(R.drawable.default_banner_chat)
+                .centerCrop()
+                .into(new CustomViewTarget<CollapsingToolbarLayout, Drawable>(mCollapsingLayout) {
+                    @Override
+                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
+
+                    }
+
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                        this.view.setContentScrim(resource.getCurrent());
+                    }
+
+                    @Override
+                    protected void onResourceCleared(@Nullable Drawable placeholder) {
+
+                    }
+                });
 
     }
 
