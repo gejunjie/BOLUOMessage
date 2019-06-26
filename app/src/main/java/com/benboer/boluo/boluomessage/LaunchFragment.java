@@ -14,7 +14,7 @@ import com.benboer.boluo.core.fragment.SupportFragment;
 public class LaunchFragment extends SupportFragment {
     @Override
     public Object setLayout() {
-        return null;
+        return R.layout.fragment_launcher;
     }
 
     @Override
