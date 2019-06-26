@@ -359,7 +359,6 @@ public class Face {
             this.preview = preview;
         }
 
-        // 添加到Map
         void copyToMap(ArrayMap<String, Bean> faceMap) {
             for (Bean face : faces) {
                 faceMap.put(face.key, face);

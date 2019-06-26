@@ -69,5 +69,6 @@ dependencies {
     // implementation "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflow_version}"
     implementation project(':common')
     implementation project(':factory')
+    implementation project(path: ':core')
 
 }
