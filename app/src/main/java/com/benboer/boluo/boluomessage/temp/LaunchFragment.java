@@ -1,4 +1,4 @@
-package com.benboer.boluo.boluomessage;
+package com.benboer.boluo.boluomessage.temp;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.core.fragment.SupportFragment;
 
 /**

@@ -6,6 +6,8 @@ import com.benboer.boluo.core.net.callback.IError;
 import com.benboer.boluo.core.net.callback.IFailure;
 import com.benboer.boluo.core.net.callback.IRequest;
 import com.benboer.boluo.core.net.callback.ISuccess;
+import com.benboer.boluo.core.net.callback.RequestCallback;
+import com.benboer.boluo.core.ui.loader.FragmentLoader;
 import com.benboer.boluo.core.ui.loader.LoaderStyle;
 
 import java.io.File;
@@ -15,6 +17,7 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.Callback;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/6/27.
@@ -65,7 +68,7 @@ public class RestClient {
         this.CONTEXT = context;
     }
 
-    public static RestClientBuilder build(){
+    public static RestClientBuilder builder(){
         return new RestClientBuilder();
     }
 
@@ -78,7 +81,7 @@ public class RestClient {
         }
 
         if (LOADER_STYLE != null) {
-//            FragmentLoader.showLoading(CONTEXT, LOADER_STYLE);
+            FragmentLoader.showLoading(CONTEXT, LOADER_STYLE);
         }
 
         switch (method){
@@ -108,8 +111,21 @@ public class RestClient {
             default:
                 break;
         }
+
+        if (call != null) {
+            call.enqueue(getRequestCallback());
+        }
     }
 
+    private Callback<String> getRequestCallback() {
+        return new RequestCallback(
+                REQUEST,
+                SUCCESS,
+                FAILURE,
+                ERROR,
+                LOADER_STYLE
+        );
+    }
     public final void get() {
         request(HttpMethod.GET);
     }

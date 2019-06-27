@@ -31,7 +31,7 @@ public class RequestCallback implements Callback<String> {
         if (response.isSuccessful()){
             if (call.isExecuted()){
                 if (SUCCESS !=null){
-                    SUCCESS.onSuccess();
+                    SUCCESS.onSuccess(response.body());
                 }
             }
         }else {

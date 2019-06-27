@@ -1,4 +1,4 @@
-package com.benboer.boluo.boluomessage;
+package com.benboer.boluo.boluomessage.temp;
 
 import com.benboer.boluo.core.activity.ProxyActivity;
 import com.benboer.boluo.core.fragment.SupportFragment;

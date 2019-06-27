@@ -5,5 +5,5 @@ package com.benboer.boluo.core.net.callback;
  */
 public interface ISuccess {
 
-    void onSuccess();
+    void onSuccess(String response);
 }
