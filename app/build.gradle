@@ -70,6 +70,6 @@ dependencies {
     implementation project(':common')
     implementation project(':factory')
     implementation project(path: ':core')
-    implementation project(path: ':ui')
+    implementation project(path: ':common_ui')
 
 }

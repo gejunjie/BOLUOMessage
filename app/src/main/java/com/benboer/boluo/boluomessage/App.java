@@ -2,6 +2,7 @@ package com.benboer.boluo.boluomessage;
 
 
 import com.benboer.boluo.common.app.Application;
+import com.benboer.boluo.core.app.BoLuo;
 import com.benboer.boluo.factory.Factory;
 import com.igexin.sdk.PushManager;
 
@@ -19,6 +20,7 @@ public class App extends Application {
         // 推送进行初始化
         PushManager.getInstance().initialize(getApplicationContext(),null);
         PushManager.getInstance().registerPushIntentService(getApplicationContext(), PushIntentService.class);
+        BoLuo.init(this);
 
     }
 

@@ -1,5 +1,7 @@
 package com.benboer.boluo.core.app;
 
+import android.app.Activity;
+
 import java.util.HashMap;
 
 /**
@@ -44,4 +46,8 @@ public class Configurator {
         }
     }
 
+    public final Configurator withActivity(Activity activity) {
+        CONFIGS.put(ConfigKeys.ACTIVITY, activity);
+        return this;
+    }
 }
