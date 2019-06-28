@@ -8,7 +8,7 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatDialog;
 
 import com.benboer.boluo.core.R;
-import com.benboer.boluo.core.util.dimen.DimeUtil;
+import com.benboer.boluo.core.util.ui.UiUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
@@ -35,8 +35,8 @@ public class FragmentLoader {
         final AVLoadingIndicatorView avLoadingIndicatorView = LoaderCreator.create(type, context);
         dialog.setContentView(avLoadingIndicatorView);
 
-        int deviceWidth = DimeUtil.getScreenWidth();
-        int deviceHeight = DimeUtil.getScreenHeight();
+        int deviceWidth = UiUtil.getScreenWidth();
+        int deviceHeight = UiUtil.getScreenHeight();
 
         final Window dialogwindow = dialog.getWindow();
 

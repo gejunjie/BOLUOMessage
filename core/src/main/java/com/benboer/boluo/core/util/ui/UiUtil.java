@@ -1,4 +1,4 @@
-package com.benboer.boluo.common.tools;
+package com.benboer.boluo.core.util.ui;
 
 import android.app.Activity;
 import android.content.res.Resources;
@@ -7,13 +7,13 @@ import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.Window;
 
+import com.benboer.boluo.core.app.BoLuo;
+
 /**
- * UI相关工具类
- *
- *
- * Created by BenBoerBoluojiushiwo on 2019/4/4.
+ * Created by BenBoerBoluojiushiwo on 2019/6/27.
  */
-public class UiTool {
+public class UiUtil {
+
     private static int STATUS_BAR_HEIGHT = -1;
 
     /**
@@ -53,15 +53,23 @@ public class UiTool {
         return STATUS_BAR_HEIGHT;
     }
 
-    public static int getScreenWidth(Activity activity) {
-        DisplayMetrics displayMetrics = activity.getResources().getDisplayMetrics();
-        //int width = activity.getWindowManager().getDefaultDisplay().getWidth();
-        return displayMetrics.widthPixels;
+    /**
+     * 得到屏幕宽
+     * @return
+     */
+    public static int getScreenWidth() {
+        final Resources resources = BoLuo.getApplicationContext().getResources();
+        final DisplayMetrics dm = resources.getDisplayMetrics();
+        return dm.widthPixels;
     }
 
-    public static int getScreenHeight(Activity activity) {
-        DisplayMetrics displayMetrics = activity.getResources().getDisplayMetrics();
-        //int width = activity.getWindowManager().getDefaultDisplay().getWidth();
-        return displayMetrics.heightPixels;
+    /**
+     * 得到屏幕高
+     * @return
+     */
+    public static int getScreenHeight() {
+        final Resources resources = BoLuo.getApplicationContext().getResources();
+        final DisplayMetrics dm = resources.getDisplayMetrics();
+        return dm.heightPixels;
     }
 }

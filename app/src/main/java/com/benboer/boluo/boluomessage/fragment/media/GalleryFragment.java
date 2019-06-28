@@ -10,7 +10,7 @@ import android.view.Window;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.common.widget.GalleryView;
-import com.benboer.boluo.common.tools.UiTool;
+import com.benboer.boluo.core.util.ui.UiUtil;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -105,9 +105,9 @@ public class GalleryFragment extends BottomSheetDialogFragment
 
 
             // 得到屏幕高度
-            int screenHeight = UiTool.getScreenHeight(getOwnerActivity());
+            int screenHeight = UiUtil.getScreenHeight();
             // 得到状态栏的高度
-            int statusHeight = UiTool.getStatusBarHeight(getOwnerActivity());
+            int statusHeight = UiUtil.getStatusBarHeight(getOwnerActivity());
 
             // 计算dialog的高度并设置
             int dialogHeight = screenHeight - statusHeight;

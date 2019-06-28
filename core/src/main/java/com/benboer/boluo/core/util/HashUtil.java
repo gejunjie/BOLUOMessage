@@ -1,4 +1,4 @@
-package com.benboer.boluo.utils;
+package com.benboer.boluo.core.util;
 
 import java.io.File;
 import java.io.FileInputStream;

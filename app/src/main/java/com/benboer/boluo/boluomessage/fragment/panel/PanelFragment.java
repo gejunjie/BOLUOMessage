@@ -1,13 +1,11 @@
 package com.benboer.boluo.boluomessage.fragment.panel;
 
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
@@ -15,8 +13,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.common.app.BaseFragment;
-import com.benboer.boluo.common.tools.UiTool;
 import com.benboer.boluo.common.widget.recycler.RecyclerAdapter;
+import com.benboer.boluo.core.util.ui.UiUtil;
 import com.benboer.boluo.face.Face;
 import com.google.android.material.tabs.TabLayout;
 
@@ -75,7 +73,7 @@ public class PanelFragment extends BaseFragment {
 
         // 每一表情显示48dp
         final int minFaceSize = (int) Ui.dipToPx(getResources(), 48);
-        final int totalScreen = UiTool.getScreenWidth(getActivity());
+        final int totalScreen = UiUtil.getScreenWidth();
         final int spanCount = totalScreen / minFaceSize;
 
 

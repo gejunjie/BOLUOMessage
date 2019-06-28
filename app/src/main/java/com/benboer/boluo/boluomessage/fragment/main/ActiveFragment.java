@@ -16,7 +16,7 @@ import com.benboer.boluo.common.widget.recycler.RecyclerAdapter;
 import com.benboer.boluo.factory.model.db.Session;
 import com.benboer.boluo.factory.presenter.message.SessionContract;
 import com.benboer.boluo.factory.presenter.message.SessionPresenter;
-import com.benboer.boluo.utils.DateTimeUtil;
+import com.benboer.boluo.core.util.DateTimeUtil;
 import com.bumptech.glide.Glide;
 
 import butterknife.BindView;

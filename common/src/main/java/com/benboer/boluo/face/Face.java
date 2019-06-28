@@ -2,7 +2,6 @@ package com.benboer.boluo.face;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -19,13 +18,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.benboer.boluo.common.R;
-import com.benboer.boluo.utils.StreamUtil;
+import com.benboer.boluo.core.util.StreamUtil;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.target.CustomTarget;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.target.SizeReadyCallback;
-import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;

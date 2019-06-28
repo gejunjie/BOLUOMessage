@@ -2,9 +2,9 @@ package com.benboer.boluo.factory.data;
 
 import androidx.annotation.NonNull;
 
+import com.benboer.boluo.core.util.CollectionUtil;
 import com.benboer.boluo.factory.data.helper.DbHelper;
 import com.benboer.boluo.factory.model.db.BaseDbModel;
-import com.benboer.boluo.utils.CollectionUtil;
 import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;
 
 import net.qiujuer.genius.kit.reflect.Reflector;

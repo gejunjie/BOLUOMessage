@@ -1,4 +1,4 @@
-package com.benboer.boluo.utils;
+package com.benboer.boluo.core.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
