@@ -29,20 +29,33 @@
             android:name="com.benboer.boluo.boluomessage.PushIntentService"
             android:permission="android.permission.BIND_JOB_SERVICE"/>
 
+
         <activity
-            android:name=".LaunchActivity"
-            android:label="@string/title_activity_launch"
-            android:theme="@style/AppTheme.TransStatusBar">
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Main" />
+
+
+
+
+        <!--<activity-->
+            <!--android:name=".LaunchActivity"-->
+            <!--android:label="@string/title_activity_launch"-->
+            <!--android:theme="@style/AppTheme.TransStatusBar">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--<activity-->
+            <!--android:name=".activity.MainActivity"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@style/AppTheme.Main" />-->
         <activity
             android:name=".activity.AccountActivity"
             android:screenOrientation="portrait"

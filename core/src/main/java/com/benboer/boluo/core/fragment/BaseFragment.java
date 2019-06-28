@@ -43,7 +43,7 @@ public abstract class BaseFragment extends Fragment implements ISupportFragment 
      */
     public abstract void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root);
 
-    public <T extends View> T $(@IdRes int viewId) {
+    public <T extends View> T bind(@IdRes int viewId) {
         if (mRootView != null) {
             return mRootView.findViewById(viewId);
         }
@@ -83,10 +83,12 @@ public abstract class BaseFragment extends Fragment implements ISupportFragment 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DELEGATE.onCreate(savedInstanceState);
     }
 
     @Override
     public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        super.onCreateAnimation(transit, enter, nextAnim);
         return DELEGATE.onCreateAnimation(transit, enter, nextAnim);
     }
 
@@ -267,5 +269,17 @@ public abstract class BaseFragment extends Fragment implements ISupportFragment 
     @Override
     public boolean onBackPressedSupport() {
         return DELEGATE.onBackPressedSupport();
+    }
+
+    public void start(ISupportFragment toFragment) {
+        DELEGATE.start(toFragment);
+    }
+
+    public void start(final ISupportFragment toFragment, @LaunchMode int launchMode) {
+        DELEGATE.start(toFragment, launchMode);
+    }
+
+    public void pop() {
+        DELEGATE.pop();
     }
 }
