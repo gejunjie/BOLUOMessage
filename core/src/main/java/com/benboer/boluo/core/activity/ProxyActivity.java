@@ -1,6 +1,7 @@
 package com.benboer.boluo.core.activity;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
@@ -32,6 +33,14 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
         DELEGATE.onCreate(savedInstanceState);
         initContainer(savedInstanceState);
     }
+
+
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+//        super.onCreate( savedInstanceState, persistentState );
+//        DELEGATE.onCreate(savedInstanceState);
+//        initContainer(savedInstanceState);
+//    }
 
     private void initContainer(@Nullable Bundle savedInstanceState) {
         final FrameLayout container = new FrameLayout(this);

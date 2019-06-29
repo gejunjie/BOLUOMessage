@@ -1,1 +1,1 @@
-include ':app', ':common', ':factory', ':core', ':common_ui'
+include ':app', ':common', ':factory', ':core', ':ui'
