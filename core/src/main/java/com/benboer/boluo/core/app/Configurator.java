@@ -39,6 +39,10 @@ public class Configurator {
         return (T) CONFIGS.get(key);
     }
 
+    public final void configure(){
+        CONFIGS.put(ConfigKeys.CONFIG_READY, true);
+    }
+
     private void checkConfiguration() {
         final boolean isReady = (boolean) CONFIGS.get(ConfigKeys.CONFIG_READY);
         if (!isReady) {

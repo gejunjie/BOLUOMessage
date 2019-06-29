@@ -32,4 +32,5 @@ public class BoLuo {
     public static Context getApplicationContext() {
         return (Context) getConfiguration(ConfigKeys.APPLICATION_CONTEXT);
     }
+
 }

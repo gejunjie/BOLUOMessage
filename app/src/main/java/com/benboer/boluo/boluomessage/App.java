@@ -20,7 +20,8 @@ public class App extends Application {
         // 推送进行初始化
         PushManager.getInstance().initialize(getApplicationContext(),null);
         PushManager.getInstance().registerPushIntentService(getApplicationContext(), PushIntentService.class);
-        BoLuo.init(this);
+        BoLuo.init(this)
+            .configure();
 
     }
 
