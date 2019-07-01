@@ -52,6 +52,9 @@ dependencies {
     implementation "com.github.Raizlabs.DBFlow:dbflow-core:$rootProject.ext.dbflow_version"
     implementation "com.github.Raizlabs.DBFlow:dbflow:$rootProject.ext.dbflow_version"
 
+    implementation "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation project(':common')
     implementation project(path: ':core')

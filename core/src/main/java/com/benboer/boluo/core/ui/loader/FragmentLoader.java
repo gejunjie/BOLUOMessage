@@ -17,6 +17,7 @@ import java.util.ArrayList;
  * Created by BenBoerBoluojiushiwo on 2019/6/27.
  */
 public class FragmentLoader {
+
     private static final int LOADER_SIZE_SCALE = 8;
     private static final int LOADER_OFFSET_SCALE = 10;
 

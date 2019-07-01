@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import com.benboer.boluo.core.activity.ProxyActivity;
 import com.benboer.boluo.core.app.BoLuo;
 import com.benboer.boluo.core.fragment.SupportFragment;
-import com.benboer.boluo.factory.launcher.LauncherFragment;
+import com.benboer.boluo.factory.fragment.launcher.LauncherFragment;
 import com.benboer.boluo.factory.main.TestFragment;
 import com.benboer.boluo.ui.launcher.ILauncherListener;
 

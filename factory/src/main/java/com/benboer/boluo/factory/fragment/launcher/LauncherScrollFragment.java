@@ -1,4 +1,4 @@
-package com.benboer.boluo.factory.launcher;
+package com.benboer.boluo.factory.fragment.launcher;
 
 import android.content.Context;
 import android.os.Bundle;
