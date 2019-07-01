@@ -8,6 +8,7 @@ import com.benboer.boluo.core.activity.ProxyActivity;
 import com.benboer.boluo.core.app.BoLuo;
 import com.benboer.boluo.core.fragment.SupportFragment;
 import com.benboer.boluo.factory.launcher.LauncherFragment;
+import com.benboer.boluo.factory.main.TestFragment;
 import com.benboer.boluo.ui.launcher.ILauncherListener;
 
 /**
@@ -30,9 +31,10 @@ public class MainActivity extends ProxyActivity implements ILauncherListener {
     public void onLauncherFinish(int launcherTag) {
         switch (launcherTag){
             case SINGED:
-//                getSupportDelegate().popTo();
+                getSupportDelegate().startWithPop(new TestFragment());
                 break;
             case NOT_SINGED:
+                getSupportDelegate().startWithPop(new TestFragment());
                 break;
             default:
                 break;
