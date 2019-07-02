@@ -5,11 +5,12 @@ import android.widget.Toast;
 import com.benboer.boluo.core.R;
 import com.benboer.boluo.core.app.BoLuo;
 import com.benboer.boluo.core.fragment.BaseFragment;
+import com.benboer.boluo.core.fragment.PresenterFragment;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/1.
  */
-public abstract class BottomItemFragment extends BaseFragment {
+public abstract class BottomItemFragment extends PresenterFragment {
 
     // 再点一次退出程序时间设置
     private static final long WAIT_TIME = 2000L;

@@ -7,7 +7,6 @@ import com.benboer.boluo.factory.model.api.RspModel;
 import com.benboer.boluo.factory.model.api.group.GroupCreateModel;
 import com.benboer.boluo.factory.model.card.GroupCard;
 import com.benboer.boluo.factory.model.card.GroupMemberCard;
-import com.benboer.boluo.factory.model.card.UserCard;
 import com.benboer.boluo.factory.model.db.Group;
 import com.benboer.boluo.factory.model.db.GroupMember;
 import com.benboer.boluo.factory.model.db.GroupMember_Table;

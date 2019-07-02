@@ -18,7 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.benboer.boluo.common.R;
-import com.benboer.boluo.core.util.StreamUtil;
+//import com.benboer.boluo.core.util.StreamUtil;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
@@ -91,13 +91,13 @@ public class Face {
                     // 存储文件
                     File faceSource = new File(faceFolder, "source.zip");
                     // copy
-                    StreamUtil.copy(inputStream, faceSource);
-
-                    // 解压
-                    unZipFile(faceSource, faceFolder);
-
-                    // 清理文件
-                    StreamUtil.delete(faceSource.getAbsolutePath());
+//                    StreamUtil.copy(inputStream, faceSource);
+//
+//                    // 解压
+//                    unZipFile(faceSource, faceFolder);
+//
+//                    // 清理文件
+//                    StreamUtil.delete(faceSource.getAbsolutePath());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -151,7 +151,7 @@ public class Face {
 
             File desFile = new File(str);
             // 输出文件
-            StreamUtil.copy(in, desFile);
+//            StreamUtil.copy(in, desFile);
         }
     }
 

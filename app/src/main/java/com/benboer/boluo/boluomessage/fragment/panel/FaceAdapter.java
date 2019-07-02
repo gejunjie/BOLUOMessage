@@ -3,7 +3,7 @@ package com.benboer.boluo.boluomessage.fragment.panel;
 import android.view.View;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.common.widget.recycler.RecyclerAdapter;
+import com.benboer.boluo.widget.recycler.RecyclerAdapter;
 import com.benboer.boluo.face.Face;
 
 import java.util.List;

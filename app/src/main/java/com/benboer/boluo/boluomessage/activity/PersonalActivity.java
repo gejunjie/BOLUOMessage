@@ -17,7 +17,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.common.app.PresenterToolbarActivity;
-import com.benboer.boluo.common.widget.PortraitView;
+import com.benboer.boluo.widget.PortraitView;
 import com.benboer.boluo.factory.model.db.User;
 import com.benboer.boluo.factory.presenter.contact.PersonalContract;
 import com.benboer.boluo.factory.presenter.contact.PersonalPresenter;

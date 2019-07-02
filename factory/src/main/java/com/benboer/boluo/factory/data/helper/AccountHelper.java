@@ -1,6 +1,5 @@
 package com.benboer.boluo.factory.data.helper;
 
-import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.text.TextUtils;
 
 import com.benboer.boluo.factory.Factory;
@@ -19,7 +18,6 @@ import com.benboer.boluo.factory.net.Network;
 import com.benboer.boluo.factory.net.RemoteService;
 import com.benboer.boluo.factory.persistence.Account;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
-import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import retrofit2.Call;
 import retrofit2.Callback;

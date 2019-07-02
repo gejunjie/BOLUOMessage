@@ -12,7 +12,7 @@
     android:outlineProvider="background"
     tools:targetApi="lollipop">
 
-    <com.benboer.boluo.common.widget.PortraitView
+    <com.benboer.boluo.widget.PortraitView
         android:id="@+id/im_portrait"
         android:layout_width="@dimen/portraitMaxSize"
         android:layout_height="@dimen/portraitMaxSize"

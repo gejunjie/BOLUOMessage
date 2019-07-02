@@ -1,4 +1,4 @@
-package com.benboer.boluo.common.widget.adapter;
+package com.benboer.boluo.widget.adapter;
 
 import android.text.Editable;
 import android.text.TextWatcher;

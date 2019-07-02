@@ -10,12 +10,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.PersonalActivity;
-import com.benboer.boluo.common.widget.PortraitView;
+import com.benboer.boluo.widget.PortraitView;
 import com.benboer.boluo.factory.model.db.User;
 import com.benboer.boluo.factory.presenter.message.ChatContract;
 import com.benboer.boluo.factory.presenter.message.ChatUserPresenter;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.target.CustomViewTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.appbar.AppBarLayout;

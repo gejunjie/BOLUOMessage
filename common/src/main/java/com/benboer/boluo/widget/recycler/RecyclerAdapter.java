@@ -1,4 +1,4 @@
-package com.benboer.boluo.common.widget.recycler;
+package com.benboer.boluo.widget.recycler;
 
 import android.view.LayoutInflater;
 import android.view.View;

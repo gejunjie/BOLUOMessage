@@ -1,12 +1,18 @@
 package com.benboer.boluo.boluomessage.fragment.account;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.MainActivity;
-import com.benboer.boluo.common.app.PresenterFragment;
+import com.benboer.boluo.boluomessage.fragment.main.BottomFragment;
+import com.benboer.boluo.core.fragment.PresenterFragment;
 import com.benboer.boluo.factory.presenter.account.RegisterContract;
 import com.benboer.boluo.factory.presenter.account.RegisterPresenter;
 
@@ -20,8 +26,6 @@ import butterknife.OnClick;
  */
 public class RegisterFragment extends PresenterFragment<RegisterContract.Presenter>
         implements RegisterContract.View{
-
-    private AccountTrigger mAccountTrigger;
 
     @BindView(R.id.edit_phone)
     EditText mPhone;
@@ -47,34 +51,30 @@ public class RegisterFragment extends PresenterFragment<RegisterContract.Present
 
     @OnClick(R.id.txt_go_login)
     void onShowLoginClick(){
-        mAccountTrigger.triggerView();
+        getSupportDelegate().startWithPop(new LoginFragment());
     }
 
 
     public RegisterFragment() {
-        // Required empty public constructor
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mAccountTrigger = (AccountTrigger) context;
-    }
-
-    @Override
-    protected RegisterContract.Presenter initPresenter() {
-
-        return new RegisterPresenter(this);
-    }
-
-    @Override
-    protected int getContentLayoutId() {
+    public Object setLayout() {
         return R.layout.fragment_register;
     }
 
     @Override
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
+
+    }
+
+    @Override
+    protected RegisterContract.Presenter initPresenter() {
+        return new RegisterPresenter(this);
+    }
+
+    @Override
     public void registerSuccess() {
-        MainActivity.show(getContext());
-        getActivity().finish();
+        getSupportDelegate().startWithPop(new BottomFragment());
     }
 }

@@ -1,4 +1,4 @@
-package com.benboer.boluo.common.widget;
+package com.benboer.boluo.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;

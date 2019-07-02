@@ -10,7 +10,7 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.benboer.boluo.common.widget.convention.PlaceHolderView;
+import com.benboer.boluo.widget.convention.PlaceHolderView;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

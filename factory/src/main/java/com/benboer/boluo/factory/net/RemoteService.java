@@ -24,6 +24,7 @@ import retrofit2.http.Path;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/6.
+ *
  * 网络请求的所有的接口
  */
 public interface RemoteService {

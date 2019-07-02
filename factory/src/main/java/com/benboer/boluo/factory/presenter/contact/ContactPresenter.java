@@ -2,7 +2,7 @@ package com.benboer.boluo.factory.presenter.contact;
 
 import androidx.recyclerview.widget.DiffUtil;
 
-import com.benboer.boluo.common.widget.recycler.RecyclerAdapter;
+import com.benboer.boluo.widget.recycler.RecyclerAdapter;
 import com.benboer.boluo.factory.data.DataSource;
 import com.benboer.boluo.factory.data.helper.UserHelper;
 import com.benboer.boluo.factory.data.user.ContactDataSource;

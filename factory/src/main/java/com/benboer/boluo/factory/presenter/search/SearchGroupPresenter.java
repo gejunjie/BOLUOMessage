@@ -3,7 +3,6 @@ package com.benboer.boluo.factory.presenter.search;
 import com.benboer.boluo.factory.data.DbDataSource;
 import com.benboer.boluo.factory.data.helper.GroupHelper;
 import com.benboer.boluo.factory.model.card.GroupCard;
-import com.benboer.boluo.factory.model.db.Group;
 import com.benboer.boluo.factory.presenter.BasePresenter;
 
 import net.qiujuer.genius.kit.handler.Run;

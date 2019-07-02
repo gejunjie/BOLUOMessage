@@ -21,7 +21,7 @@ import com.benboer.boluo.boluomessage.fragment.main.GroupFragment;
 import com.benboer.boluo.boluomessage.fragment.main.HomeFragment;
 import com.benboer.boluo.boluomessage.tool.NavHelper;
 import com.benboer.boluo.common.app.BaseActivity;
-import com.benboer.boluo.common.widget.PortraitView;
+import com.benboer.boluo.widget.PortraitView;
 import com.benboer.boluo.factory.persistence.Account;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomViewTarget;
@@ -92,10 +92,10 @@ public class MainActivity extends BaseActivity
         mNavHelper = new NavHelper<>(this, R.id.lay_container,
                 getSupportFragmentManager(), this);
 
-        mNavHelper.addTab(R.id.action_active, new NavHelper.Tab<>(ActiveFragment.class, R.string.title_home))
-                .addTab(R.id.action_group, new NavHelper.Tab<>(GroupFragment.class, R.string.title_group))
-                .addTab(R.id.action_contact, new NavHelper.Tab<>(ContactFragment.class, R.string.title_contact))
-                .addTab(R.id.action_home, new NavHelper.Tab<>(HomeFragment.class, R.string.title_contact));
+//        mNavHelper.addTab(R.id.action_active, new NavHelper.Tab<>(ActiveFragment.class, R.string.title_home))
+//                .addTab(R.id.action_group, new NavHelper.Tab<>(GroupFragment.class, R.string.title_group))
+//                .addTab(R.id.action_contact, new NavHelper.Tab<>(ContactFragment.class, R.string.title_contact))
+//                .addTab(R.id.action_home, new NavHelper.Tab<>(HomeFragment.class, R.string.title_contact));
 
 
         mNavigation.setOnNavigationItemSelectedListener(this);

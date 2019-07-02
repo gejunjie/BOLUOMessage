@@ -1,20 +1,21 @@
 package com.benboer.boluo.boluomessage.fragment.main;
 
-import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.MessageActivity;
 import com.benboer.boluo.boluomessage.activity.PersonalActivity;
-import com.benboer.boluo.common.app.PresenterFragment;
-import com.benboer.boluo.common.widget.EmptyView;
-import com.benboer.boluo.common.widget.PortraitView;
-import com.benboer.boluo.common.widget.recycler.RecyclerAdapter;
+import com.benboer.boluo.core.fragment.PresenterFragment;
+import com.benboer.boluo.widget.EmptyView;
+import com.benboer.boluo.widget.PortraitView;
+import com.benboer.boluo.widget.recycler.RecyclerAdapter;
 import com.benboer.boluo.factory.model.db.User;
 import com.benboer.boluo.factory.presenter.contact.ContactContract;
 import com.benboer.boluo.factory.presenter.contact.ContactPresenter;
@@ -43,8 +44,12 @@ public class ContactFragment extends PresenterFragment<ContactContract.Presenter
     }
 
     @Override
-    protected void initWidget(View root) {
-        super.initWidget(root);
+    public Object setLayout() {
+        return R.layout.fragment_contact;
+    }
+
+    @Override
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(mAdapter = new RecyclerAdapter() {
             @Override
@@ -79,11 +84,6 @@ public class ContactFragment extends PresenterFragment<ContactContract.Presenter
     @Override
     protected ContactContract.Presenter initPresenter() {
         return new ContactPresenter(this);
-    }
-
-    @Override
-    protected int getContentLayoutId() {
-        return R.layout.fragment_contact;
     }
 
     @Override

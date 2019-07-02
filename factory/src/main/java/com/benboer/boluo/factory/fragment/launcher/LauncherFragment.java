@@ -2,6 +2,7 @@ package com.benboer.boluo.factory.fragment.launcher;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import com.benboer.boluo.core.util.storage.PreferenceUtil;
 import com.benboer.boluo.core.util.timer.BaseTimerTask;
 import com.benboer.boluo.core.util.timer.ITimerListener;
 import com.benboer.boluo.factory.R;
+import com.benboer.boluo.factory.persistence.Account;
 import com.benboer.boluo.ui.launcher.ILauncherListener;
 import com.benboer.boluo.ui.launcher.ScrollLauncherTag;
 
@@ -104,13 +106,45 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
                         if (mTimer != null) {
                             mTimer.cancel();
                             mTimer = null;
-                            //判断是否第一次登录
-                            checkIsShowScroll();
                         }
+                        waitPushReceiverId();
                     }
                 }
             }
         });
+    }
+
+    /**
+     * 等待个推框架对我们的PushId设置好值
+     */
+    private void waitPushReceiverId() {
+        if (Account.isLogin()) {
+            // 已经登录情况下，判断是否绑定
+            // 如果没有绑定则等待广播接收器进行绑定
+            if (Account.isBind()) {
+                //判断是否第一次登录
+                checkIsShowScroll();
+                return;
+            }
+        } else {
+            // 没有登录
+            // 如果拿到了PushId, 没有登录是不能绑定PushId的
+            if (!TextUtils.isEmpty(Account.getPushId())) {
+                // 跳转
+                //判断是否第一次登录
+                checkIsShowScroll();
+                return;
+            }
+        }
+
+        // 循环等待
+        getActivity().getWindow().getDecorView()
+                .postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        waitPushReceiverId();
+                    }
+                }, 500);
     }
 
     @Override

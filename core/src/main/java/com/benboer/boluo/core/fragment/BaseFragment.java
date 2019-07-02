@@ -16,7 +16,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.benboer.boluo.core.activity.ProxyActivity;
+import com.benboer.boluo.widget.convention.PlaceHolderView;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import me.yokeyword.fragmentation.ExtraTransaction;
 import me.yokeyword.fragmentation.ISupportFragment;
 import me.yokeyword.fragmentation.SupportFragmentDelegate;
@@ -29,8 +32,11 @@ public abstract class BaseFragment extends Fragment implements ISupportFragment 
 
     private final SupportFragmentDelegate DELEGATE = new SupportFragmentDelegate(this);
 
-
+    protected PlaceHolderView mPlaceHolderView;
+    // 标示是否第一次初始化数据
+    protected boolean mIsFirstInitData = true;
     private View mRootView = null;
+    protected Unbinder mRootUnBinder;
 
     /**
      * 设置布局资源
@@ -68,6 +74,7 @@ public abstract class BaseFragment extends Fragment implements ISupportFragment 
         } else {
             throw new ClassCastException("type of setLayout() must be int or View");
         }
+        mRootUnBinder = ButterKnife.bind(this, rootView);
         mRootView = rootView;
         onBindView(savedInstanceState, rootView);
         return mRootView;
@@ -78,6 +85,18 @@ public abstract class BaseFragment extends Fragment implements ISupportFragment 
         super.onAttach(context);
         DELEGATE.onAttach((Activity) context);
         mActivity = DELEGATE.getActivity();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (mIsFirstInitData) {
+            // 触发一次以后就不会触发
+            mIsFirstInitData = false;
+            // 触发
+            onFirstInit();
+        }
+
     }
 
     @Override
@@ -281,5 +300,19 @@ public abstract class BaseFragment extends Fragment implements ISupportFragment 
 
     public void pop() {
         DELEGATE.pop();
+    }
+
+    /**
+     * 当首次初始化数据的时候会调用的方法
+     */
+    protected void onFirstInit() {
+
+    }
+
+    /**
+     * 设置占位布局
+     */
+    public void setPlaceHolderView(PlaceHolderView placeHolderView) {
+        this.mPlaceHolderView = placeHolderView;
     }
 }

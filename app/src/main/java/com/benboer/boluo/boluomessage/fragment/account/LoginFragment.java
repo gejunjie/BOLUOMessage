@@ -1,13 +1,18 @@
 package com.benboer.boluo.boluomessage.fragment.account;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.MainActivity;
-import com.benboer.boluo.common.app.PresenterFragment;
+import com.benboer.boluo.boluomessage.fragment.main.BottomFragment;
+import com.benboer.boluo.core.fragment.PresenterFragment;
 import com.benboer.boluo.factory.persistence.Account;
 import com.benboer.boluo.factory.presenter.account.LoginContract;
 import com.benboer.boluo.factory.presenter.account.LoginPresenter;
@@ -24,8 +29,6 @@ import butterknife.OnClick;
  */
 public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
             implements LoginContract.View{
-
-    private AccountTrigger mAccountTrigger;
 
     @BindView(R.id.edit_phone)
     EditText mPhone;
@@ -48,21 +51,17 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
 
     @OnClick(R.id.txt_go_register)
     void onShowRegisterClick() {
-        // 让AccountActivity进行界面切换
-        mAccountTrigger.triggerView();
+        getSupportDelegate().startWithPop(new RegisterFragment());
     }
 
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        // Activity的引用
-        mAccountTrigger = (AccountTrigger) context;
+    public Object setLayout() {
+        return R.layout.fragment_login;
     }
 
     @Override
-    protected void initWidget(View root) {
-        super.initWidget(root);
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
         mPhone.setText(Account.getAccount());
     }
 
@@ -72,13 +71,7 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
     }
 
     @Override
-    protected int getContentLayoutId() {
-        return R.layout.fragment_login;
-    }
-
-    @Override
     public void loginSuccess() {
-        MainActivity.show(getContext());
-        getActivity().finish();
+        getSupportDelegate().startWithPop(new BottomFragment());
     }
 }

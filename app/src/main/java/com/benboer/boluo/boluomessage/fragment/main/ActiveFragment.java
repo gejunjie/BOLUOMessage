@@ -1,18 +1,23 @@
 package com.benboer.boluo.boluomessage.fragment.main;
 
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.activity.MessageActivity;
-import com.benboer.boluo.common.app.PresenterFragment;
-import com.benboer.boluo.common.widget.EmptyView;
-import com.benboer.boluo.common.widget.PortraitView;
-import com.benboer.boluo.common.widget.recycler.RecyclerAdapter;
+import com.benboer.boluo.core.app.BoLuo;
+import com.benboer.boluo.core.fragment.PresenterFragment;
+import com.benboer.boluo.core.fragment.bottom.BottomItemFragment;
+import com.benboer.boluo.widget.EmptyView;
+import com.benboer.boluo.widget.PortraitView;
+import com.benboer.boluo.widget.recycler.RecyclerAdapter;
 import com.benboer.boluo.factory.model.db.Session;
 import com.benboer.boluo.factory.presenter.message.SessionContract;
 import com.benboer.boluo.factory.presenter.message.SessionPresenter;
@@ -43,25 +48,12 @@ public class ActiveFragment extends PresenterFragment<SessionContract.Presenter>
     }
 
     @Override
-    protected void onFirstInit() {
-        super.onFirstInit();
-        mPresenter.start();
-    }
-
-    @Override
-    protected SessionContract.Presenter initPresenter() {
-        return new SessionPresenter(this);
-    }
-
-    @Override
-    protected int getContentLayoutId() {
+    public Object setLayout() {
         return R.layout.fragment_active;
     }
 
     @Override
-    protected void initWidget(View root) {
-        super.initWidget(root);
-
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycler.setAdapter(mAdapter = new RecyclerAdapter<Session>() {
             @Override
@@ -80,20 +72,68 @@ public class ActiveFragment extends PresenterFragment<SessionContract.Presenter>
             @Override
             public void onItemClick(RecyclerAdapter.ViewHolder holder, Session session) {
                 // 跳转到聊天界面
-                MessageActivity.show(getContext(), session);
+//                MessageActivity.show(getContext(), session);
             }
         });
 
         // 初始化占位布局
         mEmptyView.bind(mRecycler);
         setPlaceHolderView(mEmptyView);
-
     }
 
+    @Override
+    protected void onFirstInit() {
+        super.onFirstInit();
+        mPresenter.start();
+    }
+
+    @Override
+    protected SessionContract.Presenter initPresenter() {
+        return new SessionPresenter(this);
+    }
+
+//    @Override
+//    protected int getContentLayoutId() {
+//        return R.layout.fragment_active;
+//    }
+
+//    @Override
+//    protected void initWidget(View root) {
+//        super.initWidget(root);
+//
+//        mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+//        mRecycler.setAdapter(mAdapter = new RecyclerAdapter<Session>() {
+//            @Override
+//            protected int getItemViewType(int position, Session session) {
+//                return R.layout.cell_chat_list;
+//            }
+//
+//            @Override
+//            protected ViewHolder<Session> onCreateViewHolder(View root, int viewType) {
+//                return new ActiveFragment.ViewHolder(root);
+//            }
+//        });
+//
+//        // 点击事件监听
+//        mAdapter.setAdapterListener(new RecyclerAdapter.AdapterListenerImpl<Session>() {
+//            @Override
+//            public void onItemClick(RecyclerAdapter.ViewHolder holder, Session session) {
+//                // 跳转到聊天界面
+////                MessageActivity.show(getContext(), session);
+//            }
+//        });
+//
+//        // 初始化占位布局
+//        mEmptyView.bind(mRecycler);
+//        setPlaceHolderView(mEmptyView);
+//
+//    }
+//
     @Override
     public RecyclerAdapter<Session> getRecyclerAdapter() {
         return mAdapter;
     }
+
 
     @Override
     public void onAdapterDataChanged() {
@@ -125,5 +165,20 @@ public class ActiveFragment extends PresenterFragment<SessionContract.Presenter>
             mTime.setText( session.getModifyAt() == null ?
                     "" : DateTimeUtil.getSampleDate(session.getModifyAt()));
         }
+    }
+
+    // 再点一次退出程序时间设置
+    private static final long WAIT_TIME = 2000L;
+    private long TOUCH_TIME = 0;
+
+    @Override
+    public boolean onBackPressedSupport() {
+        if (System.currentTimeMillis() - TOUCH_TIME < WAIT_TIME) {
+            mActivity.finish();
+        } else {
+            TOUCH_TIME = System.currentTimeMillis();
+            Toast.makeText(mActivity, "双击退出" + BoLuo.getApplicationContext().getString(com.benboer.boluo.core.R.string.app_name), Toast.LENGTH_SHORT).show();
+        }
+        return true;
     }
 }

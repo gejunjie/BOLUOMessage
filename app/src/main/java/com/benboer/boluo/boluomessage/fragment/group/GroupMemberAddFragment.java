@@ -20,8 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.fragment.media.GalleryFragment;
-import com.benboer.boluo.common.widget.PortraitView;
-import com.benboer.boluo.common.widget.recycler.RecyclerAdapter;
+import com.benboer.boluo.widget.PortraitView;
+import com.benboer.boluo.widget.recycler.RecyclerAdapter;
 import com.benboer.boluo.factory.presenter.group.GroupCreateContract;
 import com.benboer.boluo.factory.presenter.group.GroupMemberAddContract;
 import com.benboer.boluo.factory.presenter.group.GroupMemberAddPresenter;

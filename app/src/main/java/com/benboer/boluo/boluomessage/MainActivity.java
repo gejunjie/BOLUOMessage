@@ -4,11 +4,12 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
+import com.benboer.boluo.boluomessage.fragment.account.LoginFragment;
+import com.benboer.boluo.boluomessage.fragment.main.BottomFragment;
 import com.benboer.boluo.core.activity.ProxyActivity;
 import com.benboer.boluo.core.app.BoLuo;
 import com.benboer.boluo.core.fragment.SupportFragment;
 import com.benboer.boluo.factory.fragment.launcher.LauncherFragment;
-import com.benboer.boluo.factory.main.TestFragment;
 import com.benboer.boluo.ui.launcher.ILauncherListener;
 
 /**
@@ -31,10 +32,10 @@ public class MainActivity extends ProxyActivity implements ILauncherListener {
     public void onLauncherFinish(int launcherTag) {
         switch (launcherTag){
             case SINGED:
-                getSupportDelegate().startWithPop(new TestFragment());
+                getSupportDelegate().startWithPop(new BottomFragment());
                 break;
             case NOT_SINGED:
-                getSupportDelegate().startWithPop(new TestFragment());
+                getSupportDelegate().startWithPop(new LoginFragment());
                 break;
             default:
                 break;

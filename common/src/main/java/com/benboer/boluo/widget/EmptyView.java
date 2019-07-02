@@ -1,4 +1,4 @@
-package com.benboer.boluo.common.widget;
+package com.benboer.boluo.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -12,7 +12,7 @@ import androidx.annotation.StringRes;
 
 import com.benboer.boluo.common.R;
 import com.benboer.boluo.common.app.Application;
-import com.benboer.boluo.common.widget.convention.PlaceHolderView;
+import com.benboer.boluo.widget.convention.PlaceHolderView;
 
 import net.qiujuer.genius.ui.widget.Loading;
 

@@ -14,6 +14,7 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 
 import com.benboer.boluo.core.R;
 import com.benboer.boluo.core.fragment.BaseFragment;
+import com.benboer.boluo.core.fragment.SupportFragment;
 import com.joanzapata.iconify.widget.IconTextView;
 
 import java.util.ArrayList;
@@ -25,12 +26,12 @@ import me.yokeyword.fragmentation.ISupportFragment;
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/1.
  */
-public abstract class BaseBottomFragment extends BaseFragment implements View.OnClickListener {
+public abstract class BaseBottomFragment extends SupportFragment implements View.OnClickListener {
 
 
     private final ArrayList<BottomTabBean> TAB_BEANS = new ArrayList<>();
-    private final ArrayList<BottomItemFragment> ITEM_FRAGMENTS = new ArrayList<>();
-    private final LinkedHashMap<BottomTabBean, BottomItemFragment> ITEMS = new LinkedHashMap<>();
+    private final ArrayList<SupportFragment> ITEM_FRAGMENTS = new ArrayList<>();
+    private final LinkedHashMap<BottomTabBean, SupportFragment> ITEMS = new LinkedHashMap<>();
 
     private int mCurrentFragment = 0;
     private int mIndexFragment = 0;
@@ -42,11 +43,11 @@ public abstract class BaseBottomFragment extends BaseFragment implements View.On
         return R.layout.fragment_bottom;
     }
 
-    public ArrayList<BottomItemFragment> getItemFragments() {
+    public ArrayList<SupportFragment> getItemFragments() {
         return ITEM_FRAGMENTS;
     }
 
-    public abstract LinkedHashMap<BottomTabBean, BottomItemFragment> setItems(BottomItemBuilder builder);
+    public abstract LinkedHashMap<BottomTabBean, SupportFragment> setItems(BottomItemBuilder builder);
 
     public abstract int setIndexFragment();
 
@@ -62,11 +63,11 @@ public abstract class BaseBottomFragment extends BaseFragment implements View.On
         }
 
         final BottomItemBuilder builder = BottomItemBuilder.builder();
-        final LinkedHashMap<BottomTabBean, BottomItemFragment> items = setItems(builder);
+        final LinkedHashMap<BottomTabBean, SupportFragment> items = setItems(builder);
         ITEMS.putAll(items);
-        for (Map.Entry<BottomTabBean, BottomItemFragment> item : ITEMS.entrySet()) {
+        for (Map.Entry<BottomTabBean, SupportFragment> item : ITEMS.entrySet()) {
             final BottomTabBean key = item.getKey();
-            final BottomItemFragment value = item.getValue();
+            final SupportFragment value = item.getValue();
             TAB_BEANS.add(key);
             ITEM_FRAGMENTS.add(value);
         }

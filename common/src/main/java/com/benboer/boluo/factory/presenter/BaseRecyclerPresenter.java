@@ -2,7 +2,7 @@ package com.benboer.boluo.factory.presenter;
 
 import androidx.recyclerview.widget.DiffUtil;
 
-import com.benboer.boluo.common.widget.recycler.RecyclerAdapter;
+import com.benboer.boluo.widget.recycler.RecyclerAdapter;
 
 import net.qiujuer.genius.kit.handler.Run;
 

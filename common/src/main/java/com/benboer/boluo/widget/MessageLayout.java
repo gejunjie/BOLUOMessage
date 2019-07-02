@@ -1,4 +1,4 @@
-package com.benboer.boluo.common.widget;
+package com.benboer.boluo.widget;
 
 import android.annotation.TargetApi;
 import android.content.Context;

@@ -34,7 +34,7 @@
     </FrameLayout>
 
 
-    <com.benboer.boluo.common.widget.PortraitView
+    <com.benboer.boluo.widget.PortraitView
         android:id="@+id/im_portrait"
         android:layout_width="@dimen/portraitSize"
         android:layout_height="@dimen/portraitSize"

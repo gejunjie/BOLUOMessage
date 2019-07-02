@@ -1,18 +1,20 @@
 package com.benboer.boluo.boluomessage.fragment.main;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.MessageActivity;
-import com.benboer.boluo.common.app.PresenterFragment;
-import com.benboer.boluo.common.widget.EmptyView;
-import com.benboer.boluo.common.widget.PortraitView;
-import com.benboer.boluo.common.widget.recycler.RecyclerAdapter;
+import com.benboer.boluo.core.fragment.PresenterFragment;
+import com.benboer.boluo.widget.EmptyView;
+import com.benboer.boluo.widget.PortraitView;
+import com.benboer.boluo.widget.recycler.RecyclerAdapter;
 import com.benboer.boluo.factory.model.db.Group;
 import com.benboer.boluo.factory.presenter.group.GroupsContract;
 import com.benboer.boluo.factory.presenter.group.GroupsPresenter;
@@ -44,11 +46,6 @@ public class GroupFragment extends PresenterFragment<GroupsContract.Presenter>
     }
 
     @Override
-    protected int getContentLayoutId() {
-        return R.layout.fragment_group;
-    }
-
-    @Override
     public RecyclerAdapter<Group> getRecyclerAdapter() {
         return mAdapter;
     }
@@ -59,14 +56,12 @@ public class GroupFragment extends PresenterFragment<GroupsContract.Presenter>
     }
 
     @Override
-    protected void onFirstInit() {
-        super.onFirstInit();
-        mPresenter.start();
+    public Object setLayout() {
+        return R.layout.fragment_group;
     }
 
     @Override
-    protected void initWidget(View root) {
-        super.initWidget(root);
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
         mRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
         mRecycler.setAdapter(mAdapter = new RecyclerAdapter<Group>() {
             @Override
@@ -90,6 +85,12 @@ public class GroupFragment extends PresenterFragment<GroupsContract.Presenter>
 
         mEmptyView.bind(mRecycler);
         setPlaceHolderView(mEmptyView);
+    }
+
+    @Override
+    protected void onFirstInit() {
+        super.onFirstInit();
+        mPresenter.start();
     }
 
     class ViewHolder extends RecyclerAdapter.ViewHolder<Group>{

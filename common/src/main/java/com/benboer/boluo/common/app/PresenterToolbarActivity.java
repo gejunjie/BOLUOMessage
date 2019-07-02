@@ -1,5 +1,6 @@
 package com.benboer.boluo.common.app;
 
+
 import com.benboer.boluo.factory.presenter.BaseContract;
 
 /**

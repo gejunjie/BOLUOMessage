@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.benboer.boluo.common.widget.convention.PlaceHolderView;
+import com.benboer.boluo.widget.convention.PlaceHolderView;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

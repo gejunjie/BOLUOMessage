@@ -1,4 +1,4 @@
-package com.benboer.boluo.common.widget.convention;
+package com.benboer.boluo.widget.convention;
 
 import androidx.annotation.StringRes;
 

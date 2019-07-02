@@ -2,7 +2,8 @@ package com.benboer.boluo.factory.presenter;
 
 import androidx.annotation.StringRes;
 
-import com.benboer.boluo.common.widget.recycler.RecyclerAdapter;
+import com.benboer.boluo.widget.recycler.RecyclerAdapter;
+
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/6.

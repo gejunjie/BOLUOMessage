@@ -12,7 +12,7 @@ import com.benboer.boluo.boluomessage.activity.MainActivity;
 import com.benboer.boluo.boluomessage.fragment.media.GalleryFragment;
 import com.benboer.boluo.common.app.Application;
 import com.benboer.boluo.common.app.PresenterFragment;
-import com.benboer.boluo.common.widget.PortraitView;
+import com.benboer.boluo.widget.PortraitView;
 import com.benboer.boluo.factory.presenter.user.UpdateInfoContract;
 import com.benboer.boluo.factory.presenter.user.UpdateInfoPresenter;
 import com.bumptech.glide.Glide;
