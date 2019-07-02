@@ -1,16 +1,19 @@
 package com.benboer.boluo.boluomessage.fragment.search;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.PersonalActivity;
 import com.benboer.boluo.boluomessage.activity.SearchActivity;
-import com.benboer.boluo.common.app.PresenterFragment;
+import com.benboer.boluo.core.fragment.PresenterFragment;
 import com.benboer.boluo.widget.EmptyView;
 import com.benboer.boluo.widget.PortraitView;
 import com.benboer.boluo.widget.recycler.RecyclerAdapter;
@@ -53,8 +56,23 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
     }
 
     @Override
-    protected void initWidget(View root) {
-        super.initWidget(root);
+    protected SearchContract.Presenter initPresenter() {
+        return new SearchUserPresenter(this);
+    }
+
+    @Override
+    public void onSearchDone(List<UserCard> userCards) {
+        mAdapter.replace(userCards);
+        mPlaceHolderView.triggerOkOrEmpty(mAdapter.getItemCount() > 0);
+    }
+
+    @Override
+    public Object setLayout() {
+        return R.layout.fragment_search_user;
+    }
+
+    @Override
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycler.setAdapter(mAdapter = new RecyclerAdapter<UserCard>() {
             @Override
@@ -70,22 +88,6 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
         // 初始化占位布局
         mEmptyView.bind(mRecycler);
         setPlaceHolderView(mEmptyView);
-    }
-
-    @Override
-    protected SearchContract.Presenter initPresenter() {
-        return new SearchUserPresenter(this);
-    }
-
-    @Override
-    protected int getContentLayoutId() {
-        return R.layout.fragment_search_user;
-    }
-
-    @Override
-    public void onSearchDone(List<UserCard> userCards) {
-        mAdapter.replace(userCards);
-        mPlaceHolderView.triggerOkOrEmpty(mAdapter.getItemCount() > 0);
     }
 
     class ViewHolder extends RecyclerAdapter.ViewHolder<UserCard> implements FollowContract.View{

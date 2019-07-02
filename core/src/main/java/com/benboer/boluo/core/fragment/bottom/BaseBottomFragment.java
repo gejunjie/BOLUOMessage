@@ -33,7 +33,7 @@ public abstract class BaseBottomFragment extends SupportFragment implements View
     private final ArrayList<SupportFragment> ITEM_FRAGMENTS = new ArrayList<>();
     private final LinkedHashMap<BottomTabBean, SupportFragment> ITEMS = new LinkedHashMap<>();
 
-    private int mCurrentFragment = 0;
+    protected int mCurrentFragment = 0;
     private int mIndexFragment = 0;
     private int mClickedColor = Color.RED;
     private LinearLayoutCompat mBottomBar = null;
@@ -126,7 +126,8 @@ public abstract class BaseBottomFragment extends SupportFragment implements View
         final int tabIndex = (int) view.getTag();
         if (tabIndex != mCurrentFragment) {
             changeColor(tabIndex);
-            getSupportDelegate().showHideFragment(ITEM_FRAGMENTS.get(tabIndex), ITEM_FRAGMENTS.get(mCurrentFragment));
+            getSupportDelegate().showHideFragment(ITEM_FRAGMENTS.get(tabIndex),
+                    ITEM_FRAGMENTS.get(mCurrentFragment));
             //注意先后顺序
             mCurrentFragment = tabIndex;
         }

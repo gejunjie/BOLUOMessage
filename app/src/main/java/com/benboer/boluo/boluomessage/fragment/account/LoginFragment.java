@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.MainActivity;
 import com.benboer.boluo.boluomessage.fragment.main.BottomFragment;
+import com.benboer.boluo.core.app.AccountManager;
 import com.benboer.boluo.core.fragment.PresenterFragment;
 import com.benboer.boluo.factory.persistence.Account;
 import com.benboer.boluo.factory.presenter.account.LoginContract;
@@ -72,6 +73,7 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
 
     @Override
     public void loginSuccess() {
+        AccountManager.setSignState(true);
         getSupportDelegate().startWithPop(new BottomFragment());
     }
 }

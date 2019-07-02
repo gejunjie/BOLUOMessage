@@ -1,16 +1,19 @@
 package com.benboer.boluo.boluomessage.fragment.search;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.PersonalActivity;
 import com.benboer.boluo.boluomessage.activity.SearchActivity;
-import com.benboer.boluo.common.app.PresenterFragment;
+import com.benboer.boluo.core.fragment.PresenterFragment;
 import com.benboer.boluo.widget.EmptyView;
 import com.benboer.boluo.widget.PortraitView;
 import com.benboer.boluo.widget.recycler.RecyclerAdapter;
@@ -48,14 +51,20 @@ public class SearchGroupFragment extends PresenterFragment<SearchContract.Presen
     }
 
     @Override
-    protected int getContentLayoutId() {
+    public void onSearchDone(List<GroupCard> groupCards) {
+
+        mAdapter.replace(groupCards);
+
+        mPlaceHolderView.triggerOkOrEmpty(mAdapter.getItemCount() > 0);
+    }
+
+    @Override
+    public Object setLayout() {
         return R.layout.fragment_group;
     }
 
     @Override
-    protected void initWidget(View root) {
-        super.initWidget(root);
-
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycler.setAdapter(mAdapter = new RecyclerAdapter<GroupCard>() {
             @Override
@@ -71,14 +80,6 @@ public class SearchGroupFragment extends PresenterFragment<SearchContract.Presen
 
         mEmptyView.bind(mRecycler);
         setPlaceHolderView(mEmptyView);
-    }
-
-    @Override
-    public void onSearchDone(List<GroupCard> groupCards) {
-
-        mAdapter.replace(groupCards);
-
-        mPlaceHolderView.triggerOkOrEmpty(mAdapter.getItemCount() > 0);
     }
 
     class ViewHolder extends RecyclerAdapter.ViewHolder<GroupCard>{
