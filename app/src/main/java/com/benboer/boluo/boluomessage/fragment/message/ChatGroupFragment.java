@@ -1,6 +1,8 @@
 package com.benboer.boluo.boluomessage.fragment.message;
 
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +18,7 @@ import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.GroupMemberActivity;
 import com.benboer.boluo.boluomessage.activity.PersonalActivity;
 import com.benboer.boluo.factory.model.db.Group;
+import com.benboer.boluo.factory.model.db.Session;
 import com.benboer.boluo.factory.model.db.view.MemberUserModel;
 import com.benboer.boluo.factory.presenter.message.ChatContract;
 import com.benboer.boluo.factory.presenter.message.ChatGroupPresenter;
@@ -50,6 +53,34 @@ public class ChatGroupFragment extends ChatFragment<Group>
         // Required empty public constructor
     }
 
+    /**
+     * 发起群聊天
+     *
+     * @param group   群的Model
+     */
+    public static ChatGroupFragment newInstance(Group group) {
+        if (group == null || TextUtils.isEmpty(group.getId())) return null;
+        final Bundle args = new Bundle();
+        args.putString(ARG_RECEIVER_ID, group.getId());
+        final ChatGroupFragment fragment = new ChatGroupFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    /**
+     * 通过Session发起聊天
+     *
+     * @param session Session
+     */
+    public static ChatGroupFragment newInstance(Session session) {
+        if (session == null || TextUtils.isEmpty(session.getId())) return null;
+        final Bundle args = new Bundle();
+        args.putString(ARG_RECEIVER_ID, session.getId());
+        final ChatGroupFragment fragment = new ChatGroupFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     protected int getHeaderLayoutId() {
         return R.layout.lay_chat_header_group;
@@ -61,10 +92,9 @@ public class ChatGroupFragment extends ChatFragment<Group>
     }
 
     @Override
-    protected void initWidget(View root) {
-        super.initWidget(root);
-
-        Glide.with(this)
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
+        super.onBindView(savedInstanceState, root);
+                Glide.with(this)
                 .load(R.drawable.default_banner_group)
                 .centerCrop()
                 .into(new CustomViewTarget<CollapsingToolbarLayout, Drawable>(mCollapsingLayout) {
@@ -83,8 +113,6 @@ public class ChatGroupFragment extends ChatFragment<Group>
 
                     }
                 });
-
-
     }
 
     // 进行高度的综合运算，透明我们的头像和Icon

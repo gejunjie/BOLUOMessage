@@ -5,6 +5,7 @@ import com.benboer.boluo.common.app.Application;
 import com.benboer.boluo.core.app.BoLuo;
 import com.benboer.boluo.factory.Factory;
 import com.igexin.sdk.PushManager;
+import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/3/28.
@@ -21,7 +22,8 @@ public class App extends Application {
         PushManager.getInstance().initialize(getApplicationContext(),null);
         PushManager.getInstance().registerPushIntentService(getApplicationContext(), PushIntentService.class);
         BoLuo.init(this)
-            .configure();
+                .withIcon(new FontAwesomeModule())
+                .configure();
 
     }
 

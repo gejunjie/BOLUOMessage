@@ -1,27 +1,35 @@
 package com.benboer.boluo.boluomessage.fragment.search;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.PersonalActivity;
-import com.benboer.boluo.boluomessage.activity.SearchActivity;
 import com.benboer.boluo.core.fragment.PresenterFragment;
-import com.benboer.boluo.widget.EmptyView;
-import com.benboer.boluo.widget.PortraitView;
-import com.benboer.boluo.widget.recycler.RecyclerAdapter;
 import com.benboer.boluo.factory.model.card.UserCard;
 import com.benboer.boluo.factory.presenter.contact.FollowContract;
 import com.benboer.boluo.factory.presenter.contact.FollowPresenter;
 import com.benboer.boluo.factory.presenter.search.SearchContract;
 import com.benboer.boluo.factory.presenter.search.SearchUserPresenter;
+import com.benboer.boluo.widget.EmptyView;
+import com.benboer.boluo.widget.PortraitView;
+import com.benboer.boluo.widget.recycler.RecyclerAdapter;
 import com.bumptech.glide.Glide;
 
 import net.qiujuer.genius.ui.Ui;
@@ -34,13 +42,15 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+import static com.benboer.boluo.factory.data.helper.UserHelper.search;
+
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/20.
  *
  * 搜索用户的Fragment
  */
 public class SearchUserFragment extends PresenterFragment<SearchContract.Presenter>
-        implements SearchContract.UserView, SearchActivity.SearchCallback {
+        implements SearchContract.UserView{
 
     @BindView(R.id.empty)
     EmptyView mEmptyView;
@@ -48,12 +58,10 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
     @BindView(R.id.recycler)
     RecyclerView mRecycler;
 
-    private RecyclerAdapter<UserCard> mAdapter;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
-    @Override
-    public void search(String content) {
-        mPresenter.onSearch(content);
-    }
+    private RecyclerAdapter<UserCard> mAdapter;
 
     @Override
     protected SearchContract.Presenter initPresenter() {
@@ -73,6 +81,11 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
+
+        //让onCreateOptionsMenu方法被调用
+        ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
+        setHasOptionsMenu(true);
+
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycler.setAdapter(mAdapter = new RecyclerAdapter<UserCard>() {
             @Override
@@ -89,6 +102,33 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
         mEmptyView.bind(mRecycler);
         setPlaceHolderView(mEmptyView);
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.search, menu);
+
+        MenuItem item = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) item.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String content) {
+                mPresenter.onSearch(content);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String content) {
+                if (TextUtils.isEmpty(content)) {
+                    mPresenter.onSearch("");
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
 
     class ViewHolder extends RecyclerAdapter.ViewHolder<UserCard> implements FollowContract.View{
 

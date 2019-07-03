@@ -78,7 +78,6 @@ public class MessageActivity extends BaseActivity {
         return R.layout.activity_message;
     }
 
-
     @Override
     protected boolean initArgs(Bundle bundle) {
         mReceiverId = bundle.getString(KEY_RECEIVER_ID);

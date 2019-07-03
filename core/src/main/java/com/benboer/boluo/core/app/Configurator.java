@@ -2,7 +2,12 @@ package com.benboer.boluo.core.app;
 
 import android.app.Activity;
 
+import com.joanzapata.iconify.IconFontDescriptor;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import okhttp3.Interceptor;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/6/26.
@@ -12,6 +17,8 @@ import java.util.HashMap;
 public class Configurator {
 
     private static final HashMap<Object, Object> CONFIGS = new HashMap<>();
+    private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
+    private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 
     private Configurator() {
         CONFIGS.put(ConfigKeys.CONFIG_READY, false);
@@ -52,6 +59,12 @@ public class Configurator {
 
     public final Configurator withActivity(Activity activity) {
         CONFIGS.put(ConfigKeys.ACTIVITY, activity);
+        return this;
+    }
+
+    public final Configurator withIcon(IconFontDescriptor descriptor) {
+        ICONS.add(descriptor);
+        CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
         return this;
     }
 }

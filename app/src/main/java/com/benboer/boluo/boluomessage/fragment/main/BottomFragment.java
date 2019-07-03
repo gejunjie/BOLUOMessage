@@ -1,5 +1,6 @@
 package com.benboer.boluo.boluomessage.fragment.main;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -10,11 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.activity.SearchActivity;
+import com.benboer.boluo.boluomessage.activity.PersonalActivity;
+import com.benboer.boluo.boluomessage.activity.UserActivity;
+import com.benboer.boluo.boluomessage.fragment.PersonalFragment;
+import com.benboer.boluo.boluomessage.fragment.search.SearchGroupFragment;
+import com.benboer.boluo.boluomessage.fragment.search.SearchUserFragment;
+import com.benboer.boluo.boluomessage.fragment.user.UpdateInfoFragment;
 import com.benboer.boluo.core.fragment.SupportFragment;
 import com.benboer.boluo.core.fragment.bottom.BaseBottomFragment;
 import com.benboer.boluo.core.fragment.bottom.BottomItemBuilder;
 import com.benboer.boluo.core.fragment.bottom.BottomTabBean;
+import com.benboer.boluo.factory.persistence.Account;
 import com.benboer.boluo.widget.PortraitView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomViewTarget;
@@ -22,7 +29,6 @@ import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.appbar.AppBarLayout;
 
 import java.util.LinkedHashMap;
-import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -62,7 +68,22 @@ public class BottomFragment extends BaseBottomFragment {
 
     @OnClick(R.id.im_search)
     void onSearchMenuClick(){
-       
+        switch (mCurrentFragment){
+            case 1 : getSupportDelegate().start(new SearchGroupFragment());
+                break;
+            case 2 : getSupportDelegate().start(new SearchUserFragment());
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (!Account.isComplete()){
+            getSupportDelegate().start(new UpdateInfoFragment());
+        }
     }
 
     @Override
@@ -87,5 +108,11 @@ public class BottomFragment extends BaseBottomFragment {
 
                     }
                 });
+        mPortrait.setup(Glide.with(this), Account.getUser());
+    }
+
+    @OnClick(R.id.im_portrait)
+    void onPortraitClick() {
+        getSupportDelegate().start(PersonalFragment.newInstance(Account.getUserId()));
     }
 }

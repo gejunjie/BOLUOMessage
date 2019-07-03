@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.MessageActivity;
+import com.benboer.boluo.boluomessage.fragment.message.ChatGroupFragment;
 import com.benboer.boluo.core.fragment.PresenterFragment;
 import com.benboer.boluo.widget.EmptyView;
 import com.benboer.boluo.widget.PortraitView;
@@ -79,7 +80,7 @@ public class GroupFragment extends PresenterFragment<GroupsContract.Presenter>
             @Override
             public void onItemClick(RecyclerAdapter.ViewHolder holder, Group data) {
                 super.onItemClick(holder, data);
-                MessageActivity.show(getContext(), data);
+                getParentFragments().getSupportDelegate().start(ChatGroupFragment.newInstance(data));
             }
         });
 

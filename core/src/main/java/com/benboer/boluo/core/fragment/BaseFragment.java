@@ -49,6 +49,13 @@ public abstract class BaseFragment extends Fragment implements ISupportFragment 
      */
     public abstract void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root);
 
+    /**
+     * 在butterknife绑定view前需要先将<>stub</>标签解析出来
+     */
+    protected void setStubView(View rootView) {
+
+    }
+
     public <T extends View> T bind(@IdRes int viewId) {
         if (mRootView != null) {
             return mRootView.findViewById(viewId);
@@ -74,6 +81,7 @@ public abstract class BaseFragment extends Fragment implements ISupportFragment 
         } else {
             throw new ClassCastException("type of setLayout() must be int or View");
         }
+        setStubView(rootView);
         mRootUnBinder = ButterKnife.bind(this, rootView);
         mRootView = rootView;
         onBindView(savedInstanceState, rootView);

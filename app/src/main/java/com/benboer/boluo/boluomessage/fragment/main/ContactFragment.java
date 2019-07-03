@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.activity.MessageActivity;
 import com.benboer.boluo.boluomessage.activity.PersonalActivity;
+import com.benboer.boluo.boluomessage.fragment.message.ChatUserFragment;
 import com.benboer.boluo.core.fragment.PresenterFragment;
 import com.benboer.boluo.widget.EmptyView;
 import com.benboer.boluo.widget.PortraitView;
@@ -65,8 +65,8 @@ public class ContactFragment extends PresenterFragment<ContactContract.Presenter
 
         mAdapter.setAdapterListener(new RecyclerAdapter.AdapterListenerImpl<User>() {
             @Override
-            public void onItemClick(RecyclerAdapter.ViewHolder holder, User data) {
-                MessageActivity.show(getContext(), data);
+            public void onItemClick(RecyclerAdapter.ViewHolder holder, User user) {
+                getParentFragments().getSupportDelegate().start(ChatUserFragment.newInstance(user));
             }
         });
         // 初始化占位布局

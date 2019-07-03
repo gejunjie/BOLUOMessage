@@ -54,18 +54,18 @@ public class SearchActivity extends ToolbarActivity {
     protected void initWidget() {
         super.initWidget();
         Fragment fragment = null;
-        if (type == TYPE_USER){
-            SearchUserFragment userFragment = new SearchUserFragment();
-            fragment = userFragment;
-            mSearchCallback = userFragment;
-        }else if (type == TYPE_GROUP){
-            SearchGroupFragment groupFragment = new SearchGroupFragment();
-            fragment = groupFragment;
-            mSearchCallback = groupFragment;
-        }
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.lay_container, fragment)
-                .commit();
+//        if (type == TYPE_USER){
+//            SearchUserFragment userFragment = new SearchUserFragment();
+//            fragment = userFragment;
+//            mSearchCallback = userFragment;
+//        }else if (type == TYPE_GROUP){
+//            SearchGroupFragment groupFragment = new SearchGroupFragment();
+//            fragment = groupFragment;
+//            mSearchCallback = groupFragment;
+//        }
+//        getSupportFragmentManager().beginTransaction()
+//                .add(R.id.lay_container, fragment)
+//                .commit();
     }
 
     @Override
@@ -96,7 +96,8 @@ public class SearchActivity extends ToolbarActivity {
     }
 
     private void search(String query) {
-        if (mSearchCallback == null) return;
+        if (mSearchCallback == null)
+            return;
         mSearchCallback.search(query);
     }
 

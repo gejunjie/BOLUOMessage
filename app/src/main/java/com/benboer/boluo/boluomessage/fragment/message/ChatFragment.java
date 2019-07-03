@@ -1,17 +1,21 @@
 package com.benboer.boluo.boluomessage.fragment.message;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,7 +24,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.MessageActivity;
 import com.benboer.boluo.boluomessage.fragment.panel.PanelFragment;
-import com.benboer.boluo.common.app.PresenterFragment;
+import com.benboer.boluo.core.fragment.PresenterFragment;
+import com.benboer.boluo.factory.model.Author;
+import com.benboer.boluo.factory.model.db.Group;
+import com.benboer.boluo.factory.model.db.Session;
 import com.benboer.boluo.widget.PortraitView;
 import com.benboer.boluo.widget.adapter.TextWatcherAdapter;
 import com.benboer.boluo.widget.recycler.RecyclerAdapter;
@@ -58,6 +65,8 @@ public abstract class ChatFragment<InitModel>
     protected String mReceiverId;
     protected Adapter mAdapter;
 
+    public static final String ARG_RECEIVER_ID = "SESSION_ID";
+
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
@@ -88,27 +97,30 @@ public abstract class ChatFragment<InitModel>
     protected abstract int getHeaderLayoutId();
 
     @Override
-    protected void initArgs(Bundle bundle) {
-        super.initArgs(bundle);
-        mReceiverId = bundle.getString(MessageActivity.KEY_RECEIVER_ID);
-    }
-
-    @Override
-    protected final int getContentLayoutId() {
+    public Object setLayout() {
         return R.layout.fragment_chat_common;
     }
 
-
     @Override
-    protected void initWidget(View root) {
-        // 拿到占位布局
-        // 替换顶部布局一定需要发生在super之前
-        // 防止控件绑定异常
+    protected void setStubView(View root) {
         ViewStub stub = root.findViewById(R.id.view_stub_header);
         stub.setLayoutResource(getHeaderLayoutId());
         stub.inflate();
-        super.initWidget(root);
+    }
 
+
+    @Override
+    public void onAttach(Context context) {
+        final Bundle args = getArguments();
+        if (args != null) {
+            mReceiverId = args.getString(ARG_RECEIVER_ID);
+        }
+        super.onAttach(context);
+    }
+
+
+    @Override
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
         // 初始化面板操作
         mPanelBoss = (AirPanel.Boss) root.findViewById(R.id.lay_content);
         mPanelBoss.setup(new AirPanel.PanelListener() {
@@ -132,9 +144,8 @@ public abstract class ChatFragment<InitModel>
     }
 
     @Override
-    protected void initData() {
-        super.initData();
-        // 开始进行初始化操作
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mPresenter.start();
     }
 
@@ -145,7 +156,7 @@ public abstract class ChatFragment<InitModel>
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().finish();
+                getSupportDelegate().pop();
             }
         });
     }

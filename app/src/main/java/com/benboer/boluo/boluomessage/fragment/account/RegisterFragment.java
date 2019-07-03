@@ -1,6 +1,5 @@
 package com.benboer.boluo.boluomessage.fragment.account;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.activity.MainActivity;
 import com.benboer.boluo.boluomessage.fragment.main.BottomFragment;
 import com.benboer.boluo.core.fragment.PresenterFragment;
 import com.benboer.boluo.factory.presenter.account.RegisterContract;

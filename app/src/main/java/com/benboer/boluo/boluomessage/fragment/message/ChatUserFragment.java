@@ -1,6 +1,9 @@
 package com.benboer.boluo.boluomessage.fragment.message;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -10,6 +13,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.PersonalActivity;
+import com.benboer.boluo.factory.model.Author;
+import com.benboer.boluo.factory.model.db.Session;
 import com.benboer.boluo.widget.PortraitView;
 import com.benboer.boluo.factory.model.db.User;
 import com.benboer.boluo.factory.presenter.message.ChatContract;
@@ -35,15 +40,42 @@ public class ChatUserFragment extends ChatFragment<User> implements ChatContract
     public ChatUserFragment() {
     }
 
+    /**
+     * 通过Session发起聊天
+     *
+     * @param session Session
+     */
+    public static ChatUserFragment newInstance(Session session) {
+        if (session == null || TextUtils.isEmpty(session.getId())) return null;
+        final Bundle args = new Bundle();
+        args.putString(ARG_RECEIVER_ID, session.getId());
+        final ChatUserFragment fragment = new ChatUserFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    /**
+     * 显示人的聊天界面
+     *
+     * @param author  人的信息
+     */
+    public static ChatUserFragment newInstance(Author author) {
+        if (author == null || TextUtils.isEmpty(author.getId())) return null;
+        final Bundle args = new Bundle();
+        args.putString(ARG_RECEIVER_ID, author.getId());
+        final ChatUserFragment fragment = new ChatUserFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     protected int getHeaderLayoutId() {
         return R.layout.lay_chat_header_user;
     }
 
     @Override
-    protected void initWidget(View root) {
-        super.initWidget(root);
-
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
+        super.onBindView(savedInstanceState, root);
         Glide.with(this)
                 .load(R.drawable.default_banner_chat)
                 .centerCrop()
@@ -63,7 +95,6 @@ public class ChatUserFragment extends ChatFragment<User> implements ChatContract
 
                     }
                 });
-
     }
 
     @Override

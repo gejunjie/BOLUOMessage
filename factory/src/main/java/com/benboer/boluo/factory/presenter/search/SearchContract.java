@@ -10,6 +10,7 @@ import java.util.List;
  * Created by BenBoerBoluojiushiwo on 2019/5/20.
  */
 public interface SearchContract {
+
     interface Presenter extends BaseContract.Presenter{
         void onSearch(String content);
     }

@@ -1,12 +1,19 @@
 package com.benboer.boluo.boluomessage.fragment.search;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,19 +38,17 @@ import butterknife.OnClick;
  * Created by BenBoerBoluojiushiwo on 2019/5/21.
  */
 public class SearchGroupFragment extends PresenterFragment<SearchContract.Presenter>
-        implements SearchActivity.SearchCallback, SearchContract.GroupView {
+        implements SearchContract.GroupView {
     @BindView(R.id.empty)
     EmptyView mEmptyView;
 
     @BindView(R.id.recycler)
     RecyclerView mRecycler;
 
-    private RecyclerAdapter<GroupCard> mAdapter;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
-    @Override
-    public void search(String content) {
-        mPresenter.onSearch(content);
-    }
+    private RecyclerAdapter<GroupCard> mAdapter;
 
     @Override
     protected SearchContract.Presenter initPresenter() {
@@ -65,6 +70,10 @@ public class SearchGroupFragment extends PresenterFragment<SearchContract.Presen
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
+        //让onCreateOptionsMenu方法被调用
+        ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
+        setHasOptionsMenu(true);
+
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycler.setAdapter(mAdapter = new RecyclerAdapter<GroupCard>() {
             @Override
@@ -80,6 +89,32 @@ public class SearchGroupFragment extends PresenterFragment<SearchContract.Presen
 
         mEmptyView.bind(mRecycler);
         setPlaceHolderView(mEmptyView);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.search, menu);
+
+        MenuItem item = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) item.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String content) {
+                mPresenter.onSearch(content);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String content) {
+                if (TextUtils.isEmpty(content)) {
+                    mPresenter.onSearch("");
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     class ViewHolder extends RecyclerAdapter.ViewHolder<GroupCard>{

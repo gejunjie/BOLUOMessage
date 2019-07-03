@@ -3,18 +3,22 @@ package com.benboer.boluo.boluomessage.fragment.user;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.benboer.boluo.boluomessage.App;
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.activity.MainActivity;
 import com.benboer.boluo.boluomessage.fragment.media.GalleryFragment;
 import com.benboer.boluo.common.app.Application;
-import com.benboer.boluo.common.app.PresenterFragment;
-import com.benboer.boluo.widget.PortraitView;
+import com.benboer.boluo.core.fragment.PresenterFragment;
 import com.benboer.boluo.factory.presenter.user.UpdateInfoContract;
 import com.benboer.boluo.factory.presenter.user.UpdateInfoPresenter;
+import com.benboer.boluo.widget.PortraitView;
 import com.bumptech.glide.Glide;
 import com.yalantis.ucrop.UCrop;
 
@@ -25,8 +29,6 @@ import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/3/28.
@@ -119,14 +121,10 @@ public class UpdateInfoFragment extends PresenterFragment<UpdateInfoContract.Pre
     }
 
     @Override
-    protected int getContentLayoutId() {
-        return R.layout.fragment_update_info;
-    }
-
-    @Override
     public void updateSucceed() {
-        MainActivity.show(getContext());
-        getActivity().finish();
+//        MainActivity.show(getContext());
+//        getActivity().finish();
+        getSupportDelegate().pop();
     }
 
     @Override
@@ -154,5 +152,15 @@ public class UpdateInfoFragment extends PresenterFragment<UpdateInfoContract.Pre
         mPortrait.setEnabled(true);
         mSex.setEnabled(true);
         mSubmit.setEnabled(true);
+    }
+
+    @Override
+    public Object setLayout() {
+        return R.layout.fragment_update_info;
+    }
+
+    @Override
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
+
     }
 }

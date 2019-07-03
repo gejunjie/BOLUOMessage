@@ -8,7 +8,7 @@ import com.benboer.boluo.widget.recycler.RecyclerAdapter;
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/6.
  *
- * MVP模式中公共的基本协议
+ * MVP模式中公共的基本契约
  */
 public interface BaseContract {
 
