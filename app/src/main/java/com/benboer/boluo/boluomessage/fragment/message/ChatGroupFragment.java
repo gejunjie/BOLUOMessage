@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.GroupMemberActivity;
 import com.benboer.boluo.boluomessage.activity.PersonalActivity;
+import com.benboer.boluo.boluomessage.fragment.PersonalFragment;
 import com.benboer.boluo.factory.model.db.Group;
 import com.benboer.boluo.factory.model.db.Session;
 import com.benboer.boluo.factory.model.db.view.MemberUserModel;
@@ -182,7 +183,7 @@ public class ChatGroupFragment extends ChatFragment<Group>
             p.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    PersonalActivity.show(getContext(), member.userId);
+                    getSupportDelegate().start(PersonalFragment.newInstance(member.userId));
                 }
             });
         }

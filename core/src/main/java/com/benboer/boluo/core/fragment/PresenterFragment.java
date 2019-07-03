@@ -37,6 +37,12 @@ public abstract class PresenterFragment<Presenter extends BaseContract.Presenter
         }
     }
 
+    protected void hideLoading() {
+        if (mPlaceHolderView != null) {
+            mPlaceHolderView.triggerOk();
+        }
+    }
+
     @Override
     public void setPresenter(Presenter presenter) {
         mPresenter = presenter;

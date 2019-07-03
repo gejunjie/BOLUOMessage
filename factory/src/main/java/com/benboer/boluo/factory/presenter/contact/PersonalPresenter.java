@@ -29,7 +29,9 @@ public class PersonalPresenter extends BasePresenter<PersonalContract.View>
             public void run() {
                 PersonalContract.View view = getView();
                 User user = UserHelper.searchFirstOfNet(view.getUserId());
-                onLoaded(view, user);
+                if (user != null){
+                    onLoaded(view, user);
+                }
             }
         });
 }

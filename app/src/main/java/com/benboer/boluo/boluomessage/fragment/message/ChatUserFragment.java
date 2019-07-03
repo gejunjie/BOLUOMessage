@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.PersonalActivity;
+import com.benboer.boluo.boluomessage.fragment.PersonalFragment;
 import com.benboer.boluo.factory.model.Author;
 import com.benboer.boluo.factory.model.db.Session;
 import com.benboer.boluo.widget.PortraitView;
@@ -168,7 +169,7 @@ public class ChatUserFragment extends ChatFragment<User> implements ChatContract
 
     @OnClick(R.id.im_portrait)
     void onPortraitClick() {
-        PersonalActivity.show(getContext(), mReceiverId);
+        getSupportDelegate().start(PersonalFragment.newInstance(mReceiverId));
     }
 
     @Override

@@ -96,13 +96,19 @@ public class PersonalFragment extends PresenterFragment<PersonalContract.Present
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mPresenter.start();
+    }
+
+    @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
 
     }
 
     @Override
     public String getUserId() {
-        return null;
+        return userId;
     }
 
     @SuppressLint("StringFormatMatches")
@@ -113,7 +119,7 @@ public class PersonalFragment extends PresenterFragment<PersonalContract.Present
         mDesc.setText(user.getDesc());
         mFollows.setText(String.format(getString(R.string.label_follows), user.getFollows()));
         mFollowing.setText(String.format(getString(R.string.label_following), user.getFollowing()));
-//        hideLoading();
+        hideLoading();
     }
 
     @Override
@@ -166,6 +172,6 @@ public class PersonalFragment extends PresenterFragment<PersonalContract.Present
         User user = mPresenter.getUserPersonal();
         if (user == null)
             return;
-        ChatUserFragment.newInstance(user);
+        getSupportDelegate().startWithPop(ChatUserFragment.newInstance(user));
     }
 }

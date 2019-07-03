@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.PersonalActivity;
+import com.benboer.boluo.boluomessage.fragment.PersonalFragment;
 import com.benboer.boluo.boluomessage.fragment.message.ChatUserFragment;
 import com.benboer.boluo.core.fragment.PresenterFragment;
 import com.benboer.boluo.widget.EmptyView;
@@ -120,8 +121,7 @@ public class ContactFragment extends PresenterFragment<ContactContract.Presenter
 
         @OnClick(R.id.im_portrait)
         void onPortraitClick() {
-            // 显示信息
-            PersonalActivity.show(getContext(), data.getId());
+            getParentFragments().getSupportDelegate().start(PersonalFragment.newInstance(data.getId()));
         }
     }
 }
