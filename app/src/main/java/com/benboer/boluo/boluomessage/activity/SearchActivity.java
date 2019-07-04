@@ -1,7 +1,5 @@
 package com.benboer.boluo.boluomessage.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -12,8 +10,6 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.fragment.search.SearchGroupFragment;
-import com.benboer.boluo.boluomessage.fragment.search.SearchUserFragment;
 import com.benboer.boluo.common.app.ToolbarActivity;
 
 

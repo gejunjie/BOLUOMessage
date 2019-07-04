@@ -1,7 +1,5 @@
 package com.benboer.boluo.boluomessage.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -11,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.fragment.group.GroupMemberAddFragment;
+import com.benboer.boluo.factory.fragment.group.GroupMemberAddFragment;
 import com.benboer.boluo.common.app.PresenterToolbarActivity;
 import com.benboer.boluo.widget.PortraitView;
 import com.benboer.boluo.widget.recycler.RecyclerAdapter;

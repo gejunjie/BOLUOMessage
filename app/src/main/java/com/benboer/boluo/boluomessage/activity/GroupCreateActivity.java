@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.fragment.media.GalleryFragment;
+import com.benboer.boluo.factory.fragment.media.GalleryFragment;
 import com.benboer.boluo.common.app.Application;
 import com.benboer.boluo.common.app.PresenterToolbarActivity;
 import com.benboer.boluo.widget.PortraitView;
@@ -61,7 +61,7 @@ public class GroupCreateActivity extends PresenterToolbarActivity<GroupCreateCon
 
     @Override
     protected int getContentLayoutId() {
-        return R.layout.activity_group_create;
+        return R.layout.fragment_group_create;
     }
 
     @Override

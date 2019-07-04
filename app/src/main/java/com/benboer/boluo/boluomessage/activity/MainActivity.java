@@ -15,10 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.fragment.main.ActiveFragment;
-import com.benboer.boluo.boluomessage.fragment.main.ContactFragment;
-import com.benboer.boluo.boluomessage.fragment.main.GroupFragment;
-import com.benboer.boluo.boluomessage.fragment.main.HomeFragment;
 import com.benboer.boluo.boluomessage.tool.NavHelper;
 import com.benboer.boluo.common.app.BaseActivity;
 import com.benboer.boluo.widget.PortraitView;

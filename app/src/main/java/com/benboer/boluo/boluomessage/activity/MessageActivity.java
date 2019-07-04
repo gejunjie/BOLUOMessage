@@ -1,20 +1,14 @@
 package com.benboer.boluo.boluomessage.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 
 import androidx.fragment.app.Fragment;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.fragment.message.ChatGroupFragment;
-import com.benboer.boluo.boluomessage.fragment.message.ChatUserFragment;
+import com.benboer.boluo.factory.fragment.message.ChatGroupFragment;
+import com.benboer.boluo.factory.fragment.message.ChatUserFragment;
 import com.benboer.boluo.common.app.BaseActivity;
-import com.benboer.boluo.factory.model.Author;
-import com.benboer.boluo.factory.model.db.Group;
-import com.benboer.boluo.factory.model.db.Message;
-import com.benboer.boluo.factory.model.db.Session;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/22.

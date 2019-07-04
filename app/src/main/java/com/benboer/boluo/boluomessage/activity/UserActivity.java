@@ -1,13 +1,12 @@
 package com.benboer.boluo.boluomessage.activity;
 
-import android.content.Context;
 import android.content.Intent;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.fragment.user.UpdateInfoFragment;
+import com.benboer.boluo.factory.fragment.user.UpdateInfoFragment;
 import com.benboer.boluo.common.app.BaseActivity;
 
 /**

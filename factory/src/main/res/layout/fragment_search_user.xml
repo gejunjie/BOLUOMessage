@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.benboer.boluo.factory.fragment.search.SearchUserFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionBarWithStatusBarSize"
+        android:background="@color/colorPrimary"
+        android:paddingTop="@dimen/statusBarSize" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/len_2"
+            android:paddingTop="@dimen/len_2"
+            android:visibility="gone" />
+
+        <com.benboer.boluo.widget.EmptyView
+            android:id="@+id/empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
+
+
+
+</LinearLayout>

@@ -12,12 +12,10 @@ import android.view.View;
 
 import androidx.vectordrawable.graphics.drawable.ArgbEvaluator;
 
-import com.benboer.boluo.boluomessage.activity.AccountActivity;
 import com.benboer.boluo.boluomessage.activity.MainActivity;
 import com.benboer.boluo.boluomessage.fragment.assist.PermissionsFragment;
 import com.benboer.boluo.common.app.BaseActivity;
 import com.benboer.boluo.factory.persistence.Account;
-import com.igexin.sdk.PushManager;
 
 import net.qiujuer.genius.ui.compat.UiCompat;
 

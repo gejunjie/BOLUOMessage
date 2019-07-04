@@ -1,6 +1,5 @@
 package com.benboer.boluo.boluomessage.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
@@ -8,8 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.fragment.account.LoginFragment;
-import com.benboer.boluo.boluomessage.fragment.account.RegisterFragment;
+import com.benboer.boluo.factory.fragment.account.LoginFragment;
 import com.benboer.boluo.common.app.BaseActivity;
 import com.yalantis.ucrop.UCrop;
 

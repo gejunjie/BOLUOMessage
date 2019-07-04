@@ -1,8 +1,6 @@
 package com.benboer.boluo.boluomessage.activity;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -64,7 +62,7 @@ public class PersonalActivity extends PresenterToolbarActivity<PersonalContract.
 
     @Override
     protected int getContentLayoutId() {
-        return R.layout.activity_personal;
+        return R.layout.fragment_personal;
     }
 
     @Override
