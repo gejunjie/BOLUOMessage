@@ -1,6 +1,5 @@
 package com.benboer.boluo.boluomessage.fragment.message;
 
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,8 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.activity.PersonalActivity;
-import com.benboer.boluo.boluomessage.fragment.PersonalFragment;
+import com.benboer.boluo.boluomessage.fragment.user.PersonalFragment;
 import com.benboer.boluo.factory.model.Author;
 import com.benboer.boluo.factory.model.db.Session;
 import com.benboer.boluo.widget.PortraitView;

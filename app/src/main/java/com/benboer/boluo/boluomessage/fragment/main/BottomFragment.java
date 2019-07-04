@@ -11,9 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.activity.PersonalActivity;
-import com.benboer.boluo.boluomessage.activity.UserActivity;
-import com.benboer.boluo.boluomessage.fragment.PersonalFragment;
+import com.benboer.boluo.boluomessage.fragment.user.PersonalFragment;
 import com.benboer.boluo.boluomessage.fragment.search.SearchGroupFragment;
 import com.benboer.boluo.boluomessage.fragment.search.SearchUserFragment;
 import com.benboer.boluo.boluomessage.fragment.user.UpdateInfoFragment;

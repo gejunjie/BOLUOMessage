@@ -1,4 +1,4 @@
-package com.benboer.boluo.boluomessage.fragment;
+package com.benboer.boluo.boluomessage.fragment.user;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,11 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.activity.MessageActivity;
-import com.benboer.boluo.boluomessage.fragment.message.ChatGroupFragment;
 import com.benboer.boluo.boluomessage.fragment.message.ChatUserFragment;
 import com.benboer.boluo.core.fragment.PresenterFragment;
-import com.benboer.boluo.factory.model.db.Group;
 import com.benboer.boluo.factory.model.db.User;
 import com.benboer.boluo.factory.presenter.contact.PersonalContract;
 import com.benboer.boluo.factory.presenter.contact.PersonalPresenter;

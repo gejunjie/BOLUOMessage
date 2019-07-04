@@ -142,7 +142,7 @@ public class SearchGroupFragment extends PresenterFragment<SearchContract.Presen
         @OnClick(R.id.im_join)
         void onJoinClick() {
             // 进入创建者的个人界面
-            PersonalActivity.show(getContext(), data.getOwnerId());
+//            PersonalActivity.show(getContext(), data.getOwnerId());/
         }
     }
 }

@@ -56,7 +56,7 @@ public class GroupMemberAddFragment extends BottomSheetDialogFragment
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mCallback = (Callback) context;
+        mCallback = (Callback) getParentFragment();
     }
 
     @SuppressWarnings("NullableProblems")
@@ -164,7 +164,6 @@ public class GroupMemberAddFragment extends BottomSheetDialogFragment
         if (mCallback != null)
             mCallback.hideLoading();
     }
-
 
     private class Adapter extends RecyclerAdapter<GroupCreateContract.ViewModel> {
 

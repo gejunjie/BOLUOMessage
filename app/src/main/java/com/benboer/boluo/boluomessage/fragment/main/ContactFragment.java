@@ -10,8 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.activity.PersonalActivity;
-import com.benboer.boluo.boluomessage.fragment.PersonalFragment;
+import com.benboer.boluo.boluomessage.fragment.user.PersonalFragment;
 import com.benboer.boluo.boluomessage.fragment.message.ChatUserFragment;
 import com.benboer.boluo.core.fragment.PresenterFragment;
 import com.benboer.boluo.widget.EmptyView;

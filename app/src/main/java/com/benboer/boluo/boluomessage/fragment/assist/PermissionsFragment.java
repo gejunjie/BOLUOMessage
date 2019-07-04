@@ -118,7 +118,7 @@ public class PermissionsFragment extends BottomSheetDialogFragment
         if (Account.isLogin()) {
             MainActivity.show(getContext());
         } else {
-            AccountActivity.show(getContext());
+//            AccountActivity.show(getContext());
         }
         getActivity().finish();
     }

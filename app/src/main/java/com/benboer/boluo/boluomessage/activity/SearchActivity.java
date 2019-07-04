@@ -33,11 +33,11 @@ public class SearchActivity extends ToolbarActivity {
     private int type;
     private SearchCallback mSearchCallback;
 
-    public static void show(Context context, int type) {
-        Intent intent = new Intent(context, SearchActivity.class);
-        intent.putExtra(EXTRA_TYPE, type);
-        context.startActivity(intent);
-    }
+//    public static void show(Context context, int type) {
+//        Intent intent = new Intent(context, SearchActivity.class);
+//        intent.putExtra(EXTRA_TYPE, type);
+//        context.startActivity(intent);
+//    }
 
     @Override
     protected int getContentLayoutId() {

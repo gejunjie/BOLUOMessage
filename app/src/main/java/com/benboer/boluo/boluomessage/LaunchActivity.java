@@ -115,7 +115,7 @@ public class LaunchActivity extends BaseActivity {
             if (Account.isLogin()) {
                 MainActivity.show(this);
             } else {
-                AccountActivity.show(this);
+//                AccountActivity.show(this);
             }
             finish();
         }

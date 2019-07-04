@@ -149,7 +149,6 @@ public abstract class ChatFragment<InitModel>
         mPresenter.start();
     }
 
-    // 初始化Toolbar
     protected void initToolbar() {
         Toolbar toolbar = mToolbar;
         toolbar.setNavigationIcon(R.drawable.ic_back);

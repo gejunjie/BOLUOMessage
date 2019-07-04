@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.PersonalActivity;
+import com.benboer.boluo.boluomessage.fragment.user.PersonalFragment;
 import com.benboer.boluo.core.fragment.PresenterFragment;
 import com.benboer.boluo.factory.model.card.UserCard;
 import com.benboer.boluo.factory.presenter.contact.FollowContract;
@@ -152,7 +153,7 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
         @OnClick(R.id.im_portrait)
         void onPortraitClick() {
             // 显示信息
-            PersonalActivity.show(getContext(), data.getId());
+            getSupportDelegate().start(PersonalFragment.newInstance(data.getId()));
         }
 
         @OnClick(R.id.im_follow)

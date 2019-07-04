@@ -38,6 +38,6 @@ public class HomeFragment extends PresenterFragment<LogoutContract.Presenter>
 
     @Override
     public void logoutSuccess() {
-        AccountActivity.show(getActivity());
+//        AccountActivity.show(getActivity());
     }
 }

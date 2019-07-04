@@ -56,11 +56,11 @@ public class PersonalActivity extends PresenterToolbarActivity<PersonalContract.
     private MenuItem mFollowItem;
     private boolean mIsFollowUser = false;
 
-    public static void show(Context context, String userId) {
-        Intent intent = new Intent(context, PersonalActivity.class);
-        intent.putExtra(BOUND_KEY_ID, userId);
-        context.startActivity(intent);
-    }
+//    public static void show(Context context, String userId) {
+//        Intent intent = new Intent(context, PersonalActivity.class);
+//        intent.putExtra(BOUND_KEY_ID, userId);
+//        context.startActivity(intent);
+//    }
 
     @Override
     protected int getContentLayoutId() {
@@ -141,7 +141,7 @@ public class PersonalActivity extends PresenterToolbarActivity<PersonalContract.
         User user = mPresenter.getUserPersonal();
         if (user == null)
             return;
-        MessageActivity.show(this, user);
+//        MessageActivity.show(this, user);
     }
 
     /**

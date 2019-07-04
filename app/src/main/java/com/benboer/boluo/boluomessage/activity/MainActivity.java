@@ -80,7 +80,7 @@ public class MainActivity extends BaseActivity
         if (Account.isComplete()){
             return super.initArgs(bundle);
         }else{
-            UserActivity.show(this);
+//            UserActivity.show(this);
             return false;
         }
 
@@ -125,23 +125,23 @@ public class MainActivity extends BaseActivity
     void onSearchMenuClick(){
         int type = Objects.equals(mNavHelper.getCurrentTab().extra, R.string.title_group) ?
                 SearchActivity.TYPE_GROUP : SearchActivity.TYPE_USER;
-        SearchActivity.show(this, type);
+//        SearchActivity.show(this, type);
     }
 
     @OnClick(R.id.btn_action)
     void onActionClick(){
         if (Objects.equals(mNavHelper.getCurrentTab().extra, R.string.title_group)) {
-            GroupCreateActivity.show(this);
+//            GroupCreateActivity.show(this);
         } else {
             // 如果是其他，都打开添加用户的界面
-            SearchActivity.show(this, SearchActivity.TYPE_USER);
+//            SearchActivity.show(this, SearchActivity.TYPE_USER);
         }
     }
 
 
     @OnClick(R.id.im_portrait)
     void onPortraitClick() {
-        PersonalActivity.show(this, Account.getUserId());
+//        PersonalActivity.show(this, Account.getUserId());
     }
 
     @Override

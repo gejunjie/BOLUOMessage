@@ -38,24 +38,24 @@ public class GroupMemberActivity extends PresenterToolbarActivity<GroupMembersCo
     private String mGroupId;
     private boolean mIsAdmin;
     private RecyclerAdapter<MemberUserModel> mAdapter;
-
-    public static void show(Context context, String groupId) {
-        show(context, groupId, false);
-    }
-
-    public static void showAdmin(Context context, String groupId) {
-        show(context, groupId, true);
-    }
-
-    private static void show(Context context, String groupId, boolean isAdmin) {
-        if (TextUtils.isEmpty(groupId))
-            return;
-
-        Intent intent = new Intent(context, GroupMemberActivity.class);
-        intent.putExtra(KEY_GROUP_ID, groupId);
-        intent.putExtra(KEY_GROUP_ADMIN, isAdmin);
-        context.startActivity(intent);
-    }
+//
+//    public static void show(Context context, String groupId) {
+//        show(context, groupId, false);
+//    }
+//
+//    public static void showAdmin(Context context, String groupId) {
+//        show(context, groupId, true);
+//    }
+//
+//    private static void show(Context context, String groupId, boolean isAdmin) {
+//        if (TextUtils.isEmpty(groupId))
+//            return;
+//
+//        Intent intent = new Intent(context, GroupMemberActivity.class);
+//        intent.putExtra(KEY_GROUP_ID, groupId);
+//        intent.putExtra(KEY_GROUP_ADMIN, isAdmin);
+//        context.startActivity(intent);
+//    }
 
     @Override
     protected boolean initArgs(Bundle bundle) {
@@ -153,7 +153,7 @@ public class GroupMemberActivity extends PresenterToolbarActivity<GroupMembersCo
 
         @OnClick(R.id.im_portrait)
         void onPortraitClick() {
-            PersonalActivity.show(GroupMemberActivity.this, data.userId);
+//            PersonalActivity.show(GroupMemberActivity.this, data.userId);
         }
     }
 }

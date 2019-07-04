@@ -24,9 +24,9 @@ public class AccountActivity extends BaseActivity {
 
     private Uri resultUri;
 
-    public static void show(Context context){
-        context.startActivity(new Intent(context, AccountActivity.class));
-    }
+//    public static void show(Context context){
+//        context.startActivity(new Intent(context, AccountActivity.class));
+//    }
 
     @Override
     protected int getContentLayoutId() {

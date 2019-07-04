@@ -15,9 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
 import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.boluomessage.activity.GroupMemberActivity;
-import com.benboer.boluo.boluomessage.activity.PersonalActivity;
-import com.benboer.boluo.boluomessage.fragment.PersonalFragment;
+import com.benboer.boluo.boluomessage.fragment.user.PersonalFragment;
+import com.benboer.boluo.boluomessage.fragment.group.GroupMemberFragment;
 import com.benboer.boluo.factory.model.db.Group;
 import com.benboer.boluo.factory.model.db.Session;
 import com.benboer.boluo.factory.model.db.view.MemberUserModel;
@@ -25,8 +24,6 @@ import com.benboer.boluo.factory.presenter.message.ChatContract;
 import com.benboer.boluo.factory.presenter.message.ChatGroupPresenter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomViewTarget;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.target.ViewTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -51,7 +48,7 @@ public class ChatGroupFragment extends ChatFragment<Group>
     TextView mMemberMore;
 
     public ChatGroupFragment() {
-        // Required empty public constructor
+
     }
 
     /**
@@ -195,7 +192,8 @@ public class ChatGroupFragment extends ChatFragment<Group>
                 @Override
                 public void onClick(View v) {
                     // mReceiverId 就是群的Id
-                    GroupMemberActivity.show(getContext(), mReceiverId );
+                    getSupportDelegate().start(
+                            GroupMemberFragment.newInstance(mReceiverId, false));
                 }
             });
         } else {
@@ -213,7 +211,8 @@ public class ChatGroupFragment extends ChatFragment<Group>
                 public boolean onMenuItemClick(MenuItem item) {
                     if (item.getItemId() == R.id.action_add) {
                         // mReceiverId 就是群的Id
-                        GroupMemberActivity.showAdmin(getContext(), mReceiverId );
+                        getSupportDelegate().start(
+                                GroupMemberFragment.newInstance(mReceiverId, true));
                         return true;
                     }
                     return false;

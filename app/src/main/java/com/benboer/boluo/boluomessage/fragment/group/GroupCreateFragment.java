@@ -1,28 +1,29 @@
-package com.benboer.boluo.boluomessage.activity;
+package com.benboer.boluo.boluomessage.fragment.group;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.boluomessage.R;
+import com.benboer.boluo.boluomessage.activity.GroupCreateActivity;
 import com.benboer.boluo.boluomessage.fragment.media.GalleryFragment;
 import com.benboer.boluo.common.app.Application;
-import com.benboer.boluo.common.app.PresenterToolbarActivity;
-import com.benboer.boluo.widget.PortraitView;
-import com.benboer.boluo.widget.recycler.RecyclerAdapter;
+import com.benboer.boluo.core.fragment.PresenterFragment;
 import com.benboer.boluo.factory.presenter.group.GroupCreateContract;
 import com.benboer.boluo.factory.presenter.group.GroupCreatePresenter;
+import com.benboer.boluo.widget.PortraitView;
+import com.benboer.boluo.widget.recycler.RecyclerAdapter;
 import com.bumptech.glide.Glide;
 import com.yalantis.ucrop.UCrop;
 
@@ -35,14 +36,11 @@ import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
 /**
- * @ClassName: GroupCreateActivity
- * @Description: 群组创建界面
- * @Author:  BenBoerBoluojiushiwo
- * @CreateDate: 2019-06-09 13:04
- * @Version: 1.0
+ * Created by BenBoerBoluojiushiwo on 2019/7/4.
  */
-public class GroupCreateActivity extends PresenterToolbarActivity<GroupCreateContract.Presenter>
+public class GroupCreateFragment extends PresenterFragment<GroupCreateContract.Presenter>
         implements GroupCreateContract.View{
+
     @BindView(R.id.recycler)
     RecyclerView mRecycler;
     @BindView(R.id.edit_desc)
@@ -55,60 +53,43 @@ public class GroupCreateActivity extends PresenterToolbarActivity<GroupCreateCon
 
     private RecyclerAdapter<GroupCreateContract.ViewModel> mAdapter;
 
-//    public static void show(Context context){
-//        context.startActivity(new Intent(context, GroupCreateActivity.class));
-//    }
+    @Override
+    protected GroupCreateContract.Presenter initPresenter() {
+        return new GroupCreatePresenter(this);
+    }
 
     @Override
-    protected int getContentLayoutId() {
+    public Object setLayout() {
         return R.layout.activity_group_create;
     }
 
     @Override
-    protected void initData() {
-        super.initData();
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mPresenter.start();
     }
 
     @Override
-    protected void initWidget() {
-        super.initWidget();
-        setTitle("");
-        mRecycler.setLayoutManager(new LinearLayoutManager(this));
-        mRecycler.setAdapter(mAdapter = new Adapter());
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
+        mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecycler.setAdapter(mAdapter = new GroupCreateFragment.Adapter());
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.group_create, menu);
-        return super.onCreateOptionsMenu(menu);
+    public void onCreateSucceed() {
+        hideLoading();
+        Application.showToast(R.string.label_group_create_succeed);
+        pop();
     }
 
-    @OnClick(R.id.im_portrait)
-    void onPortraitClick() {
-        hideSoftKeyboard();
-        new GalleryFragment()
-                .setOnSelectedListener(new GalleryFragment.OnSelectedListener() {
-                    @Override
-                    public void onSelectedImage(String path) {
-                        UCrop.Options options = new UCrop.Options();
-                        // 设置图片处理的格式JPEG
-                        options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
-                        // 设置压缩后的图片精度
-                        options.setCompressionQuality(96);
+    @Override
+    public RecyclerAdapter<GroupCreateContract.ViewModel> getRecyclerAdapter() {
+        return mAdapter;
+    }
 
-                        // 得到头像的缓存地址
-                        File dPath = Application.getPortraitTmpFile();
-
-                        // 发起剪切
-                        UCrop.of(Uri.fromFile(new File(path)), Uri.fromFile(dPath))
-                                .withAspectRatio(1, 1) // 1比1比例
-                                .withMaxResultSize(520, 520) // 返回最大的尺寸
-                                .withOptions(options) // 相关参数
-                                .start(GroupCreateActivity.this);
-                    }
-                }).show(getSupportFragmentManager(), GalleryFragment.class.getName());
+    @Override
+    public void onAdapterDataChanged() {
+        hideLoading();
     }
 
     @Override
@@ -136,51 +117,40 @@ public class GroupCreateActivity extends PresenterToolbarActivity<GroupCreateCon
                 .into(mPortrait);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_create){
-            onCreateClick();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void onCreateClick() {
+    @OnClick(R.id.im_portrait)
+    void onPortraitClick() {
         hideSoftKeyboard();
-        String name = mName.getText().toString().trim();
-        String desc = mDesc.getText().toString().trim();
-        mPresenter.create(name, desc, mPortraitPath);
+        new GalleryFragment()
+                .setOnSelectedListener(new GalleryFragment.OnSelectedListener() {
+                    @Override
+                    public void onSelectedImage(String path) {
+                        UCrop.Options options = new UCrop.Options();
+                        // 设置图片处理的格式JPEG
+                        options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
+                        // 设置压缩后的图片精度
+                        options.setCompressionQuality(96);
+
+                        // 得到头像的缓存地址
+                        File dPath = Application.getPortraitTmpFile();
+
+                        // 发起剪切
+                        UCrop.of(Uri.fromFile(new File(path)), Uri.fromFile(dPath))
+                                .withAspectRatio(1, 1) // 1比1比例
+                                .withMaxResultSize(520, 520) // 返回最大的尺寸
+                                .withOptions(options) // 相关参数
+                                .start(getProxyActivity());
+                    }
+                }).show(getFragmentManager(), GalleryFragment.class.getName());
     }
 
     // 隐藏软件盘
     private void hideSoftKeyboard() {
         // 当前焦点的View
-        View view = getCurrentFocus();
+        View view = getActivity().getCurrentFocus();
         if (view == null) return;
 
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
-
-    @Override
-    protected GroupCreateContract.Presenter initPresenter() {
-        return new GroupCreatePresenter(this);
-    }
-
-    @Override
-    public void onCreateSucceed() {
-        hideLoading();
-        Application.showToast(R.string.label_group_create_succeed);
-        finish();
-    }
-
-    @Override
-    public RecyclerAdapter<GroupCreateContract.ViewModel> getRecyclerAdapter() {
-        return mAdapter;
-    }
-
-    @Override
-    public void onAdapterDataChanged() {
-        hideLoading();
     }
 
     private class Adapter extends RecyclerAdapter<GroupCreateContract.ViewModel>{
@@ -192,7 +162,7 @@ public class GroupCreateActivity extends PresenterToolbarActivity<GroupCreateCon
 
         @Override
         protected ViewHolder<GroupCreateContract.ViewModel> onCreateViewHolder(View root, int viewType) {
-            return new GroupCreateActivity.ViewHolder(root);
+            return new GroupCreateFragment.ViewHolder(root);
         }
     }
 
@@ -216,7 +186,7 @@ public class GroupCreateActivity extends PresenterToolbarActivity<GroupCreateCon
 
         @Override
         protected void onBind(GroupCreateContract.ViewModel viewModel) {
-            mPortrait.setup(Glide.with(GroupCreateActivity.this), viewModel.author);
+            mPortrait.setup(Glide.with(GroupCreateFragment.this), viewModel.author);
             mName.setText(viewModel.author.getName());
             mSelect.setChecked(viewModel.isSelected);
         }

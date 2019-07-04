@@ -24,10 +24,10 @@ public class UserActivity extends BaseActivity {
     protected int getContentLayoutId() {
         return R.layout.activity_user;
     }
-
-    public static void show(Context context) {
-        context.startActivity(new Intent(context, UserActivity.class));
-    }
+//
+//    public static void show(Context context) {
+//        context.startActivity(new Intent(context, UserActivity.class));
+//    }
 
     @Override
     protected void initWidget() {
