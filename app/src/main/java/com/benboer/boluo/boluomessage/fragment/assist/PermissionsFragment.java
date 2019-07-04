@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.boluomessage.activity.MainActivity;
-import com.benboer.boluo.factory.persistence.Account;
+import com.benboer.boluo.message.persistence.Account;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.List;
@@ -114,7 +114,7 @@ public class PermissionsFragment extends BottomSheetDialogFragment
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
         if (Account.isLogin()) {
-            MainActivity.show(getContext());
+//            MainActivity.show(getContext());
         } else {
 //            AccountActivity.show(getContext());
         }

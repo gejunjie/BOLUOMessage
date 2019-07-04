@@ -4,12 +4,12 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import com.benboer.boluo.factory.fragment.account.LoginFragment;
-import com.benboer.boluo.factory.fragment.main.BottomFragment;
+import com.benboer.boluo.message.fragment.account.LoginFragment;
+import com.benboer.boluo.message.fragment.main.BottomFragment;
 import com.benboer.boluo.core.activity.ProxyActivity;
 import com.benboer.boluo.core.app.BoLuo;
 import com.benboer.boluo.core.fragment.SupportFragment;
-import com.benboer.boluo.factory.fragment.launcher.LauncherFragment;
+import com.benboer.boluo.message.fragment.launcher.LauncherFragment;
 import com.benboer.boluo.ui.launcher.ILauncherListener;
 
 /**

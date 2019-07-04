@@ -57,27 +57,9 @@
             <!--android:screenOrientation="portrait"-->
             <!--android:theme="@style/AppTheme.Main" />-->
         <activity
-            android:name=".activity.AccountActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Account" />
-        <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".activity.PersonalActivity"
-            android:label="@string/title_activity_personal"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.TransStatusBar" />
-        <activity android:name=".activity.UserActivity" />
-        <activity android:name=".activity.SearchActivity" />
-        <activity android:name=".activity.MessageActivity" />
-        <activity android:name=".activity.GroupCreateActivity"/>
-        <activity
-            android:name=".activity.GroupMemberActivity"
-            android:label="@string/title_member_list"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.TransStatusBar" />
     </application>
 
 

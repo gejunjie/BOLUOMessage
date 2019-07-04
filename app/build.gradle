@@ -62,7 +62,7 @@ dependencies {
 
 
     implementation project(':common')
-    implementation project(':factory')
+    implementation project(':message')
     implementation project(':core')
     implementation project(path: ':ui')
 

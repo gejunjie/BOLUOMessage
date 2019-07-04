@@ -1,12 +1,11 @@
 package com.benboer.boluo.boluomessage;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 
-import com.benboer.boluo.factory.Factory;
-import com.benboer.boluo.factory.data.helper.AccountHelper;
-import com.benboer.boluo.factory.persistence.Account;
+import com.benboer.boluo.message.Factory;
+import com.benboer.boluo.message.data.helper.AccountHelper;
+import com.benboer.boluo.message.persistence.Account;
 import com.igexin.sdk.GTIntentService;
 import com.igexin.sdk.message.GTCmdMessage;
 import com.igexin.sdk.message.GTNotificationMessage;
