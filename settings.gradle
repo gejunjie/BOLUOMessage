@@ -1,1 +1,1 @@
-include ':app', ':common', ':message', ':core', ':ui'
+include ':app', ':message', ':core', ':ui', ':componentbase'

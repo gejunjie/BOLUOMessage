@@ -78,8 +78,6 @@ public class Factory {
         FlowManager.init(new FlowConfig.Builder(app())
                 .openDatabasesOnInit(true) // 数据库初始化的时候就开始打开
                 .build());
-//        FlowManager.init(app());
-//        FlowManager.init(new FlowConfig.Builder(app()).build());
         // 持久化的数据进行初始化
         Account.load(app());
     }

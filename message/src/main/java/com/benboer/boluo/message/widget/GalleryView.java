@@ -10,7 +10,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.benboer.boluo.common.R;
+import com.benboer.boluo.factory.R;
 import com.benboer.boluo.message.widget.recycler.RecyclerAdapter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;

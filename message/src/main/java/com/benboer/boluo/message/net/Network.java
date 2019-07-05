@@ -2,7 +2,7 @@ package com.benboer.boluo.message.net;
 
 import android.text.TextUtils;
 
-import com.benboer.boluo.core.Common;
+import com.benboer.boluo.core.app.BoLuo;
 import com.benboer.boluo.message.Factory;
 import com.benboer.boluo.message.persistence.Account;
 
@@ -15,6 +15,8 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.benboer.boluo.core.app.ConfigKeys.API_HOST;
+
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/5.
  */
@@ -23,6 +25,8 @@ public class Network {
     private static Network instance;
 
     private Retrofit retrofit;
+
+    private static final String URL = BoLuo.getConfiguration(API_HOST);
 
     static {
         instance = new Network();
@@ -57,7 +61,7 @@ public class Network {
 
         Retrofit.Builder builder = new Retrofit.Builder();
 
-        instance.retrofit = builder.baseUrl(Common.Constance.API_URL)
+        instance.retrofit = builder.baseUrl(URL)
                 // 设置client
                 .client(client)
                 // 设置Json解析器

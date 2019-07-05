@@ -18,7 +18,7 @@ import com.benboer.boluo.core.fragment.BaseFragment;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.message.widget.recycler.RecyclerAdapter;
 import com.benboer.boluo.core.util.ui.UiUtil;
-import com.benboer.boluo.face.Face;
+import com.benboer.boluo.message.widget.face.Face;
 import com.google.android.material.tabs.TabLayout;
 
 import net.qiujuer.genius.ui.Ui;

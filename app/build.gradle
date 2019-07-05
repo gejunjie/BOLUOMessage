@@ -61,7 +61,6 @@ dependencies {
     implementation "com.github.Raizlabs.DBFlow:dbflow:$rootProject.ext.dbflow_version"
 
 
-    implementation project(':common')
     implementation project(':message')
     implementation project(':core')
     implementation project(path: ':ui')

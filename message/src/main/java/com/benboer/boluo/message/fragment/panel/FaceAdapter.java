@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.message.widget.recycler.RecyclerAdapter;
-import com.benboer.boluo.face.Face;
+import com.benboer.boluo.message.widget.face.Face;
 
 import java.util.List;
 

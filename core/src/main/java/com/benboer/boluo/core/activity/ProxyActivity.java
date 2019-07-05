@@ -34,14 +34,6 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
         initContainer(savedInstanceState);
     }
 
-
-//    @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-//        super.onCreate( savedInstanceState, persistentState );
-//        DELEGATE.onCreate(savedInstanceState);
-//        initContainer(savedInstanceState);
-//    }
-
     private void initContainer(@Nullable Bundle savedInstanceState) {
         final FrameLayout container = new FrameLayout(this);
         container.setId(R.id.delegate_container);

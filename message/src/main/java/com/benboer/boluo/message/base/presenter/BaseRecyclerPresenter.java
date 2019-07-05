@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import com.benboer.boluo.message.widget.recycler.RecyclerAdapter;
 
 import net.qiujuer.genius.kit.handler.Run;
+import net.qiujuer.genius.kit.handler.runable.Action;
 
 import java.util.List;
 
@@ -44,8 +45,11 @@ public class BaseRecyclerPresenter<ViewModel, View extends BaseContract.Recycler
      * @param dataList   具体的新数据
      */
     protected void refreshData(final DiffUtil.DiffResult diffResult, final List<ViewModel> dataList) {
-        Run.onUiAsync(() -> {
-            refreshDataOnUiThread(diffResult, dataList);
+        Run.onUiAsync(new Action() {
+            @Override
+            public void call() {
+                BaseRecyclerPresenter.this.refreshDataOnUiThread(diffResult, dataList);
+            }
         });
     }
 

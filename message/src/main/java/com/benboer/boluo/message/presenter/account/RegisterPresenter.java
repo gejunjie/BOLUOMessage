@@ -2,7 +2,6 @@ package com.benboer.boluo.message.presenter.account;
 
 import android.text.TextUtils;
 
-import com.benboer.boluo.core.Common;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.message.base.data.DataSource;
 import com.benboer.boluo.message.data.helper.AccountHelper;
@@ -21,6 +20,9 @@ import java.util.regex.Pattern;
  */
 public class RegisterPresenter extends BasePresenter<RegisterContract.View>
         implements RegisterContract.Presenter, DataSource.Callback<User> {
+
+    // 手机号的正则,11位手机号
+    String REGEX_MOBILE = "[1][3,4,5,7,8][0-9]{9}$";
 
     public RegisterPresenter(RegisterContract.View view) {
         super(view);
@@ -74,6 +76,6 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View>
     public boolean checkMobile(String phone) {
         // 手机号不为空，并且满足格式
         return !TextUtils.isEmpty(phone)
-                && Pattern.matches(Common.Constance.REGEX_MOBILE, phone);
+                && Pattern.matches(REGEX_MOBILE, phone);
     }
 }
