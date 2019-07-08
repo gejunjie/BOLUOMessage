@@ -9,8 +9,8 @@ import com.benboer.boluo.message.fragment.main.BottomFragment;
 import com.benboer.boluo.core.activity.ProxyActivity;
 import com.benboer.boluo.core.app.BoLuo;
 import com.benboer.boluo.core.fragment.SupportFragment;
-import com.benboer.boluo.message.fragment.launcher.LauncherFragment;
-import com.benboer.boluo.ui.launcher.ILauncherListener;
+import com.benboer.boluo.module_login.fragment.launcher.LauncherFragment;
+import com.benboer.boluo.module_login.ui.launcher.ILauncherListener;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/6/26.

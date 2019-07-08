@@ -5,10 +5,9 @@ import com.benboer.boluo.core.Application;
 import com.benboer.boluo.core.app.BoLuo;
 
 import com.benboer.boluo.message.Factory;
+import com.benboer.boluo.message.PushIntentService;
 import com.igexin.sdk.PushManager;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
-
-import static com.benboer.boluo.core.app.ConfigKeys.API_HOST;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/3/28.

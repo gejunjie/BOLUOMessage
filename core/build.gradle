@@ -74,12 +74,13 @@ dependencies {
     api "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
 
-    implementation "net.qiujuer.genius:ui:$rootProject.ext.geniusVersion"
-    implementation "net.qiujuer.genius:res:$rootProject.ext.geniusVersion"
-    implementation "net.qiujuer.genius:kit-handler:$rootProject.ext.geniusVersion"
-    implementation "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"
+    api "net.qiujuer.genius:ui:$rootProject.ext.geniusVersion"
+    api "net.qiujuer.genius:res:$rootProject.ext.geniusVersion"
+    api "net.qiujuer.genius:kit-handler:$rootProject.ext.geniusVersion"
+    api "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"
+    api "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
+    implementation "com.aliyun.dpa:oss-android-sdk:$rootProject.ext.ossVersion"
 
-
-    implementation project(path: ':componentbase')
+    api project(path: ':componentbase')
 
 }
