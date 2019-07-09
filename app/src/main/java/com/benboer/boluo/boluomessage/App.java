@@ -4,8 +4,8 @@ package com.benboer.boluo.boluomessage;
 import com.benboer.boluo.core.Application;
 import com.benboer.boluo.core.app.BoLuo;
 
-import com.benboer.boluo.message.Factory;
 import com.benboer.boluo.message.PushIntentService;
+import com.benboer.boluo.module_common.Factory;
 import com.igexin.sdk.PushManager;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 

@@ -16,7 +16,7 @@ import com.benboer.boluo.core.util.storage.PreferenceUtil;
 import com.benboer.boluo.core.util.timer.BaseTimerTask;
 import com.benboer.boluo.core.util.timer.ITimerListener;
 import com.benboer.boluo.module_login.R;
-import com.benboer.boluo.module_login.persistence.Account;
+import com.benboer.boluo.module_common.persistence.Account;
 import com.benboer.boluo.module_login.ui.launcher.ILauncherListener;
 import com.benboer.boluo.module_login.ui.launcher.ScrollLauncherTag;
 

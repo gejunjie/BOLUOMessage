@@ -1,0 +1,65 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+android {
+    compileSdkVersion 28
+
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //个推相关参数
+        manifestPlaceholders = [
+                GETUI_APP_ID    : "Whh1CYPnM165RCPKomsQH3",
+                GETUI_APP_KEY   : "4bxoWKuOmy87sqwMRGEhhA",
+                GETUI_APP_SECRET: "Bx6XTWSW9i71TjTB0Zj5G1",
+//                PACKAGE_NAME    : applicationId
+        ]
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation "net.qiujuer.genius:kit-reflect:$rootProject.ext.geniusVersion"
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:$rootProject.ext.dbflow_version"
+
+    implementation "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+    // 个推
+    api "com.getui:sdk:$rootProject.ext.getuiVersion"
+
+    // 空气面板
+    implementation "net.qiujuer.widget:airpanel:$rootProject.ext.airpanelVersion"
+    implementation "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"
+    implementation "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
+
+    implementation "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    implementation project(path: ':ui')
+    api project(path: ':module_common')
+}

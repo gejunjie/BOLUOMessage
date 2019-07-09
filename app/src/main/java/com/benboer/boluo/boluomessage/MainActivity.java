@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import com.benboer.boluo.message.fragment.account.LoginFragment;
+import com.benboer.boluo.module_login.fragment.account.LoginFragment;
 import com.benboer.boluo.message.fragment.main.BottomFragment;
 import com.benboer.boluo.core.activity.ProxyActivity;
 import com.benboer.boluo.core.app.BoLuo;

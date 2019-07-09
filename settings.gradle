@@ -1,1 +1,1 @@
-include ':app', ':moduel_message', ':core', ':ui', ':componentbase', ':module_login', ':module_login', ':module_common'
+include ':app', ':module_message', ':core', ':ui', ':componentbase', ':module_login', ':module_login', ':module_common'

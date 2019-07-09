@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
@@ -39,9 +39,10 @@ dependencies {
     annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:$rootProject.ext.dbflow_version"
     api "com.github.Raizlabs.DBFlow:dbflow-core:$rootProject.ext.dbflow_version"
     api "com.github.Raizlabs.DBFlow:dbflow:$rootProject.ext.dbflow_version"
+    api "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
 
-
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    api 'androidx.recyclerview:recyclerview:1.0.0'
 
     api project(path: ':core')
 }
