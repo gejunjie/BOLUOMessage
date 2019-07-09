@@ -40,7 +40,6 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.ext.supportVersion"
 
     implementation project(':module_message')
-    implementation project(path: ':ui')
     implementation project(path: ':module_login')
 
 }
