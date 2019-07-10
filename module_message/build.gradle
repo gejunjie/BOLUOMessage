@@ -44,11 +44,9 @@ dependencies {
 
     implementation "net.qiujuer.genius:kit-reflect:$rootProject.ext.geniusVersion"
     annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:$rootProject.ext.dbflow_version"
-
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
     // 个推
     api "com.getui:sdk:$rootProject.ext.getuiVersion"
-
     // 空气面板
     implementation "net.qiujuer.widget:airpanel:$rootProject.ext.airpanelVersion"
 

@@ -1,31 +1,26 @@
-package com.benboer.boluo.module_common.model;
+package com.benboer.boluo.module_login.model;
 
 
+import com.benboer.boluo.module_common.base.model.Author;
 import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
 
 import java.util.Date;
+import java.util.Objects;
+
 
 /**
- * Created by BenBoerBoluojiushiwo on 2019/5/5.
+ * Created by BenBoerBoluojiushiwo on 2019/5/6.
  */
-public class AccountRspModel {
+public class UserModel implements Author {
+    public static final int SEX_MAN = 1;
+    public static final int SEX_WOMAN = 2;
 
-    // 用户基本信息
-//    private User user;
-    // 当前登录的账号
-    private String account;
-    // 当前登录成功后获取的Token,
-    // 可以通过Token获取用户的所有信息
-    private String token;
-    // 标示是否已经绑定到了设备PushId
-    private boolean isBind;
 
     private String id;
-
     private String name;
-
     private String phone;
-
     private String portrait;
     private String desc;
     private int sex = 0;
@@ -38,6 +33,12 @@ public class AccountRspModel {
 
     // 用户粉丝的数量
     private int following;
+
+    // 与当前User的关系状态，是否已经关注了这个人
+    private boolean isFollow;
+
+    // 时间字段
+    private Date modifyAt;
 
     public String getId() {
         return id;
@@ -127,43 +128,37 @@ public class AccountRspModel {
         this.modifyAt = modifyAt;
     }
 
-    // 与当前User的关系状态，是否已经关注了这个人
-    @Column
-    private boolean isFollow;
 
-    // 时间字段
-    @Column
-    private Date modifyAt;
-
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
-
-    public String getAccount() {
-        return account;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", portrait='" + portrait + '\'' +
+                ", desc='" + desc + '\'' +
+                ", sex=" + sex +
+                ", alias='" + alias + '\'' +
+                ", follows=" + follows +
+                ", following=" + following +
+                ", isFollow=" + isFollow +
+                ", modifyAt=" + modifyAt +
+                '}';
     }
 
-    public void setAccount(String account) {
-        this.account = account;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public boolean isBind() {
-        return isBind;
-    }
-
-    public void setBind(boolean bind) {
-        isBind = bind;
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (portrait != null ? portrait.hashCode() : 0);
+        result = 31 * result + (desc != null ? desc.hashCode() : 0);
+        result = 31 * result + sex;
+        result = 31 * result + (alias != null ? alias.hashCode() : 0);
+        result = 31 * result + follows;
+        result = 31 * result + following;
+        result = 31 * result + (isFollow ? 1 : 0);
+        result = 31 * result + (modifyAt != null ? modifyAt.hashCode() : 0);
+        return result;
     }
 }

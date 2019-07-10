@@ -37,8 +37,6 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation "androidx.appcompat:appcompat:$rootProject.ext.supportVersion"
-
     implementation project(':module_message')
     implementation project(path: ':module_login')
 

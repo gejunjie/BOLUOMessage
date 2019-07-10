@@ -13,6 +13,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  * Created by BenBoerBoluojiushiwo on 2019/6/27.
  */
 public class RestCreator {
+
     private static final class ParamsHolder {
         public static final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
     }

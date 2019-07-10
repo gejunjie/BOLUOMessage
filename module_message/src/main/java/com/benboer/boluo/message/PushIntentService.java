@@ -1,5 +1,4 @@
 package com.benboer.boluo.message;
-
 import android.content.Context;
 import android.util.Log;
 

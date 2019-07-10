@@ -24,32 +24,6 @@ import net.qiujuer.genius.ui.widget.Loading;
  */
 public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
         implements LoginContract.View{
-//
-//    @BindView(R2.id.edit_phone)
-//    EditText mPhone;
-//
-//    @BindView(R2.id.edit_password)
-//    EditText mPassword;
-//
-//    @BindView(R2.id.loading)
-//    Loading mLoading;
-//
-//    @BindView(R2.id.btn_submit)
-//    Button mSubmit;
-//
-//    @OnClick(R2.id.btn_submit)
-//    void onSubmitClick(){
-//        String phone = mPhone.getText().toString();
-//        String passWord = mPassword.getText().toString();
-//        mPresenter.login(phone, passWord);
-//    }
-//
-//    @OnClick(R2.id.txt_go_register)
-//    void onShowRegisterClick() {
-//        getSupportDelegate().startWithPop(null
-////                new RegisterFragment()
-//                );
-//    }
 
     private EditText mPhone;
     private EditText mPassword;
@@ -67,6 +41,7 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
         mPhone = bind(R.id.edit_phone);
         mPassword = bind(R.id.edit_password);
         mLoading = bind(R.id.loading);
+        mSubmit = bind(R.id.btn_submit);
         bind(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +53,7 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
         bind(R.id.txt_go_register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                getSupportDelegate().start(new RegisterFragment());
             }
         });
         mPhone.setText(Account.getAccount());
@@ -87,6 +62,24 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
     @Override
     protected LoginContract.Presenter initPresenter() {
         return new LoginPresenter(this);
+    }
+
+    @Override
+    public void showError(int str) {
+        super.showError(str);
+        mLoading.stop();
+        mPhone.setEnabled(true);
+        mPassword.setEnabled(true);
+        mSubmit.setEnabled(true);
+    }
+
+    @Override
+    public void showLoading() {
+        super.showLoading();
+        mLoading.start();
+        mPhone.setEnabled(false);
+        mPassword.setEnabled(false);
+        mSubmit.setEnabled(false);
     }
 
     @Override

@@ -10,9 +10,10 @@ import com.benboer.boluo.module_common.persistence.Account;
 import com.benboer.boluo.module_login.R;
 import com.benboer.boluo.module_login.api.Network;
 import com.benboer.boluo.module_login.api.RemoteService;
-import com.benboer.boluo.module_common.model.AccountRspModel;
+import com.benboer.boluo.module_login.model.AccountRspModel;
 import com.benboer.boluo.module_login.model.LoginModel;
 import com.benboer.boluo.module_login.model.RegisterModel;
+import com.benboer.boluo.module_login.model.UserModel;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -93,12 +94,24 @@ public class AccountHelper {
             if (rspModel == null) return;
             if (rspModel.success()){
                 AccountRspModel accountRspModel = rspModel.getResult();
-//                User user = accountRspModel.getUser();
+                UserModel user = accountRspModel.getUser();
 //                // 1.直接保存
 //                user.save();
-                ServiceFactory.getInstance().getAccountService().saveUser();
+                ServiceFactory.getInstance().getAccountService()
+                        .saveUser(user.getId(),
+                                  user.getName(),
+                                  user.getPhone(),
+                                  user.getPortrait(),
+                                  user.getDesc(),
+                                  user.getSex(),
+                                  user.getFollows(),
+                                  user.getFollowing(),
+                                  user.isFollow(),
+                                  user.getModifyAt());
                 // 同步到XML持久化中
-                Account.login(accountRspModel);
+                Account.login(accountRspModel.getToken(),
+                              accountRspModel.getAccount(),
+                              user.getId());
 
                 // 判断绑定状态，是否绑定设备
                 if (accountRspModel.isBind()) {

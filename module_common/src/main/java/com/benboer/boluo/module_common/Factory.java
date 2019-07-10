@@ -1,10 +1,6 @@
 package com.benboer.boluo.module_common;
 
-import androidx.annotation.StringRes;
-
 import com.benboer.boluo.core.app.BoLuo;
-import com.benboer.boluo.module_common.base.data.DataSource;
-import com.benboer.boluo.module_common.persistence.Account;
 import com.benboer.boluo.module_common.utils.DBFlowExclusionStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -58,8 +54,7 @@ public class Factory {
         FlowManager.init(new FlowConfig.Builder(BoLuo.getApplicationContext())
                 .openDatabasesOnInit(true) // 数据库初始化的时候就开始打开
                 .build());
-        // 持久化的数据进行初始化
-        Account.load();
+
     }
 
     public static void runOnAsync(Runnable runnable){

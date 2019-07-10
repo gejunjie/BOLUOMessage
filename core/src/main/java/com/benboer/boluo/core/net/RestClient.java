@@ -129,5 +129,38 @@ public class RestClient {
     public final void get() {
         request(HttpMethod.GET);
     }
+    public final void post() {
+         if (BODY == null) {
+        request(HttpMethod.POST);
+    } else {
+        if (!PARAMS.isEmpty()) {
+            throw new RuntimeException("params must be null!");
+        }
+    }
+    request(HttpMethod.POST_RAW);
+}
+
+    public final void put() {
+        if (BODY == null) {
+            request(HttpMethod.PUT);
+        } else {
+            if (!PARAMS.isEmpty()) {
+                throw new RuntimeException("params must be null!");
+            }
+        }
+        request(HttpMethod.PUT_RAW);
+    }
+
+    public final void delete() {
+        request(HttpMethod.DELETE);
+    }
+
+    public final void upload() {
+        request((HttpMethod.UPLOAD));
+    }
+
+    public final void download() {
+//        new DownloadHandler(URL, REQUEST, DOWNLOAD_DIR, EXTENSION, NAME, SUCCESS, FAILURE, ERROR).handleDownload();
+    }
 
 }

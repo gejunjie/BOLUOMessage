@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.benboer.boluo.core.app.BoLuo;
-import com.benboer.boluo.module_common.model.AccountRspModel;
 
 
 /**
@@ -41,14 +40,12 @@ public class Account {
 
     /**
      * 保存我自己的信息到持久化XML中
-     *
-     * @param model AccountRspModel
      */
-    public static void login(AccountRspModel model) {
+    public static void login(String token, String account, String userId) {
         // 存储当前登录的账户, token, 用户Id
-        Account.token = model.getToken();
-        Account.account = model.getAccount();
-        Account.userId = model.getId();
+        Account.token = token;
+        Account.account = account;
+        Account.userId = userId;
         save();
     }
 
@@ -116,7 +113,7 @@ public class Account {
                 .putString(KEY_ACCOUNT, account)
                 .apply();
     }
-//
+
 //    /**
 //     * 是否已经完善了用户信息
 //     *

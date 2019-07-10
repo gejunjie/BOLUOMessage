@@ -1,7 +1,7 @@
 package com.benboer.boluo.module_login.api;
 
 import com.benboer.boluo.module_common.model.RspModel;
-import com.benboer.boluo.module_common.model.AccountRspModel;
+import com.benboer.boluo.module_login.model.AccountRspModel;
 import com.benboer.boluo.module_login.model.LoginModel;
 import com.benboer.boluo.module_login.model.RegisterModel;
 

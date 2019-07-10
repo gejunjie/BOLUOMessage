@@ -7,7 +7,6 @@ import androidx.annotation.StringRes;
 import com.benboer.boluo.core.app.BoLuo;
 import com.benboer.boluo.module_common.Factory;
 import com.benboer.boluo.module_common.base.data.DataSource;
-import com.benboer.boluo.module_common.model.RspModel;
 import com.benboer.boluo.module_common.persistence.Account;
 
 import java.io.IOException;
