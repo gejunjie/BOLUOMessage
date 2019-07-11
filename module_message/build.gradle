@@ -50,6 +50,5 @@ dependencies {
     // 空气面板
     implementation "net.qiujuer.widget:airpanel:$rootProject.ext.airpanelVersion"
 
-    implementation project(path: ':ui')
     api project(path: ':module_common')
 }

@@ -1,7 +1,9 @@
 package com.benboer.boluo.componentbase;
 
 import com.benboer.boluo.componentbase.empty_service.EmptyAccountService;
+import com.benboer.boluo.componentbase.empty_service.EmptyFragmentService;
 import com.benboer.boluo.componentbase.service.IAccountService;
+import com.benboer.boluo.componentbase.service.IFragmentService;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/5.
@@ -9,6 +11,7 @@ import com.benboer.boluo.componentbase.service.IAccountService;
 public class ServiceFactory {
 
     private IAccountService accountService;
+    private IFragmentService fragmentService;
 
     /**
      * 禁止外部创建 ServiceFactory 对象
@@ -42,5 +45,22 @@ public class ServiceFactory {
             accountService = new EmptyAccountService();
         }
         return accountService;
+    }
+
+    /**
+     * 接收 Login 组件实现的 Service 实例
+     */
+    public void setFragmentService(IFragmentService fragmentService) {
+        this.fragmentService = fragmentService;
+    }
+
+    /**
+     * 返回 Login 组件的 Service 实例
+     */
+    public IFragmentService getFragmentService() {
+        if (fragmentService == null) {
+            fragmentService = new EmptyFragmentService();
+        }
+        return fragmentService;
     }
 }

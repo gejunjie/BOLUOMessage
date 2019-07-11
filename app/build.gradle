@@ -38,6 +38,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     implementation project(':module_message')
-    implementation project(path: ':module_login')
+    implementation project(':module_login')
 
 }

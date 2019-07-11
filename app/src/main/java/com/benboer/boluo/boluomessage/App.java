@@ -7,6 +7,7 @@ import com.benboer.boluo.core.app.BoLuo;
 
 import com.benboer.boluo.message.PushIntentService;
 import com.benboer.boluo.message.service.AccountService;
+import com.benboer.boluo.message.service.BottomFragmentService;
 import com.benboer.boluo.module_common.Factory;
 import com.benboer.boluo.module_common.persistence.Account;
 import com.igexin.sdk.PushManager;
@@ -33,6 +34,7 @@ public class App extends Application {
         PushManager.getInstance().initialize(getApplicationContext(),null);
         PushManager.getInstance().registerPushIntentService(getApplicationContext(), PushIntentService.class);
         ServiceFactory.getInstance().setAccountService(new AccountService());
+        ServiceFactory.getInstance().setFragmentService(new BottomFragmentService());
 
     }
 

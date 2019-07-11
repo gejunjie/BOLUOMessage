@@ -8,6 +8,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.benboer.boluo.componentbase.ServiceFactory;
 import com.benboer.boluo.core.app.AccountManager;
 import com.benboer.boluo.module_common.base.PresenterFragment;
 import com.benboer.boluo.module_common.persistence.Account;
@@ -16,6 +17,8 @@ import com.benboer.boluo.module_login.presenter.account.LoginContract;
 import com.benboer.boluo.module_login.presenter.account.LoginPresenter;
 
 import net.qiujuer.genius.ui.widget.Loading;
+
+import me.yokeyword.fragmentation.ISupportFragment;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/7.
@@ -85,8 +88,8 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
     @Override
     public void loginSuccess() {
         AccountManager.setSignState(true);
-        getSupportDelegate().startWithPop(null
-//                new BottomFragment()
+        getSupportDelegate().startWithPop(
+                (ISupportFragment) ServiceFactory.getInstance().getFragmentService().newBottomFragment()
         );
     }
 
