@@ -3,6 +3,7 @@ package com.benboer.boluo.module_login.presenter.account;
 import com.benboer.boluo.module_common.base.data.DataSource;
 import com.benboer.boluo.module_common.base.model.Author;
 import com.benboer.boluo.module_common.base.presenter.BasePresenter;
+import com.benboer.boluo.module_login.helper.AccountHelper;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/6/21.
@@ -17,7 +18,7 @@ public class LogoutPresenter extends BasePresenter<LogoutContract.View>
     @Override
     public void logout() {
         start();
-//        AccountHelper.logout(this);
+        AccountHelper.logout();
     }
 
     @Override

@@ -1,8 +1,13 @@
 package com.benboer.boluo.message.service;
 
 import com.benboer.boluo.componentbase.service.IAccountService;
+import com.benboer.boluo.message.model.db.Group;
+import com.benboer.boluo.message.model.db.GroupMember;
+import com.benboer.boluo.message.model.db.Message;
+import com.benboer.boluo.message.model.db.Session;
 import com.benboer.boluo.message.model.db.User;
 import com.benboer.boluo.module_common.base.model.Author;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.Date;
 
@@ -35,5 +40,11 @@ public class AccountService implements IAccountService {
         user.setFollow(isFollow);
         user.setModifyAt(modifyAt);
         user.save();
+    }
+
+    @Override
+    public void logout() {
+        SQLite.delete().tables(new Class[]{GroupMember.class, Message.class,
+                Group.class, Session.class, User.class});
     }
 }

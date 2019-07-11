@@ -52,16 +52,15 @@ public class AccountHelper {
         call.enqueue(new AccountRspCallback(callback));
     }
 //
-//    /**
-//     * 退出登录
-//     *
-//     */
-//    public static void logout(final DataSource.Callback<User> callback) {
-//        Account.logout();
-//        SQLite.delete().tables(new Class[]{GroupMember.class, Message.class,
-//                Group.class, Session.class, User.class});
+    /**
+     * 退出登录
+     *
+     */
+    public static void logout() {
+        Account.logout();
+        ServiceFactory.getInstance().getAccountService().logout();
 //        callback.onDataLoaded(null);
-//    }
+    }
 
     /**
      * 对设备Id进行绑定的操作

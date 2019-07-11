@@ -14,4 +14,9 @@ public class EmptyAccountService implements IAccountService {
     public void saveUser(String id, String name, String phone, String portrait, String desc, int sex, int follows, int following, boolean isFollow, Date modifyAt) {
 
     }
+
+    @Override
+    public void logout() {
+
+    }
 }
