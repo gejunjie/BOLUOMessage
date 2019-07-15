@@ -1,7 +1,10 @@
 package com.benboer.boluo.boluomessage;
 
 
+import android.content.Context;
 import android.text.TextUtils;
+
+import androidx.multidex.MultiDex;
 
 import com.benboer.boluo.componentbase.ServiceFactory;
 import com.benboer.boluo.core.Application;
@@ -60,4 +63,9 @@ public class App extends Application {
 
     }
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
 }

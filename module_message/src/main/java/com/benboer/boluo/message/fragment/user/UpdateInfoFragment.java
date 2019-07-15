@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -96,7 +97,7 @@ public class UpdateInfoFragment extends PresenterFragment<UpdateInfoContract.Pre
                 loadPortrait(resultUri);
             }
         } else if (resultCode == UCrop.RESULT_ERROR) {
-            Application.showToast(R.string.data_rsp_error_unknown);
+           Toast.makeText(getContext(), R.string.data_rsp_error_unknown, Toast.LENGTH_LONG).show();
         }
     }
 

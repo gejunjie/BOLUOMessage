@@ -2,6 +2,7 @@ package com.benboer.boluo.message.fragment.user;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -19,14 +20,13 @@ import androidx.core.graphics.drawable.DrawableCompat;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
 import com.benboer.boluo.message.fragment.message.ChatUserFragment;
-import com.benboer.boluo.module_common.base.PresenterFragment;
 import com.benboer.boluo.message.model.db.User;
 import com.benboer.boluo.message.presenter.contact.PersonalContract;
 import com.benboer.boluo.message.presenter.contact.PersonalPresenter;
 import com.benboer.boluo.message.widget.PortraitView;
+import com.benboer.boluo.module_common.base.PresenterFragment;
 import com.bumptech.glide.Glide;
 
-import net.qiujuer.genius.res.Resource;
 import net.qiujuer.genius.ui.widget.Button;
 
 import butterknife.BindView;
@@ -143,7 +143,7 @@ public class PersonalFragment extends PresenterFragment<PersonalContract.Present
                 .getDrawable(R.drawable.ic_favorite) :
                 getResources().getDrawable(R.drawable.ic_favorite_border);
         drawable = DrawableCompat.wrap(drawable);
-        DrawableCompat.setTint(drawable, Resource.Color.WHITE);
+        DrawableCompat.setTint(drawable, Color.WHITE);
         mFollowItem.setIcon(drawable);
     }
 

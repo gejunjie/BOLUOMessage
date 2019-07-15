@@ -194,7 +194,7 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
             LoadingDrawable drawable = new LoadingCircleDrawable(minSize, maxSize);
             drawable.setBackgroundColor(0);
 
-            int[] color = new int[]{UiCompat.getColor(getResources(), R.color.white_alpha_208)};
+            int[] color = new int[]{UiCompat.getColor(getResources(), R.color.colorLight)};
             drawable.setForegroundColor(color);
             mFollow.setImageDrawable(drawable);
             drawable.start();

@@ -15,15 +15,16 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.benboer.boluo.core.Application;
+import com.benboer.boluo.core.ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
 import com.benboer.boluo.message.fragment.media.GalleryFragment;
-import com.benboer.boluo.core.Application;
-import com.benboer.boluo.module_common.base.PresenterFragment;
 import com.benboer.boluo.message.presenter.group.GroupCreateContract;
 import com.benboer.boluo.message.presenter.group.GroupCreatePresenter;
 import com.benboer.boluo.message.widget.PortraitView;
-import com.benboer.boluo.core.ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.module_common.base.PresenterFragment;
+import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.yalantis.ucrop.UCrop;
 
@@ -78,7 +79,7 @@ public class GroupCreateFragment extends PresenterFragment<GroupCreateContract.P
     @Override
     public void onCreateSucceed() {
         hideLoading();
-        Application.showToast(R.string.label_group_create_succeed);
+        ToastUtils.showLong(R.string.label_group_create_succeed);
         pop();
     }
 
@@ -103,7 +104,7 @@ public class GroupCreateFragment extends PresenterFragment<GroupCreateContract.P
                 loadPortrait(resultUri);
             }
         } else if (resultCode == UCrop.RESULT_ERROR) {
-            Application.showToast(R.string.data_rsp_error_unknown);
+            ToastUtils.showLong(R.string.data_rsp_error_unknown);
         }
     }
 

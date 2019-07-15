@@ -7,10 +7,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.StringRes;
 
-import com.benboer.boluo.core.Application;
 import com.benboer.boluo.core.ui.convention.PlaceHolderView;
 import com.benboer.boluo.factory.R;
 
@@ -123,7 +123,7 @@ public class EmptyView extends LinearLayout implements PlaceHolderView {
      */
     @Override
     public void triggerError(@StringRes int strRes) {
-        Application.showToast(strRes);
+        Toast.makeText(getContext(), strRes, Toast.LENGTH_LONG).show();
         setVisibility(VISIBLE);
         changeBindViewVisibility(GONE);
     }

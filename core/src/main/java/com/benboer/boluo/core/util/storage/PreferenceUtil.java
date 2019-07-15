@@ -3,8 +3,6 @@ package com.benboer.boluo.core.util.storage;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.benboer.boluo.core.app.BoLuo;
 
 /**
@@ -37,10 +35,6 @@ public class PreferenceUtil {
         return getAppPreference().getString(APP_PREFERENCES_KEY, null);
     }
 
-    public static JSONObject getAppProfileJson() {
-        final String profile = getAppProfile();
-        return JSON.parseObject(profile);
-    }
 
     public static void removeAppProfile() {
         getAppPreference()
