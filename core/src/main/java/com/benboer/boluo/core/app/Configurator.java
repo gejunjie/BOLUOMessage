@@ -92,11 +92,13 @@ public class Configurator {
 
     public final Configurator withInterceptor(ArrayList<Interceptor> interceptors) {
         INTERCEPTORS.addAll(interceptors);
+        CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
         return this;
     }
 
     public final Configurator withInterceptor(Interceptor interceptor) {
         INTERCEPTORS.add(interceptor);
+        CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
         return this;
     }
 }

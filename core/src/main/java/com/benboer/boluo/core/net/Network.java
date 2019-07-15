@@ -1,11 +1,12 @@
 package com.benboer.boluo.core.net;
 
-import androidx.annotation.StringRes;
-
 import com.benboer.boluo.core.app.BoLuo;
 import com.benboer.boluo.core.app.ConfigKeys;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
+
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -23,6 +24,7 @@ public class Network {
     private Retrofit retrofit;
 
     private static final String URL = BoLuo.getConfiguration(API_HOST);
+    private static final ArrayList<Interceptor> INTERCEPTORS = BoLuo.getConfiguration(ConfigKeys.INTERCEPTOR);
 
     static {
         instance = new Network();
@@ -37,7 +39,7 @@ public class Network {
             return instance.retrofit;
         }
         OkHttpClient client = new OkHttpClient.Builder()
-                .addInterceptor(BoLuo.getConfiguration(ConfigKeys.INTERCEPTOR))
+                .addInterceptor(INTERCEPTORS.get(0))//TODO 加入一个list集合
                 .build();
 
         Retrofit.Builder builder = new Retrofit.Builder();
