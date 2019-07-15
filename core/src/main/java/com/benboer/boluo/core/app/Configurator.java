@@ -89,4 +89,14 @@ public class Configurator {
         CONFIGS.put(ConfigKeys.API_HOST, host);
         return this;
     }
+
+    public final Configurator withInterceptor(ArrayList<Interceptor> interceptors) {
+        INTERCEPTORS.addAll(interceptors);
+        return this;
+    }
+
+    public final Configurator withInterceptor(Interceptor interceptor) {
+        INTERCEPTORS.add(interceptor);
+        return this;
+    }
 }

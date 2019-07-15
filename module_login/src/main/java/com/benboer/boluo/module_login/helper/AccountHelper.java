@@ -3,21 +3,22 @@ package com.benboer.boluo.module_login.helper;
 import android.text.TextUtils;
 
 import com.benboer.boluo.componentbase.ServiceFactory;
+import com.benboer.boluo.core.net.Network;
 import com.benboer.boluo.module_common.base.data.DataSource;
 import com.benboer.boluo.module_common.base.model.Author;
 import com.benboer.boluo.module_common.model.RspModel;
 import com.benboer.boluo.module_common.persistence.Account;
 import com.benboer.boluo.module_login.R;
-import com.benboer.boluo.module_login.api.Network;
-import com.benboer.boluo.module_login.api.RemoteService;
+import com.benboer.boluo.module_login.api.RxRemoteService;
 import com.benboer.boluo.module_login.model.AccountRspModel;
 import com.benboer.boluo.module_login.model.LoginModel;
 import com.benboer.boluo.module_login.model.RegisterModel;
 import com.benboer.boluo.module_login.model.UserModel;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/6.
@@ -33,12 +34,43 @@ public class AccountHelper {
      * @param callback 成功与失败的接口回送
      */
     public static void register(final RegisterModel model, final DataSource.Callback<Author> callback) {
-        RemoteService service = Network.remote();
+//        RemoteService service = Network.remote();
+//
+//        Call<RspModel<AccountRspModel>> call = service.accountRegister(model);
+//
+//        call.enqueue(new AccountRspCallback(callback));
 
-        Call<RspModel<AccountRspModel>> call = service.accountRegister(model);
 
-        call.enqueue(new AccountRspCallback(callback));
+        Network.getRetrofit()
+                .create(RxRemoteService.class)
+                .accountRegister(model)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<RspModel<AccountRspModel>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(RspModel<AccountRspModel> rspModel) {
+                        onResponse(rspModel, callback);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if(callback != null){
+                            callback.onDataNotAvailable(R.string.data_network_error);
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
+
 
     /**
      * 登录的调用
@@ -47,9 +79,34 @@ public class AccountHelper {
      * @param callback 成功与失败的接口回送
      */
     public static void login(final LoginModel model, final DataSource.Callback<Author> callback) {
-        RemoteService service = Network.remote();
-        Call<RspModel<AccountRspModel>> call = service.accountLogin(model);
-        call.enqueue(new AccountRspCallback(callback));
+        Network.getRetrofit()
+                .create(RxRemoteService.class)
+                .accountLogin(model)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<RspModel<AccountRspModel>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(RspModel<AccountRspModel> rspModel) {
+                        onResponse(rspModel, callback);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if(callback != null){
+                            callback.onDataNotAvailable(R.string.data_network_error);
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 //
     /**
@@ -70,69 +127,77 @@ public class AccountHelper {
     public static void bindPush(final DataSource.Callback<Author> callback) {
         String pushId = Account.getPushId();
         if (TextUtils.isEmpty(pushId)) return;
-        RemoteService service = Network.remote();
-        Call<RspModel<AccountRspModel>> call = service.accountBind(pushId);
-        call.enqueue(new AccountRspCallback(callback));
+//        RemoteService service = Network.remote();
+//        Call<RspModel<AccountRspModel>> call = service.accountBind(pushId);
+//        call.enqueue(new AccountRspCallback(callback));
+        Network.getRetrofit()
+                .create(RxRemoteService.class)
+                .accountBind(pushId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<RspModel<AccountRspModel>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(RspModel<AccountRspModel> rspModel) {
+                        onResponse(rspModel, callback);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if(callback != null){
+                            callback.onDataNotAvailable(R.string.data_network_error);
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
-    /**
-     * 请求的回调部分封装
-     */
-    private static class AccountRspCallback implements Callback<RspModel<AccountRspModel>> {
 
-        final DataSource.Callback<Author> callback;
-
-        AccountRspCallback(DataSource.Callback<Author> callback) {
-            this.callback = callback;
-        }
-
-        @Override
-        public void onResponse(Call<RspModel<AccountRspModel>> call,
-                               Response<RspModel<AccountRspModel>> response) {
-            RspModel<AccountRspModel> rspModel = response.body();
-            if (rspModel == null) return;
-            if (rspModel.success()){
-                AccountRspModel accountRspModel = rspModel.getResult();
-                UserModel user = accountRspModel.getUser();
+    private static void onResponse(RspModel<AccountRspModel> rspModel, DataSource.Callback<Author> callback){
+//                        RspModel<AccountRspModel> rspModel = response.body();
+        if (rspModel == null) return;
+        if (rspModel.success()){
+            AccountRspModel accountRspModel = rspModel.getResult();
+            UserModel user = accountRspModel.getUser();
 //                // 1.直接保存
 //                user.save();
-                ServiceFactory.getInstance().getAccountService()
-                        .saveUser(user.getId(),
-                                  user.getName(),
-                                  user.getPhone(),
-                                  user.getPortrait(),
-                                  user.getDesc(),
-                                  user.getSex(),
-                                  user.getFollows(),
-                                  user.getFollowing(),
-                                  user.isFollow(),
-                                  user.getModifyAt());
-                // 同步到XML持久化中
-                Account.login(accountRspModel.getToken(),
-                              accountRspModel.getAccount(),
-                              user.getId());
+            ServiceFactory.getInstance().getAccountService()
+                    .saveUser(user.getId(),
+                            user.getName(),
+                            user.getPhone(),
+                            user.getPortrait(),
+                            user.getDesc(),
+                            user.getSex(),
+                            user.getFollows(),
+                            user.getFollowing(),
+                            user.isFollow(),
+                            user.getModifyAt());
+            // 同步到XML持久化中
+            Account.login(accountRspModel.getToken(),
+                    accountRspModel.getAccount(),
+                    user.getId());
 
-                // 判断绑定状态，是否绑定设备
-                if (accountRspModel.isBind()) {
-                    // 设置绑定状态为True
-                    Account.setBind(true);
-                    // 然后返回
-                    if (callback != null)
-                        callback.onDataLoaded(null);
-                } else {
-                    // 进行绑定的唤起
-                    bindPush(callback);
-                }
-            }else {
+            // 判断绑定状态，是否绑定设备
+            if (accountRspModel.isBind()) {
+                // 设置绑定状态为True
+                Account.setBind(true);
+                // 然后返回
+                if (callback != null)
+                    callback.onDataLoaded(null);
+            } else {
+                // 进行绑定的唤起
+                bindPush(callback);
+            }
+        }else {
 //                Factory.decodeRspCode(rspModel, callback);
-            }
-        }
-
-        @Override
-        public void onFailure(Call<RspModel<AccountRspModel>> call, Throwable t) {
-            if(callback != null){
-                callback.onDataNotAvailable(R.string.data_network_error);
-            }
         }
     }
 

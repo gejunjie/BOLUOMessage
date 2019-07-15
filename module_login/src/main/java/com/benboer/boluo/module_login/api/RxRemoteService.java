@@ -5,6 +5,7 @@ import com.benboer.boluo.module_login.model.AccountRspModel;
 import com.benboer.boluo.module_login.model.LoginModel;
 import com.benboer.boluo.module_login.model.RegisterModel;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -15,7 +16,7 @@ import retrofit2.http.Path;
  *
  * 网络请求的所有的接口
  */
-public interface RemoteService {
+public interface RxRemoteService {
 
     /**
      * 用户注册接口
@@ -23,7 +24,7 @@ public interface RemoteService {
      * @return
      */
     @POST("account/register")
-    Call<RspModel<AccountRspModel>> accountRegister(@Body RegisterModel model);
+    Observable<RspModel<AccountRspModel>> accountRegister(@Body RegisterModel model);
 
     /**
      * 用户登录
@@ -31,7 +32,7 @@ public interface RemoteService {
      * @return
      */
     @POST("account/login")
-    Call<RspModel<AccountRspModel>> accountLogin(@Body LoginModel model);
+    Observable<RspModel<AccountRspModel>> accountLogin(@Body LoginModel model);
 
     /**
      * 绑定设备id
@@ -39,6 +40,6 @@ public interface RemoteService {
      * @return
      */
     @POST("account/bind/{pushId}")
-    Call<RspModel<AccountRspModel>> accountBind(@Path(encoded = true, value = "pushId") String pushId);
+    Observable<RspModel<AccountRspModel>> accountBind(@Path(encoded = true, value = "pushId") String pushId);
 
 }

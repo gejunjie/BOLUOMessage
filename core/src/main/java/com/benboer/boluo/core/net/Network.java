@@ -1,21 +1,14 @@
-package com.benboer.boluo.module_login.api;
-
-import android.text.TextUtils;
+package com.benboer.boluo.core.net;
 
 import androidx.annotation.StringRes;
 
 import com.benboer.boluo.core.app.BoLuo;
-import com.benboer.boluo.module_common.Factory;
-import com.benboer.boluo.module_common.base.data.DataSource;
-import com.benboer.boluo.module_common.persistence.Account;
+import com.benboer.boluo.core.app.ConfigKeys;
+import com.google.gson.GsonBuilder;
 
-import java.io.IOException;
-
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.benboer.boluo.core.app.ConfigKeys.API_HOST;
@@ -44,43 +37,33 @@ public class Network {
             return instance.retrofit;
         }
         OkHttpClient client = new OkHttpClient.Builder()
-                .addInterceptor(new Interceptor() {
-                    @Override
-                    public Response intercept(Chain chain) throws IOException {
-                        Request original = chain.request();
-
-                        Request.Builder builder = original.newBuilder();
-
-                        if (!TextUtils.isEmpty(Account.getToken())){
-                            builder.addHeader("token", Account.getToken());
-                        }
-                        builder.addHeader("Content-Type", "application/json");
-                        Request newRequest = builder.build();
-                        // 返回
-                        return chain.proceed(newRequest);
-                    }
-                })
+                .addInterceptor(BoLuo.getConfiguration(ConfigKeys.INTERCEPTOR))
                 .build();
 
         Retrofit.Builder builder = new Retrofit.Builder();
-
         instance.retrofit = builder.baseUrl(URL)
                 // 设置client
                 .client(client)
                 // 设置Json解析器
-                .addConverterFactory(GsonConverterFactory.create(Factory.getGson()))
+                .addConverterFactory(GsonConverterFactory.create(new GsonBuilder()
+                        // 设置时间格式
+                        .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")
+                        // 设置一个过滤器，数据库级别的Model不进行Json转换
+//                        .setExclusionStrategies(new DBFlowExclusionStrategy())
+                        .create()))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) // 支持RxJava2
                 .build();
 
         return instance.retrofit;
     }
-    /**
-     * 返回一个请求代理
-     *
-     * @return RemoteService
-     */
-    public static RemoteService remote() {
-        return Network.getRetrofit().create(RemoteService.class);
-    }
+//    /**
+//     * 返回一个请求代理
+//     *
+//     * @return RemoteService
+//     */
+//    public static RxRemoteService remote() {
+//        return Network.getRetrofit().create(RxRemoteService.class);
+//    }
 
 //    /**
 //     * 进行错误Code的解析，
@@ -146,11 +129,11 @@ public class Network {
 //                break;
 //        }
 //    }
-
-    private static void decodeRspCode(@StringRes final int resId,
-                                      final DataSource.FailedCallback callback) {
-        if (callback != null)
-            callback.onDataNotAvailable(resId);
-    }
+//
+//    private static void decodeRspCode(@StringRes final int resId,
+//                                      final DataSource.FailedCallback callback) {
+//        if (callback != null)
+//            callback.onDataNotAvailable(resId);
+//    }
 
 }
