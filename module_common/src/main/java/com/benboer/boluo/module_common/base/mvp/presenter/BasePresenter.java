@@ -1,4 +1,4 @@
-package com.benboer.boluo.module_common.base.presenter;
+package com.benboer.boluo.module_common.base.mvp.presenter;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/6.

@@ -1,4 +1,4 @@
-package com.benboer.boluo.core.net.interceptors;
+package com.benboer.boluo.module_common.net.interceptors;
 
 import com.benboer.boluo.core.util.file.FileUtil;
 

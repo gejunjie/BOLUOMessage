@@ -199,7 +199,6 @@ public class DbHelper {
                         // 第一次聊天，创建一个和对方的一个会话
                         session = new Session(identify);
                     }
-
                     // 把会话，刷新到当前Message的最新状态
                     session.refreshToNow();
                     // 数据存储

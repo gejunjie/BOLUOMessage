@@ -1,4 +1,4 @@
-package com.benboer.boluo.module_common.base.data;
+package com.benboer.boluo.module_common.base.mvp.data;
 
 import androidx.annotation.StringRes;
 

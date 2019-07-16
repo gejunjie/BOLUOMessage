@@ -9,13 +9,14 @@ import com.benboer.boluo.message.model.db.Group;
 import com.benboer.boluo.message.model.db.GroupMember;
 import com.benboer.boluo.message.model.db.GroupMember_Table;
 import com.benboer.boluo.message.model.db.Group_Table;
+import com.benboer.boluo.message.model.db.User;
 import com.benboer.boluo.message.model.db.User_Table;
 import com.benboer.boluo.message.model.db.view.MemberUserModel;
-import com.benboer.boluo.message.net.Network;
 import com.benboer.boluo.message.net.RemoteService;
-import com.benboer.boluo.module_common.base.data.DataSource;
-import com.benboer.boluo.message.model.db.User;
+import com.benboer.boluo.module_common.base.mvp.data.DataSource;
 import com.benboer.boluo.module_common.model.RspModel;
+import com.benboer.boluo.module_common.net.Network;
+import com.benboer.boluo.module_common.net.RspCodeDecoder;
 import com.raizlabs.android.dbflow.sql.language.Join;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
@@ -29,6 +30,7 @@ import retrofit2.Response;
  * Created by BenBoerBoluojiushiwo on 2019/5/24.
  */
 public class GroupHelper {
+    static RemoteService service = Network.getRetrofit().create(RemoteService.class);
 
     /***
      * 创建群
@@ -36,7 +38,6 @@ public class GroupHelper {
      * @param callback
      */
     public static void create(GroupCreateModel model, final DataSource.Callback<GroupCard> callback) {
-        RemoteService service = Network.remote();
         service.groupCreate(model)
                 .enqueue(new Callback<RspModel<GroupCard>>() {
                     @Override
@@ -49,7 +50,7 @@ public class GroupHelper {
                             // 返回数据
                             callback.onDataLoaded(groupCard);
                         } else {
-                            Network.decodeRspCode(rspModel, callback);
+                            RspCodeDecoder.decodeRspCode(rspModel, callback);
                         }
                     }
 
@@ -67,7 +68,6 @@ public class GroupHelper {
      * @return
      */
     public static Call groupSearch(String name, final DataSource.Callback<List<GroupCard>> callback) {
-        RemoteService service = Network.remote();
         Call<RspModel<List<GroupCard>>> call = service.groupSearch(name);
 
         call.enqueue(new Callback<RspModel<List<GroupCard>>>() {
@@ -77,7 +77,7 @@ public class GroupHelper {
                 if (rspModel.success()){
                     callback.onDataLoaded(rspModel.getResult());
                 }else {
-                    Network.decodeRspCode(rspModel, callback);
+                    RspCodeDecoder.decodeRspCode(rspModel, callback);
                 }
             }
 
@@ -105,9 +105,8 @@ public class GroupHelper {
     }
 
     private static Group findFormNet(String groupId) {
-        RemoteService remoteService = Network.remote();
         try {
-            Response<RspModel<GroupCard>> response = remoteService.groupFind(groupId).execute();//同步发起请求
+            Response<RspModel<GroupCard>> response = service.groupFind(groupId).execute();//同步发起请求
             GroupCard card = response.body().getResult();
             if (card != null) {
                 // 数据库的存储并通知
@@ -141,7 +140,6 @@ public class GroupHelper {
      *  刷新我的群组列表
      */
     public static void refreshGroups() {
-        RemoteService service = Network.remote();
         service.groups("").enqueue(new Callback<RspModel<List<GroupCard>>>() {
             @Override
             public void onResponse(Call<RspModel<List<GroupCard>>> call, Response<RspModel<List<GroupCard>>> response) {
@@ -153,7 +151,7 @@ public class GroupHelper {
                         GroupDispatcher.instance().dispatch(groupCards.toArray(new GroupCard[0]));
                     }
                 } else {
-                    Network.decodeRspCode(rspModel, null);
+                    RspCodeDecoder.decodeRspCode(rspModel, null);
                 }
             }
 
@@ -189,7 +187,6 @@ public class GroupHelper {
 
     // 从网络去刷新一个群的成员信息
     public static void refreshGroupMember(Group group) {
-        RemoteService service = Network.remote();
         service.groupMembers(group.getId()).enqueue(new Callback<RspModel<List<GroupMemberCard>>>() {
             @Override
             public void onResponse(Call<RspModel<List<GroupMemberCard>>> call, Response<RspModel<List<GroupMemberCard>>> response) {
@@ -202,7 +199,7 @@ public class GroupHelper {
                         GroupDispatcher.instance().dispatch(memberCards.toArray(new GroupMemberCard[0]));
                     }
                 } else {
-                    Network.decodeRspCode(rspModel, null);
+                    RspCodeDecoder.decodeRspCode(rspModel, null);
                 }
             }
 

@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.benboer.boluo.core.Application;
-import com.benboer.boluo.module_common.base.PresenterFragment;
+import com.benboer.boluo.module_common.base.mvp.PresenterFragment;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
 import com.benboer.boluo.message.fragment.media.GalleryFragment;

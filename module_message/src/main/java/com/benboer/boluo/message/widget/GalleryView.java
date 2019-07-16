@@ -1,5 +1,6 @@
 package com.benboer.boluo.message.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -10,8 +11,16 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.benboer.boluo.factory.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.benboer.boluo.core.ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.factory.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
@@ -20,14 +29,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @ClassName: GalleyView
@@ -115,6 +116,7 @@ public class GalleryView extends RecyclerView {
      * @param image
      * @return true 数据更改，需要刷新
      */
+    @SuppressLint("StringFormatMatches")
     private boolean onItemSelectClick(Image image){
         boolean notifyRefreash;
         if (mSelectedImages.contains(image)){
@@ -180,7 +182,7 @@ public class GalleryView extends RecyclerView {
                     .load(data.path)
                     .centerCrop()
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
-//                    .placeholder(R.color.green_300)
+                    .placeholder(R.color.green_300)
                     .into(mImageView);
             mShade.setVisibility(data.isSelected ?
                     VISIBLE : INVISIBLE);

@@ -1,4 +1,4 @@
-package com.benboer.boluo.core.net;
+package com.benboer.boluo.module_common.net;
 
 import android.text.format.DateFormat;
 import android.util.Log;

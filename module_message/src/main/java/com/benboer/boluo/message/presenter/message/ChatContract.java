@@ -4,7 +4,7 @@ import com.benboer.boluo.message.model.db.Group;
 import com.benboer.boluo.message.model.db.Message;
 import com.benboer.boluo.message.model.db.User;
 import com.benboer.boluo.message.model.db.view.MemberUserModel;
-import com.benboer.boluo.module_common.base.presenter.BaseContract;
+import com.benboer.boluo.module_common.base.mvp.presenter.BaseContract;
 
 import java.util.List;
 

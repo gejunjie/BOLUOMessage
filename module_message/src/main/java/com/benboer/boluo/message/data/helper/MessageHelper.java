@@ -1,14 +1,15 @@
 package com.benboer.boluo.message.data.helper;
 
 import com.benboer.boluo.message.data.message.MessageDispatcher;
-import com.benboer.boluo.message.model.db.Message_Table;
-import com.benboer.boluo.module_common.Factory;
-import com.benboer.boluo.module_common.model.RspModel;
 import com.benboer.boluo.message.model.api.message.MsgCreateModel;
 import com.benboer.boluo.message.model.card.MessageCard;
 import com.benboer.boluo.message.model.db.Message;
-import com.benboer.boluo.message.net.Network;
+import com.benboer.boluo.message.model.db.Message_Table;
 import com.benboer.boluo.message.net.RemoteService;
+import com.benboer.boluo.module_common.Factory;
+import com.benboer.boluo.module_common.model.RspModel;
+import com.benboer.boluo.module_common.net.Network;
+import com.benboer.boluo.module_common.net.RspCodeDecoder;
 import com.raizlabs.android.dbflow.sql.language.OperatorGroup;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
@@ -74,10 +75,11 @@ public class MessageHelper {
                 final MessageCard card = model.buildCard();
                 MessageDispatcher.instance().dispatch(card);
 
-                RemoteService service = Network.remote();
-                service.msgPush(model).enqueue(new Callback<RspModel<MessageCard>>() {
+                Network.getRetrofit().create(RemoteService.class)
+                        .msgPush(model).enqueue(new Callback<RspModel<MessageCard>>() {
                     @Override
-                    public void onResponse(Call<RspModel<MessageCard>> call, Response<RspModel<MessageCard>> response) {
+                    public void onResponse(Call<RspModel<MessageCard>> call,
+                                           Response<RspModel<MessageCard>> response) {
                         RspModel<MessageCard> model1 = response.body();
                         if (model1 != null && model1.success()){
                             MessageCard card1 = model1.getResult();
@@ -85,7 +87,7 @@ public class MessageHelper {
                                 MessageDispatcher.instance().dispatch(card1);
                             }
                         }else {
-                            Network.decodeRspCode(model1, null);
+                            RspCodeDecoder.decodeRspCode(model1, null);
                             onFailure(call, null);
                         }
                     }

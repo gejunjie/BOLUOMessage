@@ -23,7 +23,7 @@ import com.benboer.boluo.message.fragment.media.GalleryFragment;
 import com.benboer.boluo.message.presenter.group.GroupCreateContract;
 import com.benboer.boluo.message.presenter.group.GroupCreatePresenter;
 import com.benboer.boluo.message.widget.PortraitView;
-import com.benboer.boluo.module_common.base.PresenterFragment;
+import com.benboer.boluo.module_common.base.mvp.PresenterFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.yalantis.ucrop.UCrop;

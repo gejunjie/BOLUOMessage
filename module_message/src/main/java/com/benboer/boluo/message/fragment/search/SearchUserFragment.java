@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
 import com.benboer.boluo.message.fragment.user.PersonalFragment;
-import com.benboer.boluo.module_common.base.PresenterFragment;
+import com.benboer.boluo.module_common.base.mvp.PresenterFragment;
 import com.benboer.boluo.message.model.card.UserCard;
 import com.benboer.boluo.message.presenter.contact.FollowContract;
 import com.benboer.boluo.message.presenter.contact.FollowPresenter;

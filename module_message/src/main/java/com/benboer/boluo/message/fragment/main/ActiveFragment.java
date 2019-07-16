@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
 import com.benboer.boluo.message.fragment.message.ChatUserFragment;
-import com.benboer.boluo.module_common.base.PresenterFragment;
+import com.benboer.boluo.module_common.base.mvp.PresenterFragment;
 import com.benboer.boluo.core.util.DateTimeUtil;
 import com.benboer.boluo.message.model.db.Session;
 import com.benboer.boluo.message.presenter.message.SessionContract;

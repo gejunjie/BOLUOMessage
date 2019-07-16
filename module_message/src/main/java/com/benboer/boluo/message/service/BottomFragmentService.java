@@ -8,6 +8,8 @@ import com.benboer.boluo.message.fragment.main.BottomFragment;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/11.
+ *
+ * 向其他业务模块暴露BottomFragment
  */
 public class BottomFragmentService implements IFragmentService {
     @Override

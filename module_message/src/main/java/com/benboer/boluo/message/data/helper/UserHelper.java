@@ -3,14 +3,15 @@ package com.benboer.boluo.message.data.helper;
 import com.benboer.boluo.message.data.user.UserDispatcher;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.message.model.db.User_Table;
-import com.benboer.boluo.module_common.base.data.DataSource;
+import com.benboer.boluo.module_common.base.mvp.data.DataSource;
 import com.benboer.boluo.module_common.model.RspModel;
 import com.benboer.boluo.message.model.api.user.UserUpdateModel;
 import com.benboer.boluo.message.model.card.UserCard;
 import com.benboer.boluo.message.model.db.User;
 import com.benboer.boluo.message.model.db.view.UserSampleModel;
-import com.benboer.boluo.message.net.Network;
 import com.benboer.boluo.message.net.RemoteService;
+import com.benboer.boluo.module_common.net.Network;
+import com.benboer.boluo.module_common.net.RspCodeDecoder;
 import com.benboer.boluo.module_common.persistence.Account;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
@@ -26,9 +27,11 @@ import retrofit2.Response;
  * 用户更新
  */
 public class UserHelper {
+    static RemoteService service = Network.getRetrofit().create(RemoteService.class);
+
+
     // 异步更新用户信息的操作
     public static void update(final UserUpdateModel model, final DataSource.Callback<UserCard> callback) {
-        RemoteService service = Network.remote();
         Call<RspModel<UserCard>> call = service.updateUser(model);
         call.enqueue(new Callback<RspModel<UserCard>>() {
             @Override
@@ -39,7 +42,7 @@ public class UserHelper {
                     UserDispatcher.instance().dispatch(userCard);
                     callback.onDataLoaded(userCard);
                 }else {
-                    Network.decodeRspCode(rspModel, callback);
+                    RspCodeDecoder.decodeRspCode(rspModel, callback);
                 }
             }
 
@@ -54,7 +57,6 @@ public class UserHelper {
      * 刷新联系人
      */
     public static void refreshContacts(){
-        RemoteService service = Network.remote();
         Call<RspModel<List<UserCard>>> call = service.userContacts();
         call.enqueue(new Callback<RspModel<List<UserCard>>>() {
             @Override
@@ -66,7 +68,7 @@ public class UserHelper {
                     UserCard[] cards1 = cards.toArray(new UserCard[0]);
                     UserDispatcher.instance().dispatch(cards1);
                 }else {
-                    Network.decodeRspCode(rspModel, null);
+                    RspCodeDecoder.decodeRspCode(rspModel, null);
                 }
             }
 
@@ -84,7 +86,6 @@ public class UserHelper {
      * @return
      */
     public static Call userSearch(String name, final DataSource.Callback<List<UserCard>> callback) {
-        RemoteService service = Network.remote();
         Call<RspModel<List<UserCard>>> call = service.userSearch(name);
 
         call.enqueue(new Callback<RspModel<List<UserCard>>>() {
@@ -95,7 +96,7 @@ public class UserHelper {
                     // 返回数据
                     callback.onDataLoaded(rspModel.getResult());
                 } else {
-                    Network.decodeRspCode(rspModel, callback);
+                    RspCodeDecoder.decodeRspCode(rspModel, callback);
                 }
             }
 
@@ -115,7 +116,6 @@ public class UserHelper {
      * @param callback
      */
     public static void follow(String id, final DataSource.Callback<UserCard> callback){
-        RemoteService service = Network.remote();
         Call<RspModel<UserCard>> call = service.userFollow(id);
         call.enqueue(new Callback<RspModel<UserCard>>() {
             @Override
@@ -127,7 +127,7 @@ public class UserHelper {
                     UserDispatcher.instance().dispatch(userCard);
                     callback.onDataLoaded(userCard);
                 }else{
-                    Network.decodeRspCode(rspModel, callback);
+                    RspCodeDecoder.decodeRspCode(rspModel, callback);
                 }
             }
 
@@ -174,9 +174,8 @@ public class UserHelper {
 
     public static User findFromNet(String id) {
 
-        RemoteService remoteService = Network.remote();
         try {
-            Response<RspModel<UserCard>> response = remoteService.userFind(id).execute();
+            Response<RspModel<UserCard>> response = service.userFind(id).execute();
             UserCard card = response.body().getResult();
             if (card != null) {
                 User user = card.build();

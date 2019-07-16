@@ -1,4 +1,4 @@
-package com.benboer.boluo.module_common.base.presenter;
+package com.benboer.boluo.module_common.base.mvp.presenter;
 
 import androidx.annotation.StringRes;
 

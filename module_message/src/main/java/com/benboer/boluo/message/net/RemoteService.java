@@ -26,31 +26,6 @@ import retrofit2.http.Path;
  */
 public interface RemoteService {
 
-//    /**
-//     * 用户注册接口
-//     * @param model
-//     * @return
-//     */
-//    @POST("account/register")
-//    Call<RspModel<AccountRspModel>> accountRegister(@Body RegisterModel model);
-//
-//    /**
-//     * 用户登录
-//     * @param model
-//     * @return
-//     */
-//    @POST("account/login")
-//    Call<RspModel<AccountRspModel>> accountLogin(@Body LoginModel model);
-
-
-//    /**
-//     * 绑定设备id
-//     * @param pushId
-//     * @return
-//     */
-//    @POST("account/bind/{pushId}")
-//    Call<RspModel<AccountRspModel>> accountBind(@Path(encoded = true, value = "pushId") String pushId);
-
     /**
      * 用户更新
      * @param model

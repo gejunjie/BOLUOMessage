@@ -3,7 +3,7 @@ package com.benboer.boluo.message.presenter.contact;
 import com.benboer.boluo.module_common.Factory;
 import com.benboer.boluo.message.data.helper.UserHelper;
 import com.benboer.boluo.message.model.db.User;
-import com.benboer.boluo.module_common.base.presenter.BasePresenter;
+import com.benboer.boluo.module_common.base.mvp.presenter.BasePresenter;
 import com.benboer.boluo.module_common.persistence.Account;
 
 import net.qiujuer.genius.kit.handler.Run;

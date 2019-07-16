@@ -1,4 +1,4 @@
-package com.benboer.boluo.core.net.interceptors;
+package com.benboer.boluo.module_common.net.interceptors;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;

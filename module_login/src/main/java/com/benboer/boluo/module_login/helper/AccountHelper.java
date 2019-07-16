@@ -3,8 +3,8 @@ package com.benboer.boluo.module_login.helper;
 import android.text.TextUtils;
 
 import com.benboer.boluo.componentbase.ServiceFactory;
-import com.benboer.boluo.core.net.Network;
-import com.benboer.boluo.module_common.base.data.DataSource;
+import com.benboer.boluo.module_common.net.Network;
+import com.benboer.boluo.module_common.base.mvp.data.DataSource;
 import com.benboer.boluo.module_common.base.model.Author;
 import com.benboer.boluo.module_common.model.RspModel;
 import com.benboer.boluo.module_common.persistence.Account;

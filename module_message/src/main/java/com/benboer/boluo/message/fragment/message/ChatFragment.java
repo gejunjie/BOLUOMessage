@@ -19,7 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.benboer.boluo.module_common.base.PresenterFragment;
+import com.benboer.boluo.module_common.base.mvp.PresenterFragment;
 import com.benboer.boluo.message.widget.face.Face;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;

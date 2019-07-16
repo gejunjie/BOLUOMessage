@@ -4,7 +4,7 @@ import android.widget.Toast;
 
 import com.benboer.boluo.core.R;
 import com.benboer.boluo.core.app.BoLuo;
-import com.benboer.boluo.module_common.base.PresenterFragment;
+import com.benboer.boluo.module_common.base.mvp.PresenterFragment;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/1.

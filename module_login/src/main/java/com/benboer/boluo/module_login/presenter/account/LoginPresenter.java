@@ -2,9 +2,9 @@ package com.benboer.boluo.module_login.presenter.account;
 
 import android.text.TextUtils;
 
-import com.benboer.boluo.module_common.base.data.DataSource;
+import com.benboer.boluo.module_common.base.mvp.data.DataSource;
 import com.benboer.boluo.module_common.base.model.Author;
-import com.benboer.boluo.module_common.base.presenter.BasePresenter;
+import com.benboer.boluo.module_common.base.mvp.presenter.BasePresenter;
 import com.benboer.boluo.module_common.persistence.Account;
 import com.benboer.boluo.module_login.R;
 import com.benboer.boluo.module_login.helper.AccountHelper;

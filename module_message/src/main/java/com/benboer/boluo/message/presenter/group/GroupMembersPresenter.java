@@ -3,7 +3,7 @@ package com.benboer.boluo.message.presenter.group;
 import com.benboer.boluo.module_common.Factory;
 import com.benboer.boluo.message.data.helper.GroupHelper;
 import com.benboer.boluo.message.model.db.view.MemberUserModel;
-import com.benboer.boluo.module_common.base.presenter.BaseRecyclerPresenter;
+import com.benboer.boluo.module_common.base.mvp.presenter.BaseRecyclerPresenter;
 
 import java.util.List;
 

@@ -7,7 +7,7 @@ import com.benboer.boluo.message.data.helper.GroupHelper;
 import com.benboer.boluo.message.model.db.Group;
 import com.benboer.boluo.message.model.db.Group_Table;
 import com.benboer.boluo.message.model.db.view.MemberUserModel;
-import com.benboer.boluo.module_common.base.data.DataSource;
+import com.benboer.boluo.module_common.base.mvp.data.DataSource;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.List;

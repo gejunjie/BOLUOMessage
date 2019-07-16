@@ -4,14 +4,14 @@ import android.text.TextUtils;
 
 import com.benboer.boluo.module_common.Factory;
 import com.benboer.boluo.factory.R;
-import com.benboer.boluo.module_common.base.data.DataSource;
+import com.benboer.boluo.module_common.base.mvp.data.DataSource;
 import com.benboer.boluo.message.data.helper.GroupHelper;
 import com.benboer.boluo.message.data.helper.UserHelper;
 import com.benboer.boluo.message.model.api.group.GroupCreateModel;
 import com.benboer.boluo.message.model.card.GroupCard;
 import com.benboer.boluo.message.model.db.view.UserSampleModel;
-import com.benboer.boluo.core.net.UploadHelper;
-import com.benboer.boluo.module_common.base.presenter.BaseRecyclerPresenter;
+import com.benboer.boluo.module_common.net.UploadHelper;
+import com.benboer.boluo.module_common.base.mvp.presenter.BaseRecyclerPresenter;
 
 import net.qiujuer.genius.kit.handler.Run;
 import net.qiujuer.genius.kit.handler.runable.Action;

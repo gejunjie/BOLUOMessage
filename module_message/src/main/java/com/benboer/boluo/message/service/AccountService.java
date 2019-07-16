@@ -6,13 +6,14 @@ import com.benboer.boluo.message.model.db.GroupMember;
 import com.benboer.boluo.message.model.db.Message;
 import com.benboer.boluo.message.model.db.Session;
 import com.benboer.boluo.message.model.db.User;
-import com.benboer.boluo.module_common.base.model.Author;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.Date;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/9.
+ *
+ * 向其他业务模块暴露
  */
 public class AccountService implements IAccountService {
 

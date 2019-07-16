@@ -1,11 +1,8 @@
-package com.benboer.boluo.module_common.base.presenter;
+package com.benboer.boluo.module_common.base.mvp.presenter;
 
 import androidx.recyclerview.widget.DiffUtil;
 
 import com.benboer.boluo.core.ui.recycler.RecyclerAdapter;
-
-import net.qiujuer.genius.kit.handler.Run;
-import net.qiujuer.genius.kit.handler.runable.Action;
 
 import java.util.List;
 
@@ -25,8 +22,7 @@ public class BaseRecyclerPresenter<ViewModel, View extends BaseContract.Recycler
      * @param dataList 新数据
      */
     protected void refreshData(final List<ViewModel> dataList) {
-        Run.onUiAsync(() -> {
-            View view = getView();
+         View view = getView();
             if (view == null)
                 return;
 
@@ -34,7 +30,6 @@ public class BaseRecyclerPresenter<ViewModel, View extends BaseContract.Recycler
             RecyclerAdapter<ViewModel> adapter = view.getRecyclerAdapter();
             adapter.replace(dataList);
             view.onAdapterDataChanged();
-        });
     }
 
     /**
@@ -44,12 +39,7 @@ public class BaseRecyclerPresenter<ViewModel, View extends BaseContract.Recycler
      * @param dataList   具体的新数据
      */
     protected void refreshData(final DiffUtil.DiffResult diffResult, final List<ViewModel> dataList) {
-        Run.onUiAsync(new Action() {
-            @Override
-            public void call() {
-                BaseRecyclerPresenter.this.refreshDataOnUiThread(diffResult, dataList);
-            }
-        });
+         BaseRecyclerPresenter.this.refreshDataOnUiThread(diffResult, dataList);
     }
 
 
@@ -64,7 +54,6 @@ public class BaseRecyclerPresenter<ViewModel, View extends BaseContract.Recycler
         adapter.getItems().addAll(dataList);
         // 通知界面刷新占位布局
         view.onAdapterDataChanged();
-
         // 进行增量更新
         diffResult.dispatchUpdatesTo(adapter);
     }

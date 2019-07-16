@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 import com.benboer.boluo.message.data.BaseDbRepository;
 import com.benboer.boluo.message.model.db.Message;
 import com.benboer.boluo.message.model.db.Message_Table;
-import com.benboer.boluo.module_common.base.data.DataSource;
+import com.benboer.boluo.module_common.base.mvp.data.DataSource;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;
 

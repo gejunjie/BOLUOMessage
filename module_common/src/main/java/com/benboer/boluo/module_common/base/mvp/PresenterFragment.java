@@ -1,9 +1,10 @@
-package com.benboer.boluo.module_common.base;
+package com.benboer.boluo.module_common.base.mvp;
 
 import android.content.Context;
 
 import com.benboer.boluo.core.fragment.SupportFragment;
-import com.benboer.boluo.module_common.base.presenter.BaseContract;
+import com.benboer.boluo.module_common.base.mvp.presenter.BaseContract;
+import com.blankj.utilcode.util.ToastUtils;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/2.
@@ -27,7 +28,7 @@ public abstract class PresenterFragment<Presenter extends BaseContract.Presenter
         if (mPlaceHolderView != null) {
             mPlaceHolderView.triggerError(str);
         } else {
-//            Application.showToast(str);
+            ToastUtils.showLong(str);
         }
     }
 

@@ -8,7 +8,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.benboer.boluo.module_common.base.PresenterFragment;
+import com.benboer.boluo.module_common.base.mvp.PresenterFragment;
 import com.benboer.boluo.module_login.R;
 import com.benboer.boluo.module_login.presenter.account.RegisterContract;
 import com.benboer.boluo.module_login.presenter.account.RegisterPresenter;
