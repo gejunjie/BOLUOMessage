@@ -1,10 +1,10 @@
 package com.benboer.boluo.message.presenter.message;
 
-import com.benboer.boluo.message.model.db.Group;
-import com.benboer.boluo.message.model.db.Message;
-import com.benboer.boluo.message.model.db.User;
-import com.benboer.boluo.message.model.db.view.MemberUserModel;
-import com.benboer.boluo.module_common.base.mvp.presenter.BaseContract;
+import com.benboer.boluo.lib_db.db.Group;
+import com.benboer.boluo.lib_db.db.Message;
+import com.benboer.boluo.lib_db.db.User;
+import com.benboer.boluo.lib_db.db.view.MemberUserModel;
+import com.benboer.boluo.module_common.mvp.presenter.BaseContract;
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
 package com.benboer.boluo.message.presenter.message;
 
+import com.benboer.boluo.lib_db.db.Message;
+import com.benboer.boluo.lib_db.db.User;
 import com.benboer.boluo.message.data.helper.UserHelper;
 import com.benboer.boluo.message.data.message.MessageRepository;
-import com.benboer.boluo.message.model.db.Message;
-import com.benboer.boluo.message.model.db.User;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/6/6.

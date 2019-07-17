@@ -1,15 +1,15 @@
 package com.benboer.boluo.message.data.helper;
 
-import com.benboer.boluo.message.data.user.UserDispatcher;
 import com.benboer.boluo.factory.R;
-import com.benboer.boluo.message.model.db.User_Table;
-import com.benboer.boluo.module_common.base.mvp.data.DataSource;
-import com.benboer.boluo.module_common.model.RspModel;
+import com.benboer.boluo.lib_db.db.User;
+import com.benboer.boluo.lib_db.db.User_Table;
+import com.benboer.boluo.lib_db.db.view.UserSampleModel;
+import com.benboer.boluo.message.data.user.UserDispatcher;
 import com.benboer.boluo.message.model.api.user.UserUpdateModel;
 import com.benboer.boluo.message.model.card.UserCard;
-import com.benboer.boluo.message.model.db.User;
-import com.benboer.boluo.message.model.db.view.UserSampleModel;
 import com.benboer.boluo.message.net.RemoteService;
+import com.benboer.boluo.module_common.model.RspModel;
+import com.benboer.boluo.module_common.mvp.data.DataSource;
 import com.benboer.boluo.module_common.net.Network;
 import com.benboer.boluo.module_common.net.RspCodeDecoder;
 import com.benboer.boluo.module_common.persistence.Account;

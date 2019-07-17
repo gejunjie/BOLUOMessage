@@ -1,9 +1,9 @@
 package com.benboer.boluo.message.data.user;
 
+import com.benboer.boluo.lib_db.db.User;
+import com.benboer.boluo.lib_db.db.User_Table;
 import com.benboer.boluo.message.data.BaseDbRepository;
-import com.benboer.boluo.message.model.db.User;
-import com.benboer.boluo.message.model.db.User_Table;
-import com.benboer.boluo.module_common.base.mvp.data.DataSource;
+import com.benboer.boluo.module_common.mvp.data.DataSource;
 import com.benboer.boluo.module_common.persistence.Account;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 

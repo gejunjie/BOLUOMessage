@@ -2,12 +2,12 @@ package com.benboer.boluo.message.data.group;
 
 import android.text.TextUtils;
 
+import com.benboer.boluo.lib_db.db.Group;
+import com.benboer.boluo.lib_db.db.Group_Table;
+import com.benboer.boluo.lib_db.db.view.MemberUserModel;
 import com.benboer.boluo.message.data.BaseDbRepository;
 import com.benboer.boluo.message.data.helper.GroupHelper;
-import com.benboer.boluo.message.model.db.Group;
-import com.benboer.boluo.message.model.db.Group_Table;
-import com.benboer.boluo.message.model.db.view.MemberUserModel;
-import com.benboer.boluo.module_common.base.mvp.data.DataSource;
+import com.benboer.boluo.module_common.mvp.data.DataSource;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.List;
@@ -36,7 +36,7 @@ public class GroupsRepository extends BaseDbRepository<Group>
         // 一个是你被别人加入群，第二是你直接建立一个群
         // 无论什么情况，拿到的都只是群的信息，没有成员的信息
         // 需要进行成员信息初始化操作
-        if (group.getGroupMemberCount() > 0) {
+        if (GroupHelper.getGroupMemberCount(group.getId()) > 0) {
             // 以及初始化了成员的信息
             group.holder = buildGroupHolder(group);
         } else {
@@ -51,7 +51,7 @@ public class GroupsRepository extends BaseDbRepository<Group>
 
     // 初始化界面显示的成员信息
     private String buildGroupHolder(Group group) {
-        List<MemberUserModel> userModels = group.getLatelyGroupMembers();
+        List<MemberUserModel> userModels = GroupHelper.getLatelyGroupMembers(group.getId());
         if (userModels == null || userModels.size() == 0)
             return null;
 

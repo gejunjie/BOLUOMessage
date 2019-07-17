@@ -1,4 +1,8 @@
-apply plugin: 'com.android.library'
+if (isModule.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion 28
@@ -34,17 +38,28 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    sourceSets {
+        main {
+            if (isModule.toBoolean()) {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
-    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:$rootProject.ext.dbflow_version"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
-    // 个推
-    api "com.getui:sdk:$rootProject.ext.getuiVersion"
-    // 空气面板
-    implementation "net.qiujuer.widget:airpanel:$rootProject.ext.airpanelVersion"
+    annotationProcessor rootProject.ext.dependencies["dbflow_processor"]
+    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
 
-    api project(path: ':module_common')
+    // 个推
+    api rootProject.ext.dependencies["getui"]
+    // 空气面板
+    implementation rootProject.ext.dependencies["airpanel"]
+
+    api project(path: ':lib_common')
 }

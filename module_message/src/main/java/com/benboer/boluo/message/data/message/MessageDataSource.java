@@ -1,7 +1,7 @@
 package com.benboer.boluo.message.data.message;
 
-import com.benboer.boluo.module_common.base.mvp.data.DbDataSource;
-import com.benboer.boluo.message.model.db.Message;
+import com.benboer.boluo.lib_db.db.Message;
+import com.benboer.boluo.module_common.mvp.data.DbDataSource;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/31.

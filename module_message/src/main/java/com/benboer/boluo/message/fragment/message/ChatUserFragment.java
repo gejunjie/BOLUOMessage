@@ -12,13 +12,13 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
+import com.benboer.boluo.lib_db.db.Session;
+import com.benboer.boluo.lib_db.db.User;
+import com.benboer.boluo.lib_db.model.Author;
 import com.benboer.boluo.message.fragment.user.PersonalFragment;
-import com.benboer.boluo.module_common.base.model.Author;
-import com.benboer.boluo.message.model.db.Session;
-import com.benboer.boluo.message.widget.PortraitView;
-import com.benboer.boluo.message.model.db.User;
 import com.benboer.boluo.message.presenter.message.ChatContract;
 import com.benboer.boluo.message.presenter.message.ChatUserPresenter;
+import com.benboer.boluo.message.widget.PortraitView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomViewTarget;
 import com.bumptech.glide.request.transition.Transition;

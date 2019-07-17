@@ -2,14 +2,14 @@ package com.benboer.boluo.message.data.message;
 
 import android.text.TextUtils;
 
+import com.benboer.boluo.lib_db.db.Group;
+import com.benboer.boluo.lib_db.db.Message;
+import com.benboer.boluo.lib_db.db.User;
 import com.benboer.boluo.message.data.helper.DbHelper;
 import com.benboer.boluo.message.data.helper.GroupHelper;
 import com.benboer.boluo.message.data.helper.MessageHelper;
 import com.benboer.boluo.message.data.helper.UserHelper;
 import com.benboer.boluo.message.model.card.MessageCard;
-import com.benboer.boluo.message.model.db.Group;
-import com.benboer.boluo.message.model.db.Message;
-import com.benboer.boluo.message.model.db.User;
 
 import java.util.ArrayList;
 import java.util.List;

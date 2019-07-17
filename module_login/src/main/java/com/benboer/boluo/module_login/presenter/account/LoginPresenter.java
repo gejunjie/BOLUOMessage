@@ -2,9 +2,9 @@ package com.benboer.boluo.module_login.presenter.account;
 
 import android.text.TextUtils;
 
-import com.benboer.boluo.module_common.base.mvp.data.DataSource;
-import com.benboer.boluo.module_common.base.model.Author;
-import com.benboer.boluo.module_common.base.mvp.presenter.BasePresenter;
+import com.benboer.boluo.lib_db.db.User;
+import com.benboer.boluo.module_common.mvp.data.DataSource;
+import com.benboer.boluo.module_common.mvp.presenter.BasePresenter;
 import com.benboer.boluo.module_common.persistence.Account;
 import com.benboer.boluo.module_login.R;
 import com.benboer.boluo.module_login.helper.AccountHelper;
@@ -14,7 +14,7 @@ import com.benboer.boluo.module_login.model.LoginModel;
  * Created by BenBoerBoluojiushiwo on 2019/5/6.
  */
 public class LoginPresenter extends BasePresenter<LoginContract.View>
-    implements LoginContract.Presenter, DataSource.Callback<Author> {
+    implements LoginContract.Presenter, DataSource.Callback<User> {
 
     public LoginPresenter(LoginContract.View view) {
         super(view);
@@ -22,7 +22,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View>
     final LoginContract.View view = getView();
     //成功
     @Override
-    public void onDataLoaded(Author user) {
+    public void onDataLoaded(User user) {
         if (view != null) {
             view.loginSuccess();
         }

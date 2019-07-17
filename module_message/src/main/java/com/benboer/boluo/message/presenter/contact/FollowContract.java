@@ -1,7 +1,7 @@
 package com.benboer.boluo.message.presenter.contact;
 
 import com.benboer.boluo.message.model.card.UserCard;
-import com.benboer.boluo.module_common.base.mvp.presenter.BaseContract;
+import com.benboer.boluo.module_common.mvp.presenter.BaseContract;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/21.

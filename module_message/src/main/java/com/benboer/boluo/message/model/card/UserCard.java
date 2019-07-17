@@ -1,7 +1,8 @@
 package com.benboer.boluo.message.model.card;
 
-import com.benboer.boluo.module_common.base.model.Author;
-import com.benboer.boluo.message.model.db.User;
+
+import com.benboer.boluo.lib_db.db.User;
+import com.benboer.boluo.lib_db.model.Author;
 
 import java.util.Date;
 

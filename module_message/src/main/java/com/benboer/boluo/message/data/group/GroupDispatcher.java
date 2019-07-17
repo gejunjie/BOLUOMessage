@@ -1,13 +1,13 @@
 package com.benboer.boluo.message.data.group;
 
+import com.benboer.boluo.lib_db.db.Group;
+import com.benboer.boluo.lib_db.db.GroupMember;
+import com.benboer.boluo.lib_db.db.User;
 import com.benboer.boluo.message.data.helper.DbHelper;
 import com.benboer.boluo.message.data.helper.GroupHelper;
 import com.benboer.boluo.message.data.helper.UserHelper;
 import com.benboer.boluo.message.model.card.GroupCard;
 import com.benboer.boluo.message.model.card.GroupMemberCard;
-import com.benboer.boluo.message.model.db.Group;
-import com.benboer.boluo.message.model.db.GroupMember;
-import com.benboer.boluo.message.model.db.User;
 
 import java.util.ArrayList;
 import java.util.List;

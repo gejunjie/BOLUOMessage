@@ -1,7 +1,7 @@
 package com.benboer.boluo.message.data.helper;
 
-import com.benboer.boluo.message.model.db.Session;
-import com.benboer.boluo.message.model.db.Session_Table;
+import com.benboer.boluo.lib_db.db.Session;
+import com.benboer.boluo.lib_db.db.Session_Table;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 /**

@@ -30,28 +30,28 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-ext{
-    //版本号相关
-    versionCode = 1
-    versionName = '1.0.2'
-
-    //相关依赖库版本
-    supportVersion = '1.0.2'
-    butterknifeVersion = '10.1.0'
-
-    recyclerviewVersion = '1.1.0-alpha05'
-
-    geniusVersion = '2.1.1'
-    glideVersion = '4.9.0'
-    circleimageviewVersion = '2.1.0'
-//    ucropVersion = "2.2.0-native"
-    easyPMVersion = '3.0.0'
-    ossVersion = '2.3.0'
-
-    retrofitVersion = '2.5.0'
-    gsonVersion = '2.8.5'
-    dbflow_version = '4.2.4'
-    getuiVersion = '2.13.2.0'
-    airpanelVersion = "1.1.0"
-}
+apply from: "config.gradle"
+//ext{
+//    //版本号相关
+//    versionCode = 1
+//    versionName = '1.0.2'
+//
+//    //相关依赖库版本
+////    supportVersion = '1.0.2'
+////    butterknifeVersion = '10.1.0'
+//
+////    recyclerviewVersion = '1.1.0-alpha05'
+//
+////    geniusVersion = '2.1.1'
+////    glideVersion = '4.9.0'
+////    circleimageviewVersion = '2.1.0'
+////    ucropVersion = "2.2.0-native"
+////    easyPMVersion = '3.0.0'
+////    ossVersion = '2.3.0'
+//
+////    retrofitVersion = '2.5.0'
+////    gsonVersion = '2.8.5'
+////    dbflow_version = '4.2.4'
+////    getuiVersion = '2.13.2.0'
+////    airpanelVersion = "1.1.0"
+//}

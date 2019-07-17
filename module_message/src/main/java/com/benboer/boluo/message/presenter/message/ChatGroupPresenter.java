@@ -1,10 +1,10 @@
 package com.benboer.boluo.message.presenter.message;
 
+import com.benboer.boluo.lib_db.db.Group;
+import com.benboer.boluo.lib_db.db.Message;
+import com.benboer.boluo.lib_db.db.view.MemberUserModel;
 import com.benboer.boluo.message.data.helper.GroupHelper;
 import com.benboer.boluo.message.data.message.MessageGroupRepository;
-import com.benboer.boluo.message.model.db.Group;
-import com.benboer.boluo.message.model.db.Message;
-import com.benboer.boluo.message.model.db.view.MemberUserModel;
 import com.benboer.boluo.module_common.persistence.Account;
 
 import java.util.List;
@@ -34,8 +34,8 @@ public class ChatGroupPresenter extends ChatPresenter<ChatContract.GroupView>
             view.onInit(group);
 
             // 成员初始化
-            List<MemberUserModel> models = group.getLatelyGroupMembers();
-            final long memberCount = group.getGroupMemberCount();
+            List<MemberUserModel> models = GroupHelper.getLatelyGroupMembers(group.getId());
+            final long memberCount = GroupHelper.getGroupMemberCount(group.getId());
             // 没有显示的成员的数量
             long moreCount = memberCount - models.size();
             view.onInitGroupMembers(models, moreCount);

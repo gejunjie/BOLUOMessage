@@ -3,10 +3,10 @@ package com.benboer.boluo.module_login.helper;
 import android.text.TextUtils;
 
 import com.benboer.boluo.componentbase.ServiceFactory;
-import com.benboer.boluo.module_common.net.Network;
-import com.benboer.boluo.module_common.base.mvp.data.DataSource;
-import com.benboer.boluo.module_common.base.model.Author;
+import com.benboer.boluo.lib_db.db.User;
 import com.benboer.boluo.module_common.model.RspModel;
+import com.benboer.boluo.module_common.mvp.data.DataSource;
+import com.benboer.boluo.module_common.net.Network;
 import com.benboer.boluo.module_common.persistence.Account;
 import com.benboer.boluo.module_login.R;
 import com.benboer.boluo.module_login.api.RxRemoteService;
@@ -33,7 +33,7 @@ public class AccountHelper {
      * @param model    注册的Model
      * @param callback 成功与失败的接口回送
      */
-    public static void register(final RegisterModel model, final DataSource.Callback<Author> callback) {
+    public static void register(final RegisterModel model, final DataSource.Callback<User> callback) {
 //        RemoteService service = Network.remote();
 //
 //        Call<RspModel<AccountRspModel>> call = service.accountRegister(model);
@@ -78,7 +78,7 @@ public class AccountHelper {
      * @param model    登录的Model
      * @param callback 成功与失败的接口回送
      */
-    public static void login(final LoginModel model, final DataSource.Callback<Author> callback) {
+    public static void login(final LoginModel model, final DataSource.Callback<User> callback) {
         Network.getRetrofit()
                 .create(RxRemoteService.class)
                 .accountLogin(model)
@@ -124,7 +124,7 @@ public class AccountHelper {
      *
      * @param callback Callback
      */
-    public static void bindPush(final DataSource.Callback<Author> callback) {
+    public static void bindPush(final DataSource.Callback<User> callback) {
         String pushId = Account.getPushId();
         if (TextUtils.isEmpty(pushId)) return;
 //        RemoteService service = Network.remote();
@@ -161,7 +161,7 @@ public class AccountHelper {
     }
 
 
-    private static void onResponse(RspModel<AccountRspModel> rspModel, DataSource.Callback<Author> callback){
+    private static void onResponse(RspModel<AccountRspModel> rspModel, DataSource.Callback<User> callback){
 //                        RspModel<AccountRspModel> rspModel = response.body();
         if (rspModel == null) return;
         if (rspModel.success()){

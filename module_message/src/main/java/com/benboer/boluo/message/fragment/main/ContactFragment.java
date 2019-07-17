@@ -8,22 +8,24 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-;
+
+import com.benboer.boluo.core.ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
-import com.benboer.boluo.message.fragment.user.PersonalFragment;
+import com.benboer.boluo.lib_db.db.User;
 import com.benboer.boluo.message.fragment.message.ChatUserFragment;
-import com.benboer.boluo.module_common.base.mvp.PresenterFragment;
-import com.benboer.boluo.message.widget.EmptyView;
-import com.benboer.boluo.message.widget.PortraitView;
-import com.benboer.boluo.core.ui.recycler.RecyclerAdapter;
-import com.benboer.boluo.message.model.db.User;
+import com.benboer.boluo.message.fragment.user.PersonalFragment;
 import com.benboer.boluo.message.presenter.contact.ContactContract;
 import com.benboer.boluo.message.presenter.contact.ContactPresenter;
+import com.benboer.boluo.message.widget.EmptyView;
+import com.benboer.boluo.message.widget.PortraitView;
+import com.benboer.boluo.module_common.mvp.PresenterFragment;
 import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/3/28.

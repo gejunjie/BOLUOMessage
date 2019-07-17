@@ -2,9 +2,9 @@ package com.benboer.boluo.message.data.user;
 
 import android.text.TextUtils;
 
+import com.benboer.boluo.lib_db.db.User;
 import com.benboer.boluo.message.data.helper.DbHelper;
 import com.benboer.boluo.message.model.card.UserCard;
-import com.benboer.boluo.message.model.db.User;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,10 @@
 package com.benboer.boluo.message.data.helper;
 
+import com.benboer.boluo.lib_db.db.Message;
+import com.benboer.boluo.lib_db.db.Message_Table;
 import com.benboer.boluo.message.data.message.MessageDispatcher;
 import com.benboer.boluo.message.model.api.message.MsgCreateModel;
 import com.benboer.boluo.message.model.card.MessageCard;
-import com.benboer.boluo.message.model.db.Message;
-import com.benboer.boluo.message.model.db.Message_Table;
 import com.benboer.boluo.message.net.RemoteService;
 import com.benboer.boluo.module_common.Factory;
 import com.benboer.boluo.module_common.model.RspModel;

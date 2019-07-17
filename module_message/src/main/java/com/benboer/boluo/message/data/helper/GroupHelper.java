@@ -1,20 +1,20 @@
 package com.benboer.boluo.message.data.helper;
 
 import com.benboer.boluo.factory.R;
+import com.benboer.boluo.lib_db.db.Group;
+import com.benboer.boluo.lib_db.db.GroupMember;
+import com.benboer.boluo.lib_db.db.GroupMember_Table;
+import com.benboer.boluo.lib_db.db.Group_Table;
+import com.benboer.boluo.lib_db.db.User;
+import com.benboer.boluo.lib_db.db.User_Table;
+import com.benboer.boluo.lib_db.db.view.MemberUserModel;
 import com.benboer.boluo.message.data.group.GroupDispatcher;
 import com.benboer.boluo.message.model.api.group.GroupCreateModel;
 import com.benboer.boluo.message.model.card.GroupCard;
 import com.benboer.boluo.message.model.card.GroupMemberCard;
-import com.benboer.boluo.message.model.db.Group;
-import com.benboer.boluo.message.model.db.GroupMember;
-import com.benboer.boluo.message.model.db.GroupMember_Table;
-import com.benboer.boluo.message.model.db.Group_Table;
-import com.benboer.boluo.message.model.db.User;
-import com.benboer.boluo.message.model.db.User_Table;
-import com.benboer.boluo.message.model.db.view.MemberUserModel;
 import com.benboer.boluo.message.net.RemoteService;
-import com.benboer.boluo.module_common.base.mvp.data.DataSource;
 import com.benboer.boluo.module_common.model.RspModel;
+import com.benboer.boluo.module_common.mvp.data.DataSource;
 import com.benboer.boluo.module_common.net.Network;
 import com.benboer.boluo.module_common.net.RspCodeDecoder;
 import com.raizlabs.android.dbflow.sql.language.Join;
@@ -162,7 +162,9 @@ public class GroupHelper {
         });
     }
 
-    // 获取一个群的成员数量
+    /**
+     *  获取一个群的成员数量
+     */
     public static long getMemberCount(String id) {
         return SQLite.selectCountOf()
                 .from(GroupMember.class)
@@ -170,7 +172,10 @@ public class GroupHelper {
                 .count();
     }
 
-    // 关联查询一个用户和群成员的表，返回一个MemberUserModel表的集合
+    /**
+     * 关联查询一个用户和群成员的表，返回一个MemberUserModel表的集合
+     */
+
     public static List<MemberUserModel> getMemberUsers(String groupId, int size) {
         return SQLite.select(GroupMember_Table.alias.withTable().as("alias"),
                 User_Table.id.withTable().as("userId"),
@@ -185,7 +190,9 @@ public class GroupHelper {
                 .queryCustomList(MemberUserModel.class);
     }
 
-    // 从网络去刷新一个群的成员信息
+    /**
+     *  从网络去刷新一个群的成员信息
+     */
     public static void refreshGroupMember(Group group) {
         service.groupMembers(group.getId()).enqueue(new Callback<RspModel<List<GroupMemberCard>>>() {
             @Override
@@ -208,6 +215,34 @@ public class GroupHelper {
 
             }
         });
+    }
+
+
+
+    private static long groupMemberCount = -1;
+
+    /**
+     *  获取当前群的成员数量，使用内存缓存
+     */
+    public static long getGroupMemberCount(String id) {
+        if (groupMemberCount == -1) {
+            // -1 没有初始化
+            groupMemberCount = getMemberCount(id);
+        }
+        return groupMemberCount;
+    }
+
+    private static List<MemberUserModel> groupLatelyMembers;
+    /**
+     * 获取当前群对应的成员的信息，只加载4个信息
+     */
+    public static List<MemberUserModel> getLatelyGroupMembers(String id) {
+        if (groupLatelyMembers == null || groupLatelyMembers.isEmpty()) {
+            // 加载简单的用户信息，返回4条，至多
+            groupLatelyMembers = getMemberUsers(id, 4);
+        }
+
+        return groupLatelyMembers;
     }
 
 }

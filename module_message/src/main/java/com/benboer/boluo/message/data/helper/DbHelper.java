@@ -1,11 +1,14 @@
 package com.benboer.boluo.message.data.helper;
 
-import com.benboer.boluo.message.model.db.AppDatabase;
-import com.benboer.boluo.message.model.db.Group;
-import com.benboer.boluo.message.model.db.GroupMember;
-import com.benboer.boluo.message.model.db.Group_Table;
-import com.benboer.boluo.message.model.db.Message;
-import com.benboer.boluo.message.model.db.Session;
+import android.text.TextUtils;
+
+import com.benboer.boluo.lib_db.db.AppDatabase;
+import com.benboer.boluo.lib_db.db.Group;
+import com.benboer.boluo.lib_db.db.GroupMember;
+import com.benboer.boluo.lib_db.db.Group_Table;
+import com.benboer.boluo.lib_db.db.Message;
+import com.benboer.boluo.lib_db.db.Session;
+import com.benboer.boluo.lib_db.db.User;
 import com.raizlabs.android.dbflow.config.DatabaseDefinition;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
@@ -15,6 +18,7 @@ import com.raizlabs.android.dbflow.structure.database.DatabaseWrapper;
 import com.raizlabs.android.dbflow.structure.database.transaction.ITransaction;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -200,7 +204,8 @@ public class DbHelper {
                         session = new Session(identify);
                     }
                     // 把会话，刷新到当前Message的最新状态
-                    session.refreshToNow();
+                    refreshToNow(session);
+//                    session.refreshToNow();
                     // 数据存储
                     adapter.save(session);
                     // 添加到集合
@@ -218,5 +223,75 @@ public class DbHelper {
         void onDataSave(Data... list);
 
         void onDataDelete(Data... list);
+    }
+
+    private static void refreshToNow(Session session) {
+        Message message;
+        String id = session.getId();
+        String picture = session.getPicture();
+        String title = session.getTitle();
+        if (session.getReceiverType() == Message.RECEIVER_TYPE_GROUP) {
+            // 刷新当前对应的群的相关信息
+            message = MessageHelper.findLastWithGroup(id);
+            if (message == null) {
+                // 如果没有基本信息
+                if (TextUtils.isEmpty(picture)
+                        || TextUtils.isEmpty(title)) {
+                    // 查询群
+                    Group group = GroupHelper.findFromLocal(id);
+                    if (group != null) {
+                        session.setPicture(group.getPicture());
+                        session.setTitle(group.getName());
+                    }
+                }
+                session.setMessage(null);
+                session.setContent("");
+                session.setModifyAt(new Date(System.currentTimeMillis()));
+            } else {
+                // 本地有最后一条聊天记录
+                if (TextUtils.isEmpty(picture)
+                        || TextUtils.isEmpty(title)) {
+                    // 如果没有基本信息, 直接从Message中去load群信息
+                    Group group = message.getGroup();
+                    group.load();
+                    session.setPicture(group.getPicture());
+                    session.setTitle(group.getName());
+                }
+                session.setMessage(message);
+                session.setContent(message.getSampleContent());
+                session.setModifyAt(message.getCreateAt());
+            }
+        } else {
+            // 和人聊天的
+            message = MessageHelper.findLastWithUser(id);
+            if (message == null) {
+                // 消息已经删除完成了
+                // 如果没有基本信息
+                if (TextUtils.isEmpty(picture)
+                        || TextUtils.isEmpty(title)) {
+                    // 查询人
+                    User user = UserHelper.findFromLocal(id);
+                    if (user != null) {
+                        session.setPicture(user.getPortrait());
+                        session.setTitle(user.getName());
+                    }
+                }
+                session.setMessage(null);
+                session.setContent("");
+                session.setModifyAt(new Date(System.currentTimeMillis()));
+            } else {
+                if (TextUtils.isEmpty(picture)
+                        || TextUtils.isEmpty(title)) {
+                    // 查询人
+                    User other = message.getOther();
+                    other.load(); // 懒加载问题
+                    session.setPicture(other.getPortrait());
+                    session.setTitle(other.getName());
+                }
+                session.setMessage(message);
+                session.setContent(message.getSampleContent());
+                session.setModifyAt(message.getCreateAt());
+            }
+        }
     }
 }

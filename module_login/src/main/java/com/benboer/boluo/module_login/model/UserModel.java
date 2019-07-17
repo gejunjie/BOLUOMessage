@@ -1,13 +1,8 @@
 package com.benboer.boluo.module_login.model;
 
-
-import com.benboer.boluo.module_common.base.model.Author;
-import com.raizlabs.android.dbflow.annotation.Column;
-import com.raizlabs.android.dbflow.annotation.PrimaryKey;
-import com.raizlabs.android.dbflow.annotation.Table;
+import com.benboer.boluo.lib_db.model.Author;
 
 import java.util.Date;
-import java.util.Objects;
 
 
 /**

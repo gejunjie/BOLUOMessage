@@ -19,12 +19,12 @@ import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
+import com.benboer.boluo.lib_db.db.User;
 import com.benboer.boluo.message.fragment.message.ChatUserFragment;
-import com.benboer.boluo.message.model.db.User;
 import com.benboer.boluo.message.presenter.contact.PersonalContract;
 import com.benboer.boluo.message.presenter.contact.PersonalPresenter;
 import com.benboer.boluo.message.widget.PortraitView;
-import com.benboer.boluo.module_common.base.mvp.PresenterFragment;
+import com.benboer.boluo.module_common.mvp.PresenterFragment;
 import com.bumptech.glide.Glide;
 
 import net.qiujuer.genius.ui.widget.Button;

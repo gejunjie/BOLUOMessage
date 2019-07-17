@@ -1,11 +1,11 @@
 package com.benboer.boluo.message.service;
 
 import com.benboer.boluo.componentbase.service.IAccountService;
-import com.benboer.boluo.message.model.db.Group;
-import com.benboer.boluo.message.model.db.GroupMember;
-import com.benboer.boluo.message.model.db.Message;
-import com.benboer.boluo.message.model.db.Session;
-import com.benboer.boluo.message.model.db.User;
+import com.benboer.boluo.lib_db.db.Group;
+import com.benboer.boluo.lib_db.db.GroupMember;
+import com.benboer.boluo.lib_db.db.Message;
+import com.benboer.boluo.lib_db.db.Session;
+import com.benboer.boluo.lib_db.db.User;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.Date;
