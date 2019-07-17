@@ -5,5 +5,5 @@ import android.app.Application;
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/17.
  */
-public class ModuleApplication extends Application {
+public class MessageApplication extends Application {
 }
