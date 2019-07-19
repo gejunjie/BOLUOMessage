@@ -115,7 +115,7 @@ public class AccountHelper {
      */
     public static void logout() {
         Account.logout();
-        ServiceFactory.getInstance().getAccountService().logout();
+//        ServiceFactory.getInstance().getAccountService().logout();
 //        callback.onDataLoaded(null);
     }
 

@@ -48,14 +48,12 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    testImplementation 'junit:junit:4.12'
-    annotationProcessor rootProject.ext.dependencies["dbflow_processor"]
-    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
-
     // 个推
     api rootProject.ext.dependencies["getui"]
     // 空气面板
     implementation rootProject.ext.dependencies["airpanel"]
-
+    annotationProcessor rootProject.ext.dependencies["dbflow_processor"]
+    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
+    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
     api project(path: ':lib_common')
 }

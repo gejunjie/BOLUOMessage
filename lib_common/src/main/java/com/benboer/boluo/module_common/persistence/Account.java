@@ -5,7 +5,12 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.benboer.boluo.core.app.BoLuo;
+import com.benboer.boluo.lib_db.db.Group;
+import com.benboer.boluo.lib_db.db.GroupMember;
 import com.benboer.boluo.lib_db.db.Message;
+import com.benboer.boluo.lib_db.db.Session;
+import com.benboer.boluo.lib_db.db.User;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 
 /**
@@ -63,6 +68,8 @@ public class Account {
                 .remove(KEY_TOKEN)
                 .remove(KEY_USER_ID)
                 .apply();
+        SQLite.delete().tables(new Class[]{GroupMember.class, Message.class,
+                Group.class, Session.class, User.class});
     }
 
     /**

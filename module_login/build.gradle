@@ -42,7 +42,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
-
+    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
     api project(path: ':lib_common')
 }
