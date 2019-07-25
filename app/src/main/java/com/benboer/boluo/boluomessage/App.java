@@ -6,15 +6,14 @@ import android.text.TextUtils;
 
 import androidx.multidex.MultiDex;
 
+import com.benboer.boluo.common.BaseApplication;
+import com.benboer.boluo.common.Factory;
+import com.benboer.boluo.common.app.BoLuo;
+import com.benboer.boluo.common.persistence.Account;
 import com.benboer.boluo.componentbase.ServiceFactory;
-import com.benboer.boluo.module_common.Application;
-import com.benboer.boluo.module_common.app.BoLuo;
-
 import com.benboer.boluo.message.PushIntentService;
 import com.benboer.boluo.message.service.AccountService;
 import com.benboer.boluo.message.service.BottomFragmentService;
-import com.benboer.boluo.module_common.Factory;
-import com.benboer.boluo.module_common.persistence.Account;
 import com.igexin.sdk.PushManager;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
@@ -27,7 +26,7 @@ import okhttp3.Response;
 /**
  * Created by BenBoerBoluojiushiwo on 2019/3/28.
  */
-public class App extends Application {
+public class App extends BaseApplication {
 
     @Override
     public void onCreate() {

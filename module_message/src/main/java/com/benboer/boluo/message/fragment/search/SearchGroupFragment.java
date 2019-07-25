@@ -18,13 +18,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 //import com.benboer.boluo.boluomessage.R;
-import com.benboer.boluo.module_common.mvp.PresenterFragment;
+import com.benboer.boluo.common.mvp.PresenterFragment;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
 import com.benboer.boluo.message.fragment.user.PersonalFragment;
 import com.benboer.boluo.message.widget.EmptyView;
 import com.benboer.boluo.message.widget.PortraitView;
-import com.benboer.boluo.module_common.ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.message.model.card.GroupCard;
 import com.benboer.boluo.message.presenter.search.SearchContract;
 import com.benboer.boluo.message.presenter.search.SearchGroupPresenter;

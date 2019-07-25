@@ -1,24 +1,25 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.jakewharton.butterknife'
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.0"
-
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
 
     buildTypes {
+        debug{
+            buildConfigField "boolean", 'IS_DEBUG', 'true'
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", 'IS_DEBUG', 'false'
         }
     }
     compileOptions {
@@ -95,6 +96,7 @@ dependencies {
     api rootProject.ext.dependencies["gson"]
     api rootProject.ext.dependencies["oss"]
 
+    api rootProject.ext.dependencies["arouter_api"]
 
     api project(path: ':componentbase')
     api project(path: ':lib_db')

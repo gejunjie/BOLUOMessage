@@ -14,10 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.benboer.boluo.module_common.base.fragment.BaseFragment;
+import com.benboer.boluo.common.base.fragment.BaseFragment;
 import com.benboer.boluo.factory.R;
-import com.benboer.boluo.module_common.ui.recycler.RecyclerAdapter;
-import com.benboer.boluo.module_common.util.ui.UiUtil;
+import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.common.util.ui.UiUtil;
 import com.benboer.boluo.message.widget.face.Face;
 import com.google.android.material.tabs.TabLayout;
 

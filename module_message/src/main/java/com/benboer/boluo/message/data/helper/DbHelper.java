@@ -2,13 +2,13 @@ package com.benboer.boluo.message.data.helper;
 
 import android.text.TextUtils;
 
-import com.benboer.boluo.lib_db.db.AppDatabase;
-import com.benboer.boluo.lib_db.db.Group;
-import com.benboer.boluo.lib_db.db.GroupMember;
-import com.benboer.boluo.lib_db.db.Group_Table;
-import com.benboer.boluo.lib_db.db.Message;
-import com.benboer.boluo.lib_db.db.Session;
-import com.benboer.boluo.lib_db.db.User;
+import com.benboer.boluo.db.db.AppDatabase;
+import com.benboer.boluo.db.db.Group;
+import com.benboer.boluo.db.db.GroupMember;
+import com.benboer.boluo.db.db.Group_Table;
+import com.benboer.boluo.db.db.Message;
+import com.benboer.boluo.db.db.Session;
+import com.benboer.boluo.db.db.User;
 import com.raizlabs.android.dbflow.config.DatabaseDefinition;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
@@ -28,7 +28,7 @@ import java.util.Set;
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/23.
  */
-public class DbHelper {
+public final class DbHelper {
 
     private static final DbHelper instance;
 

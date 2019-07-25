@@ -1,7 +1,7 @@
 package com.benboer.boluo.message.presenter.group;
 
-import com.benboer.boluo.lib_db.model.Author;
-import com.benboer.boluo.module_common.mvp.presenter.BaseContract;
+import com.benboer.boluo.db.model.Author;
+import com.benboer.boluo.common.mvp.presenter.BaseContract;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/6/10.

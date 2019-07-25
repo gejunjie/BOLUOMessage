@@ -15,15 +15,17 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.benboer.boluo.module_common.Application;
-import com.benboer.boluo.module_common.ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.common.Application;
+import com.benboer.boluo.common.app.BoLuo;
+import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.common.util.file.FileUtil;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
 import com.benboer.boluo.message.fragment.media.GalleryFragment;
 import com.benboer.boluo.message.presenter.group.GroupCreateContract;
 import com.benboer.boluo.message.presenter.group.GroupCreatePresenter;
 import com.benboer.boluo.message.widget.PortraitView;
-import com.benboer.boluo.module_common.mvp.PresenterFragment;
+import com.benboer.boluo.common.mvp.PresenterFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.yalantis.ucrop.UCrop;
@@ -130,10 +132,8 @@ public class GroupCreateFragment extends PresenterFragment<GroupCreateContract.P
                         options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
                         // 设置压缩后的图片精度
                         options.setCompressionQuality(96);
-
                         // 得到头像的缓存地址
-                        File dPath = Application.getPortraitTmpFile();
-
+                        File dPath = FileUtil.getPortraitTmpFile(BoLuo.getApplicationContext());
                         // 发起剪切
                         UCrop.of(Uri.fromFile(new File(path)), Uri.fromFile(dPath))
                                 .withAspectRatio(1, 1) // 1比1比例

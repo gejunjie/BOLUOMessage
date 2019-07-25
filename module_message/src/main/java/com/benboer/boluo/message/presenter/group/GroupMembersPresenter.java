@@ -1,9 +1,9 @@
 package com.benboer.boluo.message.presenter.group;
 
-import com.benboer.boluo.lib_db.db.view.MemberUserModel;
+import com.benboer.boluo.db.db.view.MemberUserModel;
 import com.benboer.boluo.message.data.helper.GroupHelper;
-import com.benboer.boluo.module_common.Factory;
-import com.benboer.boluo.module_common.mvp.presenter.BaseRecyclerPresenter;
+import com.benboer.boluo.common.Factory;
+import com.benboer.boluo.common.mvp.presenter.BaseRecyclerPresenter;
 
 import java.util.List;
 

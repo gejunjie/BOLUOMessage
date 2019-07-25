@@ -1,6 +1,6 @@
 package com.benboer.boluo.message.model.api;
 
-import com.benboer.boluo.module_common.Factory;
+import com.benboer.boluo.common.Factory;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

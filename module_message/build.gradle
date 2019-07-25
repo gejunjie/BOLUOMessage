@@ -1,49 +1,18 @@
-if (isModule.toBoolean()) {
-    apply plugin: 'com.android.application'
-} else {
-    apply plugin: 'com.android.library'
-}
+apply from: "../module.build.gradle"
 apply plugin: 'com.jakewharton.butterknife'
+
 android {
-    compileSdkVersion 28
-
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        //个推相关参数
+        if (isModule.toBoolean()) {
+            applicationId "com.benboer.boluo.message"
+        }
         manifestPlaceholders = [
                 GETUI_APP_ID    : "Whh1CYPnM165RCPKomsQH3",
                 GETUI_APP_KEY   : "4bxoWKuOmy87sqwMRGEhhA",
                 GETUI_APP_SECRET: "Bx6XTWSW9i71TjTB0Zj5G1",
 //                PACKAGE_NAME    : applicationId
         ]
-
     }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    sourceSets {
-        main {
-            if (isModule.toBoolean()) {
-                manifest.srcFile 'src/main/module/AndroidManifest.xml'
-            }
-        }
-    }
-
 }
 
 dependencies {
@@ -54,6 +23,6 @@ dependencies {
     implementation rootProject.ext.dependencies["airpanel"]
     annotationProcessor rootProject.ext.dependencies["dbflow_processor"]
     annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
-//    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
+    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
     api project(path: ':lib_common')
 }

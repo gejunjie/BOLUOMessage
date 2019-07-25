@@ -1,7 +1,7 @@
 package com.benboer.boluo.message.presenter.message;
 
-import com.benboer.boluo.lib_db.db.Message;
-import com.benboer.boluo.lib_db.db.User;
+import com.benboer.boluo.db.db.Message;
+import com.benboer.boluo.db.db.User;
 import com.benboer.boluo.message.data.helper.UserHelper;
 import com.benboer.boluo.message.data.message.MessageRepository;
 

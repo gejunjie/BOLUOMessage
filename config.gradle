@@ -1,35 +1,26 @@
 ext {
     //android开发版本配置
     android = [
-            compileSdkVersion: 29,
-            buildToolsVersion: "29.0.0",
+            compileSdkVersion: 28,                                  //是你SDK的版本号，也就是API Level，例如API-19、API-20、API-21等等。
+            buildToolsVersion: "28.0.3",                            //是你构建工具的版本，其中包括了打包工具aapt、dx等等。这个工具的目录位于..your_sdk_path/build-tools/XX.XX.XX这个版本号一般是API-LEVEL.0.0。
             applicationId    : "com.benboer.boluo.boluomessage",
             minSdkVersion    : 19,
-            targetSdkVersion : 29,
+            targetSdkVersion : 28,
             versionCode      : 1,
             versionName      : "1.0",
     ]
     //version配置
     versions = [
-            "support-version": "29.0.0",
+            "support-version": "28.0.0",
             "junit-version"  : "4.12",
     ]
     //support配置
     support = [
               'design'                  : "com.android.support:design:${versions["support-version"]}",
-//            "constraint-layout"       : "1.1.3",
-//            'support-v4'              : "com.android.support:support-v4:${versions["support-version"]}",
-//            'appcompat-v7'            : "com.android.support:appcompat-v7:${versions["support-version"]}",
-//            'recyclerview-v7'         : "com.android.support:recyclerview-v7:${versions["support-version"]}",
-//            'support-v13'             : "com.android.support:support-v13:${versions["support-version"]}",
-//            'support-fragment'        : "com.android.support:support-fragment:${versions["support-version"]}",
-//            'design'                  : "com.android.support:design:${versions["support-version"]}",
-//            'animated-vector-drawable': "com.android.support:animated-vector-drawable:${versions["support-version"]}",
-//            'junit'                   : "junit:junit:${versions["junit-version"]}",
     ]
     //依赖第三方配置
     dependencies = [
-            constraintlayout            :"androidx.constraintlayout:constraintlayout:1.1.3",
+            constraintlayout            : "androidx.constraintlayout:constraintlayout:1.1.3",
             //Fragment
             fragmentation               : "me.yokeyword:fragmentation:1.3.4",
             swipebackfragment           : "me.yokeyword:swipebackfragment:0.4.0",
@@ -42,51 +33,51 @@ ext {
 
             //网络依赖
             okio                        : "com.squareup.okio:okio:1.14.1",
-            okhttp                      :"com.squareup.okhttp3:okhttp:3.10.0",
-            retrofit                    :"com.squareup.retrofit2:retrofit:2.4.0",
+            okhttp                      : "com.squareup.okhttp3:okhttp:3.10.0",
+            retrofit                    : "com.squareup.retrofit2:retrofit:2.4.0",
             //    api 'com.squareup.retrofit2:converter-scalars:2.4.0'
-            adapter_rxjava2             :"com.squareup.retrofit2:adapter-rxjava2:2.4.0",
-            converter_gson              :"com.squareup.retrofit2:converter-gson:2.4.0",
-            rxjava                      :"io.reactivex.rxjava2:rxjava:2.1.14",
-            rxandroid                   :"io.reactivex.rxjava2:rxandroid:2.0.2",
+            adapter_rxjava2             : "com.squareup.retrofit2:adapter-rxjava2:2.4.0",
+            converter_gson              : "com.squareup.retrofit2:converter-gson:2.4.0",
+            rxjava                      : "io.reactivex.rxjava2:rxjava:2.1.14",
+            rxandroid                   : "io.reactivex.rxjava2:rxandroid:2.0.2",
 
             //图片剪裁
-            ucrop                       :"com.github.yalantis:ucrop:2.2.2-native",
+            ucrop                       : "com.github.yalantis:ucrop:2.2.2-native",
             //Loading
-            loading                     :"com.wang.avi:library:2.1.3",
+            loading                     : "com.wang.avi:library:2.1.3",
             //二维码
-            zbar                        :"me.dm7.barcodescanner:zbar:1.9.8",
-            recyclerview                :"androidx.recyclerview:recyclerview:1.0.0",
+            zbar                        : "me.dm7.barcodescanner:zbar:1.9.8",
+            recyclerview                : "androidx.recyclerview:recyclerview:1.0.0",
 
             //字体图标 使用fontawesome字体
-            ionicons                    :"com.joanzapata.iconify:android-iconify-ionicons:2.2.2",
-            fontawesome                 :"com.joanzapata.iconify:android-iconify-fontawesome:2.2.2",
+            ionicons                    : "com.joanzapata.iconify:android-iconify-ionicons:2.2.2",
+            fontawesome                 : "com.joanzapata.iconify:android-iconify-fontawesome:2.2.2",
             // 个推
-            getui                       :"com.getui:sdk:2.13.2.0",
+            getui                       : "com.getui:sdk:2.13.2.0",
             // 空气面板
             airpanel                    : "net.qiujuer.widget:airpanel:1.1.0",
             //Banner依赖
-            convenientbanner            :"com.bigkoo:convenientbanner:2.0.5",
-            view_pager_transforms       :"com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar",
+            convenientbanner            : "com.bigkoo:convenientbanner:2.0.5",
+            view_pager_transforms       : "com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar",
             //glide
-            glide                       :"com.github.bumptech.glide:glide:4.9.0",
+            glide                       : "com.github.bumptech.glide:glide:4.9.0",
             //butterknife
-            butterknife                 :"com.jakewharton:butterknife:10.1.0",
-            butterknife_compiler        :"com.jakewharton:butterknife-compiler:10.1.0",
+            butterknife                 : "com.jakewharton:butterknife:10.1.0",
+            butterknife_compiler        : "com.jakewharton:butterknife-compiler:10.1.0",
 
             genius_ui                   : "net.qiujuer.genius:ui:2.1.1",
             genius_res                  : "net.qiujuer.genius:res:2.1.1",
             genius_kit_handler          : "net.qiujuer.genius:kit-handler:2.1.1",
-            genius_kit_reflect          :"net.qiujuer.genius:kit-reflect:2.1.1",
-            circleimageview             :"de.hdodenhof:circleimageview:2.1.0",
-            gson                        :"com.google.code.gson:gson:2.8.5",
+            genius_kit_reflect          : "net.qiujuer.genius:kit-reflect:2.1.1",
+            circleimageview             : "de.hdodenhof:circleimageview:2.1.0",
+            gson                        : "com.google.code.gson:gson:2.8.5",
             oss                         : "com.aliyun.dpa:oss-android-sdk:2.3.0",
-            dbflow_core                 :"com.github.Raizlabs.DBFlow:dbflow-core:4.2.4",
+            dbflow_core                 : "com.github.Raizlabs.DBFlow:dbflow-core:4.2.4",
             dbflow                      : "com.github.Raizlabs.DBFlow:dbflow:4.2.4",
-            dbflow_processor            :"com.github.Raizlabs.DBFlow:dbflow-processor:4.2.4",
+            dbflow_processor            : "com.github.Raizlabs.DBFlow:dbflow-processor:4.2.4",
             //阿里路由框架
-//            arouter_api                 : "com.alibaba:arouter-api:1.4.1",
-//            arouter_compiler            : "com.alibaba:arouter-compiler:1.2.2"
+            arouter_api                 : "com.alibaba:arouter-api:1.4.1",
+            arouter_compiler            : "com.alibaba:arouter-compiler:1.2.2"
     ]
 
 }

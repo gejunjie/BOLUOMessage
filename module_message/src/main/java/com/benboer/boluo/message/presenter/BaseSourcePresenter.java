@@ -1,9 +1,9 @@
 package com.benboer.boluo.message.presenter;
 
-import com.benboer.boluo.module_common.mvp.data.DataSource;
-import com.benboer.boluo.module_common.mvp.data.DbDataSource;
-import com.benboer.boluo.module_common.mvp.presenter.BaseContract;
-import com.benboer.boluo.module_common.mvp.presenter.BaseRecyclerPresenter;
+import com.benboer.boluo.common.mvp.data.DataSource;
+import com.benboer.boluo.common.mvp.data.DbDataSource;
+import com.benboer.boluo.common.mvp.presenter.BaseContract;
+import com.benboer.boluo.common.mvp.presenter.BaseRecyclerPresenter;
 
 import java.util.List;
 

@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
 import com.benboer.boluo.message.fragment.user.PersonalFragment;
-import com.benboer.boluo.module_common.mvp.PresenterFragment;
+import com.benboer.boluo.common.mvp.PresenterFragment;
 import com.benboer.boluo.message.model.card.UserCard;
 import com.benboer.boluo.message.presenter.contact.FollowContract;
 import com.benboer.boluo.message.presenter.contact.FollowPresenter;
@@ -28,7 +28,7 @@ import com.benboer.boluo.message.presenter.search.SearchContract;
 import com.benboer.boluo.message.presenter.search.SearchUserPresenter;
 import com.benboer.boluo.message.widget.EmptyView;
 import com.benboer.boluo.message.widget.PortraitView;
-import com.benboer.boluo.module_common.ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
 import com.bumptech.glide.Glide;
 
 import net.qiujuer.genius.ui.Ui;

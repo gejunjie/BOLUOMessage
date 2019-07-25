@@ -1,11 +1,11 @@
 package com.benboer.boluo.message.presenter.message;
 
-import com.benboer.boluo.lib_db.db.Group;
-import com.benboer.boluo.lib_db.db.Message;
-import com.benboer.boluo.lib_db.db.view.MemberUserModel;
+import com.benboer.boluo.db.db.Group;
+import com.benboer.boluo.db.db.Message;
+import com.benboer.boluo.db.db.view.MemberUserModel;
 import com.benboer.boluo.message.data.helper.GroupHelper;
 import com.benboer.boluo.message.data.message.MessageGroupRepository;
-import com.benboer.boluo.module_common.persistence.Account;
+import com.benboer.boluo.common.persistence.Account;
 
 import java.util.List;
 

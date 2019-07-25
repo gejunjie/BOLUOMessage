@@ -2,8 +2,8 @@ package com.benboer.boluo.message.presenter.message;
 
 import androidx.recyclerview.widget.DiffUtil;
 
-import com.benboer.boluo.lib_db.DiffUiDataCallback;
-import com.benboer.boluo.lib_db.db.Session;
+import com.benboer.boluo.db.DiffUiDataCallback;
+import com.benboer.boluo.db.db.Session;
 import com.benboer.boluo.message.data.message.SessionDataSource;
 import com.benboer.boluo.message.data.message.SessionRepository;
 import com.benboer.boluo.message.presenter.BaseSourcePresenter;

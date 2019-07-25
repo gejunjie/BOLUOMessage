@@ -2,10 +2,10 @@ package com.benboer.boluo.message.data;
 
 import androidx.annotation.NonNull;
 
-import com.benboer.boluo.module_common.util.CollectionUtil;
-import com.benboer.boluo.lib_db.db.BaseDbModel;
+import com.benboer.boluo.common.util.CollectionUtil;
+import com.benboer.boluo.db.db.BaseDbModel;
 import com.benboer.boluo.message.data.helper.DbHelper;
-import com.benboer.boluo.module_common.mvp.data.DbDataSource;
+import com.benboer.boluo.common.mvp.data.DbDataSource;
 import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;
 
 import net.qiujuer.genius.kit.reflect.Reflector;
@@ -28,7 +28,7 @@ public abstract class BaseDbRepository<Data extends BaseDbModel<Data>>
 
     public BaseDbRepository(){
         // 拿当前类的范型数组信息
-        Type[] types = Reflector.getActualTypeArguments(BaseDbRepository.class, this.getClass());
+        Type[] types = Reflector.getActualTypeArguments(BaseDbRepository.class, this.getClass());//获取子类用于扩展泛型基类的实际类型参数
         dataClass = (Class<Data>) types[0];
     }
 
@@ -87,9 +87,9 @@ public abstract class BaseDbRepository<Data extends BaseDbModel<Data>>
         }
 
         // 转变为数组
-        Data[] users = CollectionUtil.toArray(tResult, dataClass);
+        Data[] datas = CollectionUtil.toArray(tResult, dataClass);
         // 回到数据集更新的操作中
-        onDataSave(users);
+        onDataSave(datas);
     }
 
     // 插入或者更新
@@ -108,7 +108,7 @@ public abstract class BaseDbRepository<Data extends BaseDbModel<Data>>
         dataList.add(index, data);
     }
 
-    // 添加方法
+    // 添加数据
     protected void insert(Data data) {
         dataList.add(data);
     }
@@ -127,7 +127,7 @@ public abstract class BaseDbRepository<Data extends BaseDbModel<Data>>
     }
 
     /**
-     * 检查一个User是否是需要关注的数据
+     * 判断Data是否是需要的数据
      *
      * @param data Data
      * @return True是我关注的数据
@@ -138,6 +138,9 @@ public abstract class BaseDbRepository<Data extends BaseDbModel<Data>>
         DbHelper.addChangedListener(dataClass, this);
     }
 
+    /**
+     * 通知观察者数据发生改变
+     */
     private void notifyDataChange(){
         SucceedCallback<List<Data>> callback = this.callback;
         if (callback != null){

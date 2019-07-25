@@ -2,10 +2,10 @@ package com.benboer.boluo.message.data.message;
 
 import androidx.annotation.NonNull;
 
-import com.benboer.boluo.lib_db.db.Message;
-import com.benboer.boluo.lib_db.db.Message_Table;
+import com.benboer.boluo.db.db.Message;
+import com.benboer.boluo.db.db.Message_Table;
 import com.benboer.boluo.message.data.BaseDbRepository;
-import com.benboer.boluo.module_common.mvp.data.DataSource;
+import com.benboer.boluo.common.mvp.data.DataSource;
 import com.raizlabs.android.dbflow.sql.language.OperatorGroup;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;

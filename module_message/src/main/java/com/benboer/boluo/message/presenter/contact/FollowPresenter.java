@@ -1,9 +1,9 @@
 package com.benboer.boluo.message.presenter.contact;
 
-import com.benboer.boluo.module_common.mvp.data.DataSource;
+import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.message.data.helper.UserHelper;
 import com.benboer.boluo.message.model.card.UserCard;
-import com.benboer.boluo.module_common.mvp.presenter.BasePresenter;
+import com.benboer.boluo.common.mvp.presenter.BasePresenter;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/21.

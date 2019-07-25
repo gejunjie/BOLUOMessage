@@ -1,15 +1,15 @@
 package com.benboer.boluo.message.data.helper;
 
-import com.benboer.boluo.lib_db.db.Message;
-import com.benboer.boluo.lib_db.db.Message_Table;
+import com.benboer.boluo.db.db.Message;
+import com.benboer.boluo.db.db.Message_Table;
 import com.benboer.boluo.message.data.message.MessageDispatcher;
 import com.benboer.boluo.message.model.api.message.MsgCreateModel;
 import com.benboer.boluo.message.model.card.MessageCard;
 import com.benboer.boluo.message.net.RemoteService;
-import com.benboer.boluo.module_common.Factory;
-import com.benboer.boluo.module_common.model.RspModel;
-import com.benboer.boluo.module_common.net.Network;
-import com.benboer.boluo.module_common.net.RspCodeDecoder;
+import com.benboer.boluo.common.Factory;
+import com.benboer.boluo.common.model.RspModel;
+import com.benboer.boluo.common.net.Network;
+import com.benboer.boluo.common.net.RspCodeDecoder;
 import com.raizlabs.android.dbflow.sql.language.OperatorGroup;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 

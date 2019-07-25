@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 
 import com.benboer.boluo.factory.R;
-import com.benboer.boluo.lib_db.model.Author;
+import com.benboer.boluo.db.model.Author;
 import com.bumptech.glide.RequestManager;
 
 import de.hdodenhof.circleimageview.CircleImageView;

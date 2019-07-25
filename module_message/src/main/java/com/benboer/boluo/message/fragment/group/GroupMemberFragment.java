@@ -10,15 +10,15 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.benboer.boluo.module_common.ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
-import com.benboer.boluo.lib_db.db.view.MemberUserModel;
+import com.benboer.boluo.db.db.view.MemberUserModel;
 import com.benboer.boluo.message.fragment.user.PersonalFragment;
 import com.benboer.boluo.message.presenter.group.GroupMembersContract;
 import com.benboer.boluo.message.presenter.group.GroupMembersPresenter;
 import com.benboer.boluo.message.widget.PortraitView;
-import com.benboer.boluo.module_common.mvp.PresenterFragment;
+import com.benboer.boluo.common.mvp.PresenterFragment;
 import com.bumptech.glide.Glide;
 
 import butterknife.BindView;

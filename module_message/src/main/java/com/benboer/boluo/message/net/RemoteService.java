@@ -1,6 +1,6 @@
 package com.benboer.boluo.message.net;
 
-import com.benboer.boluo.module_common.model.RspModel;
+import com.benboer.boluo.common.model.RspModel;
 import com.benboer.boluo.message.model.api.group.GroupCreateModel;
 import com.benboer.boluo.message.model.api.group.GroupMemberAddModel;
 import com.benboer.boluo.message.model.api.message.MsgCreateModel;

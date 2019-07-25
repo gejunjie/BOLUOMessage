@@ -1,6 +1,6 @@
 package com.benboer.boluo.message.presenter.user;
 
-import com.benboer.boluo.module_common.mvp.presenter.BaseContract;
+import com.benboer.boluo.common.mvp.presenter.BaseContract;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/8.

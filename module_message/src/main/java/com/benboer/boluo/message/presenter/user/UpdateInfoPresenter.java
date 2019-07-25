@@ -3,14 +3,14 @@ package com.benboer.boluo.message.presenter.user;
 import android.text.TextUtils;
 
 import com.benboer.boluo.factory.R;
-import com.benboer.boluo.lib_db.db.User;
+import com.benboer.boluo.db.db.User;
 import com.benboer.boluo.message.data.helper.UserHelper;
 import com.benboer.boluo.message.model.api.user.UserUpdateModel;
 import com.benboer.boluo.message.model.card.UserCard;
-import com.benboer.boluo.module_common.Factory;
-import com.benboer.boluo.module_common.mvp.data.DataSource;
-import com.benboer.boluo.module_common.mvp.presenter.BasePresenter;
-import com.benboer.boluo.module_common.net.UploadHelper;
+import com.benboer.boluo.common.Factory;
+import com.benboer.boluo.common.mvp.data.DataSource;
+import com.benboer.boluo.common.mvp.presenter.BasePresenter;
+import com.benboer.boluo.common.net.UploadHelper;
 
 import net.qiujuer.genius.kit.handler.Run;
 import net.qiujuer.genius.kit.handler.runable.Action;

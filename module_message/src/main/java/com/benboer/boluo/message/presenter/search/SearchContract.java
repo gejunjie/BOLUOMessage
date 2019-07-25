@@ -2,7 +2,7 @@ package com.benboer.boluo.message.presenter.search;
 
 import com.benboer.boluo.message.model.card.GroupCard;
 import com.benboer.boluo.message.model.card.UserCard;
-import com.benboer.boluo.module_common.mvp.presenter.BaseContract;
+import com.benboer.boluo.common.mvp.presenter.BaseContract;
 
 import java.util.List;
 

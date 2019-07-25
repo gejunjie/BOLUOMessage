@@ -1,9 +1,9 @@
 package com.benboer.boluo.message.presenter.search;
 
-import com.benboer.boluo.module_common.mvp.data.DbDataSource;
+import com.benboer.boluo.common.mvp.data.DbDataSource;
 import com.benboer.boluo.message.data.helper.GroupHelper;
 import com.benboer.boluo.message.model.card.GroupCard;
-import com.benboer.boluo.module_common.mvp.presenter.BasePresenter;
+import com.benboer.boluo.common.mvp.presenter.BasePresenter;
 
 import net.qiujuer.genius.kit.handler.Run;
 import net.qiujuer.genius.kit.handler.runable.Action;

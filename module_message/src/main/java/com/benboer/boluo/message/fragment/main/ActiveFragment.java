@@ -10,17 +10,17 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.benboer.boluo.module_common.ui.recycler.RecyclerAdapter;
-import com.benboer.boluo.module_common.util.DateTimeUtil;
+import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.common.util.DateTimeUtil;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
-import com.benboer.boluo.lib_db.db.Session;
+import com.benboer.boluo.db.db.Session;
 import com.benboer.boluo.message.fragment.message.ChatUserFragment;
 import com.benboer.boluo.message.presenter.message.SessionContract;
 import com.benboer.boluo.message.presenter.message.SessionPresenter;
 import com.benboer.boluo.message.widget.EmptyView;
 import com.benboer.boluo.message.widget.PortraitView;
-import com.benboer.boluo.module_common.mvp.PresenterFragment;
+import com.benboer.boluo.common.mvp.PresenterFragment;
 import com.bumptech.glide.Glide;
 
 import butterknife.BindView;

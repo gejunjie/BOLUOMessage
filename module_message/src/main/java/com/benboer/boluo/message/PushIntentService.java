@@ -10,7 +10,7 @@ import com.benboer.boluo.message.model.card.GroupCard;
 import com.benboer.boluo.message.model.card.GroupMemberCard;
 import com.benboer.boluo.message.model.card.MessageCard;
 import com.benboer.boluo.message.model.card.UserCard;
-import com.benboer.boluo.module_common.persistence.Account;
+import com.benboer.boluo.common.persistence.Account;
 import com.google.gson.reflect.TypeToken;
 import com.igexin.sdk.GTIntentService;
 import com.igexin.sdk.message.GTCmdMessage;
@@ -20,7 +20,7 @@ import com.igexin.sdk.message.GTTransmitMessage;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import static com.benboer.boluo.module_common.Factory.getGson;
+import static com.benboer.boluo.common.Factory.getGson;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/6/17.
@@ -141,6 +141,7 @@ public class PushIntentService extends GTIntentService {
 
                 case PushModel.ENTITY_TYPE_ADD_GROUP: {
                     // 添加群
+
                     GroupCard card = getGson().fromJson(entity.content, GroupCard.class);
                     GroupDispatcher.instance().dispatch(card);
                     break;

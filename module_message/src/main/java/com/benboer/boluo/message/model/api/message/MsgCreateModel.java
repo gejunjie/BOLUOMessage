@@ -1,8 +1,8 @@
 package com.benboer.boluo.message.model.api.message;
 
-import com.benboer.boluo.lib_db.db.Message;
+import com.benboer.boluo.db.db.Message;
 import com.benboer.boluo.message.model.card.MessageCard;
-import com.benboer.boluo.module_common.persistence.Account;
+import com.benboer.boluo.common.persistence.Account;
 
 import java.util.Date;
 import java.util.UUID;

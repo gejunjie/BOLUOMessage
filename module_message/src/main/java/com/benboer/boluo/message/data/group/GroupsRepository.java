@@ -2,12 +2,12 @@ package com.benboer.boluo.message.data.group;
 
 import android.text.TextUtils;
 
-import com.benboer.boluo.lib_db.db.Group;
-import com.benboer.boluo.lib_db.db.Group_Table;
-import com.benboer.boluo.lib_db.db.view.MemberUserModel;
+import com.benboer.boluo.db.db.Group;
+import com.benboer.boluo.db.db.Group_Table;
+import com.benboer.boluo.db.db.view.MemberUserModel;
 import com.benboer.boluo.message.data.BaseDbRepository;
 import com.benboer.boluo.message.data.helper.GroupHelper;
-import com.benboer.boluo.module_common.mvp.data.DataSource;
+import com.benboer.boluo.common.mvp.data.DataSource;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.List;
