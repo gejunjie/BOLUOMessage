@@ -17,7 +17,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-//import com.benboer.boluo.core.util.StreamUtil;
+//import StreamUtil;
 import com.benboer.boluo.factory.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;

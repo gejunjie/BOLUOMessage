@@ -27,6 +27,5 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
-
-    api project(path: ':core')
+    implementation rootProject.ext.support["design"]
 }

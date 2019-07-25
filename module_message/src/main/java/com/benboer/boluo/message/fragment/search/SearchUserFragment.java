@@ -28,7 +28,7 @@ import com.benboer.boluo.message.presenter.search.SearchContract;
 import com.benboer.boluo.message.presenter.search.SearchUserPresenter;
 import com.benboer.boluo.message.widget.EmptyView;
 import com.benboer.boluo.message.widget.PortraitView;
-import com.benboer.boluo.core.ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.module_common.ui.recycler.RecyclerAdapter;
 import com.bumptech.glide.Glide;
 
 import net.qiujuer.genius.ui.Ui;

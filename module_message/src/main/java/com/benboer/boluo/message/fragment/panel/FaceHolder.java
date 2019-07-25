@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
-import com.benboer.boluo.core.ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.module_common.ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.message.widget.face.Face;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;

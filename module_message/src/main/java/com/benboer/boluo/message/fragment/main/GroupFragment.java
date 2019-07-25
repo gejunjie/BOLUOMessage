@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.benboer.boluo.core.ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.module_common.ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
 import com.benboer.boluo.lib_db.db.Group;

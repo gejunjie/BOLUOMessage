@@ -85,8 +85,8 @@ ext {
             dbflow                      : "com.github.Raizlabs.DBFlow:dbflow:4.2.4",
             dbflow_processor            :"com.github.Raizlabs.DBFlow:dbflow-processor:4.2.4",
             //阿里路由框架
-            arouter_api                 : "com.alibaba:arouter-api:1.4.1",
-            arouter_compiler            : "com.alibaba:arouter-compiler:1.2.2"
+//            arouter_api                 : "com.alibaba:arouter-api:1.4.1",
+//            arouter_compiler            : "com.alibaba:arouter-compiler:1.2.2"
     ]
 
 }

@@ -19,7 +19,7 @@ import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.benboer.boluo.core.ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.module_common.ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.factory.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;

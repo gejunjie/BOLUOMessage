@@ -1,7 +1,7 @@
 package com.benboer.boluo.module_common;
 
-import com.benboer.boluo.core.app.BoLuo;
-import com.benboer.boluo.module_common.utils.DBFlowExclusionStrategy;
+import com.benboer.boluo.module_common.app.BoLuo;
+import com.benboer.boluo.module_common.utils.db.DBFlowExclusionStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.raizlabs.android.dbflow.config.FlowConfig;

@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.benboer.boluo.core.Application;
+import com.benboer.boluo.module_common.Application;
 import com.benboer.boluo.module_common.mvp.PresenterFragment;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;

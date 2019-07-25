@@ -1,14 +1,5 @@
 package com.benboer.boluo.message.fragment.main;
 
-import android.os.Bundle;
-import android.view.View;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import com.benboer.boluo.core.fragment.SupportFragment;
-import com.benboer.boluo.factory.R;
-
 /**
  * Created by BenBoerBoluojiushiwo on 2019/6/21.
  */

@@ -7,10 +7,10 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.benboer.boluo.core.app.AccountManager;
-import com.benboer.boluo.core.app.IUserLoginChecker;
-import com.benboer.boluo.core.fragment.SupportFragment;
-import com.benboer.boluo.core.util.storage.PreferenceUtil;
+import com.benboer.boluo.module_common.app.AccountManager;
+import com.benboer.boluo.module_common.app.IUserLoginChecker;
+import com.benboer.boluo.module_common.base.fragment.SupportFragment;
+import com.benboer.boluo.module_common.util.storage.PreferenceUtil;
 import com.benboer.boluo.module_login.R;
 import com.benboer.boluo.module_login.ui.launcher.ILauncherListener;
 import com.benboer.boluo.module_login.ui.launcher.LauncherHolderCreator;

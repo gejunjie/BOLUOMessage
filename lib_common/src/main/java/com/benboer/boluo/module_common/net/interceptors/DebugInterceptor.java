@@ -1,6 +1,6 @@
 package com.benboer.boluo.module_common.net.interceptors;
 
-import com.benboer.boluo.core.util.file.FileUtil;
+import com.benboer.boluo.module_common.util.file.FileUtil;
 
 import java.io.IOException;
 

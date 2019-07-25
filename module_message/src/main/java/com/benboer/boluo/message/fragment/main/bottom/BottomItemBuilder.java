@@ -1,6 +1,6 @@
 package com.benboer.boluo.message.fragment.main.bottom;
 
-import com.benboer.boluo.core.fragment.SupportFragment;
+import com.benboer.boluo.module_common.base.fragment.SupportFragment;
 
 import java.util.LinkedHashMap;
 

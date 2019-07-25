@@ -9,12 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
-import com.benboer.boluo.core.app.AccountManager;
-import com.benboer.boluo.core.app.IUserLoginChecker;
-import com.benboer.boluo.core.fragment.SupportFragment;
-import com.benboer.boluo.core.util.storage.PreferenceUtil;
-import com.benboer.boluo.core.util.timer.BaseTimerTask;
-import com.benboer.boluo.core.util.timer.ITimerListener;
+import com.benboer.boluo.module_common.app.AccountManager;
+import com.benboer.boluo.module_common.app.IUserLoginChecker;
+import com.benboer.boluo.module_common.base.fragment.SupportFragment;
+import com.benboer.boluo.module_common.util.storage.PreferenceUtil;
+import com.benboer.boluo.module_common.util.timer.BaseTimerTask;
+import com.benboer.boluo.module_common.util.timer.ITimerListener;
 import com.benboer.boluo.module_login.R;
 import com.benboer.boluo.module_common.persistence.Account;
 import com.benboer.boluo.module_login.ui.launcher.ILauncherListener;

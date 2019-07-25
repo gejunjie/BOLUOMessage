@@ -1,8 +1,8 @@
 package com.benboer.boluo.module_common.net;
 
-import com.benboer.boluo.core.app.BoLuo;
-import com.benboer.boluo.core.app.ConfigKeys;
-import com.benboer.boluo.module_common.utils.DBFlowExclusionStrategy;
+import com.benboer.boluo.module_common.app.BoLuo;
+import com.benboer.boluo.module_common.app.ConfigKeys;
+import com.benboer.boluo.module_common.utils.db.DBFlowExclusionStrategy;
 import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.benboer.boluo.core.app.ConfigKeys.API_HOST;
+import static com.benboer.boluo.module_common.app.ConfigKeys.API_HOST;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/5.

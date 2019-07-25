@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.benboer.boluo.core.app.BoLuo;
+import com.benboer.boluo.module_common.app.BoLuo;
 import com.benboer.boluo.lib_db.db.Group;
 import com.benboer.boluo.lib_db.db.GroupMember;
 import com.benboer.boluo.lib_db.db.Message;

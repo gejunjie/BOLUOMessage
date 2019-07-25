@@ -2,8 +2,8 @@ package com.benboer.boluo.message.fragment.main.bottom;
 
 import android.widget.Toast;
 
-import com.benboer.boluo.core.R;
-import com.benboer.boluo.core.app.BoLuo;
+import com.benboer.boluo.factory.R;
+import com.benboer.boluo.module_common.app.BoLuo;
 import com.benboer.boluo.module_common.mvp.PresenterFragment;
 
 /**

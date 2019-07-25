@@ -9,8 +9,8 @@ import com.alibaba.sdk.android.oss.common.auth.OSSCredentialProvider;
 import com.alibaba.sdk.android.oss.common.auth.OSSPlainTextAKSKCredentialProvider;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
-import com.benboer.boluo.core.app.BoLuo;
-import com.benboer.boluo.core.util.HashUtil;
+import com.benboer.boluo.module_common.app.BoLuo;
+import com.benboer.boluo.module_common.util.HashUtil;
 
 import java.io.File;
 import java.util.Date;

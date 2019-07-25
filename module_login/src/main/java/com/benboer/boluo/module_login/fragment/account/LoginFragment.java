@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.benboer.boluo.componentbase.ServiceFactory;
-import com.benboer.boluo.core.app.AccountManager;
+import com.benboer.boluo.module_common.app.AccountManager;
 import com.benboer.boluo.module_common.mvp.PresenterFragment;
 import com.benboer.boluo.module_common.persistence.Account;
 import com.benboer.boluo.module_login.R;

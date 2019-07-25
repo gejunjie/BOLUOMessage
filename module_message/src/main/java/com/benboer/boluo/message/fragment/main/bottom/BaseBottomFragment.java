@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.LinearLayoutCompat;
 
-import com.benboer.boluo.core.R;
-import com.benboer.boluo.core.fragment.SupportFragment;
+import com.benboer.boluo.factory.R;
+import com.benboer.boluo.module_common.base.fragment.SupportFragment;
 import com.joanzapata.iconify.widget.IconTextView;
 
 import java.util.ArrayList;

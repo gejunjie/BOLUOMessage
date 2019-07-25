@@ -6,9 +6,9 @@ import androidx.annotation.Nullable;
 
 import com.benboer.boluo.module_login.fragment.account.LoginFragment;
 import com.benboer.boluo.message.fragment.main.BottomFragment;
-import com.benboer.boluo.core.activity.ProxyActivity;
-import com.benboer.boluo.core.app.BoLuo;
-import com.benboer.boluo.core.fragment.SupportFragment;
+import com.benboer.boluo.module_common.base.activity.ProxyActivity;
+import com.benboer.boluo.module_common.app.BoLuo;
+import com.benboer.boluo.module_common.base.fragment.SupportFragment;
 import com.benboer.boluo.module_login.fragment.launcher.LauncherFragment;
 import com.benboer.boluo.module_login.ui.launcher.ILauncherListener;
 

@@ -2,7 +2,7 @@ package com.benboer.boluo.message.data;
 
 import androidx.annotation.NonNull;
 
-import com.benboer.boluo.core.util.CollectionUtil;
+import com.benboer.boluo.module_common.util.CollectionUtil;
 import com.benboer.boluo.lib_db.db.BaseDbModel;
 import com.benboer.boluo.message.data.helper.DbHelper;
 import com.benboer.boluo.module_common.mvp.data.DbDataSource;

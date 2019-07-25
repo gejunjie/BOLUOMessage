@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.StringRes;
 
-import com.benboer.boluo.core.ui.convention.PlaceHolderView;
+import com.benboer.boluo.module_common.ui.convention.PlaceHolderView;
 import com.benboer.boluo.factory.R;
 
 import net.qiujuer.genius.ui.widget.Loading;

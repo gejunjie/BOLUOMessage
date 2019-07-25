@@ -54,6 +54,6 @@ dependencies {
     implementation rootProject.ext.dependencies["airpanel"]
     annotationProcessor rootProject.ext.dependencies["dbflow_processor"]
     annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
-    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
+//    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
     api project(path: ':lib_common')
 }

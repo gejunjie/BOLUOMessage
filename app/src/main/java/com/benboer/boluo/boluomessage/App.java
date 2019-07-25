@@ -7,8 +7,8 @@ import android.text.TextUtils;
 import androidx.multidex.MultiDex;
 
 import com.benboer.boluo.componentbase.ServiceFactory;
-import com.benboer.boluo.core.Application;
-import com.benboer.boluo.core.app.BoLuo;
+import com.benboer.boluo.module_common.Application;
+import com.benboer.boluo.module_common.app.BoLuo;
 
 import com.benboer.boluo.message.PushIntentService;
 import com.benboer.boluo.message.service.AccountService;

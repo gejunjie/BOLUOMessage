@@ -19,7 +19,7 @@ import com.benboer.boluo.message.fragment.user.PersonalFragment;
 import com.benboer.boluo.message.fragment.search.SearchGroupFragment;
 import com.benboer.boluo.message.fragment.search.SearchUserFragment;
 import com.benboer.boluo.message.fragment.user.UpdateInfoFragment;
-import com.benboer.boluo.core.fragment.SupportFragment;
+import com.benboer.boluo.module_common.base.fragment.SupportFragment;
 import com.benboer.boluo.message.widget.PortraitView;
 import com.benboer.boluo.module_common.persistence.Account;
 import com.bumptech.glide.Glide;

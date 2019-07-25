@@ -2,7 +2,7 @@ package com.benboer.boluo.module_common.mvp;
 
 import android.content.Context;
 
-import com.benboer.boluo.core.fragment.SupportFragment;
+import com.benboer.boluo.module_common.base.fragment.SupportFragment;
 import com.benboer.boluo.module_common.mvp.presenter.BaseContract;
 import com.blankj.utilcode.util.ToastUtils;
 
