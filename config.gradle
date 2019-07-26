@@ -66,12 +66,10 @@ ext {
             butterknife_compiler        : "com.jakewharton:butterknife-compiler:10.1.0",
 
             genius_ui                   : "net.qiujuer.genius:ui:2.1.1",
-            genius_res                  : "net.qiujuer.genius:res:2.1.1",
-            genius_kit_handler          : "net.qiujuer.genius:kit-handler:2.1.1",
-            genius_kit_reflect          : "net.qiujuer.genius:kit-reflect:2.1.1",
             circleimageview             : "de.hdodenhof:circleimageview:2.1.0",
             gson                        : "com.google.code.gson:gson:2.8.5",
             oss                         : "com.aliyun.dpa:oss-android-sdk:2.3.0",
+            //数据库
             dbflow_core                 : "com.github.Raizlabs.DBFlow:dbflow-core:4.2.4",
             dbflow                      : "com.github.Raizlabs.DBFlow:dbflow:4.2.4",
             dbflow_processor            : "com.github.Raizlabs.DBFlow:dbflow-processor:4.2.4",

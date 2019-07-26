@@ -8,7 +8,7 @@ import com.benboer.boluo.message.data.user.UserDispatcher;
 import com.benboer.boluo.message.model.api.user.UserUpdateModel;
 import com.benboer.boluo.message.model.card.UserCard;
 import com.benboer.boluo.message.net.RemoteService;
-import com.benboer.boluo.common.model.RspModel;
+import com.benboer.boluo.common.net.model.RspModel;
 import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.common.net.Network;
 import com.benboer.boluo.common.net.RspCodeDecoder;

@@ -13,7 +13,7 @@ import com.benboer.boluo.message.model.api.group.GroupCreateModel;
 import com.benboer.boluo.message.model.card.GroupCard;
 import com.benboer.boluo.message.model.card.GroupMemberCard;
 import com.benboer.boluo.message.net.RemoteService;
-import com.benboer.boluo.common.model.RspModel;
+import com.benboer.boluo.common.net.model.RspModel;
 import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.common.net.Network;
 import com.benboer.boluo.common.net.RspCodeDecoder;
@@ -30,9 +30,10 @@ import retrofit2.Response;
  * Created by BenBoerBoluojiushiwo on 2019/5/24.
  */
 public class GroupHelper {
+
     static RemoteService service = Network.getRetrofit().create(RemoteService.class);
 
-    /***
+    /**
      * 创建群
      * @param model
      * @param callback
@@ -89,8 +90,6 @@ public class GroupHelper {
 
         return call;
     }
-
-
 
     /**
      * 查询群的信息，先本地，后网络
@@ -175,7 +174,6 @@ public class GroupHelper {
     /**
      * 关联查询一个用户和群成员的表，返回一个MemberUserModel表的集合
      */
-
     public static List<MemberUserModel> getMemberUsers(String groupId, int size) {
         return SQLite.select(GroupMember_Table.alias.withTable().as("alias"),
                 User_Table.id.withTable().as("userId"),

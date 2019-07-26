@@ -182,7 +182,7 @@ public class GalleryView extends RecyclerView {
                     .load(data.path)
                     .centerCrop()
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .placeholder(R.color.green_300)
+                    .placeholder(R.color.colorDark)
                     .into(mImageView);
             mShade.setVisibility(data.isSelected ?
                     VISIBLE : INVISIBLE);

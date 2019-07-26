@@ -3,12 +3,11 @@ package com.benboer.boluo.message.data;
 import androidx.annotation.NonNull;
 
 import com.benboer.boluo.common.util.CollectionUtil;
+import com.benboer.boluo.common.util.reflector.Reflector;
 import com.benboer.boluo.db.db.BaseDbModel;
 import com.benboer.boluo.message.data.helper.DbHelper;
 import com.benboer.boluo.common.mvp.data.DbDataSource;
 import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;
-
-import net.qiujuer.genius.kit.reflect.Reflector;
 
 import java.lang.reflect.Type;
 import java.util.LinkedList;

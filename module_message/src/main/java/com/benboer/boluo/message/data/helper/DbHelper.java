@@ -118,7 +118,6 @@ public final class DbHelper {
             public void execute(DatabaseWrapper databaseWrapper) {
                 ModelAdapter<Model> adapter = FlowManager.getModelAdapter(clazz);
                 adapter.deleteAll(Arrays.asList(models));
-
             }
         }).build().execute();
     }
@@ -218,13 +217,6 @@ public final class DbHelper {
         }).build().execute();
     }
 
-    public interface ChangedListener<Data extends BaseModel>{
-
-        void onDataSave(Data... list);
-
-        void onDataDelete(Data... list);
-    }
-
     private static void refreshToNow(Session session) {
         Message message;
         String id = session.getId();
@@ -293,5 +285,12 @@ public final class DbHelper {
                 session.setModifyAt(message.getCreateAt());
             }
         }
+    }
+
+    public interface ChangedListener<Data extends BaseModel>{
+
+        void onDataSave(Data... list);
+
+        void onDataDelete(Data... list);
     }
 }

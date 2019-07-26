@@ -1,12 +1,10 @@
 package com.benboer.boluo.message.presenter.search;
 
 import com.benboer.boluo.common.mvp.data.DbDataSource;
+import com.benboer.boluo.common.mvp.presenter.BasePresenter;
+import com.benboer.boluo.common.util.HandlerUtil;
 import com.benboer.boluo.message.data.helper.GroupHelper;
 import com.benboer.boluo.message.model.card.GroupCard;
-import com.benboer.boluo.common.mvp.presenter.BasePresenter;
-
-import net.qiujuer.genius.kit.handler.Run;
-import net.qiujuer.genius.kit.handler.runable.Action;
 
 import java.util.List;
 
@@ -41,9 +39,9 @@ public class SearchGroupPresenter extends BasePresenter<SearchContract.GroupView
     public void onDataLoaded(final List<GroupCard> groupCards) {
         final SearchContract.GroupView view = getView();
         if (view != null){
-            Run.onUiAsync(new Action() {
+            HandlerUtil.runOnUiThread(new Runnable() {
                 @Override
-                public void call() {
+                public void run() {
                     view.onSearchDone(groupCards);
                 }
             });
@@ -54,9 +52,9 @@ public class SearchGroupPresenter extends BasePresenter<SearchContract.GroupView
     public void onDataNotAvailable(final int strRes) {
         final SearchContract.GroupView view = getView();
         if (view != null){
-            Run.onUiAsync(new Action() {
+            HandlerUtil.runOnUiThread(new Runnable() {
                 @Override
-                public void call() {
+                public void run() {
                     view.showError(strRes);
                 }
             });

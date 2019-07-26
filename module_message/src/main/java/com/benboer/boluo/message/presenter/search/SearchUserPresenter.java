@@ -1,12 +1,10 @@
 package com.benboer.boluo.message.presenter.search;
 
 import com.benboer.boluo.common.mvp.data.DataSource;
+import com.benboer.boluo.common.mvp.presenter.BasePresenter;
+import com.benboer.boluo.common.util.HandlerUtil;
 import com.benboer.boluo.message.data.helper.UserHelper;
 import com.benboer.boluo.message.model.card.UserCard;
-import com.benboer.boluo.common.mvp.presenter.BasePresenter;
-
-import net.qiujuer.genius.kit.handler.Run;
-import net.qiujuer.genius.kit.handler.runable.Action;
 
 import java.util.List;
 
@@ -37,9 +35,9 @@ public class SearchUserPresenter extends BasePresenter<SearchContract.UserView>
     public void onDataLoaded(final List<UserCard> userCardList) {
         final SearchContract.UserView view = getView();
         if (view != null){
-            Run.onUiAsync(new Action() {
+            HandlerUtil.runOnUiThread(new Runnable() {
                 @Override
-                public void call() {
+                public void run() {
                     view.onSearchDone(userCardList);
                 }
             });
@@ -51,9 +49,9 @@ public class SearchUserPresenter extends BasePresenter<SearchContract.UserView>
     public void onDataNotAvailable(final int strRes) {
         final SearchContract.UserView view = getView();
         if(view!=null){
-            Run.onUiAsync(new Action() {
+            HandlerUtil.runOnUiThread(new Runnable() {
                 @Override
-                public void call() {
+                public void run() {
                     view.showError(strRes);
                 }
             });

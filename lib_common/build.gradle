@@ -34,7 +34,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-//    api rootProject.ext.dependencies["arouter_api"]
+
     api fileTree(dir: 'libs', include: ['*.jar'])
     api rootProject.ext.dependencies["constraintlayout"]
     api rootProject.ext.support["design"]
@@ -47,6 +47,7 @@ dependencies {
         exclude module: 'support-v13'
     }
     annotationProcessor rootProject.ext.dependencies["permissionsdispatcher_processor"]
+
     api rootProject.ext.dependencies["utilcode"]
     //Log
     api rootProject.ext.dependencies["logger"]
@@ -88,9 +89,6 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
 
     api rootProject.ext.dependencies["genius_ui"]
-    api rootProject.ext.dependencies["genius_res"]
-    api rootProject.ext.dependencies["genius_kit_handler"]
-    api rootProject.ext.dependencies["genius_kit_reflect"]
 
     api rootProject.ext.dependencies["circleimageview"]
     api rootProject.ext.dependencies["gson"]

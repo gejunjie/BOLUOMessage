@@ -7,7 +7,7 @@ import com.benboer.boluo.message.model.api.message.MsgCreateModel;
 import com.benboer.boluo.message.model.card.MessageCard;
 import com.benboer.boluo.message.net.RemoteService;
 import com.benboer.boluo.common.Factory;
-import com.benboer.boluo.common.model.RspModel;
+import com.benboer.boluo.common.net.model.RspModel;
 import com.benboer.boluo.common.net.Network;
 import com.benboer.boluo.common.net.RspCodeDecoder;
 import com.raizlabs.android.dbflow.sql.language.OperatorGroup;

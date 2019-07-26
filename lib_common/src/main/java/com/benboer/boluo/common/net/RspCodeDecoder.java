@@ -4,7 +4,7 @@ import androidx.annotation.StringRes;
 
 import com.benboer.boluo.common.R;
 import com.benboer.boluo.common.mvp.data.DataSource;
-import com.benboer.boluo.common.model.RspModel;
+import com.benboer.boluo.common.net.model.RspModel;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/16.

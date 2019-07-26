@@ -1,13 +1,11 @@
 package com.benboer.boluo.message.presenter.contact;
 
-import com.benboer.boluo.db.db.User;
-import com.benboer.boluo.message.data.helper.UserHelper;
 import com.benboer.boluo.common.Factory;
 import com.benboer.boluo.common.mvp.presenter.BasePresenter;
 import com.benboer.boluo.common.persistence.Account;
-
-import net.qiujuer.genius.kit.handler.Run;
-import net.qiujuer.genius.kit.handler.runable.Action;
+import com.benboer.boluo.common.util.HandlerUtil;
+import com.benboer.boluo.db.db.User;
+import com.benboer.boluo.message.data.helper.UserHelper;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/15.
@@ -45,16 +43,16 @@ public class PersonalPresenter extends BasePresenter<PersonalContract.View>
         final boolean isFollow = isSelf || user.isFollow();
         // 已经关注同时不是自己才能聊天
         final boolean allowSayHello = isFollow && !isSelf;
-
-        // 切换到Ui线程
-        Run.onUiAsync(new Action() {
-            @Override
-            public void call() {
-                view.onLoadDone(user);
-                view.setFollowStatus(isFollow);
-                view.allowSayHello(allowSayHello);
-            }
-        });
+        if (view != null){
+            HandlerUtil.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    view.onLoadDone(user);
+                    view.setFollowStatus(isFollow);
+                    view.allowSayHello(allowSayHello);
+                }
+            });
+        }
     }
 
 

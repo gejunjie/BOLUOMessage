@@ -98,7 +98,6 @@ public class GroupCreateFragment extends PresenterFragment<GroupCreateContract.P
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         // 收到从Activity传递过来的回调，然后取出其中的值进行图片加载
-        // 如果是我能够处理的类型
         if (resultCode == RESULT_OK && requestCode == UCrop.REQUEST_CROP) {
             // 通过UCrop得到对应的Uri
             final Uri resultUri = UCrop.getOutput(data);
