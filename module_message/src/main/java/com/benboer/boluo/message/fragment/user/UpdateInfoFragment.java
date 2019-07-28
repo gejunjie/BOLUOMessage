@@ -1,5 +1,6 @@
 package com.benboer.boluo.message.fragment.user;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -12,13 +13,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.benboer.boluo.common.Application;
 import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.mvp.PresenterFragment;
+import com.benboer.boluo.common.util.callback.CallbackManager;
+import com.benboer.boluo.common.util.callback.CallbackType;
+import com.benboer.boluo.common.util.callback.IGlobalCallback;
 import com.benboer.boluo.common.util.file.FileUtil;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
-import com.benboer.boluo.message.fragment.media.GalleryFragment;
+import com.benboer.boluo.common.ui.media.GalleryFragment;
 import com.benboer.boluo.message.presenter.user.UpdateInfoContract;
 import com.benboer.boluo.message.presenter.user.UpdateInfoPresenter;
 import com.benboer.boluo.message.widget.PortraitView;
@@ -32,6 +35,8 @@ import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.RuntimePermissions;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/3/28.
@@ -66,41 +71,22 @@ public class UpdateInfoFragment extends PresenterFragment<UpdateInfoContract.Pre
 
     @OnClick(R2.id.im_portrait)
     void onPortraitClick() {
-        new GalleryFragment().setOnSelectedListener(new GalleryFragment.OnSelectedListener() {
+        CallbackManager.getInstance().addCallback(CallbackType.ON_CROP, new IGlobalCallback<Uri>() {
+
             @Override
-            public void onSelectedImage(String path) {
-                UCrop.Options options = new UCrop.Options();
-                options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
-                options.setCompressionQuality(96);
-                File dPath = FileUtil.getPortraitTmpFile(BoLuo.getApplicationContext());
-                // 发起剪切
-                UCrop.of(Uri.fromFile(new File(path)), Uri.fromFile(dPath))
-                        .withAspectRatio(1, 1) // 1比1比例
-                        .withMaxResultSize(520, 520) // 返回最大的尺寸
-                        .withOptions(options) // 相关参数
-                        .start(getActivity());
+            public void executeCallback(@NonNull Uri uri) {
+                if (uri != null) {
+                    loadPortrait(uri);
+                }
             }
-        }).show(getChildFragmentManager(), GalleryFragment.class.getName());
+        });
+        startCameraWithCheck();
     }
 
     @OnClick(R2.id.btn_submit)
     void onSubmitClick() {
         String desc = mDesc.getText().toString();
         mPresenter.update(mPortraitPath, desc, isMan);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == UCrop.REQUEST_CROP){
-            // 通过UCrop得到对应的Uri
-            final Uri resultUri = UCrop.getOutput(data);
-            if (resultUri != null) {
-                loadPortrait(resultUri);
-            }
-        } else if (resultCode == UCrop.RESULT_ERROR) {
-           Toast.makeText(getContext(), R.string.data_rsp_error_unknown, Toast.LENGTH_LONG).show();
-        }
     }
 
     /**
@@ -111,7 +97,6 @@ public class UpdateInfoFragment extends PresenterFragment<UpdateInfoContract.Pre
     private void loadPortrait(Uri uri) {
         // 得到头像地址
         mPortraitPath = uri.getPath();
-
         Glide.with(this)
                 .load(uri)
                 .centerCrop()
@@ -146,8 +131,6 @@ public class UpdateInfoFragment extends PresenterFragment<UpdateInfoContract.Pre
     public void showError(int str) {
         super.showError(str);
         // 当需要显示错误的时候触发，一定是结束了
-
-        // 停止Loading
         mLoading.stop();
         mDesc.setEnabled(true);
         mPortrait.setEnabled(true);
@@ -164,4 +147,6 @@ public class UpdateInfoFragment extends PresenterFragment<UpdateInfoContract.Pre
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
 
     }
+
+
 }

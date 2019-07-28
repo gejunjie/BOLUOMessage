@@ -1,4 +1,4 @@
-package com.benboer.boluo.message.widget;
+package com.benboer.boluo.common.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -19,8 +19,8 @@ import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.benboer.boluo.common.R;
 import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
-import com.benboer.boluo.factory.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
@@ -124,7 +124,8 @@ public class GalleryView extends RecyclerView {
             notifyRefreash = true;
         }else {
             if (mSelectedImages.size() >= MAX_IMAGE_COUNT){
-                String string = getResources().getString(R.string.label_gallery_select_max_size);
+                String string ="";//TODO
+//                        getResources().getString(R.string.label_gallery_select_max_size);
                 string = String.format(string, MAX_IMAGE_COUNT);//格式化
                 Toast.makeText(getContext(), string, Toast.LENGTH_LONG).show();
                 notifyRefreash = false;
@@ -182,7 +183,7 @@ public class GalleryView extends RecyclerView {
                     .load(data.path)
                     .centerCrop()
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .placeholder(R.color.colorDark)
+                    .placeholder(R.color.cyan_50)
                     .into(mImageView);
             mShade.setVisibility(data.isSelected ?
                     VISIBLE : INVISIBLE);

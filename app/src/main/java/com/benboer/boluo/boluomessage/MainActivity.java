@@ -1,5 +1,6 @@
 package com.benboer.boluo.boluomessage;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -26,8 +27,7 @@ public class MainActivity extends ProxyActivity implements ILauncherListener {
 
     @Override
     public SupportFragment setRootFragment() {
-//        return new LauncherFragment();
-        return new MessageModuleFragment();
+        return new LauncherFragment();
     }
 
 
@@ -45,4 +45,5 @@ public class MainActivity extends ProxyActivity implements ILauncherListener {
                 break;
         }
     }
+
 }

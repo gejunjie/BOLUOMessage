@@ -44,6 +44,7 @@ public class RegisterFragment extends PresenterFragment<RegisterContract.Present
         mName = bind(R.id.edit_name);
         mPassword = bind(R.id.edit_password);
         mLoading = bind(R.id.loading);
+        mSubmit = bind(R.id.btn_submit);
         bind(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

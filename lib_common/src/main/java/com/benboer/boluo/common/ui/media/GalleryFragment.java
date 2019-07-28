@@ -1,4 +1,4 @@
-package com.benboer.boluo.message.fragment.media;
+package com.benboer.boluo.common.ui.media;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
-import com.benboer.boluo.factory.R;
-import com.benboer.boluo.message.widget.GalleryView;
+import com.benboer.boluo.common.R;
+import com.benboer.boluo.common.ui.GalleryView;
 import com.benboer.boluo.common.util.ui.UiUtil;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;

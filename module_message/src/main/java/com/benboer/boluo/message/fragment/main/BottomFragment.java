@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
+import com.benboer.boluo.message.fragment.MessageModuleFragment;
 import com.benboer.boluo.message.fragment.main.bottom.BaseBottomFragment;
 import com.benboer.boluo.message.fragment.main.bottom.BottomItemBuilder;
 import com.benboer.boluo.message.fragment.main.bottom.BottomTabBean;
@@ -37,19 +38,11 @@ import butterknife.OnClick;
  */
 public class BottomFragment extends BaseBottomFragment {
 
-    @BindView(R2.id.appbar)
-    AppBarLayout mLayAppbar;
-
-    @BindView(R2.id.im_portrait)
-    PortraitView mPortrait;
-
-    @BindView(R2.id.txt_title)
-    TextView mTitle;
-
     @Override
     public LinkedHashMap<BottomTabBean, SupportFragment> setItems(BottomItemBuilder builder) {
         final LinkedHashMap<BottomTabBean, SupportFragment> items = new LinkedHashMap<>();
-        items.put(new BottomTabBean("{fa-home}","主页"), new ActiveFragment());
+//        items.put(new BottomTabBean("{fa-home}","主页"), new ActiveFragment());
+        items.put(new BottomTabBean("{fa-home}","主页"), new MessageModuleFragment());
         items.put(new BottomTabBean("{fa-home}","主页"), new GroupFragment());
         items.put(new BottomTabBean("{fa-home}","主页"), new ContactFragment());
         return items;
@@ -65,57 +58,13 @@ public class BottomFragment extends BaseBottomFragment {
         return Color.GREEN;
     }
 
-    @OnClick(R2.id.im_search)
-    void onSearchMenuClick(){
-        switch (mCurrentFragment){
-            case 1 : getSupportDelegate().start(new SearchGroupFragment());
-                break;
-            case 2 : getSupportDelegate().start(new SearchUserFragment());
-                break;
-            default:
-                break;
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (false){//TODO
-//            if (!Account.isComplete()){
+            if (!Account.isComplete()){//检测账户信息是否完整
             getSupportDelegate().start(new UpdateInfoFragment());
         }
     }
 
-    @Override
-    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
-        super.onBindView(savedInstanceState, root);
-        Glide.with(this)
-                .load(R.drawable.bg_src_morning)
-                .centerCrop()
-                .into(new CustomViewTarget<AppBarLayout, Drawable>(mLayAppbar) {
-                    @Override
-                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
 
-                    }
-
-                    @Override
-                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                        this.view.setBackground(resource.getCurrent());
-                    }
-
-                    @Override
-                    protected void onResourceCleared(@Nullable Drawable placeholder) {
-
-                    }
-                });
-        mPortrait.setup(Glide.with(this),
-//                Account.getUser()
-                ""//TODO
-        );
-    }
-
-    @OnClick(R2.id.im_portrait)
-    void onPortraitClick() {
-        getSupportDelegate().start(PersonalFragment.newInstance(Account.getUserId()));
-    }
 }

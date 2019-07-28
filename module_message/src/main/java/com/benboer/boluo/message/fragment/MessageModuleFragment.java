@@ -1,9 +1,11 @@
 package com.benboer.boluo.message.fragment;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,17 +14,27 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.benboer.boluo.common.base.fragment.SupportFragment;
+import com.benboer.boluo.common.persistence.Account;
 import com.benboer.boluo.factory.R;
 import com.benboer.boluo.factory.R2;
 import com.benboer.boluo.message.fragment.main.ActiveFragment;
 import com.benboer.boluo.message.fragment.main.ContactFragment;
 import com.benboer.boluo.message.fragment.main.GroupFragment;
+import com.benboer.boluo.message.fragment.search.SearchGroupFragment;
+import com.benboer.boluo.message.fragment.search.SearchUserFragment;
+import com.benboer.boluo.message.fragment.user.PersonalFragment;
+import com.benboer.boluo.message.widget.PortraitView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomViewTarget;
+import com.bumptech.glide.request.transition.Transition;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/26.
@@ -30,12 +42,18 @@ import butterknife.BindView;
  * 消息聊天模块的根容器
  */
 public class MessageModuleFragment extends SupportFragment {
-    @BindView(R2.id.tablayout)
+    @BindView(R2.id.appbar)
+    AppBarLayout mLayAppbar;
+    @BindView(R2.id.im_portrait)
+    PortraitView mPortrait;
+    @BindView(R2.id.txt_title)
+    TextView mTitle;
+    @BindView(R2.id.tab_layout)
     TabLayout mTablayout;
     @BindView(R2.id.viewpager)
     ViewPager mViewPager;
 
-    List<String> mTitle;
+    List<String> mTabTitle;
     List<Fragment> mFragment;
 
     @Override
@@ -45,10 +63,10 @@ public class MessageModuleFragment extends SupportFragment {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
-        mTitle = new ArrayList<>();
-        mTitle.add("选项卡一");
-        mTitle.add("选项卡二");
-        mTitle.add("选项卡三");
+        mTabTitle = new ArrayList<>();
+        mTabTitle.add("active");
+        mTabTitle.add("contact");
+        mTabTitle.add("group");
         mFragment = new ArrayList<>();
         mFragment.add(new ActiveFragment());
         mFragment.add(new ContactFragment());
@@ -63,8 +81,54 @@ public class MessageModuleFragment extends SupportFragment {
             public int getCount() {
                 return 3;
             }
-        });
 
+            @Nullable
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return mTabTitle.get(position);
+            }
+        });
         mTablayout.setupWithViewPager(mViewPager);
+
+        Glide.with(this)
+                .load(R.drawable.bg_src_morning)
+                .centerCrop()
+                .into(new CustomViewTarget<AppBarLayout, Drawable>(mLayAppbar) {
+                    @Override
+                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
+
+                    }
+
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                        this.view.setBackground(resource.getCurrent());
+                    }
+
+                    @Override
+                    protected void onResourceCleared(@Nullable Drawable placeholder) {
+
+                    }
+                });
+        mPortrait.setup(Glide.with(this),
+                Account.getUser()
+        );
     }
+
+    @OnClick(R2.id.im_search)
+    void onSearchMenuClick(){
+        switch (mViewPager.getCurrentItem()){
+            case 1 : getSupportDelegate().start(new SearchGroupFragment());
+                break;
+            case 2 : getSupportDelegate().start(new SearchUserFragment());
+                break;
+            default:
+                break;
+        }
+    }
+
+    @OnClick(R2.id.im_portrait)
+    void onPortraitClick() {
+        getSupportDelegate().start(PersonalFragment.newInstance(Account.getUserId()));
+    }
+
 }

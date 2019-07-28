@@ -3,20 +3,27 @@ package com.benboer.boluo.common.base.fragment;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
 
+import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.ui.camera.BoluoCamera;
 import com.benboer.boluo.common.ui.camera.CameraImageBean;
 import com.benboer.boluo.common.ui.camera.RequestCodes;
+import com.benboer.boluo.common.ui.media.GalleryFragment;
 import com.benboer.boluo.common.ui.scanner.ScannerFragment;
 import com.benboer.boluo.common.util.callback.CallbackManager;
 import com.benboer.boluo.common.util.callback.CallbackType;
 import com.benboer.boluo.common.util.callback.IGlobalCallback;
+import com.benboer.boluo.common.util.file.FileUtil;
 import com.blankj.utilcode.util.ToastUtils;
 import com.yalantis.ucrop.UCrop;
+
+import java.io.File;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
@@ -31,10 +38,11 @@ import permissions.dispatcher.RuntimePermissions;
 @RuntimePermissions
 public abstract class PermissionFragment extends BaseFragment {
 
-    //不是直接调用该方法
+    //不是直接调用该方法 由代码生成器生成
     @NeedsPermission(Manifest.permission.CAMERA)
     void startCamera() {
-        PermissionFragmentPermissionsDispatcher.checkStoryPermissionWithPermissionCheck(this);
+
+        BoluoCamera.start(this);
     }
 
     //这个是真正调用的方法
@@ -69,7 +77,7 @@ public abstract class PermissionFragment extends BaseFragment {
 
     //存储权限
     @NeedsPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-    public void checkStoryPermission() {
+    public void checkStorePermission() {
         BoluoCamera.start(this);
     }
 
