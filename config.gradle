@@ -5,7 +5,7 @@ ext {
             buildToolsVersion: "28.0.3",                            //是你构建工具的版本，其中包括了打包工具aapt、dx等等。这个工具的目录位于..your_sdk_path/build-tools/XX.XX.XX这个版本号一般是API-LEVEL.0.0。
             applicationId    : "com.benboer.boluo.boluomessage",
             minSdkVersion    : 19,
-            targetSdkVersion : 28,
+            targetSdkVersion : 22,
             versionCode      : 1,
             versionName      : "1.0",
     ]
@@ -30,7 +30,6 @@ ext {
             utilcode                    : "com.blankj:utilcode:1.16.4",
             //Log
             logger                      : "com.orhanobut:logger:2.2.0",
-
             //网络依赖
             okio                        : "com.squareup.okio:okio:1.14.1",
             okhttp                      : "com.squareup.okhttp3:okhttp:3.10.0",
@@ -40,7 +39,6 @@ ext {
             converter_gson              : "com.squareup.retrofit2:converter-gson:2.4.0",
             rxjava                      : "io.reactivex.rxjava2:rxjava:2.1.14",
             rxandroid                   : "io.reactivex.rxjava2:rxandroid:2.0.2",
-
             //图片剪裁
             ucrop                       : "com.github.yalantis:ucrop:2.2.2-native",
             //Loading
@@ -48,7 +46,6 @@ ext {
             //二维码
             zbar                        : "me.dm7.barcodescanner:zbar:1.9.8",
             recyclerview                : "androidx.recyclerview:recyclerview:1.0.0",
-
             //字体图标 使用fontawesome字体
             ionicons                    : "com.joanzapata.iconify:android-iconify-ionicons:2.2.2",
             fontawesome                 : "com.joanzapata.iconify:android-iconify-fontawesome:2.2.2",

@@ -61,8 +61,8 @@ public class BottomFragment extends BaseBottomFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-            if (!Account.isComplete()){//检测账户信息是否完整
-            getSupportDelegate().start(new UpdateInfoFragment());
+        if (!Account.isComplete()){//检测账户信息是否完整
+//            getSupportDelegate().start(new UpdateInfoFragment());//TODO
         }
     }
 

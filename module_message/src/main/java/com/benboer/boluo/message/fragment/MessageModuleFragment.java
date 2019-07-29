@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -35,6 +36,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import butterknife.OnFocusChange;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/26.
@@ -46,13 +48,12 @@ public class MessageModuleFragment extends SupportFragment {
     AppBarLayout mLayAppbar;
     @BindView(R2.id.im_portrait)
     PortraitView mPortrait;
-    @BindView(R2.id.txt_title)
-    TextView mTitle;
     @BindView(R2.id.tab_layout)
     TabLayout mTablayout;
     @BindView(R2.id.viewpager)
     ViewPager mViewPager;
-
+    @BindView(R2.id.et_search_view)
+    AppCompatEditText mEditText;
     List<String> mTabTitle;
     List<Fragment> mFragment;
 
@@ -109,22 +110,41 @@ public class MessageModuleFragment extends SupportFragment {
 
                     }
                 });
-        mPortrait.setup(Glide.with(this),
-                Account.getUser()
-        );
+        mPortrait.setup(Glide.with(this), Account.getUser());
+
     }
 
-    @OnClick(R2.id.im_search)
-    void onSearchMenuClick(){
-        switch (mViewPager.getCurrentItem()){
-            case 1 : getSupportDelegate().start(new SearchGroupFragment());
-                break;
-            case 2 : getSupportDelegate().start(new SearchUserFragment());
-                break;
-            default:
-                break;
+    @OnFocusChange(R2.id.et_search_view)
+    void OnFocusChange(boolean hasFocus){
+        if (hasFocus) {
+            switch (mViewPager.getCurrentItem()) {
+                case 1:
+                    getParentFragments().start(new SearchGroupFragment());
+                    break;
+                case 2:
+                    getParentFragments().start(new SearchUserFragment());
+                    break;
+                default:
+                    break;
+            }
         }
     }
+
+//    @OnClick(R2.id.im_search)
+//    void onSearchMenuClick() {
+//        switch (mViewPager.getCurrentItem()) {
+//            case 1:
+//                getParentFragments().start(new SearchGroupFragment());
+//                mEditText.clearFocus();
+//                break;
+//            case 2:
+//                getParentFragments().start(new SearchUserFragment());
+//                mEditText.clearFocus();
+//                break;
+//            default:
+//                break;
+//        }
+//    }
 
     @OnClick(R2.id.im_portrait)
     void onPortraitClick() {

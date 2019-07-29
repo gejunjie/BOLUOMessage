@@ -5,6 +5,7 @@
     <dimen name="portraitMaxSize">@dimen/len_64</dimen>
     <dimen name="statusBarSize">25dp</dimen>
     <dimen name="actionBarWithStatusBarSize">73dp</dimen>
-
+    <!-- 加上tablayout的高度-->
+    <dimen name="actionBarWithStatusBarSize2">103dp</dimen>
     <dimen name="fontNameSize">15sp</dimen>
 </resources>

@@ -33,8 +33,8 @@ public class App extends BaseApplication {
         super.onCreate();
         BoLuo.init(this)
                 .withIcon(new FontAwesomeModule())
-//                .withApiHost("http://172.20.10.2:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
-                .withApiHost("http://192.168.31.210:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
+                .withApiHost("http://172.20.10.2:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
+//                .withApiHost("http://192.168.31.210:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
                 .withInterceptor(new Interceptor() {
                     @Override
                     public Response intercept(Chain chain) throws IOException {

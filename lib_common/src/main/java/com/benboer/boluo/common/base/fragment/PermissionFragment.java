@@ -41,7 +41,6 @@ public abstract class PermissionFragment extends BaseFragment {
     //不是直接调用该方法 由代码生成器生成
     @NeedsPermission(Manifest.permission.CAMERA)
     void startCamera() {
-
         BoluoCamera.start(this);
     }
 

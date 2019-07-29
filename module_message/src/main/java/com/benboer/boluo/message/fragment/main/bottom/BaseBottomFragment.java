@@ -95,6 +95,7 @@ public abstract class BaseBottomFragment extends SupportFragment implements View
             }
         }
         final ISupportFragment[] delegateArray = ITEM_FRAGMENTS.toArray(new ISupportFragment[size]);
+        // 加载多个同级根Fragment,类似Wechat, QQ主页的场景
         getSupportDelegate().loadMultipleRootFragment(R.id.bottom_bar_delegate_container, mIndexFragment, delegateArray);
     }
 

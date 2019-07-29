@@ -33,17 +33,17 @@ public class MainActivity extends ProxyActivity implements ILauncherListener {
 
     @Override
     public void onLauncherFinish(int launcherTag) {
-
-        switch (launcherTag){
-            case SINGED:
-                getSupportDelegate().startWithPop(new BottomFragment());
-                break;
-            case NOT_SINGED:
-                getSupportDelegate().startWithPop(new LoginFragment());
-                break;
-            default:
-                break;
-        }
+        getSupportDelegate().startWithPop(new BottomFragment());//TODO
+//        switch (launcherTag){
+//            case SINGED:
+//                getSupportDelegate().startWithPop(new BottomFragment());
+//                break;
+//            case NOT_SINGED:
+//                getSupportDelegate().startWithPop(new LoginFragment());
+//                break;
+//            default:
+//                break;
+//        }
     }
 
 }
