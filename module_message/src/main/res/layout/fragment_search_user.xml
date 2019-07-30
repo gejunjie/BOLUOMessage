@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.benboer.boluo.message.fragment.search.SearchUserFragment">
 
@@ -9,8 +10,21 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/actionBarWithStatusBarSize"
-        android:background="@color/colorPrimary"
-        android:paddingTop="@dimen/statusBarSize" />
+        android:background="@color/grey_100"
+        android:paddingTop="@dimen/statusBarSize">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search"
+                android:layout_height="40dp"
+                android:layout_width="300dp"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/bg_search_input"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -32,7 +46,5 @@
             android:layout_height="match_parent" />
 
     </FrameLayout>
-
-
 
 </LinearLayout>

@@ -14,8 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
-import com.benboer.boluo.factory.R;
-import com.benboer.boluo.factory.R2;
+import com.benboer.boluo.message.R;
+import com.benboer.boluo.message.R2;
 import com.benboer.boluo.db.db.Group;
 import com.benboer.boluo.db.db.Session;
 import com.benboer.boluo.db.db.view.MemberUserModel;

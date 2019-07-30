@@ -88,7 +88,7 @@ dependencies {
     api rootProject.ext.dependencies["butterknife"]
     annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
 
-    api rootProject.ext.dependencies["genius_ui"]
+
 
     api rootProject.ext.dependencies["circleimageview"]
     api rootProject.ext.dependencies["gson"]
@@ -98,6 +98,6 @@ dependencies {
 
     api project(path: ':componentbase')
     api project(path: ':lib_db')
-
+    api project(path: ':lib_resource')
 
 }

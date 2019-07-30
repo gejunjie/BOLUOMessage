@@ -2,6 +2,7 @@ package com.benboer.boluo.message.fragment.search;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,8 +18,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.benboer.boluo.factory.R;
-import com.benboer.boluo.factory.R2;
+import com.benboer.boluo.message.R;
+import com.benboer.boluo.message.R2;
 import com.benboer.boluo.message.fragment.user.PersonalFragment;
 import com.benboer.boluo.common.mvp.PresenterFragment;
 import com.benboer.boluo.message.model.card.UserCard;
@@ -58,6 +59,9 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
     @BindView(R2.id.toolbar)
     Toolbar mToolbar;
 
+    @BindView(R2.id.search)
+    SearchView mSearchView;
+
     private RecyclerAdapter<UserCard> mAdapter;
 
     @Override
@@ -78,11 +82,29 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
-
-        //让onCreateOptionsMenu方法被调用
         ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
         setHasOptionsMenu(true);
+        mToolbar.setTitle("");
+        mSearchView.onActionViewExpanded();
+        //去除下划线
+        mSearchView.findViewById(androidx.appcompat.R.id.search_plate).setBackground(null);
+        mSearchView.findViewById(androidx.appcompat.R.id.submit_area).setBackground(null);
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String content) {
+                mPresenter.onSearch(content);
+                return true;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String content) {
+                if (TextUtils.isEmpty(content)) {
+                    mPresenter.onSearch("");
+                    return true;
+                }
+                return false;
+            }
+        });
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycler.setAdapter(mAdapter = new RecyclerAdapter<UserCard>() {
             @Override
@@ -100,31 +122,30 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
         setPlaceHolderView(mEmptyView);
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.search, menu);
-
-        MenuItem item = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) item.getActionView();
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String content) {
-                mPresenter.onSearch(content);
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String content) {
-                if (TextUtils.isEmpty(content)) {
-                    mPresenter.onSearch("");
-                    return true;
-                }
-                return false;
-            }
-        });
-    }
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        inflater.inflate(R.menu.search, menu);
+//        MenuItem item = menu.findItem(R.id.action_search);
+//        SearchView searchView = (SearchView) item.getActionView();
+//        searchView.onActionViewExpanded();
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String content) {
+//                mPresenter.onSearch(content);
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String content) {
+//                if (TextUtils.isEmpty(content)) {
+//                    mPresenter.onSearch("");
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
+//    }
 
 
     class ViewHolder extends RecyclerAdapter.ViewHolder<UserCard> implements FollowContract.View {

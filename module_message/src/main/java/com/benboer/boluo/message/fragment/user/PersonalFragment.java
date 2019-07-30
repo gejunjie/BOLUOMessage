@@ -17,8 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.drawable.DrawableCompat;
 
-import com.benboer.boluo.factory.R;
-import com.benboer.boluo.factory.R2;
+import com.benboer.boluo.message.R;
+import com.benboer.boluo.message.R2;
 import com.benboer.boluo.db.db.User;
 import com.benboer.boluo.message.fragment.message.ChatUserFragment;
 import com.benboer.boluo.message.presenter.contact.PersonalContract;

@@ -3,7 +3,7 @@ package com.benboer.boluo.message.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.benboer.boluo.factory.R;
+import com.benboer.boluo.message.R;
 import com.benboer.boluo.db.model.Author;
 import com.bumptech.glide.RequestManager;
 

@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
-import com.benboer.boluo.factory.R;
-import com.benboer.boluo.factory.R2;
+import com.benboer.boluo.message.R;
+import com.benboer.boluo.message.R2;
 import com.benboer.boluo.db.db.Group;
 import com.benboer.boluo.message.fragment.message.ChatGroupFragment;
 import com.benboer.boluo.message.presenter.group.GroupsContract;

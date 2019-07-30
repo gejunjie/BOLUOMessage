@@ -1,6 +1,6 @@
 package com.benboer.boluo.message.data.helper;
 
-import com.benboer.boluo.factory.R;
+import com.benboer.boluo.message.R;
 import com.benboer.boluo.db.db.User;
 import com.benboer.boluo.db.db.User_Table;
 import com.benboer.boluo.db.db.view.UserSampleModel;

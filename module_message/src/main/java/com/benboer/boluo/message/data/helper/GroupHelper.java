@@ -1,6 +1,6 @@
 package com.benboer.boluo.message.data.helper;
 
-import com.benboer.boluo.factory.R;
+import com.benboer.boluo.message.R;
 import com.benboer.boluo.db.db.Group;
 import com.benboer.boluo.db.db.GroupMember;
 import com.benboer.boluo.db.db.GroupMember_Table;

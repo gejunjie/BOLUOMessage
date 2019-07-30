@@ -1,42 +1,30 @@
 package com.benboer.boluo.message.fragment.user;
 
-import android.Manifest;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.mvp.PresenterFragment;
 import com.benboer.boluo.common.util.callback.CallbackManager;
 import com.benboer.boluo.common.util.callback.CallbackType;
 import com.benboer.boluo.common.util.callback.IGlobalCallback;
-import com.benboer.boluo.common.util.file.FileUtil;
-import com.benboer.boluo.factory.R;
-import com.benboer.boluo.factory.R2;
-import com.benboer.boluo.common.ui.media.GalleryFragment;
+import com.benboer.boluo.message.R;
+import com.benboer.boluo.message.R2;
 import com.benboer.boluo.message.presenter.user.UpdateInfoContract;
 import com.benboer.boluo.message.presenter.user.UpdateInfoPresenter;
 import com.benboer.boluo.message.widget.PortraitView;
 import com.bumptech.glide.Glide;
-import com.yalantis.ucrop.UCrop;
 
 import net.qiujuer.genius.ui.widget.Button;
 import net.qiujuer.genius.ui.widget.Loading;
 
-import java.io.File;
-
 import butterknife.BindView;
 import butterknife.OnClick;
-import permissions.dispatcher.NeedsPermission;
-import permissions.dispatcher.RuntimePermissions;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/3/28.

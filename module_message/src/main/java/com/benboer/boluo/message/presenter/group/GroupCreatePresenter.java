@@ -8,7 +8,7 @@ import com.benboer.boluo.common.mvp.presenter.BaseRecyclerPresenter;
 import com.benboer.boluo.common.net.UploadHelper;
 import com.benboer.boluo.common.util.HandlerUtil;
 import com.benboer.boluo.db.db.view.UserSampleModel;
-import com.benboer.boluo.factory.R;
+import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.data.helper.GroupHelper;
 import com.benboer.boluo.message.data.helper.UserHelper;
 import com.benboer.boluo.message.model.api.group.GroupCreateModel;

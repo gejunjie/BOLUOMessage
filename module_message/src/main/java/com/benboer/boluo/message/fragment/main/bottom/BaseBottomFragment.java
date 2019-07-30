@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.LinearLayoutCompat;
 
-import com.benboer.boluo.factory.R;
+import com.benboer.boluo.message.R;
 import com.benboer.boluo.common.base.fragment.SupportFragment;
 import com.joanzapata.iconify.widget.IconTextView;
 

@@ -21,8 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.common.ui.adapter.TextWatcherAdapter;
 import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
-import com.benboer.boluo.factory.R;
-import com.benboer.boluo.factory.R2;
+import com.benboer.boluo.message.R;
+import com.benboer.boluo.message.R2;
 import com.benboer.boluo.db.db.Message;
 import com.benboer.boluo.db.db.User;
 import com.benboer.boluo.message.fragment.panel.PanelFragment;
@@ -46,7 +46,6 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/6/6.

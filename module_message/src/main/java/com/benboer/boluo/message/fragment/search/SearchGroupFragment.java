@@ -19,8 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 //import com.benboer.boluo.boluomessage.R;
 import com.benboer.boluo.common.mvp.PresenterFragment;
-import com.benboer.boluo.factory.R;
-import com.benboer.boluo.factory.R2;
+import com.benboer.boluo.message.R;
+import com.benboer.boluo.message.R2;
 import com.benboer.boluo.message.fragment.user.PersonalFragment;
 import com.benboer.boluo.message.widget.EmptyView;
 import com.benboer.boluo.message.widget.PortraitView;

@@ -2,7 +2,7 @@ package com.benboer.boluo.message.fragment.main.bottom;
 
 import android.widget.Toast;
 
-import com.benboer.boluo.factory.R;
+import com.benboer.boluo.message.R;
 import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.mvp.PresenterFragment;
 
