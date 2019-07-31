@@ -5,10 +5,12 @@ import android.graphics.Color;
 
 import com.benboer.boluo.common.base.fragment.SupportFragment;
 import com.benboer.boluo.common.persistence.Account;
+import com.benboer.boluo.componentbase.ServiceFactory;
 import com.benboer.boluo.message.fragment.MessageModuleFragment;
 import com.benboer.boluo.message.fragment.main.bottom.BaseBottomFragment;
 import com.benboer.boluo.message.fragment.main.bottom.BottomItemBuilder;
 import com.benboer.boluo.message.fragment.main.bottom.BottomTabBean;
+import com.benboer.boluo.message.fragment.user.PersonalFragment;
 
 import java.util.LinkedHashMap;
 
@@ -23,7 +25,7 @@ public class BottomFragment extends BaseBottomFragment {
 //        items.put(new BottomTabBean("{fa-home}","主页"), new ActiveFragment());
         items.put(new BottomTabBean("{fa-home}","聊天"), new MessageModuleFragment());
         items.put(new BottomTabBean("{fa-home}","广场"), new GroupFragment());
-        items.put(new BottomTabBean("{fa-user}","我的"), new ContactFragment());
+        items.put(new BottomTabBean("{fa-user}","我的"), (SupportFragment)ServiceFactory.getInstance().getPersonalFragmentService().newPersonalFragment());
         return items;
     }
 

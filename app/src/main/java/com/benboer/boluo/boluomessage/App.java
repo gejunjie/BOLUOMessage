@@ -11,6 +11,7 @@ import com.benboer.boluo.common.Factory;
 import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.persistence.Account;
 import com.benboer.boluo.componentbase.ServiceFactory;
+import com.benboer.boluo.main.service.PersonalFragmentService;
 import com.benboer.boluo.message.PushIntentService;
 import com.benboer.boluo.message.service.AccountService;
 import com.benboer.boluo.message.service.BottomFragmentService;
@@ -60,7 +61,7 @@ public class App extends BaseApplication {
         PushManager.getInstance().registerPushIntentService(getApplicationContext(), PushIntentService.class);
         ServiceFactory.getInstance().setAccountService(new AccountService());
         ServiceFactory.getInstance().setFragmentService(new BottomFragmentService());
-
+        ServiceFactory.getInstance().setPersonalService(new PersonalFragmentService());
     }
 
     @Override

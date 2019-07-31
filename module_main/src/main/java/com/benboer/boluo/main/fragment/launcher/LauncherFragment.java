@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,8 +34,9 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
     private ILauncherListener mILauncherListener = null;
 
     public AppCompatTextView mTvTimer = null;
+    private FrameLayout mSplashLayout;
     private Timer mTimer = null;
-    private int mCount = 5;
+    private int mCount = 4;
 
     @Override
     public void onAttach(Context context) {
@@ -52,6 +54,7 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
         initTimer();
+        mSplashLayout = bind(R.id.splash_layout);
         mTvTimer = bind(R.id.tv_launcher_timer);
         mTvTimer.setOnClickListener(v -> onClickTimerView());
     }
@@ -103,6 +106,10 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
             public void run() {
                 if (mTvTimer != null) {
                     mTvTimer.setText(MessageFormat.format("跳过 {0}s", mCount));
+                    //隐藏splash界面
+                    if (mCount < 4 && mSplashLayout.getVisibility() == View.VISIBLE){
+                        mSplashLayout.setVisibility(View.INVISIBLE);
+                    }
                     mCount--;
                     if (mCount < 1) {
                         if (mTimer != null) {
@@ -117,7 +124,7 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
     }
 
     /**
-     * 等待个推框架对我们的PushId设置好值
+     * 等待个推框架设置好PushId
      */
     private void waitPushReceiverId() {
         if (Account.isLogin()) {

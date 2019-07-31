@@ -30,7 +30,6 @@ public class MainActivity extends ProxyActivity implements ILauncherListener {
         return new LauncherFragment();
     }
 
-
     @Override
     public void onLauncherFinish(int launcherTag) {
         getSupportDelegate().startWithPop(new BottomFragment());//TODO

@@ -6,7 +6,7 @@ import java.util.TimerTask;
  * Created by BenBoerBoluojiushiwo on 2019/6/26.
  */
 public class BaseTimerTask extends TimerTask {
-    private ITimerListener mITimerListener = null;
+    private ITimerListener mITimerListener;
 
     public BaseTimerTask(ITimerListener timerListener) {
         this.mITimerListener = timerListener;

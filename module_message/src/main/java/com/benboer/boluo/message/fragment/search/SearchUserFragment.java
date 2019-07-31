@@ -2,10 +2,6 @@ package com.benboer.boluo.message.fragment.search;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,10 +14,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.benboer.boluo.common.mvp.PresenterFragment;
+import com.benboer.boluo.common.persistence.Account;
+import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.R2;
 import com.benboer.boluo.message.fragment.user.PersonalFragment;
-import com.benboer.boluo.common.mvp.PresenterFragment;
 import com.benboer.boluo.message.model.card.UserCard;
 import com.benboer.boluo.message.presenter.contact.FollowContract;
 import com.benboer.boluo.message.presenter.contact.FollowPresenter;
@@ -29,7 +27,6 @@ import com.benboer.boluo.message.presenter.search.SearchContract;
 import com.benboer.boluo.message.presenter.search.SearchUserPresenter;
 import com.benboer.boluo.message.widget.EmptyView;
 import com.benboer.boluo.message.widget.PortraitView;
-import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
 import com.bumptech.glide.Glide;
 
 import net.qiujuer.genius.ui.Ui;
@@ -62,6 +59,9 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
     @BindView(R2.id.search)
     SearchView mSearchView;
 
+    @BindView(R2.id.cancel)
+    TextView cancel;
+
     private RecyclerAdapter<UserCard> mAdapter;
 
     @Override
@@ -89,6 +89,10 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
         //去除下划线
         mSearchView.findViewById(androidx.appcompat.R.id.search_plate).setBackground(null);
         mSearchView.findViewById(androidx.appcompat.R.id.submit_area).setBackground(null);
+        //去除右侧叉叉
+        ((ImageView)mSearchView.findViewById(androidx.appcompat.R.id.search_close_btn)).setImageDrawable(null);
+        mSearchView.findViewById(androidx.appcompat.R.id.search_close_btn).setOnClickListener(null);
+        //设置监听
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String content) {
@@ -105,6 +109,7 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
                 return false;
             }
         });
+
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycler.setAdapter(mAdapter = new RecyclerAdapter<UserCard>() {
             @Override
@@ -225,6 +230,11 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
         public void setPresenter(FollowContract.Presenter presenter) {
             mPresenter = presenter;
         }
+    }
+
+    @OnClick(R2.id.cancel)
+    void cancelSearch(){
+        getSupportDelegate().pop();
     }
 
 }
