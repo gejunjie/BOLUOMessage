@@ -1,8 +1,11 @@
 package com.benboer.boluo.main.fragment.personal;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
@@ -15,7 +18,7 @@ import com.benboer.boluo.main.R;
 @SuppressWarnings("unused")
 public class TranslucentBehavior extends CoordinatorLayout.Behavior<Toolbar> {
 
-    //注意这个变量一定要定义成类变量
+    //一定要定义成类变量
     private int mOffset = 0;
     //延长滑动过程
     private static final int MORE = 100;
@@ -26,7 +29,7 @@ public class TranslucentBehavior extends CoordinatorLayout.Behavior<Toolbar> {
 
     @Override
     public boolean layoutDependsOn(@NonNull CoordinatorLayout parent, @NonNull Toolbar child, @NonNull View dependency) {
-        return dependency.getId() == R.id.recycler_personal;
+        return dependency.getId() == R.id.personal_scroll;
     }
 
     @Override
@@ -40,27 +43,26 @@ public class TranslucentBehavior extends CoordinatorLayout.Behavior<Toolbar> {
     }
 
     @Override
+    public boolean onDependentViewChanged(@NonNull CoordinatorLayout parent, @NonNull Toolbar child, @NonNull View dependency) {
+        return super.onDependentViewChanged(parent, child, dependency);
+    }
+
+    @Override
     public void onNestedScroll(
-            @NonNull CoordinatorLayout coordinatorLayout
-            , @NonNull Toolbar toolbar
-            , @NonNull View target
-            , int dxConsumed
-            , int dyConsumed
-            , int dxUnconsumed
-            , int dyUnconsumed
-            , int type) {
+            @NonNull CoordinatorLayout coordinatorLayout, @NonNull Toolbar toolbar, @NonNull View target,
+            int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
         final int startOffset = 0;
-        final Context context = BoLuo.getApplicationContext();
         final int endOffset = 80 + MORE;
         mOffset += dyConsumed;
+
         if (mOffset <= startOffset) {
-            toolbar.getBackground().setAlpha(0);
+            toolbar.setAlpha(0);
         } else if (mOffset < endOffset) {
             final float percent = (float) (mOffset - startOffset) / endOffset;
-            final int alpha = Math.round(percent * 255);
-            toolbar.getBackground().setAlpha(alpha);
+            final int alpha = Math.round(percent);
+            toolbar.setAlpha(percent);
         } else if (mOffset >= endOffset) {
-            toolbar.getBackground().setAlpha(255);
+            toolbar.setAlpha(1);
         }
     }
 }

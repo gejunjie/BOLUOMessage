@@ -81,25 +81,6 @@ public class MessageModuleFragment extends SupportFragment {
         });
         mTablayout.setupWithViewPager(mViewPager);
 
-//        Glide.with(this)
-//                .load(R.drawable.bg_src_morning)
-//                .centerCrop()
-//                .into(new CustomViewTarget<AppBarLayout, Drawable>(mLayAppbar) {
-//                    @Override
-//                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-//                        this.view.setBackground(resource.getCurrent());
-//                    }
-//
-//                    @Override
-//                    protected void onResourceCleared(@Nullable Drawable placeholder) {
-//
-//                    }
-//                });
         mPortrait.setup(Glide.with(this), Account.getUser());
 
     }

@@ -2,19 +2,87 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_personal"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/personal_scroll"
         android:layout_height="match_parent"
-        android:layout_width="match_parent"/>
+        android:layout_width="match_parent">
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingBottom="20dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/blue_400">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img_user_avatar"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="24dp"
+                        android:background="@color/amber_600"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_height="200dp"
+                android:layout_width="match_parent"
+                android:background="@color/grey_300">
+
+            </FrameLayout>
+            <FrameLayout
+                android:layout_height="200dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="50dp"
+                android:background="@color/grey_300">
+
+            </FrameLayout>
+            <FrameLayout
+                android:layout_height="200dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="50dp"
+
+                android:background="@color/grey_300">
+
+            </FrameLayout>
+            <FrameLayout
+                android:layout_height="500dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="50dp"
+                android:background="@color/grey_300">
+
+            </FrameLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tb_index"
+        android:id="@+id/personal_toolbar"
         android:layout_width="match_parent"
         android:layout_height="74dp"
+        android:layout_marginTop="25dp"
         app:contentInsetStart="0dp"
+        android:alpha="0"
+        android:background="@color/blue_900"
         app:layout_behavior="com.benboer.boluo.main.fragment.personal.TranslucentBehavior">
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -28,12 +96,12 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_weight="6"
-                android:background="@android:color/white"
+                android:background="@drawable/bg_search_input"
                 android:gravity="center_vertical"
                 android:hint="搜索"
                 android:cursorVisible="false"
                 android:textSize="16sp"
-                android:paddingLeft="20dp" />
+                android:layout_marginLeft="20dp" />
 
             <com.joanzapata.iconify.widget.IconTextView
                 android:id="@+id/icon_index_scan"
@@ -42,7 +110,7 @@
                 android:layout_gravity="left"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="{icon-scan}"
+                android:text="{fa-bullhorn}"
                 android:textColor="@android:color/white"
                 android:textSize="24sp" />
 
