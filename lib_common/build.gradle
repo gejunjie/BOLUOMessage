@@ -99,5 +99,8 @@ dependencies {
     api project(path: ':componentbase')
     api project(path: ':lib_db')
     api project(path: ':lib_resource')
-
+    //沉浸式状态栏
+    api(rootProject.ext.dependencies["statusbar"], {
+        exclude group: 'com.android.support'
+    })
 }

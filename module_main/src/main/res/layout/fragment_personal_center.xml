@@ -11,75 +11,168 @@
         android:id="@+id/personal_scroll"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
-        <LinearLayout
-            android:layout_height="match_parent"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:orientation="vertical">
-
-            <FrameLayout
-                android:id="@+id/frameLayout"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_400">
+            <TextView
+                android:id="@+id/tv_search"
+                android:layout_height="30dp"
+                android:layout_width="0dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/bg_search_input"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/icon_scan"
+                app:layout_constraintHorizontal_weight="6" />
+            <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/icon_scan"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="20dp"
+                android:text="{fa-bullhorn}"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tv_search"
+                app:layout_constraintRight_toLeftOf="@+id/icon_shezhi"
+                app:layout_constraintHorizontal_weight="1"/>
+            <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/icon_shezhi"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:text="{fa-bullhorn}"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/icon_scan"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintHorizontal_weight="1"/>
+            <View
+                android:id="@+id/background"
+                android:layout_height="150dp"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:paddingBottom="20dp">
+                android:layout_margin="20dp"
+                android:background="@drawable/bg_account_input"
+                app:layout_constraintTop_toBottomOf="@+id/tv_search"/>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_gravity="bottom"
-                    android:background="@color/blue_400">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_user_avatar"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:background="@color/amber_600"
+                app:layout_constraintTop_toTopOf="@+id/background"
+                app:layout_constraintLeft_toLeftOf="@+id/background"/>
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/img_user_avatar"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
-                        android:background="@color/amber_600"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/tv_name"
+                android:text="name"
+                android:textColor="@color/blue_400"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_user_avatar"
+                app:layout_constraintLeft_toRightOf="@id/img_user_avatar" />
 
+            <TextView
+                android:id="@+id/tv_personal"
+                android:text="个人主页"
+                android:textColor="@color/blue_400"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_user_avatar"
+                app:layout_constraintRight_toRightOf="@+id/background"/>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </FrameLayout>
+            <TextView
+                android:id="@+id/tv_1"
+                android:text="创作"
+                android:textColor="@color/blue_400"
+                android:layout_height="20dp"
+                android:layout_width="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/background"
+                app:layout_constraintLeft_toLeftOf="@+id/background"
+                app:layout_constraintRight_toLeftOf="@+id/tv_2"
+                app:layout_constraintHorizontal_weight="1"/>
+            <TextView
+                android:id="@+id/tv_2"
+                android:text="创作"
+                xmlns:tools="dfddf"
+                android:textColor="@color/blue_400"
+                android:layout_height="20dp"
+                android:layout_width="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/background"
+                app:layout_constraintLeft_toRightOf="@+id/tv_1"
+                app:layout_constraintRight_toLeftOf="@+id/tv_3"
+                app:layout_constraintHorizontal_weight="1"/>
+            <TextView
+                android:id="@+id/tv_3"
+                android:text="创作"
+                android:textColor="@color/blue_400"
+                android:layout_height="20dp"
+                android:layout_width="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/background"
+                app:layout_constraintLeft_toRightOf="@+id/tv_2"
+                app:layout_constraintRight_toLeftOf="@+id/tv_4"
+                app:layout_constraintHorizontal_weight="1"/>
+            <TextView
+                android:id="@+id/tv_4"
+                android:text="创作"
+                android:textColor="@color/blue_400"
+                android:layout_height="20dp"
+                android:layout_width="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/background"
+                app:layout_constraintLeft_toRightOf="@+id/tv_3"
+                app:layout_constraintRight_toRightOf="@+id/background"
+                app:layout_constraintHorizontal_weight="1"/>
 
             <FrameLayout
-                android:layout_height="200dp"
-                android:layout_width="match_parent"
-                android:background="@color/grey_300">
-
-            </FrameLayout>
-            <FrameLayout
+                android:id="@+id/framelayout_1"
                 android:layout_height="200dp"
                 android:layout_width="match_parent"
                 android:layout_marginTop="50dp"
-                android:background="@color/grey_300">
+                android:background="@color/amber_900"
+                app:layout_constraintTop_toBottomOf="@+id/tv_1">
 
             </FrameLayout>
             <FrameLayout
+                android:id="@+id/framelayout_2"
                 android:layout_height="200dp"
                 android:layout_width="match_parent"
                 android:layout_marginTop="50dp"
-
-                android:background="@color/grey_300">
+                android:background="@color/amber_700"
+                app:layout_constraintTop_toBottomOf="@+id/framelayout_1">
 
             </FrameLayout>
+
             <FrameLayout
-                android:layout_height="500dp"
+                android:id="@+id/framelayout_3"
                 android:layout_width="match_parent"
-                android:layout_marginTop="50dp"
-                android:background="@color/grey_300">
+                android:layout_height="200dp"
+                android:background="@color/amber_500"
+                app:layout_constraintTop_toBottomOf="@+id/framelayout_2"
+                tools:layout_editor_absoluteX="0dp">
 
             </FrameLayout>
-        </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/personal_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:layout_marginTop="25dp"
+        android:layout_height="100dp"
         app:contentInsetStart="0dp"
         android:alpha="0"
         android:background="@color/blue_900"

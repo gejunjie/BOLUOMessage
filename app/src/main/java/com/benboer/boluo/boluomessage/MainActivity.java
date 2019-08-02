@@ -14,6 +14,8 @@ import com.benboer.boluo.common.base.fragment.SupportFragment;
 import com.benboer.boluo.main.fragment.launcher.LauncherFragment;
 import com.benboer.boluo.main.ui.launcher.ILauncherListener;
 
+import qiu.niorgai.StatusBarCompat;
+
 /**
  * Created by BenBoerBoluojiushiwo on 2019/6/26.
  */
@@ -23,6 +25,7 @@ public class MainActivity extends ProxyActivity implements ILauncherListener {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BoLuo.getConfigurator().withActivity(this);
+        StatusBarCompat.translucentStatusBar(this, true);
     }
 
     @Override
