@@ -44,7 +44,7 @@
                 android:layout_height="@dimen/len_32"
                 android:layout_gravity="center"
                 android:layout_weight="6"
-                android:background="@drawable/bg_search_input"
+                android:background="@drawable/bg_rect_grey300_r6dp"
                 android:gravity="center_vertical"
                 android:text="{fa-home}   搜索"
                 android:textColor="@color/grey_500"

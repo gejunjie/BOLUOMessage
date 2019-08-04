@@ -9,6 +9,7 @@ import androidx.multidex.MultiDex;
 import com.benboer.boluo.common.BaseApplication;
 import com.benboer.boluo.common.Factory;
 import com.benboer.boluo.common.app.BoLuo;
+import com.benboer.boluo.common.icon.FontBoluoModule;
 import com.benboer.boluo.common.persistence.Account;
 import com.benboer.boluo.componentbase.ServiceFactory;
 import com.benboer.boluo.main.service.PersonalFragmentService;
@@ -34,8 +35,9 @@ public class App extends BaseApplication {
         super.onCreate();
         BoLuo.init(this)
                 .withIcon(new FontAwesomeModule())
-                .withApiHost("http://172.20.10.2:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
-//                .withApiHost("http://192.168.31.210:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
+                .withIcon(new FontBoluoModule())
+//                .withApiHost("http://172.20.10.2:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
+                .withApiHost("http://192.168.31.210:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
                 .withInterceptor(new Interceptor() {
                     @Override
                     public Response intercept(Chain chain) throws IOException {

@@ -11,6 +11,7 @@ import com.benboer.boluo.message.fragment.main.bottom.BaseBottomFragment;
 import com.benboer.boluo.message.fragment.main.bottom.BottomItemBuilder;
 import com.benboer.boluo.message.fragment.main.bottom.BottomTabBean;
 import com.benboer.boluo.message.fragment.user.PersonalFragment;
+import com.benboer.boluo.message.fragment.user.UpdateInfoFragment;
 
 import java.util.LinkedHashMap;
 
@@ -43,7 +44,7 @@ public class BottomFragment extends BaseBottomFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         if (!Account.isComplete()){//检测账户信息是否完整
-//            getSupportDelegate().start(new UpdateInfoFragment());//TODO
+            getSupportDelegate().start(new UpdateInfoFragment());
         }
     }
 
