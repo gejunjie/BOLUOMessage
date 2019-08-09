@@ -51,7 +51,7 @@ public class BottomFragment extends BaseBottomFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         if (!Account.isComplete()){//检测账户信息是否完整
-            getSupportDelegate().start(new UpdateInfoFragment());
+//            getSupportDelegate().start(new UpdateInfoFragment());//todo
         }
     }
 

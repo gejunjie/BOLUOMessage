@@ -43,6 +43,7 @@ public class App extends BaseApplication {
         map.put(IPersonalFragmentService.class, new PersonalFragmentService());
         BoLuo.init(this)
                 .withIcon(new FontAwesomeModule())
+                .withIcon(new FontBoluoModule())
                 .withApiHost("http://172.20.10.2:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
 //                .withApiHost("http://192.168.31.210:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
                 .withFragmentService(map)
@@ -68,9 +69,9 @@ public class App extends BaseApplication {
         // 推送进行初始化
         PushManager.getInstance().initialize(getApplicationContext(),null);
         PushManager.getInstance().registerPushIntentService(getApplicationContext(), PushIntentService.class);
-        ServiceFactory.getInstance().setAccountService(new AccountService());
-        ServiceFactory.getInstance().setFragmentService(new BottomFragmentService());
-        ServiceFactory.getInstance().setPersonalService(new PersonalFragmentService());
+//        ServiceFactory.getInstance().setAccountService(new AccountService());
+//        ServiceFactory.getInstance().setFragmentService(new BottomFragmentService());
+//        ServiceFactory.getInstance().setPersonalService(new PersonalFragmentService());
     }
 
     @Override
