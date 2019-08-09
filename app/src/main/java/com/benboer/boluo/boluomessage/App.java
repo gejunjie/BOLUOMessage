@@ -9,6 +9,7 @@ import androidx.multidex.MultiDex;
 import com.benboer.boluo.common.BaseApplication;
 import com.benboer.boluo.common.Factory;
 import com.benboer.boluo.common.app.BoLuo;
+import com.benboer.boluo.common.icon.FontBoluoModule;
 import com.benboer.boluo.common.persistence.Account;
 import com.benboer.boluo.componentbase.service.IAccountService;
 import com.benboer.boluo.componentbase.service.IBottomFragmentService;
@@ -67,9 +68,9 @@ public class App extends BaseApplication {
         // 推送进行初始化
         PushManager.getInstance().initialize(getApplicationContext(),null);
         PushManager.getInstance().registerPushIntentService(getApplicationContext(), PushIntentService.class);
-//        ServiceFactory.getInstance().setAccountService(new AccountService());
-//        ServiceFactory.getInstance().setFragmentService(new BottomFragmentService());
-//        ServiceFactory.getInstance().setPersonalService(new PersonalFragmentService());
+        ServiceFactory.getInstance().setAccountService(new AccountService());
+        ServiceFactory.getInstance().setFragmentService(new BottomFragmentService());
+        ServiceFactory.getInstance().setPersonalService(new PersonalFragmentService());
     }
 
     @Override

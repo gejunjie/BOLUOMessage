@@ -10,19 +10,21 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/personal_scroll"
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:background="@color/grey_100">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blue_400">
+            android:background="@drawable/bg_personal_top">
+
             <TextView
                 android:id="@+id/tv_search"
                 android:layout_height="30dp"
                 android:layout_width="0dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginLeft="30dp"
-                android:background="@drawable/bg_search_input"
+                android:background="@drawable/bg_rect_grey300_r6dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/icon_scan"
@@ -33,7 +35,7 @@
                 android:layout_height="20dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginLeft="20dp"
-                android:text="{fa-bullhorn}"
+                android:text="{icon-scan}"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 app:layout_constraintTop_toTopOf="parent"
@@ -48,7 +50,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:gravity="center"
-                android:text="{fa-bullhorn}"
+                android:text="{icon-setup}"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 app:layout_constraintTop_toTopOf="parent"
@@ -60,7 +62,7 @@
                 android:layout_height="150dp"
                 android:layout_width="match_parent"
                 android:layout_margin="20dp"
-                android:background="@drawable/bg_account_input"
+                android:background="@drawable/bg_rect_grey300_r6dp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_search"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -108,7 +110,6 @@
             <TextView
                 android:id="@+id/tv_2"
                 android:text="创作"
-                xmlns:tools="dfddf"
                 android:textColor="@color/blue_400"
                 android:layout_height="20dp"
                 android:layout_width="30dp"
@@ -189,7 +190,7 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_weight="6"
-                android:background="@drawable/bg_search_input"
+                android:background="@drawable/bg_rect_grey300_r6dp"
                 android:gravity="center_vertical"
                 android:hint="搜索"
                 android:cursorVisible="false"
@@ -203,8 +204,7 @@
                 android:layout_gravity="left"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="{fa-bullhorn}"
-                android:textColor="@android:color/white"
+                android:text="{icon-scan}"
                 android:textSize="24sp" />
 
             <com.joanzapata.iconify.widget.IconTextView
@@ -214,8 +214,7 @@
                 android:layout_gravity="right"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="{fa-bullhorn}"
-                android:textColor="@android:color/white"
+                android:text="{icon-setup}"
                 android:textSize="24sp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

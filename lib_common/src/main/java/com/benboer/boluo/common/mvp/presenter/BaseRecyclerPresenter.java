@@ -3,6 +3,7 @@ package com.benboer.boluo.common.mvp.presenter;
 import androidx.recyclerview.widget.DiffUtil;
 
 import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.common.util.HandlerUtil;
 
 import java.util.List;
 
@@ -39,7 +40,12 @@ public class BaseRecyclerPresenter<ViewModel, View extends BaseContract.Recycler
      * @param dataList   具体的新数据
      */
     protected void refreshData(final DiffUtil.DiffResult diffResult, final List<ViewModel> dataList) {
-         BaseRecyclerPresenter.this.refreshDataOnUiThread(diffResult, dataList);
+        HandlerUtil.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                refreshDataOnUiThread(diffResult, dataList);
+            }
+        });
     }
 
 

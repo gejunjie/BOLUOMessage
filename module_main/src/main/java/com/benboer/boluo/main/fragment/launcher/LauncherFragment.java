@@ -36,7 +36,7 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
     public AppCompatTextView mTvTimer = null;
     private FrameLayout mSplashLayout;
     private Timer mTimer = null;
-    private int mCount = 4;
+    private int mCount = 5;
 
     @Override
     public void onAttach(Context context) {
@@ -107,7 +107,7 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
                 if (mTvTimer != null) {
                     mTvTimer.setText(MessageFormat.format("跳过 {0}s", mCount));
                     //隐藏splash界面
-                    if (mCount < 4 && mSplashLayout.getVisibility() == View.VISIBLE){
+                    if (mCount < 2 && mSplashLayout.getVisibility() == View.VISIBLE){
                         mSplashLayout.setVisibility(View.INVISIBLE);
                     }
                     mCount--;
