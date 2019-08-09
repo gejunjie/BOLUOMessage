@@ -14,7 +14,10 @@ public enum  FontIcons implements Icon {
     icon_setup('\ue605'),
     icon_scan('\ue604'),
     icon_return_1('\ue602'),
-    icon_return_2('\ue601');
+    icon_return_2('\ue601'),
+    icon_user_unpressed('\ue842'),
+    icon_user_pressed('\ue841'),
+    icon_message('\ue611');
     private char character;
 
     FontIcons(char character) {

@@ -31,7 +31,7 @@ public class BottomFragment extends BaseBottomFragment {
         HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
         items.put(new BottomTabBean("{fa-home}","聊天"), new MessageModuleFragment());
         items.put(new BottomTabBean("{fa-home}","广场"), new GroupFragment());
-        items.put(new BottomTabBean("{fa-user}","我的"),
+        items.put(new BottomTabBean("{icon-user-unpressed}","我的"),
                 (SupportFragment)
                         ((IPersonalFragmentService)map.get(IPersonalFragmentService.class)).newPersonalFragment());
         return items;
