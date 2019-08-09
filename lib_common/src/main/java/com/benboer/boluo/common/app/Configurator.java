@@ -2,6 +2,9 @@ package com.benboer.boluo.common.app;
 
 import android.app.Activity;
 
+import androidx.fragment.app.Fragment;
+
+import com.blankj.utilcode.util.Utils;
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -20,8 +23,12 @@ import okhttp3.Interceptor;
 public class Configurator {
 
     private static final HashMap<Object, Object> CONFIGS = new HashMap<>();
+    //字体
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
+    //拦截器
     private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
+    //各个模块提供的fragment对象
+    private HashMap<Class<? extends Fragment>, ? extends Fragment> SERVICES = new HashMap<>();
 
     private Configurator() {
         CONFIGS.put(ConfigKeys.CONFIG_READY, false);
@@ -58,6 +65,9 @@ public class Configurator {
 //        Utils.init(BoLuo.getApplicationContext());
     }
 
+    /**
+     * 检查是否已经初始化
+     */
     private void checkConfiguration() {
         final boolean isReady = (boolean) CONFIGS.get(ConfigKeys.CONFIG_READY);
         if (!isReady) {
@@ -74,7 +84,6 @@ public class Configurator {
         ICONS.add(descriptor);
         return this;
     }
-
 
     private void initIcons() {
         if (ICONS.size() > 0) {
@@ -99,6 +108,17 @@ public class Configurator {
     public final Configurator withInterceptor(Interceptor interceptor) {
         INTERCEPTORS.add(interceptor);
         CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
+        return this;
+    }
+
+    /**
+     * 获取各个模块提供的fragment对象
+     * @param services
+     * @return
+     */
+    public final Configurator withFragmentService(HashMap services){
+        SERVICES.putAll(services);
+        CONFIGS.put(ConfigKeys.SERVICE_FRAGMENT, services);
         return this;
     }
 }

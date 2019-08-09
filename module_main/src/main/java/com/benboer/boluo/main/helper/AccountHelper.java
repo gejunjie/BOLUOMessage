@@ -2,7 +2,11 @@ package com.benboer.boluo.main.helper;
 
 import android.text.TextUtils;
 
+import com.benboer.boluo.common.app.BoLuo;
+import com.benboer.boluo.common.app.ConfigKeys;
 import com.benboer.boluo.componentbase.ServiceFactory;
+import com.benboer.boluo.componentbase.service.IAccountService;
+import com.benboer.boluo.componentbase.service.IBottomFragmentService;
 import com.benboer.boluo.db.db.User;
 import com.benboer.boluo.common.net.model.RspModel;
 import com.benboer.boluo.common.mvp.data.DataSource;
@@ -14,6 +18,8 @@ import com.benboer.boluo.main.model.AccountRspModel;
 import com.benboer.boluo.main.model.LoginModel;
 import com.benboer.boluo.main.model.RegisterModel;
 import com.benboer.boluo.main.model.UserModel;
+
+import java.util.HashMap;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -169,18 +175,30 @@ public class AccountHelper {
             UserModel user = accountRspModel.getUser();
 //            User user = accountRspModel.getUser();
 //                 直接保存
-//                user.save();
-            ServiceFactory.getInstance().getAccountService()
-                    .saveUser(user.getId(),
-                            user.getName(),
-                            user.getPhone(),
-                            user.getPortrait(),
-                            user.getDesc(),
-                            user.getSex(),
-                            user.getFollows(),
-                            user.getFollowing(),
-                            user.isFollow(),
-                            user.getModifyAt());
+//            user.save();
+//            ServiceFactory.getInstance().getAccountService()
+//                    .saveUser(user.getId(),
+//                            user.getName(),
+//                            user.getPhone(),
+//                            user.getPortrait(),
+//                            user.getDesc(),
+//                            user.getSex(),
+//                            user.getFollows(),
+//                            user.getFollowing(),
+//                            user.isFollow(),
+//                            user.getModifyAt());
+            HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
+            IAccountService service = (IAccountService) map.get(IAccountService.class);
+            service .saveUser(user.getId(),
+                    user.getName(),
+                    user.getPhone(),
+                    user.getPortrait(),
+                    user.getDesc(),
+                    user.getSex(),
+                    user.getFollows(),
+                    user.getFollowing(),
+                    user.isFollow(),
+                    user.getModifyAt());
             // 同步到XML持久化中
             Account.login(accountRspModel.getToken(),
                     accountRspModel.getAccount(),

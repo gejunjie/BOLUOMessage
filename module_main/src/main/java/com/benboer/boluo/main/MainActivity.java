@@ -1,19 +1,24 @@
-package com.benboer.boluo.boluomessage;
+package com.benboer.boluo.main;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
+import com.benboer.boluo.common.app.ConfigKeys;
+import com.benboer.boluo.common.ui.camera.BoluoCamera;
+import com.benboer.boluo.componentbase.ServiceFactory;
+import com.benboer.boluo.componentbase.service.IBottomFragmentService;
 import com.benboer.boluo.main.fragment.account.LoginFragment;
-import com.benboer.boluo.message.fragment.MessageModuleFragment;
-import com.benboer.boluo.message.fragment.main.BottomFragment;
 import com.benboer.boluo.common.base.activity.ProxyActivity;
 import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.base.fragment.SupportFragment;
 import com.benboer.boluo.main.fragment.launcher.LauncherFragment;
 import com.benboer.boluo.main.ui.launcher.ILauncherListener;
 
+import java.util.HashMap;
+
+import me.yokeyword.fragmentation.ISupportFragment;
 import qiu.niorgai.StatusBarCompat;
 
 /**
@@ -35,10 +40,17 @@ public class MainActivity extends ProxyActivity implements ILauncherListener {
 
     @Override
     public void onLauncherFinish(int launcherTag) {
-        getSupportDelegate().startWithPop(new BottomFragment());//TODO
+//        getSupportDelegate().startWithPop(new BottomFragment());//TODO
+        HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
+        IBottomFragmentService service = (IBottomFragmentService) map.get(IBottomFragmentService.class);
+        getSupportDelegate().startWithPop((ISupportFragment) service.newBottomFragment());
 //        switch (launcherTag){
 //            case SINGED:
-//                getSupportDelegate().startWithPop(new BottomFragment());
+////                getSupportDelegate().startWithPop(
+////                        (ISupportFragment) ServiceFactory.getInstance().getFragmentService().newBottomFragment());
+//                HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
+//
+//                getSupportDelegate().startWithPop((ISupportFragment) map.get(IBottomFragmentService.class));
 //                break;
 //            case NOT_SINGED:
 //                getSupportDelegate().startWithPop(new LoginFragment());

@@ -8,13 +8,18 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.benboer.boluo.common.app.BoLuo;
+import com.benboer.boluo.common.app.ConfigKeys;
 import com.benboer.boluo.common.mvp.PresenterFragment;
 import com.benboer.boluo.componentbase.ServiceFactory;
+import com.benboer.boluo.componentbase.service.IBottomFragmentService;
 import com.benboer.boluo.main.R;
 import com.benboer.boluo.main.presenter.account.RegisterContract;
 import com.benboer.boluo.main.presenter.account.RegisterPresenter;
 
 import net.qiujuer.genius.ui.widget.Loading;
+
+import java.util.HashMap;
 
 import me.yokeyword.fragmentation.ISupportFragment;
 
@@ -88,8 +93,11 @@ public class RegisterFragment extends PresenterFragment<RegisterContract.Present
 
     @Override
     public void registerSuccess() {
-        getSupportDelegate().startWithPop(
-               (ISupportFragment) ServiceFactory.getInstance().getFragmentService().newBottomFragment()
-        );
+//        getSupportDelegate().startWithPop(
+//               (ISupportFragment) ServiceFactory.getInstance().getFragmentService().newBottomFragment()
+//        );
+        HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
+        IBottomFragmentService service = (IBottomFragmentService) map.get(IBottomFragmentService.class);
+        getSupportDelegate().startWithPop((ISupportFragment) service.newBottomFragment());
     }
 }

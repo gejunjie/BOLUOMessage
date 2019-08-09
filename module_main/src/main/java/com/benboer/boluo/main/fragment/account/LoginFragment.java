@@ -8,15 +8,20 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.benboer.boluo.common.app.BoLuo;
+import com.benboer.boluo.common.app.ConfigKeys;
 import com.benboer.boluo.componentbase.ServiceFactory;
 import com.benboer.boluo.common.app.AccountManager;
 import com.benboer.boluo.common.mvp.PresenterFragment;
 import com.benboer.boluo.common.persistence.Account;
+import com.benboer.boluo.componentbase.service.IBottomFragmentService;
 import com.benboer.boluo.main.R;
 import com.benboer.boluo.main.presenter.account.LoginContract;
 import com.benboer.boluo.main.presenter.account.LoginPresenter;
 
 import net.qiujuer.genius.ui.widget.Loading;
+
+import java.util.HashMap;
 
 import me.yokeyword.fragmentation.ISupportFragment;
 
@@ -88,9 +93,12 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
     @Override
     public void loginSuccess() {
         AccountManager.setSignState(true);
-        getSupportDelegate().startWithPop(
-                (ISupportFragment) ServiceFactory.getInstance().getFragmentService().newBottomFragment()
-        );
+//        getSupportDelegate().startWithPop(
+//                (ISupportFragment) ServiceFactory.getInstance().getFragmentService().newBottomFragment()
+//        );
+        HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
+        IBottomFragmentService service = (IBottomFragmentService) map.get(IBottomFragmentService.class);
+        getSupportDelegate().startWithPop((ISupportFragment) service.newBottomFragment());
     }
 
 

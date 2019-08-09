@@ -1,7 +1,5 @@
 package debug;
 
-import android.app.Application;
-
 import com.benboer.boluo.common.BaseApplication;
 
 /**
