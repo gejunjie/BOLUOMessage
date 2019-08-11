@@ -18,7 +18,7 @@
             android:layout_height="wrap_content">
             <View
                 android:id="@+id/bg_arc"
-                android:layout_height="200dp"
+                android:layout_height="250dp"
                 android:layout_width="match_parent"
                 android:background="@drawable/bg_arc_down"
                 app:layout_constraintTop_toTopOf="parent"/>
