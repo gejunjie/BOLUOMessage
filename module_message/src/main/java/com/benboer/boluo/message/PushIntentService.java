@@ -2,6 +2,7 @@ package com.benboer.boluo.message;
 import android.content.Context;
 import android.util.Log;
 
+import com.benboer.boluo.common.persistence.Account;
 import com.benboer.boluo.message.data.group.GroupDispatcher;
 import com.benboer.boluo.message.data.message.MessageDispatcher;
 import com.benboer.boluo.message.data.user.UserDispatcher;
@@ -10,7 +11,6 @@ import com.benboer.boluo.message.model.card.GroupCard;
 import com.benboer.boluo.message.model.card.GroupMemberCard;
 import com.benboer.boluo.message.model.card.MessageCard;
 import com.benboer.boluo.message.model.card.UserCard;
-import com.benboer.boluo.common.persistence.Account;
 import com.google.gson.reflect.TypeToken;
 import com.igexin.sdk.GTIntentService;
 import com.igexin.sdk.message.GTCmdMessage;
@@ -20,7 +20,7 @@ import com.igexin.sdk.message.GTTransmitMessage;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import static com.benboer.boluo.common.Factory.getGson;
+import static com.benboer.boluo.common.app.BoLuo.getGson;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/6/17.

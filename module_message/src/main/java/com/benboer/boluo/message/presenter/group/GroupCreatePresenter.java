@@ -2,7 +2,7 @@ package com.benboer.boluo.message.presenter.group;
 
 import android.text.TextUtils;
 
-import com.benboer.boluo.common.Factory;
+import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.common.mvp.presenter.BaseRecyclerPresenter;
 import com.benboer.boluo.common.net.UploadHelper;
@@ -36,7 +36,7 @@ public class GroupCreatePresenter extends BaseRecyclerPresenter<GroupCreateContr
     @Override
     public void start() {
         super.start();
-        Factory.runOnAsync(new Runnable() {
+        BoLuo.runOnAsync(new Runnable() {
             @Override
             public void run() {
                 List<UserSampleModel> sampleModels = UserHelper.getSampleContact();
@@ -91,7 +91,7 @@ public class GroupCreatePresenter extends BaseRecyclerPresenter<GroupCreateContr
         }
 
         // 上传图片
-        Factory.runOnAsync(new Runnable() {
+        BoLuo.runOnAsync(new Runnable() {
             @Override
             public void run() {
                 String url = uploadPicture(picture);

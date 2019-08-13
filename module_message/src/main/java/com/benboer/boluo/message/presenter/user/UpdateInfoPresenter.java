@@ -2,7 +2,7 @@ package com.benboer.boluo.message.presenter.user;
 
 import android.text.TextUtils;
 
-import com.benboer.boluo.common.Factory;
+import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.common.mvp.presenter.BasePresenter;
 import com.benboer.boluo.common.net.UploadHelper;
@@ -57,7 +57,7 @@ public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.View>
             view.showError(R.string.data_account_update_invalid_parameter);
         } else {
             // 上传头像
-            Factory.runOnAsync(new Runnable() {
+            BoLuo.runOnAsync(new Runnable() {
                 @Override
                 public void run() {
                     String url = UploadHelper.uploadPortrait(photoFilePath);

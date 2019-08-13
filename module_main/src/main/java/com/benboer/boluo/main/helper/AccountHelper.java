@@ -45,8 +45,6 @@ public class AccountHelper {
 //        Call<RspModel<AccountRspModel>> call = service.accountRegister(model);
 //
 //        call.enqueue(new AccountRspCallback(callback));
-
-
         Network.getRetrofit()
                 .create(RxRemoteService.class)
                 .accountRegister(model)

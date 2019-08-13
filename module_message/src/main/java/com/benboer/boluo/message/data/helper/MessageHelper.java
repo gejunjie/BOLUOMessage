@@ -1,12 +1,12 @@
 package com.benboer.boluo.message.data.helper;
 
+import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.db.db.Message;
 import com.benboer.boluo.db.db.Message_Table;
 import com.benboer.boluo.message.data.message.MessageDispatcher;
 import com.benboer.boluo.message.model.api.message.MsgCreateModel;
 import com.benboer.boluo.message.model.card.MessageCard;
 import com.benboer.boluo.message.net.RemoteService;
-import com.benboer.boluo.common.Factory;
 import com.benboer.boluo.common.net.model.RspModel;
 import com.benboer.boluo.common.net.Network;
 import com.benboer.boluo.common.net.RspCodeDecoder;
@@ -63,7 +63,7 @@ public class MessageHelper {
     }
 
     public static void push(final MsgCreateModel model){
-        Factory.runOnAsync(new Runnable() {
+        BoLuo.runOnAsync(new Runnable() {
             @Override
             public void run() {
                 // 成功状态：如果是一个已经发送过的消息，则不能重新发送

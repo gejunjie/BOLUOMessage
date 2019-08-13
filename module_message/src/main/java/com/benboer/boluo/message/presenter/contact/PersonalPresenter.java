@@ -1,6 +1,6 @@
 package com.benboer.boluo.message.presenter.contact;
 
-import com.benboer.boluo.common.Factory;
+import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.mvp.presenter.BasePresenter;
 import com.benboer.boluo.common.persistence.Account;
 import com.benboer.boluo.common.util.HandlerUtil;
@@ -22,7 +22,7 @@ public class PersonalPresenter extends BasePresenter<PersonalContract.View>
     @Override
     public void start() {
         super.start();
-        Factory.runOnAsync(new Runnable() {
+        BoLuo.runOnAsync(new Runnable() {
             @Override
             public void run() {
                 PersonalContract.View view = getView();

@@ -1,8 +1,8 @@
 package com.benboer.boluo.message.presenter.group;
 
+import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.db.db.view.MemberUserModel;
 import com.benboer.boluo.message.data.helper.GroupHelper;
-import com.benboer.boluo.common.Factory;
 import com.benboer.boluo.common.mvp.presenter.BaseRecyclerPresenter;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public class GroupMembersPresenter extends BaseRecyclerPresenter<MemberUserModel
     @Override
     public void refresh() {
         start();
-        Factory.runOnAsync(new Runnable() {
+        BoLuo.runOnAsync(new Runnable() {
             @Override
             public void run() {
                 GroupMembersContract.View view = getView();

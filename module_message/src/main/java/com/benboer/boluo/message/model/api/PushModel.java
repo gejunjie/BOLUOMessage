@@ -1,6 +1,6 @@
 package com.benboer.boluo.message.model.api;
 
-import com.benboer.boluo.common.Factory;
+import com.benboer.boluo.common.app.BoLuo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -51,7 +51,7 @@ public class PushModel {
      * @return
      */
     public static PushModel decode(String json) {
-        Gson gson = Factory.getGson();
+        Gson gson = BoLuo.getGson();
         Type type = new TypeToken<List<Entity>>() {
         }.getType();
 
