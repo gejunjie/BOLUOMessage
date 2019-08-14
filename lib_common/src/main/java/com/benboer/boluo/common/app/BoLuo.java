@@ -17,15 +17,13 @@ public class BoLuo {
 
     private static final BoLuo instance;
 
-    private static Executor executor;
+    private static final Executor executor;
     // 全局的Gson
-    private final Gson gson;
+    private static final Gson gson;
 
     static {
         instance = new BoLuo();
-    }
 
-    private BoLuo(){
         executor = Executors.newFixedThreadPool(4);
 
         gson = new GsonBuilder()
@@ -34,6 +32,10 @@ public class BoLuo {
                 // 设置一个过滤器，数据库级别的Model不进行Json转换
                 .setExclusionStrategies(new DBFlowExclusionStrategy())
                 .create();
+    }
+
+    private BoLuo(){
+
     }
 
     public static Configurator initConfig(Context context) {

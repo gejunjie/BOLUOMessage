@@ -92,7 +92,6 @@ public class MessageDispatcher implements MessageCenter {
                     // 更新一些会变化的内容
                     message.setContent(card.getContent());
                     message.setAttach(card.getAttach());
-                    // 更新状态
                     message.setStatus(card.getStatus());
                 } else {
                     // 没找到本地消息，初次在数据库存储

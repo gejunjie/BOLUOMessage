@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
  */
 public class GroupDispatcher implements GroupCenter {
 
-    private static GroupCenter instance;
+    private static volatile GroupCenter instance;
 
     private final Executor executor = Executors.newSingleThreadExecutor();
 

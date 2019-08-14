@@ -20,7 +20,7 @@ import java.util.concurrent.Executors;
  */
 public class UserDispatcher implements UserCenter {
 
-    private static UserCenter instance;
+    private static volatile UserCenter instance;
 
     private final Executor executor = Executors.newSingleThreadExecutor();
 

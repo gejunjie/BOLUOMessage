@@ -261,7 +261,6 @@ public final class DbHelper {
                 // 如果没有基本信息
                 if (TextUtils.isEmpty(picture)
                         || TextUtils.isEmpty(title)) {
-                    // 查询人
                     User user = UserHelper.findFromLocal(id);
                     if (user != null) {
                         session.setPicture(user.getPortrait());
@@ -276,7 +275,7 @@ public final class DbHelper {
                         || TextUtils.isEmpty(title)) {
                     // 查询人
                     User other = message.getOther();
-                    other.load(); // 懒加载问题
+                    other.load(); // 懒加载
                     session.setPicture(other.getPortrait());
                     session.setTitle(other.getName());
                 }
