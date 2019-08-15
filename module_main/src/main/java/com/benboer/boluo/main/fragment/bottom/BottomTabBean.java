@@ -1,4 +1,4 @@
-package com.benboer.boluo.message.fragment.main.bottom;
+package com.benboer.boluo.main.fragment.bottom;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/1.

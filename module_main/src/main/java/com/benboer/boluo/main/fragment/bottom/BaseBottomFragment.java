@@ -1,4 +1,4 @@
-package com.benboer.boluo.message.fragment.main.bottom;
+package com.benboer.boluo.main.fragment.bottom;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.LinearLayoutCompat;
 
-import com.benboer.boluo.message.R;
 import com.benboer.boluo.common.base.fragment.SupportFragment;
+import com.benboer.boluo.main.R;
 import com.joanzapata.iconify.widget.IconTextView;
 
 import java.util.ArrayList;

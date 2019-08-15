@@ -1,10 +1,10 @@
-package com.benboer.boluo.message.fragment.main.bottom;
+package com.benboer.boluo.main.fragment.bottom;
 
 import android.widget.Toast;
 
-import com.benboer.boluo.message.R;
 import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.mvp.PresenterFragment;
+import com.benboer.boluo.main.R;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/1.

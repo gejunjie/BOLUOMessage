@@ -69,7 +69,6 @@ public class PushModel {
         public Entity() {
 
         }
-
         // 消息类型
         public int type;
         // 消息实体

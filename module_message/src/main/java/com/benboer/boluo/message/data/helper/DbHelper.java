@@ -204,7 +204,6 @@ public final class DbHelper {
                     }
                     // 把会话，刷新到当前Message的最新状态
                     refreshToNow(session);
-//                    session.refreshToNow();
                     // 数据存储
                     adapter.save(session);
                     // 添加到集合

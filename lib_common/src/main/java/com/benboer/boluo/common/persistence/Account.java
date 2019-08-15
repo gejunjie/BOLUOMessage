@@ -77,8 +77,8 @@ public class Account {
      * 进行数据加载
      */
     public static void load() {
-        SharedPreferences sp = BoLuo.getApplicationContext().getSharedPreferences(Account.class.getName(),
-                Context.MODE_PRIVATE);
+        SharedPreferences sp = BoLuo.getApplicationContext()
+                .getSharedPreferences(Account.class.getName(), Context.MODE_PRIVATE);
         pushId = sp.getString(KEY_PUSH_ID, "");
         isBind = sp.getBoolean(KEY_IS_BIND, false);
         token = sp.getString(KEY_TOKEN, "");
@@ -110,11 +110,9 @@ public class Account {
      * 存储数据到XML文件，持久化
      */
     private static void save() {
-        // 获取数据持久化的SP
         SharedPreferences sp = BoLuo.getApplicationContext()
                 .getSharedPreferences(Account.class.getName(),
                 Context.MODE_PRIVATE);
-        // 存储数据
         sp.edit()
                 .putString(KEY_PUSH_ID, pushId)
                 .putBoolean(KEY_IS_BIND, isBind)

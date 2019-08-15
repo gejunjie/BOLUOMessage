@@ -1,4 +1,4 @@
-package com.benboer.boluo.message.fragment.main.bottom;
+package com.benboer.boluo.main.fragment.bottom;
 
 import com.benboer.boluo.common.base.fragment.SupportFragment;
 
