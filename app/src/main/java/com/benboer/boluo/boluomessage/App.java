@@ -2,6 +2,7 @@ package com.benboer.boluo.boluomessage;
 
 
 import android.content.Context;
+import android.util.ArrayMap;
 
 import androidx.multidex.MultiDex;
 
@@ -24,8 +25,6 @@ import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
-import java.util.HashMap;
-
 /**
  * Created by BenBoerBoluojiushiwo on 2019/3/28.
  */
@@ -46,8 +45,8 @@ public class App extends BaseApplication {
         MultiDex.install(this);
     }
 
-    private HashMap initService(){
-        HashMap map = new HashMap();
+    private ArrayMap initService(){
+        ArrayMap map = new ArrayMap();
         map.put(IAccountService.class, new AccountService());
         map.put(IBottomFragmentService.class, new BottomFragmentService());
         map.put(IPersonalFragmentService.class, new PersonalFragmentService());

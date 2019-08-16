@@ -32,8 +32,7 @@ public class PersonalPresenter extends BasePresenter<PersonalContract.View>
                 }
             }
         });
-}
-
+    }
 
     private void onLoaded(final PersonalContract.View view, final User user) {
         this.user = user;

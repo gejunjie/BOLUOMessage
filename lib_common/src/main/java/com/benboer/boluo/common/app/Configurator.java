@@ -1,17 +1,14 @@
 package com.benboer.boluo.common.app;
 
 import android.app.Activity;
+import android.util.ArrayMap;
 
-import androidx.fragment.app.Fragment;
-
-import com.blankj.utilcode.util.Utils;
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import okhttp3.Interceptor;
 
@@ -22,13 +19,13 @@ import okhttp3.Interceptor;
  */
 public class Configurator {
 
-    private static final HashMap<Object, Object> CONFIGS = new HashMap<>();
+    private static final ArrayMap<Object, Object> CONFIGS = new ArrayMap<>();
     //字体
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
     //拦截器
     private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
     //各个模块提供的fragment对象
-    private HashMap<Class<? extends Fragment>, ? extends Fragment> SERVICES = new HashMap<>();
+    private ArrayMap<Object, Object> SERVICES = new ArrayMap<>();
 
     private Configurator() {
         CONFIGS.put(ConfigKeys.CONFIG_READY, false);
@@ -42,7 +39,7 @@ public class Configurator {
         private static final Configurator INSTANCE = new Configurator();
     }
 
-    final HashMap<Object, Object> getConfigs() {
+    final ArrayMap<Object, Object> getConfigs() {
         return CONFIGS;
     }
 
@@ -116,7 +113,7 @@ public class Configurator {
      * @param services
      * @return
      */
-    public final Configurator withFragmentService(HashMap services){
+    public final Configurator withFragmentService(ArrayMap services){
         SERVICES.putAll(services);
         CONFIGS.put(ConfigKeys.SERVICE_FRAGMENT, services);
         return this;

@@ -1,1 +1,1 @@
-include ':app', ':module_message', ':componentbase', ':module_main', ':module_login', ':lib_common', ':lib_db', ':lib_resource', ':module_discover'
+include ':app', ':module_message', ':componentbase', ':module_main', ':module_login', ':lib_common', ':lib_db', ':lib_resource', ':module_discover', ':annotations', ':annotation_compiler'
