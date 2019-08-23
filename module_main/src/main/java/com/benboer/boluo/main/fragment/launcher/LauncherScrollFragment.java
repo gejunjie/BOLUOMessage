@@ -40,7 +40,6 @@ public class LauncherScrollFragment extends SupportFragment implements OnItemCli
     @Override
     public Object setLayout() {
         mConvenientBanner = new ConvenientBanner<>(getContext());
-
         return mConvenientBanner;
     }
 
