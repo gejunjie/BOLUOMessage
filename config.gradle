@@ -75,5 +75,5 @@ ext {
             arouter_compiler            : "com.alibaba:arouter-compiler:1.2.2",
             //沉浸式状态栏
             statusbar                   : "com.github.niorgai:StatusBarCompat:2.1.4"]
-
+//    aspectj                     : "org.aspectj:aspectjrt:2.0.3
 }

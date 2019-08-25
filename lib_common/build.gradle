@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.jakewharton.butterknife'
+//apply plugin: 'android-aspectjx'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -52,6 +53,7 @@ dependencies {
     //Log
     api rootProject.ext.dependencies["logger"]
 
+//    api rootProject.ext.dependencies["aspectj"]
     //网络依赖
     api rootProject.ext.dependencies["okio"]
     api rootProject.ext.dependencies["okhttp"]
