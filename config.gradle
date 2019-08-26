@@ -74,6 +74,7 @@ ext {
             arouter_api                 : "com.alibaba:arouter-api:1.4.1",
             arouter_compiler            : "com.alibaba:arouter-compiler:1.2.2",
             //沉浸式状态栏
-            statusbar                   : "com.github.niorgai:StatusBarCompat:2.1.4"]
+            statusbar                   : "com.github.niorgai:StatusBarCompat:2.1.4",
+            multidex                    : "com.android.support:multidex:1.0.3"]
 //    aspectj                     : "org.aspectj:aspectjrt:2.0.3
 }

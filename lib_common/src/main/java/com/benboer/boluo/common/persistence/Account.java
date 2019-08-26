@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
+import com.benboer.boluo.common.BaseApplication;
 import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.db.db.Group;
 import com.benboer.boluo.db.db.GroupMember;
@@ -77,7 +78,7 @@ public class Account {
      * 进行数据加载
      */
     public static void load() {
-        SharedPreferences sp = BoLuo.getApplicationContext()
+        SharedPreferences sp = BaseApplication.getInstance()
                 .getSharedPreferences(Account.class.getName(), Context.MODE_PRIVATE);
         pushId = sp.getString(KEY_PUSH_ID, "");
         isBind = sp.getBoolean(KEY_IS_BIND, false);

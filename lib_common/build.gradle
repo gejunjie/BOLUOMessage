@@ -103,4 +103,5 @@ dependencies {
     api(rootProject.ext.dependencies["statusbar"], {
         exclude group: 'com.android.support'
     })
+    api rootProject.ext.dependencies["multidex"]
 }

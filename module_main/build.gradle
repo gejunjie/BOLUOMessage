@@ -12,4 +12,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
     api project(path: ':lib_common')
+    implementation project(':module_message')
+    implementation project(':module_discover')
 }

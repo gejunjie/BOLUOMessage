@@ -24,6 +24,7 @@ public class MainActivity extends ProxyActivity implements ILauncherListener {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.AppTheme);
         BoLuo.getConfigurator().withActivity(this);
         StatusBarCompat.translucentStatusBar(this, true);
     }

@@ -1,8 +1,9 @@
-package com.benboer.boluo.boluomessage;
+package com.benboer.boluo.main;
 
 
 import android.content.Context;
 import android.util.ArrayMap;
+import android.util.Log;
 
 import androidx.multidex.MultiDex;
 
@@ -11,10 +12,15 @@ import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.icon.FontBoluoModule;
 import com.benboer.boluo.common.net.interceptors.TokenInterceptor;
 import com.benboer.boluo.common.persistence.Account;
+import com.benboer.boluo.common.util.launchstarter.TaskDispatcher;
 import com.benboer.boluo.componentbase.service.IAccountService;
 import com.benboer.boluo.componentbase.service.IBottomFragmentService;
 import com.benboer.boluo.componentbase.service.IMessageModuleFragmentService;
 import com.benboer.boluo.componentbase.service.IPersonalFragmentService;
+import com.benboer.boluo.main.Launchtasks.InitAccountTask;
+import com.benboer.boluo.main.Launchtasks.InitBoluoTask;
+import com.benboer.boluo.main.Launchtasks.InitDbFlowTask;
+import com.benboer.boluo.main.Launchtasks.InitPushManagerTask;
 import com.benboer.boluo.main.service.BottomFragmentService;
 import com.benboer.boluo.main.service.PersonalFragmentService;
 import com.benboer.boluo.message.PushIntentService;
@@ -33,10 +39,30 @@ public class App extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        initBoluo();
-        initDBFlow();
-        initPushManager();
-        initAccount();
+        long a0 = System.currentTimeMillis();
+        TaskDispatcher.init(this);
+        TaskDispatcher dispatcher = TaskDispatcher.createInstance();
+        dispatcher
+                .addTask(new InitAccountTask())
+                .addTask(new InitBoluoTask())
+                .addTask(new InitDbFlowTask())
+                .addTask(new InitPushManagerTask())
+                .start();
+//        dispatcher.await();
+        Log.e("---------------------->", String.valueOf(System.currentTimeMillis() - a0));
+//        long a0 = System.currentTimeMillis();
+//        initBoluo();
+//        Log.e("---------------------->", String.valueOf(System.currentTimeMillis() - a0));
+//        long a1 = System.currentTimeMillis();
+//        initDBFlow();
+//        Log.e("---------------------->", String.valueOf(System.currentTimeMillis() - a1));
+//        long a2 = System.currentTimeMillis();
+//        initPushManager();
+//        Log.e("---------------------->", String.valueOf(System.currentTimeMillis() - a2));
+//        long a3 = System.currentTimeMillis();
+//        initAccount();
+//        Log.e("---------------------->", String.valueOf(System.currentTimeMillis() - a3));
+//        Log.e("---------------------->", String.valueOf(System.currentTimeMillis() - a0));
     }
 
     @Override
@@ -46,7 +72,7 @@ public class App extends BaseApplication {
     }
 
     private ArrayMap initService(){
-        ArrayMap map = new ArrayMap();
+        ArrayMap<Class<?>, Object> map = new ArrayMap<>();
         map.put(IAccountService.class, new AccountService());
         map.put(IBottomFragmentService.class, new BottomFragmentService());
         map.put(IPersonalFragmentService.class, new PersonalFragmentService());

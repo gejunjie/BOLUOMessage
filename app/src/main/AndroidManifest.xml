@@ -16,20 +16,19 @@
     <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
-        android:name=".App"
+        android:name="com.benboer.boluo.main.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/Splash"
         tools:ignore="GoogleAppIndexingWarning">
 
         <!-- android:permission在2.13.1.0版本后必须配置 -->
         <service
             android:name="com.benboer.boluo.message.PushIntentService"
             android:permission="android.permission.BIND_JOB_SERVICE"/>
-
 
         <activity
             android:name="com.benboer.boluo.main.MainActivity"
