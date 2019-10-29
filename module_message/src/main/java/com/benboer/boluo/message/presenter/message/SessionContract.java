@@ -1,6 +1,6 @@
 package com.benboer.boluo.message.presenter.message;
 
-import com.benboer.boluo.db.db.Session;
+import com.benboer.boluo.message.db.Session;
 import com.benboer.boluo.common.mvp.presenter.BaseContract;
 
 /**

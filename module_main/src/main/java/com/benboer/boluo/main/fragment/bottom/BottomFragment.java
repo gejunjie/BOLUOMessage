@@ -4,33 +4,27 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.ArrayMap;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.app.ConfigKeys;
 import com.benboer.boluo.common.base.fragment.SupportFragment;
-import com.benboer.boluo.common.persistence.Account;
-import com.benboer.boluo.componentbase.service.IMessageModuleFragmentService;
-import com.benboer.boluo.componentbase.service.IPersonalFragmentService;
 
 import java.util.LinkedHashMap;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/2.
  */
+@Route(path = "/main/bottomFragment")
 public class BottomFragment extends BaseBottomFragment {
 
     @Override
     public LinkedHashMap<BottomTabBean, SupportFragment> setItems(BottomItemBuilder builder) {
         final LinkedHashMap<BottomTabBean, SupportFragment> items = new LinkedHashMap<>();
         ArrayMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
-        items.put(new BottomTabBean("{fa-home}","聊天"),
-                (SupportFragment)
-                        ((IMessageModuleFragmentService)map.get(IMessageModuleFragmentService.class)).newMessageModuleFragment());
-        items.put(new BottomTabBean("{fa-home}","广场"),
-                (SupportFragment)
-                        ((IMessageModuleFragmentService)map.get(IMessageModuleFragmentService.class)).newMessageModuleFragment());
-        items.put(new BottomTabBean("{icon-user-unpressed}","我的"),
-                (SupportFragment)
-                        ((IPersonalFragmentService)map.get(IPersonalFragmentService.class)).newPersonalFragment());
+        items.put(new BottomTabBean("{fa-home}","聊天"), (SupportFragment) ARouter.getInstance().build("/message/messageFragment").navigation() );
+        items.put(new BottomTabBean("{fa-home}","广场"), (SupportFragment) ARouter.getInstance().build("/message/messageFragment").navigation() );
+        items.put(new BottomTabBean("{icon-user-unpressed}","我的"),(SupportFragment) ARouter.getInstance().build("/message/personalFragment").navigation() );
         return items;
     }
 
@@ -47,9 +41,9 @@ public class BottomFragment extends BaseBottomFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (!Account.isComplete()){//检测账户信息是否完整
+//        if (!AccountServiceImpl.isComplete()){//检测账户信息是否完整
 //            getSupportDelegate().start(new UpdateInfoFragment());//todo
-        }
+//        }
     }
 
 

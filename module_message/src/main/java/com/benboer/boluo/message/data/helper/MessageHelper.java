@@ -1,9 +1,9 @@
 package com.benboer.boluo.message.data.helper;
 
 import com.benboer.boluo.common.app.BoLuo;
-import com.benboer.boluo.db.db.Message;
-import com.benboer.boluo.db.db.Message_Table;
+import com.benboer.boluo.message.db.Message;
 import com.benboer.boluo.message.data.message.MessageDispatcher;
+import com.benboer.boluo.message.db.Message_Table;
 import com.benboer.boluo.message.model.api.message.MsgCreateModel;
 import com.benboer.boluo.message.model.card.MessageCard;
 import com.benboer.boluo.message.net.RemoteService;
@@ -30,7 +30,7 @@ public class MessageHelper {
     public static Message findFromLocal(String id) {
         return SQLite.select()
                 .from(Message.class)
-                .where(Message_Table.id.eq(id))
+                .where( Message_Table.id.eq(id))
                 .querySingle();//只返回第一条数据
     }
 

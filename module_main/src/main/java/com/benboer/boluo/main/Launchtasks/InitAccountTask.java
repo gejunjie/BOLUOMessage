@@ -1,6 +1,7 @@
 package com.benboer.boluo.main.Launchtasks;
 
-import com.benboer.boluo.common.persistence.Account;
+import com.benboer.boluo.main.serviceImpl.Account;
+import com.benboer.boluo.main.serviceImpl.AccountServiceImpl;
 import com.benboer.boluo.common.util.launchstarter.MainTask;
 
 /**

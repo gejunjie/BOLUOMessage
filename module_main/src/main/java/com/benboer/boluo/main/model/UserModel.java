@@ -1,6 +1,6 @@
 package com.benboer.boluo.main.model;
 
-import com.benboer.boluo.db.model.Author;
+import com.benboer.boluo.message.db.model.Author;
 
 import java.util.Date;
 

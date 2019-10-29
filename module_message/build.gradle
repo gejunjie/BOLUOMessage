@@ -12,6 +12,11 @@ android {
                 GETUI_APP_SECRET: "Bx6XTWSW9i71TjTB0Zj5G1",
 //                PACKAGE_NAME    : applicationId
         ]
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 }
 

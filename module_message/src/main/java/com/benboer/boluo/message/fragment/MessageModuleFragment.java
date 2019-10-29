@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.benboer.boluo.common.base.fragment.SupportFragment;
-import com.benboer.boluo.common.persistence.Account;
 import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.R2;
 import com.benboer.boluo.message.fragment.main.ActiveFragment;
@@ -35,6 +35,7 @@ import butterknife.OnClick;
  *
  * 消息聊天模块的根容器
  */
+@Route(path = "/message/messageFragment")
 public class MessageModuleFragment extends SupportFragment {
     @BindView(R2.id.appbar)
     AppBarLayout mLayAppbar;
@@ -81,7 +82,7 @@ public class MessageModuleFragment extends SupportFragment {
         });
         mTablayout.setupWithViewPager(mViewPager);
 
-        mPortrait.setup(Glide.with(this), Account.getUser());
+//        mPortrait.setup(Glide.with(this), Account.getUser());//todo Account
 
     }
 
@@ -101,7 +102,7 @@ public class MessageModuleFragment extends SupportFragment {
 
     @OnClick(R2.id.im_portrait)
     void onPortraitClick() {
-        getSupportDelegate().start(PersonalFragment.newInstance(Account.getUserId()));
+//        getSupportDelegate().start(PersonalFragment.newInstance(Account.getUserId()));//todo Account
     }
 
 }

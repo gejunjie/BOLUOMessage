@@ -4,7 +4,8 @@ import android.text.TextUtils;
 
 import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.common.mvp.presenter.BasePresenter;
-import com.benboer.boluo.common.persistence.Account;
+import com.benboer.boluo.main.serviceImpl.Account;
+import com.benboer.boluo.main.serviceImpl.AccountServiceImpl;
 import com.benboer.boluo.common.util.HandlerUtil;
 import com.benboer.boluo.main.R;
 import com.benboer.boluo.main.helper.AccountHelper;

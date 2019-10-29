@@ -2,9 +2,12 @@ package com.benboer.boluo.message.data;
 
 import androidx.annotation.NonNull;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.benboer.boluo.common.service.AccountService;
 import com.benboer.boluo.common.util.CollectionUtil;
 import com.benboer.boluo.common.util.reflector.Reflector;
-import com.benboer.boluo.db.db.BaseDbModel;
+import com.benboer.boluo.message.db.BaseDbModel;
 import com.benboer.boluo.message.data.helper.DbHelper;
 import com.benboer.boluo.common.mvp.data.DbDataSource;
 import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;
@@ -25,7 +28,11 @@ public abstract class BaseDbRepository<Data extends BaseDbModel<Data>>
     protected final LinkedList<Data> dataList = new LinkedList<>(); // 当前缓存的数据
     private Class<Data> dataClass; // 当前范型对应的真实的Class信息
 
+    @Autowired(name = "/main/account_service")
+    protected AccountService mAccountService;
+
     public BaseDbRepository(){
+        ARouter.getInstance().inject( this);
         // 拿当前类的范型数组信息
         Type[] types = Reflector.getActualTypeArguments(BaseDbRepository.class, this.getClass());//获取子类用于扩展泛型基类的实际类型参数
         dataClass = (Class<Data>) types[0];

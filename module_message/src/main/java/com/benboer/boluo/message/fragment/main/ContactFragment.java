@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.R2;
-import com.benboer.boluo.db.db.User;
+import com.benboer.boluo.message.db.User;
 import com.benboer.boluo.message.fragment.message.ChatUserFragment;
 import com.benboer.boluo.message.fragment.user.PersonalFragment;
 import com.benboer.boluo.message.presenter.contact.ContactContract;

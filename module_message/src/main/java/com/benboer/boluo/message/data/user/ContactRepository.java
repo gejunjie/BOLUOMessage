@@ -1,10 +1,9 @@
 package com.benboer.boluo.message.data.user;
 
-import com.benboer.boluo.db.db.User;
-import com.benboer.boluo.db.db.User_Table;
-import com.benboer.boluo.message.data.BaseDbRepository;
 import com.benboer.boluo.common.mvp.data.DataSource;
-import com.benboer.boluo.common.persistence.Account;
+import com.benboer.boluo.message.data.BaseDbRepository;
+import com.benboer.boluo.message.db.User;
+import com.benboer.boluo.message.db.User_Table;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.List;
@@ -20,8 +19,8 @@ public class ContactRepository extends BaseDbRepository<User> implements Contact
         // 加载本地数据库数据
         SQLite.select()
                 .from(User.class)
-                .where(User_Table.isFollow.eq(true))
-                .and(User_Table.id.notEq(Account.getUserId()))
+                .where( User_Table.isFollow.eq(true))
+                .and(User_Table.id.notEq(mAccountService.getUserId()))
                 .orderBy(User_Table.name, true)
                 .limit(100)
                 .async()
@@ -31,6 +30,6 @@ public class ContactRepository extends BaseDbRepository<User> implements Contact
 
     @Override
     protected boolean isRequired(User user) {
-        return user.isFollow() && !user.getId().equals(Account.getUserId());
+        return user.isFollow() && !user.getId().equals(mAccountService.getUserId());
     }
 }

@@ -1,6 +1,6 @@
 package com.benboer.boluo.message.data.user;
 
-import com.benboer.boluo.db.db.User;
+import com.benboer.boluo.message.db.User;
 import com.benboer.boluo.common.mvp.data.DbDataSource;
 
 /**

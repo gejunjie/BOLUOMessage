@@ -7,7 +7,7 @@ import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.common.mvp.presenter.BasePresenter;
 import com.benboer.boluo.common.net.UploadHelper;
 import com.benboer.boluo.common.util.HandlerUtil;
-import com.benboer.boluo.db.db.User;
+import com.benboer.boluo.message.db.User;
 import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.data.helper.UserHelper;
 import com.benboer.boluo.message.model.api.user.UserUpdateModel;

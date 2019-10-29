@@ -12,9 +12,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.R2;
-import com.benboer.boluo.db.db.Session;
-import com.benboer.boluo.db.db.User;
-import com.benboer.boluo.db.model.Author;
+import com.benboer.boluo.message.db.Session;
+import com.benboer.boluo.message.db.User;
+import com.benboer.boluo.message.db.model.Author;
 import com.benboer.boluo.message.fragment.user.PersonalFragment;
 import com.benboer.boluo.message.presenter.message.ChatContract;
 import com.benboer.boluo.message.presenter.message.ChatUserPresenter;

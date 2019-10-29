@@ -2,8 +2,8 @@ package com.benboer.boluo.message.presenter.group;
 
 import androidx.recyclerview.widget.DiffUtil;
 
-import com.benboer.boluo.db.DiffUiDataCallback;
-import com.benboer.boluo.db.db.Group;
+import com.benboer.boluo.message.db.DiffUiDataCallback;
+import com.benboer.boluo.message.db.Group;
 import com.benboer.boluo.message.data.group.GroupsDataSource;
 import com.benboer.boluo.message.data.group.GroupsRepository;
 import com.benboer.boluo.message.data.helper.GroupHelper;

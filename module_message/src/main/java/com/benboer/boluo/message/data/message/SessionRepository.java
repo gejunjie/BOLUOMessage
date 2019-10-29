@@ -2,10 +2,11 @@ package com.benboer.boluo.message.data.message;
 
 import androidx.annotation.NonNull;
 
-import com.benboer.boluo.db.db.Session;
-import com.benboer.boluo.db.db.Session_Table;
+import com.benboer.boluo.message.db.Session;
+
 import com.benboer.boluo.message.data.BaseDbRepository;
 import com.benboer.boluo.common.mvp.data.DataSource;
+import com.benboer.boluo.message.db.Session_Table;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;
 
@@ -22,7 +23,7 @@ public class SessionRepository extends BaseDbRepository<Session> implements Sess
         super.load(callback);
         SQLite.select()
                 .from(Session.class)
-                .orderBy(Session_Table.modifyAt, false)
+                .orderBy( Session_Table.modifyAt, false)
                 .limit(100)
                 .async()
                 .queryListResultCallback(this)

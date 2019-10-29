@@ -8,11 +8,11 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.app.ConfigKeys;
+import com.benboer.boluo.common.base.fragment.SupportFragment;
 import com.benboer.boluo.common.mvp.PresenterFragment;
-import com.benboer.boluo.componentbase.ServiceFactory;
-import com.benboer.boluo.componentbase.service.IBottomFragmentService;
 import com.benboer.boluo.main.R;
 import com.benboer.boluo.main.presenter.account.RegisterContract;
 import com.benboer.boluo.main.presenter.account.RegisterPresenter;
@@ -97,7 +97,7 @@ public class RegisterFragment extends PresenterFragment<RegisterContract.Present
 //               (ISupportFragment) ServiceFactory.getInstance().getFragmentService().newBottomFragment()
 //        );
         HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
-        IBottomFragmentService service = (IBottomFragmentService) map.get(IBottomFragmentService.class);
-        getSupportDelegate().startWithPop((ISupportFragment) service.newBottomFragment());
+
+        getSupportDelegate().startWithPop(( SupportFragment ) ARouter.getInstance().build("/main/bottomFragmentt").navigation());
     }
 }

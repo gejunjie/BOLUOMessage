@@ -2,9 +2,9 @@ package com.benboer.boluo.message.data.group;
 
 import android.text.TextUtils;
 
-import com.benboer.boluo.db.db.Group;
-import com.benboer.boluo.db.db.Group_Table;
-import com.benboer.boluo.db.db.view.MemberUserModel;
+import com.benboer.boluo.message.db.Group;
+import com.benboer.boluo.message.db.Group_Table;
+import com.benboer.boluo.message.db.view.MemberUserModel;
 import com.benboer.boluo.message.data.BaseDbRepository;
 import com.benboer.boluo.message.data.helper.GroupHelper;
 import com.benboer.boluo.common.mvp.data.DataSource;
@@ -23,7 +23,7 @@ public class GroupsRepository extends BaseDbRepository<Group>
         super.load(callback);
         SQLite.select()
                 .from(Group.class)
-                .orderBy(Group_Table.name, true)
+                .orderBy( Group_Table.name, true)
                 .limit(100)
                 .async()
                 .queryListResultCallback(this)

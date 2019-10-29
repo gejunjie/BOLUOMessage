@@ -14,7 +14,7 @@ import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.common.util.DateTimeUtil;
 import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.R2;
-import com.benboer.boluo.db.db.Session;
+import com.benboer.boluo.message.db.Session;
 import com.benboer.boluo.message.fragment.message.ChatUserFragment;
 import com.benboer.boluo.message.presenter.message.SessionContract;
 import com.benboer.boluo.message.presenter.message.SessionPresenter;

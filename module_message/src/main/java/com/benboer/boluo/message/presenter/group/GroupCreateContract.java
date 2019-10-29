@@ -1,6 +1,6 @@
 package com.benboer.boluo.message.presenter.group;
 
-import com.benboer.boluo.db.model.Author;
+import com.benboer.boluo.message.db.model.Author;
 import com.benboer.boluo.common.mvp.presenter.BaseContract;
 
 /**

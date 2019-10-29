@@ -2,30 +2,22 @@ package com.benboer.boluo.main;
 
 
 import android.content.Context;
-import android.util.ArrayMap;
 import android.util.Log;
 
 import androidx.multidex.MultiDex;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.benboer.boluo.common.BaseApplication;
 import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.icon.FontBoluoModule;
 import com.benboer.boluo.common.net.interceptors.TokenInterceptor;
-import com.benboer.boluo.common.persistence.Account;
 import com.benboer.boluo.common.util.launchstarter.TaskDispatcher;
-import com.benboer.boluo.componentbase.service.IAccountService;
-import com.benboer.boluo.componentbase.service.IBottomFragmentService;
-import com.benboer.boluo.componentbase.service.IMessageModuleFragmentService;
-import com.benboer.boluo.componentbase.service.IPersonalFragmentService;
 import com.benboer.boluo.main.Launchtasks.InitAccountTask;
 import com.benboer.boluo.main.Launchtasks.InitBoluoTask;
 import com.benboer.boluo.main.Launchtasks.InitDbFlowTask;
 import com.benboer.boluo.main.Launchtasks.InitPushManagerTask;
-import com.benboer.boluo.main.service.BottomFragmentService;
-import com.benboer.boluo.main.service.PersonalFragmentService;
+
 import com.benboer.boluo.message.PushIntentService;
-import com.benboer.boluo.message.service.AccountService;
-import com.benboer.boluo.message.service.MessageModuleFragmentService;
 import com.igexin.sdk.PushManager;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.raizlabs.android.dbflow.config.FlowConfig;
@@ -40,6 +32,10 @@ public class App extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         long a0 = System.currentTimeMillis();
+        //ARouter初始化
+        ARouter.openLog();     // 打印日志
+        ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+        ARouter.init(this);
         TaskDispatcher.init(this);
         TaskDispatcher dispatcher = TaskDispatcher.createInstance();
         dispatcher
@@ -71,14 +67,14 @@ public class App extends BaseApplication {
         MultiDex.install(this);
     }
 
-    private ArrayMap initService(){
-        ArrayMap<Class<?>, Object> map = new ArrayMap<>();
-        map.put(IAccountService.class, new AccountService());
-        map.put(IBottomFragmentService.class, new BottomFragmentService());
-        map.put(IPersonalFragmentService.class, new PersonalFragmentService());
-        map.put(IMessageModuleFragmentService.class, new MessageModuleFragmentService());
-        return map;
-    }
+//    private ArrayMap initService(){
+//        ArrayMap<Class<?>, Object> map = new ArrayMap<>();
+//        map.put(IAccountService.class, new AccountService());
+//        map.put(IBottomFragmentService.class, new BottomFragmentService());
+//        map.put(IPersonalFragmentService.class, new PersonalFragmentService());
+//        map.put(IMessageModuleFragmentService.class, new MessageModuleFragmentService());
+//        return map;
+//    }
 
     private void initDBFlow() {
         // 初始化数据库
@@ -93,7 +89,7 @@ public class App extends BaseApplication {
                 .withIcon(new FontBoluoModule())
                 .withApiHost("http://172.20.10.2:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
 //                .withApiHost("http://192.168.31.210:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
-                .withFragmentService(initService())
+//                .withFragmentService(initService())
                 .withInterceptor(new TokenInterceptor())
                 .configure();
     }
@@ -105,9 +101,9 @@ public class App extends BaseApplication {
     }
 
 
-    private void initAccount() {
-        Account.load();
-    }
+//    private void initAccount() {
+//        AccountServiceImpl.load();
+//    }
 
 
 }

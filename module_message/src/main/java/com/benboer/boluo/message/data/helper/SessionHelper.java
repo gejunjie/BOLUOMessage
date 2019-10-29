@@ -1,7 +1,8 @@
 package com.benboer.boluo.message.data.helper;
 
-import com.benboer.boluo.db.db.Session;
-import com.benboer.boluo.db.db.Session_Table;
+import com.benboer.boluo.message.db.Session;
+
+import com.benboer.boluo.message.db.Session_Table;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 /**
@@ -12,7 +13,7 @@ public class SessionHelper {
     public static Session findFromLocal(String id) {
         return SQLite.select()
                 .from(Session.class)
-                .where(Session_Table.id.eq(id))
+                .where( Session_Table.id.eq(id))
                 .querySingle();
     }
 }

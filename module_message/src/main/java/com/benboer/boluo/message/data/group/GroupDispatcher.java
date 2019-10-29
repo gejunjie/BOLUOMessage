@@ -1,8 +1,8 @@
 package com.benboer.boluo.message.data.group;
 
-import com.benboer.boluo.db.db.Group;
-import com.benboer.boluo.db.db.GroupMember;
-import com.benboer.boluo.db.db.User;
+import com.benboer.boluo.message.db.Group;
+import com.benboer.boluo.message.db.GroupMember;
+import com.benboer.boluo.message.db.User;
 import com.benboer.boluo.message.data.helper.DbHelper;
 import com.benboer.boluo.message.data.helper.GroupHelper;
 import com.benboer.boluo.message.data.helper.UserHelper;

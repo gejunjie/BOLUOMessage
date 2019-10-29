@@ -16,9 +16,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.R2;
-import com.benboer.boluo.db.db.Group;
-import com.benboer.boluo.db.db.Session;
-import com.benboer.boluo.db.db.view.MemberUserModel;
+import com.benboer.boluo.message.db.Group;
+import com.benboer.boluo.message.db.Session;
+import com.benboer.boluo.message.db.view.MemberUserModel;
 import com.benboer.boluo.message.fragment.group.GroupMemberFragment;
 import com.benboer.boluo.message.fragment.user.PersonalFragment;
 import com.benboer.boluo.message.presenter.message.ChatContract;

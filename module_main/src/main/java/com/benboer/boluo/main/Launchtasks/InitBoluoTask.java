@@ -7,14 +7,6 @@ import com.benboer.boluo.common.icon.FontBoluoModule;
 import com.benboer.boluo.common.net.interceptors.TokenInterceptor;
 import com.benboer.boluo.common.util.launchstarter.Task;
 import com.benboer.boluo.common.util.launchstarter.TaskDispatcher;
-import com.benboer.boluo.componentbase.service.IAccountService;
-import com.benboer.boluo.componentbase.service.IBottomFragmentService;
-import com.benboer.boluo.componentbase.service.IMessageModuleFragmentService;
-import com.benboer.boluo.componentbase.service.IPersonalFragmentService;
-import com.benboer.boluo.main.service.BottomFragmentService;
-import com.benboer.boluo.main.service.PersonalFragmentService;
-import com.benboer.boluo.message.service.AccountService;
-import com.benboer.boluo.message.service.MessageModuleFragmentService;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 /**
@@ -29,17 +21,17 @@ public class InitBoluoTask extends Task {
                 .withIcon(new FontBoluoModule())
                 .withApiHost("http://172.20.10.2:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
 //                .withApiHost("http://192.168.31.210:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
-                .withFragmentService(initService())
+//                .withFragmentService(initService())
                 .withInterceptor(new TokenInterceptor())
                 .configure();
     }
 
-    private ArrayMap initService(){
-        ArrayMap map = new ArrayMap();
-        map.put(IAccountService.class, new AccountService());
-        map.put(IBottomFragmentService.class, new BottomFragmentService());
-        map.put(IPersonalFragmentService.class, new PersonalFragmentService());
-        map.put(IMessageModuleFragmentService.class, new MessageModuleFragmentService());
-        return map;
-    }
+//    private ArrayMap initService(){
+//        ArrayMap map = new ArrayMap();
+//        map.put(IAccountService.class, new AccountService());
+//        map.put(IBottomFragmentService.class, new BottomFragmentService());
+//        map.put(IPersonalFragmentService.class, new PersonalFragmentService());
+//        map.put(IMessageModuleFragmentService.class, new MessageModuleFragmentService());
+//        return map;
+//    }
 }

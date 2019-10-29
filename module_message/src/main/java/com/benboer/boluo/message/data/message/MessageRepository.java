@@ -2,10 +2,11 @@ package com.benboer.boluo.message.data.message;
 
 import androidx.annotation.NonNull;
 
-import com.benboer.boluo.db.db.Message;
-import com.benboer.boluo.db.db.Message_Table;
+import com.benboer.boluo.message.db.Message;
+
 import com.benboer.boluo.message.data.BaseDbRepository;
 import com.benboer.boluo.common.mvp.data.DataSource;
+import com.benboer.boluo.message.db.Message_Table;
 import com.raizlabs.android.dbflow.sql.language.OperatorGroup;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;
@@ -31,7 +32,7 @@ public class MessageRepository extends BaseDbRepository<Message> implements Mess
         SQLite.select()
                 .from(Message.class)
                 .where(OperatorGroup.clause()
-                    .and(Message_Table.sender_id.eq(receiverId))
+                    .and( Message_Table.sender_id.eq(receiverId))
                     .and(Message_Table.group_id.isNull()))
                 .or(Message_Table.receiver_id.eq(receiverId))
                 .orderBy(Message_Table.createAt, false)

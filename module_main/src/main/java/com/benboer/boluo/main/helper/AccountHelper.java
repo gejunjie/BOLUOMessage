@@ -4,14 +4,12 @@ import android.text.TextUtils;
 
 import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.app.ConfigKeys;
-import com.benboer.boluo.componentbase.ServiceFactory;
-import com.benboer.boluo.componentbase.service.IAccountService;
-import com.benboer.boluo.componentbase.service.IBottomFragmentService;
-import com.benboer.boluo.db.db.User;
+import com.benboer.boluo.main.serviceImpl.Account;
+import com.benboer.boluo.message.db.User;
 import com.benboer.boluo.common.net.model.RspModel;
 import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.common.net.Network;
-import com.benboer.boluo.common.persistence.Account;
+import com.benboer.boluo.main.serviceImpl.AccountServiceImpl;
 import com.benboer.boluo.main.R;
 import com.benboer.boluo.main.api.RxRemoteService;
 import com.benboer.boluo.main.model.AccountRspModel;
@@ -184,17 +182,17 @@ public class AccountHelper {
 //                            user.isFollow(),
 //                            user.getModifyAt());
             HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
-            IAccountService service = (IAccountService) map.get(IAccountService.class);
-            service .saveUser(user.getId(),
-                    user.getName(),
-                    user.getPhone(),
-                    user.getPortrait(),
-                    user.getDesc(),
-                    user.getSex(),
-                    user.getFollows(),
-                    user.getFollowing(),
-                    user.isFollow(),
-                    user.getModifyAt());
+//            IAccountService service = (IAccountService) map.get(IAccountService.class);
+//            service .saveUser(user.getId(),
+//                    user.getName(),
+//                    user.getPhone(),
+//                    user.getPortrait(),
+//                    user.getDesc(),
+//                    user.getSex(),
+//                    user.getFollows(),
+//                    user.getFollowing(),
+//                    user.isFollow(),
+//                    user.getModifyAt());
             // 同步到XML持久化中
             Account.login(accountRspModel.getToken(),
                     accountRspModel.getAccount(),

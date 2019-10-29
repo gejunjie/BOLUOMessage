@@ -2,7 +2,9 @@ package com.benboer.boluo.message;
 import android.content.Context;
 import android.util.Log;
 
-import com.benboer.boluo.common.persistence.Account;
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.benboer.boluo.common.service.AccountService;
 import com.benboer.boluo.message.data.group.GroupDispatcher;
 import com.benboer.boluo.message.data.message.MessageDispatcher;
 import com.benboer.boluo.message.data.user.UserDispatcher;
@@ -28,6 +30,12 @@ import static com.benboer.boluo.common.app.BoLuo.getGson;
  * 接收个推SDK推送过来的消息
  */
 public class PushIntentService extends GTIntentService {
+    @Autowired(name = "/main/account_service")
+    protected static AccountService mAccountService;
+
+    public PushIntentService(){
+        ARouter.getInstance().inject( this);
+    }
 
     @Override
     public void onReceiveServicePid(Context context, int pid) {
@@ -42,8 +50,8 @@ public class PushIntentService extends GTIntentService {
     @Override
     public void onReceiveClientId(Context context, String cid) {
         // 设置设备Id
-        Account.setPushId(cid);
-        if (Account.isLogin()) {
+        mAccountService.setPushId(cid);
+        if (mAccountService.isLogin()) {
             // 账户登录状态，进行一次PushId绑定
             // 没有登录是不能绑定PushId的
 //            AccountHelper.bindPush(null);
@@ -109,7 +117,7 @@ public class PushIntentService extends GTIntentService {
      */
     private static void dispatchPush(String str) {
         // 首先检查登录状态
-        if (!Account.isLogin())
+        if (!mAccountService.isLogin())
             return;
 
         PushModel model = PushModel.decode(str);

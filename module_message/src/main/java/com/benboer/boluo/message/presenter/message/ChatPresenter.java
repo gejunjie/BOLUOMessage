@@ -2,13 +2,15 @@ package com.benboer.boluo.message.presenter.message;
 
 import androidx.recyclerview.widget.DiffUtil;
 
-import com.benboer.boluo.db.DiffUiDataCallback;
-import com.benboer.boluo.db.db.Message;
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.benboer.boluo.common.service.AccountService;
+import com.benboer.boluo.message.db.DiffUiDataCallback;
+import com.benboer.boluo.message.db.Message;
 import com.benboer.boluo.message.data.helper.MessageHelper;
 import com.benboer.boluo.message.data.message.MessageDataSource;
 import com.benboer.boluo.message.model.api.message.MsgCreateModel;
 import com.benboer.boluo.message.presenter.BaseSourcePresenter;
-import com.benboer.boluo.common.persistence.Account;
 
 import java.util.List;
 
@@ -24,9 +26,12 @@ public class ChatPresenter<View extends ChatContract.View>
     protected String mReceiverId;
     // 区分是人还是群Id
     protected int mReceiverType;
+    @Autowired(name = "/main/account_service")
+    protected AccountService mAccountService;
 
     public ChatPresenter(MessageDataSource source, View view, String receiverId, int receiverType) {
         super(source, view);
+        ARouter.getInstance().inject( this);
         this.mReceiverId = receiverId;
         this.mReceiverType = receiverType;
     }
@@ -66,7 +71,7 @@ public class ChatPresenter<View extends ChatContract.View>
     @Override
     public boolean rePush(Message message) {
         // 确定消息是可重复发送的
-        if (Account.getUserId().equalsIgnoreCase(message.getSender().getId())
+        if (mAccountService.getUserId().equalsIgnoreCase(message.getSender().getId())
                 && message.getStatus() == Message.STATUS_FAILED) {
             // 更改状态
             message.setStatus(Message.STATUS_CREATED);

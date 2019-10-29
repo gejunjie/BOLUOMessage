@@ -1,13 +1,13 @@
 package com.benboer.boluo.message.data.helper;
 
 import com.benboer.boluo.message.R;
-import com.benboer.boluo.db.db.Group;
-import com.benboer.boluo.db.db.GroupMember;
-import com.benboer.boluo.db.db.GroupMember_Table;
-import com.benboer.boluo.db.db.Group_Table;
-import com.benboer.boluo.db.db.User;
-import com.benboer.boluo.db.db.User_Table;
-import com.benboer.boluo.db.db.view.MemberUserModel;
+import com.benboer.boluo.message.db.Group;
+import com.benboer.boluo.message.db.GroupMember;
+import com.benboer.boluo.message.db.GroupMember_Table;
+import com.benboer.boluo.message.db.Group_Table;
+import com.benboer.boluo.message.db.User;
+import com.benboer.boluo.message.db.User_Table;
+import com.benboer.boluo.message.db.view.MemberUserModel;
 import com.benboer.boluo.message.data.group.GroupDispatcher;
 import com.benboer.boluo.message.model.api.group.GroupCreateModel;
 import com.benboer.boluo.message.model.card.GroupCard;
@@ -131,7 +131,7 @@ public class GroupHelper {
     public static Group findFromLocal(String groupId) {
         return SQLite.select()
                 .from(Group.class)
-                .where(Group_Table.id.eq(groupId))
+                .where( Group_Table.id.eq(groupId))
                 .querySingle();
     }
 
@@ -175,7 +175,7 @@ public class GroupHelper {
      * 关联查询一个用户和群成员的表，返回一个MemberUserModel表的集合
      */
     public static List<MemberUserModel> getMemberUsers(String groupId, int size) {
-        return SQLite.select(GroupMember_Table.alias.withTable().as("alias"),
+        return SQLite.select( GroupMember_Table.alias.withTable().as("alias"),
                 User_Table.id.withTable().as("userId"),
                 User_Table.name.withTable().as("name"),
                 User_Table.portrait.withTable().as("portrait"))

@@ -1,9 +1,12 @@
 package com.benboer.boluo.message.data.helper;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.benboer.boluo.common.service.AccountService;
 import com.benboer.boluo.message.R;
-import com.benboer.boluo.db.db.User;
-import com.benboer.boluo.db.db.User_Table;
-import com.benboer.boluo.db.db.view.UserSampleModel;
+import com.benboer.boluo.message.db.User;
+import com.benboer.boluo.message.db.User_Table;
+import com.benboer.boluo.message.db.view.UserSampleModel;
 import com.benboer.boluo.message.data.user.UserDispatcher;
 import com.benboer.boluo.message.model.api.user.UserUpdateModel;
 import com.benboer.boluo.message.model.card.UserCard;
@@ -12,7 +15,6 @@ import com.benboer.boluo.common.net.model.RspModel;
 import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.common.net.Network;
 import com.benboer.boluo.common.net.RspCodeDecoder;
-import com.benboer.boluo.common.persistence.Account;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.List;
@@ -27,7 +29,15 @@ import retrofit2.Response;
  * 用户更新
  */
 public class UserHelper {
+
+    @Autowired(name = "/main/account_service")
+    protected static AccountService mAccountService;
+
     static RemoteService service = Network.getRetrofit().create(RemoteService.class);
+
+    private UserHelper(){
+        ARouter.getInstance().inject( this);
+    }
 
 
     // 异步更新用户信息的操作
@@ -197,12 +207,12 @@ public class UserHelper {
     public static List<UserSampleModel> getSampleContact() {
         //"select id = ??";
         //"select User_id = ??";
-        return SQLite.select(User_Table.id.withTable().as("id"),
+        return SQLite.select( User_Table.id.withTable().as("id"),
                 User_Table.name.withTable().as("name"),
                 User_Table.portrait.withTable().as("portrait"))
                 .from(User.class)
                 .where(User_Table.isFollow.eq(true))
-                .and(User_Table.id.notEq(Account.getUserId()))
+                .and(User_Table.id.notEq(mAccountService.getUserId()))
                 .orderBy(User_Table.name, true)
                 .queryCustomList(UserSampleModel.class);
     }

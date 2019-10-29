@@ -17,9 +17,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.drawable.DrawableCompat;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.R2;
-import com.benboer.boluo.db.db.User;
+import com.benboer.boluo.message.db.User;
 import com.benboer.boluo.message.fragment.message.ChatUserFragment;
 import com.benboer.boluo.message.presenter.contact.PersonalContract;
 import com.benboer.boluo.message.presenter.contact.PersonalPresenter;
@@ -35,6 +36,7 @@ import butterknife.OnClick;
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/3.
  */
+@Route(path = "/message/personalFragment")
 public class PersonalFragment extends PresenterFragment<PersonalContract.Presenter>
         implements PersonalContract.View {
 

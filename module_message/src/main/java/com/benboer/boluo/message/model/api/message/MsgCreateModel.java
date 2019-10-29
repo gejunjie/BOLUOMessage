@@ -1,8 +1,10 @@
 package com.benboer.boluo.message.model.api.message;
 
-import com.benboer.boluo.db.db.Message;
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.benboer.boluo.common.service.AccountService;
+import com.benboer.boluo.message.db.Message;
 import com.benboer.boluo.message.model.card.MessageCard;
-import com.benboer.boluo.common.persistence.Account;
 
 import java.util.Date;
 import java.util.UUID;
@@ -15,7 +17,8 @@ public class MsgCreateModel {
     private String id;
     private String content;
     private String attach;
-
+    @Autowired(name = "/main/account_service")
+    protected AccountService mAccountService;
     // 消息类型
     private int type = Message.TYPE_STR;
 
@@ -28,6 +31,7 @@ public class MsgCreateModel {
     private MsgCreateModel() {
         // 随机生产一个UUID
         this.id = UUID.randomUUID().toString();
+        ARouter.getInstance().inject( this);
     }
 
     public String getId() {
@@ -55,7 +59,7 @@ public class MsgCreateModel {
     }
 
 
-    // 当我们需要发送一个文件的时候，content刷新的问题
+    // 当需要发送一个文件的时候，content刷新的问题
 
     private MessageCard card;
 
@@ -67,7 +71,7 @@ public class MsgCreateModel {
             card.setContent(content);
             card.setAttach(attach);
             card.setType(type);
-            card.setSenderId(Account.getUserId());
+            card.setSenderId(mAccountService.getUserId());
 
             // 如果是群
             if (receiverType == Message.RECEIVER_TYPE_GROUP) {

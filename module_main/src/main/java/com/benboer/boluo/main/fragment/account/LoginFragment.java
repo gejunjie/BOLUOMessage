@@ -8,12 +8,14 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.benboer.boluo.common.app.AccountManager;
 import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.app.ConfigKeys;
+import com.benboer.boluo.common.base.fragment.SupportFragment;
 import com.benboer.boluo.common.mvp.PresenterFragment;
-import com.benboer.boluo.common.persistence.Account;
-import com.benboer.boluo.componentbase.service.IBottomFragmentService;
+import com.benboer.boluo.main.serviceImpl.Account;
+import com.benboer.boluo.main.serviceImpl.AccountServiceImpl;
 import com.benboer.boluo.main.R;
 import com.benboer.boluo.main.presenter.account.LoginContract;
 import com.benboer.boluo.main.presenter.account.LoginPresenter;
@@ -21,8 +23,6 @@ import com.benboer.boluo.main.presenter.account.LoginPresenter;
 import net.qiujuer.genius.ui.widget.Loading;
 
 import java.util.HashMap;
-
-import me.yokeyword.fragmentation.ISupportFragment;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/7.
@@ -63,7 +63,7 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
                 getSupportDelegate().start(new RegisterFragment());
             }
         });
-        mPhone.setText(Account.getAccount());
+        mPhone.setText( Account.getAccount());
     }
 
     @Override
@@ -93,8 +93,8 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
     public void loginSuccess() {
         AccountManager.setSignState(true);
         HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
-        IBottomFragmentService service = (IBottomFragmentService) map.get(IBottomFragmentService.class);
-        getSupportDelegate().startWithPop((ISupportFragment) service.newBottomFragment());
+//        IBottomFragmentService service = (IBottomFragmentService) map.get(IBottomFragmentService.class);
+        getSupportDelegate().startWithPop((SupportFragment) ARouter.getInstance().build("/main/bottomFragmentt").navigation());
     }
 
 

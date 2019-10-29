@@ -1,11 +1,13 @@
 package com.benboer.boluo.message.presenter.message;
 
-import com.benboer.boluo.db.db.Group;
-import com.benboer.boluo.db.db.Message;
-import com.benboer.boluo.db.db.view.MemberUserModel;
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.benboer.boluo.common.service.AccountService;
+import com.benboer.boluo.message.db.Group;
+import com.benboer.boluo.message.db.Message;
+import com.benboer.boluo.message.db.view.MemberUserModel;
 import com.benboer.boluo.message.data.helper.GroupHelper;
 import com.benboer.boluo.message.data.message.MessageGroupRepository;
-import com.benboer.boluo.common.persistence.Account;
 
 import java.util.List;
 
@@ -14,9 +16,14 @@ import java.util.List;
  */
 public class ChatGroupPresenter extends ChatPresenter<ChatContract.GroupView>
         implements ChatContract.Presenter {
+
+    @Autowired(name = "/main/account_service")
+    protected AccountService mAccountService;
+
     public ChatGroupPresenter(ChatContract.GroupView view, String receiverId) {
         // 数据源，View，接收者，接收者的类型
         super(new MessageGroupRepository(receiverId), view, receiverId, Message.RECEIVER_TYPE_GROUP);
+        ARouter.getInstance().inject( this);
     }
 
     @Override
@@ -27,7 +34,7 @@ public class ChatGroupPresenter extends ChatPresenter<ChatContract.GroupView>
             // 初始化操作
             ChatContract.GroupView view = getView();
 
-            boolean isAdmin = Account.getUserId().equalsIgnoreCase(group.getOwner().getId());
+            boolean isAdmin = mAccountService.getUserId().equalsIgnoreCase(group.getOwner().getId());
             view.showAdminOption(isAdmin);
 
             // 基础信息初始化

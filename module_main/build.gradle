@@ -4,14 +4,21 @@ android {
     defaultConfig {
         if (isModule.toBoolean()) {
             applicationId "com.benboer.boluo.login"
+
+        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
         }
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
+
     api project(path: ':lib_common')
     implementation project(':module_message')
     implementation project(':module_discover')
+    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
 }

@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.benboer.boluo.common.mvp.PresenterFragment;
-import com.benboer.boluo.common.persistence.Account;
 import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.R2;

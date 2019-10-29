@@ -2,10 +2,11 @@ package com.benboer.boluo.main.presenter.account;
 
 import android.text.TextUtils;
 
-import com.benboer.boluo.db.db.User;
+import com.benboer.boluo.main.serviceImpl.Account;
+import com.benboer.boluo.main.serviceImpl.AccountServiceImpl;
+import com.benboer.boluo.message.db.User;
 import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.common.mvp.presenter.BasePresenter;
-import com.benboer.boluo.common.persistence.Account;
 import com.benboer.boluo.main.R;
 import com.benboer.boluo.main.helper.AccountHelper;
 import com.benboer.boluo.main.model.LoginModel;
@@ -56,12 +57,12 @@ public class LoginPresenter extends BasePresenter<LoginContract.View>
 ////                            getSupportDelegate().startWithPop(new EcBottomFragment());
 //                            ServiceFactory.getInstance().getAccountService().saveUser();
 //                            // 同步到XML持久化中
-////                            Account.login(accountRspModel);
+////                            AccountServiceImpl.login(accountRspModel);
 //
 ////                            // 判断绑定状态，是否绑定设备
 ////                            if (accountRspModel.isBind()) {
 ////                                // 设置绑定状态为True
-////                                Account.setBind(true);
+////                                AccountServiceImpl.setBind(true);
 ////                                // 然后返回
 ////                                onDataLoaded(null);
 ////                            } else {

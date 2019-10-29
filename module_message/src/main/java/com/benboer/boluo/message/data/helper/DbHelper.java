@@ -2,13 +2,13 @@ package com.benboer.boluo.message.data.helper;
 
 import android.text.TextUtils;
 
-import com.benboer.boluo.db.db.AppDatabase;
-import com.benboer.boluo.db.db.Group;
-import com.benboer.boluo.db.db.GroupMember;
-import com.benboer.boluo.db.db.Group_Table;
-import com.benboer.boluo.db.db.Message;
-import com.benboer.boluo.db.db.Session;
-import com.benboer.boluo.db.db.User;
+import com.benboer.boluo.message.db.AppDatabase;
+import com.benboer.boluo.message.db.Group;
+import com.benboer.boluo.message.db.GroupMember;
+import com.benboer.boluo.message.db.Group_Table;
+import com.benboer.boluo.message.db.Message;
+import com.benboer.boluo.message.db.Session;
+import com.benboer.boluo.message.db.User;
 import com.raizlabs.android.dbflow.config.DatabaseDefinition;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
@@ -171,7 +171,7 @@ public final class DbHelper {
                 // 找到需要通知的群
                 List<Group> groups = SQLite.select()
                         .from(Group.class)
-                        .where(Group_Table.id.in(groupIds))
+                        .where( Group_Table.id.in(groupIds))
                         .queryList();
 
                 // 调用直接进行一次通知分发
