@@ -38,11 +38,7 @@ public class AccountHelper {
      * @param callback 成功与失败的接口回送
      */
     public static void register(final RegisterModel model, final DataSource.Callback<User> callback) {
-//        RemoteService service = Network.remote();
-//
-//        Call<RspModel<AccountRspModel>> call = service.accountRegister(model);
-//
-//        call.enqueue(new AccountRspCallback(callback));
+
         Network.getRetrofit()
                 .create(RxRemoteService.class)
                 .accountRegister(model)
@@ -181,7 +177,7 @@ public class AccountHelper {
 //                            user.getFollowing(),
 //                            user.isFollow(),
 //                            user.getModifyAt());
-            HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
+//            HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
 //            IAccountService service = (IAccountService) map.get(IAccountService.class);
 //            service .saveUser(user.getId(),
 //                    user.getName(),

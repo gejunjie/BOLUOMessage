@@ -2,28 +2,10 @@ package com.benboer.boluo.common.service;
 
 import com.alibaba.android.arouter.facade.template.IProvider;
 
+/**
+ * 用户账户信息，需要暴露给各个业务组件调用
+ */
 public interface AccountService extends IProvider {
-//    /**
-//     * 获取推送Id
-//     *
-//     * @return 推送Id
-//     */
-//    String getPushId();
-
-//    /**
-//     * 保存我自己的信息到持久化XML中
-//     */
-//    void login(String token, String account, String userId);
-
-//    /**
-//     * 清除用户信息
-//     */
-//    void logout();
-
-//    /**
-//     * 进行数据加载
-//     */
-//    void load();
 
     /**
      * 返回当前账户是否登录
@@ -31,13 +13,6 @@ public interface AccountService extends IProvider {
      * @return True已登录
      */
     boolean isLogin();
-
-//    /**
-//     * 是否已经绑定到了服务器
-//     *
-//     * @return True已绑定
-//     */
-//    boolean isBind();
 
     /**
      * 是否已经完善了用户信息（描述信息和头像）
@@ -53,11 +28,6 @@ public interface AccountService extends IProvider {
      */
     void setPushId(String pushId);
 
-//    /**
-//     * 设置绑定状态
-//     */
-//    void setBind(boolean isBind);
-
     /**
      * 获取当前登录的Token
      *
@@ -71,9 +41,4 @@ public interface AccountService extends IProvider {
      */
     String getUserId();
 
-//    /**
-//     * 获取账户名
-//     * @return
-//     */
-//    String getAccount();
 }

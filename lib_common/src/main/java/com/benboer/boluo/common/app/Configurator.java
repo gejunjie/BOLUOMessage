@@ -108,14 +108,4 @@ public class Configurator {
         return this;
     }
 
-    /**
-     * 获取各个模块提供的fragment对象
-     * @param services
-     * @return
-     */
-    public final Configurator withFragmentService(ArrayMap services){
-        SERVICES.putAll(services);
-        CONFIGS.put(ConfigKeys.SERVICE_FRAGMENT, services);
-        return this;
-    }
 }

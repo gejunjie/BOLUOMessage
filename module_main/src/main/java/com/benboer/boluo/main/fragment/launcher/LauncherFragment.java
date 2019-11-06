@@ -87,7 +87,7 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
         if (!PreferenceUtil.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
             getSupportDelegate().startWithPop(new LauncherScrollFragment());
         } else {
-            //检查用户是否登录了
+            //用户是否登录
             AccountManager.checkAccount(new IUserLoginChecker() {
                 @Override
                 public void onSignIn() {
@@ -123,7 +123,8 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
                             mTimer.cancel();
                             mTimer = null;
                         }
-                        waitPushReceiverId();
+                        checkIsShowScroll();
+//                        waitPushReceiverId();
                     }
                 }
             }

@@ -42,7 +42,7 @@ public class PersonalPresenter extends BasePresenter<PersonalContract.View>
 
     private void onLoaded(final PersonalContract.View view, final User user) {
         this.user = user;
-        // 是否就是我自己
+        // 是否就是自己
         final boolean isSelf = user.getId().equalsIgnoreCase(mAccountService.getUserId());
         // 是否已经关注
         final boolean isFollow = isSelf || user.isFollow();

@@ -30,6 +30,7 @@ import static com.benboer.boluo.common.app.BoLuo.getGson;
  * 接收个推SDK推送过来的消息
  */
 public class PushIntentService extends GTIntentService {
+
     @Autowired(name = "/main/account_service")
     protected static AccountService mAccountService;
 
@@ -54,7 +55,7 @@ public class PushIntentService extends GTIntentService {
         if (mAccountService.isLogin()) {
             // 账户登录状态，进行一次PushId绑定
             // 没有登录是不能绑定PushId的
-//            AccountHelper.bindPush(null);
+//            mAccountService.bindPush(null);
 //            TODO
         }
     }

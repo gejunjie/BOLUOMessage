@@ -28,8 +28,8 @@ public abstract class BaseDbRepository<Data extends BaseDbModel<Data>>
     protected final LinkedList<Data> dataList = new LinkedList<>(); // 当前缓存的数据
     private Class<Data> dataClass; // 当前范型对应的真实的Class信息
 
-    @Autowired(name = "/main/account_service")
-    protected AccountService mAccountService;
+//    @Autowired(name = "/main/account_service")
+//    protected AccountService mAccountService;
 
     public BaseDbRepository(){
         ARouter.getInstance().inject( this);

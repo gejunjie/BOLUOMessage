@@ -21,7 +21,7 @@ public class BottomFragment extends BaseBottomFragment {
     @Override
     public LinkedHashMap<BottomTabBean, SupportFragment> setItems(BottomItemBuilder builder) {
         final LinkedHashMap<BottomTabBean, SupportFragment> items = new LinkedHashMap<>();
-        ArrayMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
+//        ArrayMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
         items.put(new BottomTabBean("{fa-home}","聊天"), (SupportFragment) ARouter.getInstance().build("/message/messageFragment").navigation() );
         items.put(new BottomTabBean("{fa-home}","广场"), (SupportFragment) ARouter.getInstance().build("/message/messageFragment").navigation() );
         items.put(new BottomTabBean("{icon-user-unpressed}","我的"),(SupportFragment) ARouter.getInstance().build("/message/personalFragment").navigation() );

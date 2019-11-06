@@ -1,6 +1,8 @@
 package com.benboer.boluo.message.data.user;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.benboer.boluo.common.mvp.data.DataSource;
+import com.benboer.boluo.common.service.AccountService;
 import com.benboer.boluo.message.data.BaseDbRepository;
 import com.benboer.boluo.message.db.User;
 import com.benboer.boluo.message.db.User_Table;
@@ -12,6 +14,9 @@ import java.util.List;
  * Created by BenBoerBoluojiushiwo on 2019/5/30.
  */
 public class ContactRepository extends BaseDbRepository<User> implements ContactDataSource {
+
+    @Autowired(name = "/main/account_service")
+    protected AccountService mAccountService;
 
     @Override
     public void load(DataSource.SucceedCallback<List<User>> callback) {

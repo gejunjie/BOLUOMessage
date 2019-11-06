@@ -16,5 +16,5 @@ public enum ConfigKeys {
     HANDLER,
     JAVASCRIPT_INTERFACE,
     WEB_HOST,
-    SERVICE_FRAGMENT
+//    SERVICE_FRAGMENT
 }

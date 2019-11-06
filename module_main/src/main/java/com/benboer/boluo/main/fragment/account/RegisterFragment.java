@@ -96,7 +96,7 @@ public class RegisterFragment extends PresenterFragment<RegisterContract.Present
 //        getSupportDelegate().startWithPop(
 //               (ISupportFragment) ServiceFactory.getInstance().getFragmentService().newBottomFragment()
 //        );
-        HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
+//        HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
 
         getSupportDelegate().startWithPop(( SupportFragment ) ARouter.getInstance().build("/main/bottomFragmentt").navigation());
     }

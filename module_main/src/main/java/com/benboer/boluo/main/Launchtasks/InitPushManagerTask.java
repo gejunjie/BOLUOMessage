@@ -7,6 +7,8 @@ import com.igexin.sdk.PushManager;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/8/26.
+ *
+ * 推送模块初始化
  */
 public class InitPushManagerTask extends Task {
     @Override

@@ -11,6 +11,7 @@ import com.benboer.boluo.common.app.ConfigKeys;
 import com.benboer.boluo.common.base.activity.ProxyActivity;
 import com.benboer.boluo.common.base.fragment.SupportFragment;
 import com.benboer.boluo.main.fragment.account.LoginFragment;
+import com.benboer.boluo.main.fragment.bottom.BottomFragment;
 import com.benboer.boluo.main.fragment.launcher.LauncherFragment;
 import com.benboer.boluo.main.ui.launcher.ILauncherListener;
 
@@ -39,10 +40,11 @@ public class MainActivity extends ProxyActivity implements ILauncherListener {
     public void onLauncherFinish(int launcherTag) {
         switch (launcherTag){
             case SINGED:
-                getSupportDelegate().startWithPop(( SupportFragment ) ARouter.getInstance().build("/main/bottomFragmentt").navigation());
+                getSupportDelegate().startWithPop(new BottomFragment());
                 break;
             case NOT_SINGED:
-                getSupportDelegate().startWithPop(new LoginFragment());
+//                getSupportDelegate().startWithPop(new LoginFragment());
+                getSupportDelegate().startWithPop(new BottomFragment());
                 break;
             default:
                 break;

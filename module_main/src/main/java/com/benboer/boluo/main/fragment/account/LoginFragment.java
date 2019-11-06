@@ -14,6 +14,7 @@ import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.app.ConfigKeys;
 import com.benboer.boluo.common.base.fragment.SupportFragment;
 import com.benboer.boluo.common.mvp.PresenterFragment;
+import com.benboer.boluo.main.fragment.bottom.BottomFragment;
 import com.benboer.boluo.main.serviceImpl.Account;
 import com.benboer.boluo.main.serviceImpl.AccountServiceImpl;
 import com.benboer.boluo.main.R;
@@ -36,7 +37,6 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
     private EditText mPassword;
     private Loading mLoading;
     private Button mSubmit;
-
 
     @Override
     public Object setLayout() {
@@ -92,10 +92,9 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
     @Override
     public void loginSuccess() {
         AccountManager.setSignState(true);
-        HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
-//        IBottomFragmentService service = (IBottomFragmentService) map.get(IBottomFragmentService.class);
-        getSupportDelegate().startWithPop((SupportFragment) ARouter.getInstance().build("/main/bottomFragmentt").navigation());
+//        getSupportDelegate().startWithPop((SupportFragment) ARouter.getInstance()
+//                .build("/main/bottomFragmentt").navigation());
+        getSupportDelegate().startWithPop(new BottomFragment());
     }
-
 
 }

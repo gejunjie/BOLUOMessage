@@ -47,7 +47,7 @@ public class App extends BaseApplication {
 //        dispatcher.await();
         Log.e("---------------------->", String.valueOf(System.currentTimeMillis() - a0));
 //        long a0 = System.currentTimeMillis();
-//        initBoluo();
+        initBoluo();
 //        Log.e("---------------------->", String.valueOf(System.currentTimeMillis() - a0));
 //        long a1 = System.currentTimeMillis();
 //        initDBFlow();
@@ -66,15 +66,6 @@ public class App extends BaseApplication {
         super.attachBaseContext(base);
         MultiDex.install(this);
     }
-
-//    private ArrayMap initService(){
-//        ArrayMap<Class<?>, Object> map = new ArrayMap<>();
-//        map.put(IAccountService.class, new AccountService());
-//        map.put(IBottomFragmentService.class, new BottomFragmentService());
-//        map.put(IPersonalFragmentService.class, new PersonalFragmentService());
-//        map.put(IMessageModuleFragmentService.class, new MessageModuleFragmentService());
-//        return map;
-//    }
 
     private void initDBFlow() {
         // 初始化数据库
@@ -99,11 +90,5 @@ public class App extends BaseApplication {
         PushManager.getInstance().initialize(getApplicationContext(),null);
         PushManager.getInstance().registerPushIntentService(getApplicationContext(), PushIntentService.class);
     }
-
-
-//    private void initAccount() {
-//        AccountServiceImpl.load();
-//    }
-
 
 }
