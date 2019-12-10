@@ -8,22 +8,15 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.benboer.boluo.common.app.AccountManager;
-import com.benboer.boluo.common.app.BoLuo;
-import com.benboer.boluo.common.app.ConfigKeys;
-import com.benboer.boluo.common.base.fragment.SupportFragment;
 import com.benboer.boluo.common.mvp.PresenterFragment;
-import com.benboer.boluo.main.fragment.bottom.BottomFragment;
-import com.benboer.boluo.main.serviceImpl.Account;
-import com.benboer.boluo.main.serviceImpl.AccountServiceImpl;
 import com.benboer.boluo.main.R;
+import com.benboer.boluo.main.fragment.bottom.BottomFragment;
 import com.benboer.boluo.main.presenter.account.LoginContract;
 import com.benboer.boluo.main.presenter.account.LoginPresenter;
+import com.benboer.boluo.main.serviceImpl.Account;
 
 import net.qiujuer.genius.ui.widget.Loading;
-
-import java.util.HashMap;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/7.
@@ -92,8 +85,6 @@ public class LoginFragment extends PresenterFragment<LoginContract.Presenter>
     @Override
     public void loginSuccess() {
         AccountManager.setSignState(true);
-//        getSupportDelegate().startWithPop((SupportFragment) ARouter.getInstance()
-//                .build("/main/bottomFragmentt").navigation());
         getSupportDelegate().startWithPop(new BottomFragment());
     }
 

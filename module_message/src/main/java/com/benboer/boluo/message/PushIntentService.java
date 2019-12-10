@@ -1,10 +1,12 @@
 package com.benboer.boluo.message;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.benboer.boluo.common.service.AccountService;
+import com.benboer.boluo.common.util.log.LogUtils;
 import com.benboer.boluo.message.data.group.GroupDispatcher;
 import com.benboer.boluo.message.data.message.MessageDispatcher;
 import com.benboer.boluo.message.data.user.UserDispatcher;
@@ -31,8 +33,16 @@ import static com.benboer.boluo.common.app.BoLuo.getGson;
  */
 public class PushIntentService extends GTIntentService {
 
+    private static final String TAG = PushIntentService.class.getSimpleName();
+
     @Autowired(name = "/main/account_service")
     protected static AccountService mAccountService;
+
+    @Override
+    public int onStartCommand(Intent intent, int i, int i1) {
+        LogUtils.d(TAG, "onStartCommand excuted");
+        return super.onStartCommand(intent, i, i1);
+    }
 
     public PushIntentService(){
         ARouter.getInstance().inject( this);
@@ -50,6 +60,7 @@ public class PushIntentService extends GTIntentService {
      */
     @Override
     public void onReceiveClientId(Context context, String cid) {
+        LogUtils.d(TAG, "onReceiveClientId clientId : " + cid);
         // 设置设备Id
         mAccountService.setPushId(cid);
         if (mAccountService.isLogin()) {

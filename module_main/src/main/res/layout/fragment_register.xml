@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:background="@drawable/bg_src_tianjin"
+    android:background="@drawable/bg_src_tianjin"
     tools:context="com.benboer.boluo.main.fragment.account.RegisterFragment">
 
     <androidx.appcompat.widget.Toolbar

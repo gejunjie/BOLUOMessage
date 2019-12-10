@@ -25,6 +25,7 @@ public class Network {
     private Retrofit retrofit;
 
     private static final String URL = BoLuo.getConfiguration(API_HOST);
+
     private static final ArrayList<Interceptor> INTERCEPTORS = BoLuo.getConfiguration(ConfigKeys.INTERCEPTOR);
 
     static {

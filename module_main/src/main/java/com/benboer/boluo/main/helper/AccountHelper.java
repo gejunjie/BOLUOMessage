@@ -2,22 +2,17 @@ package com.benboer.boluo.main.helper;
 
 import android.text.TextUtils;
 
-import com.benboer.boluo.common.app.BoLuo;
-import com.benboer.boluo.common.app.ConfigKeys;
-import com.benboer.boluo.main.serviceImpl.Account;
-import com.benboer.boluo.message.db.User;
-import com.benboer.boluo.common.net.model.RspModel;
 import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.common.net.Network;
-import com.benboer.boluo.main.serviceImpl.AccountServiceImpl;
+import com.benboer.boluo.common.net.model.RspModel;
 import com.benboer.boluo.main.R;
 import com.benboer.boluo.main.api.RxRemoteService;
 import com.benboer.boluo.main.model.AccountRspModel;
 import com.benboer.boluo.main.model.LoginModel;
 import com.benboer.boluo.main.model.RegisterModel;
 import com.benboer.boluo.main.model.UserModel;
-
-import java.util.HashMap;
+import com.benboer.boluo.main.serviceImpl.Account;
+import com.benboer.boluo.message.db.User;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -123,9 +118,7 @@ public class AccountHelper {
     public static void bindPush(final DataSource.Callback<User> callback) {
         String pushId = Account.getPushId();
         if (TextUtils.isEmpty(pushId)) return;
-//        RemoteService service = Network.remote();
-//        Call<RspModel<AccountRspModel>> call = service.accountBind(pushId);
-//        call.enqueue(new AccountRspCallback(callback));
+
         Network.getRetrofit()
                 .create(RxRemoteService.class)
                 .accountBind(pushId)
@@ -158,37 +151,9 @@ public class AccountHelper {
 
 
     private static void onResponse(RspModel<AccountRspModel> rspModel, DataSource.Callback<User> callback){
-//                        RspModel<AccountRspModel> rspModel = response.body();
-        if (rspModel == null) return;
-        if (rspModel.success()){
+        if (rspModel != null && rspModel.success()) {
             AccountRspModel accountRspModel = rspModel.getResult();
             UserModel user = accountRspModel.getUser();
-//            User user = accountRspModel.getUser();
-//                 直接保存
-//            user.save();
-//            ServiceFactory.getInstance().getAccountService()
-//                    .saveUser(user.getId(),
-//                            user.getName(),
-//                            user.getPhone(),
-//                            user.getPortrait(),
-//                            user.getDesc(),
-//                            user.getSex(),
-//                            user.getFollows(),
-//                            user.getFollowing(),
-//                            user.isFollow(),
-//                            user.getModifyAt());
-//            HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
-//            IAccountService service = (IAccountService) map.get(IAccountService.class);
-//            service .saveUser(user.getId(),
-//                    user.getName(),
-//                    user.getPhone(),
-//                    user.getPortrait(),
-//                    user.getDesc(),
-//                    user.getSex(),
-//                    user.getFollows(),
-//                    user.getFollowing(),
-//                    user.isFollow(),
-//                    user.getModifyAt());
             // 同步到XML持久化中
             Account.login(accountRspModel.getToken(),
                     accountRspModel.getAccount(),
@@ -207,5 +172,4 @@ public class AccountHelper {
 //                Factory.decodeRspCode(rspModel, callback);
         }
     }
-
 }

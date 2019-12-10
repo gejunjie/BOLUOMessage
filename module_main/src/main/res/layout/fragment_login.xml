@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg_src_tianjin"
     tools:context="com.benboer.boluo.main.fragment.account.LoginFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -12,7 +13,6 @@
         android:paddingBottom="@dimen/len_28"
         android:paddingTop="@dimen/len_40"
         app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1" />
-
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -9,8 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.benboer.boluo.common.app.BoLuo;
-import com.benboer.boluo.common.app.ConfigKeys;
 import com.benboer.boluo.common.base.fragment.SupportFragment;
 import com.benboer.boluo.common.mvp.PresenterFragment;
 import com.benboer.boluo.main.R;
@@ -19,12 +17,9 @@ import com.benboer.boluo.main.presenter.account.RegisterPresenter;
 
 import net.qiujuer.genius.ui.widget.Loading;
 
-import java.util.HashMap;
-
-import me.yokeyword.fragmentation.ISupportFragment;
-
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/7.
+ * 用户注册界面
  */
 public class RegisterFragment extends PresenterFragment<RegisterContract.Presenter>
         implements RegisterContract.View{
@@ -56,7 +51,6 @@ public class RegisterFragment extends PresenterFragment<RegisterContract.Present
                 String phone = mPhone.getText().toString();
                 String name = mName.getText().toString();
                 String password = mPassword.getText().toString();
-                // 调用P层进行注册
                 mPresenter.register(phone, name, password);
             }
         });
@@ -93,11 +87,6 @@ public class RegisterFragment extends PresenterFragment<RegisterContract.Present
 
     @Override
     public void registerSuccess() {
-//        getSupportDelegate().startWithPop(
-//               (ISupportFragment) ServiceFactory.getInstance().getFragmentService().newBottomFragment()
-//        );
-//        HashMap map = BoLuo.getConfiguration(ConfigKeys.SERVICE_FRAGMENT);
-
         getSupportDelegate().startWithPop(( SupportFragment ) ARouter.getInstance().build("/main/bottomFragmentt").navigation());
     }
 }

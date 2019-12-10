@@ -10,7 +10,7 @@ android {
                 GETUI_APP_ID    : "Whh1CYPnM165RCPKomsQH3",
                 GETUI_APP_KEY   : "4bxoWKuOmy87sqwMRGEhhA",
                 GETUI_APP_SECRET: "Bx6XTWSW9i71TjTB0Zj5G1",
-//                PACKAGE_NAME    : applicationId
+                PACKAGE_NAME    : "com.benboer.boluo.boluomessage"
         ]
         javaCompileOptions {
             annotationProcessorOptions {

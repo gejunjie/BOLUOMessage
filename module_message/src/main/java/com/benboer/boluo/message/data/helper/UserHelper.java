@@ -2,19 +2,19 @@ package com.benboer.boluo.message.data.helper;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.benboer.boluo.common.service.AccountService;
-import com.benboer.boluo.message.R;
-import com.benboer.boluo.message.db.User;
-import com.benboer.boluo.message.db.User_Table;
-import com.benboer.boluo.message.db.view.UserSampleModel;
-import com.benboer.boluo.message.data.user.UserDispatcher;
-import com.benboer.boluo.message.model.api.user.UserUpdateModel;
-import com.benboer.boluo.message.model.card.UserCard;
-import com.benboer.boluo.message.net.RemoteService;
-import com.benboer.boluo.common.net.model.RspModel;
 import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.common.net.Network;
 import com.benboer.boluo.common.net.RspCodeDecoder;
+import com.benboer.boluo.common.net.model.RspModel;
+import com.benboer.boluo.common.service.AccountService;
+import com.benboer.boluo.message.R;
+import com.benboer.boluo.message.data.user.UserDispatcher;
+import com.benboer.boluo.message.db.User;
+import com.benboer.boluo.message.db.User_Table;
+import com.benboer.boluo.message.db.view.UserSampleModel;
+import com.benboer.boluo.message.model.api.user.UserUpdateModel;
+import com.benboer.boluo.message.model.card.UserCard;
+import com.benboer.boluo.message.net.RemoteService;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.List;
@@ -47,7 +47,7 @@ public class UserHelper {
             @Override
             public void onResponse(Call<RspModel<UserCard>> call, Response<RspModel<UserCard>> response) {
                 RspModel<UserCard> rspModel = response.body();
-                if (rspModel.success()){
+                if (rspModel != null && rspModel.success()) {
                     UserCard userCard = rspModel.getResult();
                     UserDispatcher.instance().dispatch(userCard);
                     callback.onDataLoaded(userCard);
@@ -72,7 +72,7 @@ public class UserHelper {
             @Override
             public void onResponse(Call<RspModel<List<UserCard>>> call, Response<RspModel<List<UserCard>>> response) {
                 RspModel<List<UserCard>> rspModel = response.body();
-                if (rspModel.success()){
+                if (rspModel != null && rspModel.success()) {
                     List<UserCard> cards = rspModel.getResult();
                     if (cards == null || cards.size() == 0) return;
                     UserCard[] cards1 = cards.toArray(new UserCard[0]);
@@ -102,7 +102,7 @@ public class UserHelper {
             @Override
             public void onResponse(Call<RspModel<List<UserCard>>> call, Response<RspModel<List<UserCard>>> response) {
                 RspModel<List<UserCard>> rspModel = response.body();
-                if (rspModel.success()) {
+                if (rspModel != null && rspModel.success()) {
                     // 返回数据
                     callback.onDataLoaded(rspModel.getResult());
                 } else {
@@ -131,8 +131,7 @@ public class UserHelper {
             @Override
             public void onResponse(Call<RspModel<UserCard>> call, Response<RspModel<UserCard>> response) {
                 RspModel<UserCard> rspModel = response.body();
-                if (rspModel == null) return;
-                if (rspModel.success()){
+                if (rspModel != null && rspModel.success()) {
                     UserCard userCard = rspModel.getResult();
                     UserDispatcher.instance().dispatch(userCard);
                     callback.onDataLoaded(userCard);
