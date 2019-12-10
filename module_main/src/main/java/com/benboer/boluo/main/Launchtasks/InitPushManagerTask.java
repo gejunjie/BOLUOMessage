@@ -13,7 +13,7 @@ import com.igexin.sdk.PushManager;
 public class InitPushManagerTask extends Task {
     @Override
     public void run() {
-        PushManager.getInstance().initialize(BoLuo.getApplicationContext(),null);
+        PushManager.getInstance().initialize(BoLuo.getApplicationContext(), null);
         PushManager.getInstance().registerPushIntentService(BoLuo.getApplicationContext(), PushIntentService.class);
     }
 }

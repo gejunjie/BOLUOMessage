@@ -40,7 +40,6 @@ public class MainActivity extends ProxyActivity implements ILauncherListener {
                 break;
             case NOT_SINGED:
                 getSupportDelegate().startWithPop(new LoginFragment());
-//                getSupportDelegate().startWithPop(new BottomFragment());
                 break;
             default:
                 break;

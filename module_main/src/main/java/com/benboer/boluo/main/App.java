@@ -14,7 +14,6 @@ import com.benboer.boluo.common.util.launchstarter.TaskDispatcher;
 import com.benboer.boluo.main.Launchtasks.InitAccountTask;
 import com.benboer.boluo.main.Launchtasks.InitBoluoTask;
 import com.benboer.boluo.main.Launchtasks.InitDbFlowTask;
-import com.benboer.boluo.main.Launchtasks.InitPushManagerTask;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
@@ -38,7 +37,7 @@ public class App extends BaseApplication {
                 .addTask(new InitAccountTask())
                 .addTask(new InitBoluoTask())
                 .addTask(new InitDbFlowTask())
-                .addTask(new InitPushManagerTask())
+//                .addTask(new InitPushManagerTask())
                 .start();
 //        dispatcher.await();
         Log.e("---------------------->", String.valueOf(System.currentTimeMillis() - a0));

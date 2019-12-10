@@ -38,6 +38,7 @@ public class ChatUserFragment extends ChatFragment<User> implements ChatContract
     private MenuItem mUserInfoMenuItem;
 
     public ChatUserFragment() {
+
     }
 
     /**

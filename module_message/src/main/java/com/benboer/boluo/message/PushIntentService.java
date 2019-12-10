@@ -1,6 +1,6 @@
 package com.benboer.boluo.message;
+
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
@@ -38,12 +38,6 @@ public class PushIntentService extends GTIntentService {
     @Autowired(name = "/main/account_service")
     protected static AccountService mAccountService;
 
-    @Override
-    public int onStartCommand(Intent intent, int i, int i1) {
-        LogUtils.d(TAG, "onStartCommand excuted");
-        return super.onStartCommand(intent, i, i1);
-    }
-
     public PushIntentService(){
         ARouter.getInstance().inject( this);
     }
@@ -62,12 +56,8 @@ public class PushIntentService extends GTIntentService {
     public void onReceiveClientId(Context context, String cid) {
         LogUtils.d(TAG, "onReceiveClientId clientId : " + cid);
         // 设置设备Id
-        mAccountService.setPushId(cid);
         if (mAccountService.isLogin()) {
-            // 账户登录状态，进行一次PushId绑定
-            // 没有登录是不能绑定PushId的
-//            mAccountService.bindPush(null);
-//            TODO
+            mAccountService.setPushId(cid);
         }
     }
 
@@ -161,7 +151,6 @@ public class PushIntentService extends GTIntentService {
 
                 case PushModel.ENTITY_TYPE_ADD_GROUP: {
                     // 添加群
-
                     GroupCard card = getGson().fromJson(entity.content, GroupCard.class);
                     GroupDispatcher.instance().dispatch(card);
                     break;

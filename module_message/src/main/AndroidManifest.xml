@@ -1,8 +1,11 @@
-<manifest package="com.benboer.boluo.message">
-    <!--<application android:name="com.benboer.boluo.main.App">-->
-    <!--&lt;!&ndash; android:permission在2.13.1.0版本后必须配置 &ndash;&gt;-->
-    <!--<service-->
-    <!--android:name="com.benboer.boluo.message.PushIntentService"-->
-    <!--android:permission="android.permission.BIND_JOB_SERVICE"/>-->
-    <!--</application>-->
+<manifest package="com.benboer.boluo.message"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <!-- android:permission在2.13.1.0版本后必须配置 -->
+        <service
+            android:name="com.benboer.boluo.message.PushIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+    </application>
+
 </manifest>

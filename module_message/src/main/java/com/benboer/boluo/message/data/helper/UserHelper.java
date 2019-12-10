@@ -103,7 +103,6 @@ public class UserHelper {
             public void onResponse(Call<RspModel<List<UserCard>>> call, Response<RspModel<List<UserCard>>> response) {
                 RspModel<List<UserCard>> rspModel = response.body();
                 if (rspModel != null && rspModel.success()) {
-                    // 返回数据
                     callback.onDataLoaded(rspModel.getResult());
                 } else {
                     RspCodeDecoder.decodeRspCode(rspModel, callback);

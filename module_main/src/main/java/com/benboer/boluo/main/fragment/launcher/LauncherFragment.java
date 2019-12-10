@@ -10,21 +10,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
-import com.alibaba.android.arouter.facade.annotation.Autowired;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.benboer.boluo.common.app.AccountManager;
 import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.app.IUserLoginChecker;
 import com.benboer.boluo.common.base.fragment.SupportFragment;
-import com.benboer.boluo.common.service.AccountService;
+import com.benboer.boluo.common.util.log.LogUtils;
 import com.benboer.boluo.common.util.storage.PreferenceUtil;
 import com.benboer.boluo.common.util.timer.BaseTimerTask;
 import com.benboer.boluo.common.util.timer.ITimerListener;
 import com.benboer.boluo.main.R;
 import com.benboer.boluo.main.serviceImpl.Account;
-import com.benboer.boluo.main.serviceImpl.AccountServiceImpl;
 import com.benboer.boluo.main.ui.launcher.ILauncherListener;
 import com.benboer.boluo.main.ui.launcher.ScrollLauncherTag;
+import com.benboer.boluo.message.PushIntentService;
+import com.igexin.sdk.PushManager;
 
 import java.text.MessageFormat;
 import java.util.Timer;
@@ -36,14 +35,23 @@ import java.util.Timer;
  */
 public class LauncherFragment extends SupportFragment implements ITimerListener {
 
+    private static final String TAG = LauncherFragment.class.getSimpleName();
+
     private ILauncherListener mILauncherListener = null;
 
     public AppCompatTextView mTvTimer = null;
     private FrameLayout mSplashLayout;
     private Timer mTimer = null;
     private int mCount = 5;
+    //等待个推的PushId次数，重复3次
+    private int tryReceiveIdTimes = 3;
 
-
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        PushManager.getInstance().initialize(BoLuo.getApplicationContext(), null);
+        PushManager.getInstance().registerPushIntentService(BoLuo.getApplicationContext(), PushIntentService.class);
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -124,7 +132,12 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
                             mTimer = null;
                         }
                         checkIsShowScroll();
-//                        waitPushReceiverId();
+                        if (tryReceiveIdTimes > 0) {
+                            tryReceiveIdTimes--;
+                            waitPushReceiverId();
+                        } else {
+                            LogUtils.e(TAG, "获取 push id 失败");
+                        }
                     }
                 }
             }
@@ -138,7 +151,6 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
         checkIsShowScroll();//todo
         if (Account.isLogin()) {
             // 已经登录情况下，判断是否绑定
-            // 如果没有绑定则等待广播接收器进行绑定
             if (Account.isBind()) {
                 //判断是否第一次登录
                 checkIsShowScroll();
@@ -148,7 +160,6 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
             // 没有登录
             // 如果拿到了PushId, 没有登录是不能绑定PushId的
             if (!TextUtils.isEmpty( Account.getPushId())) {
-                // 跳转
                 // 判断是否第一次登录
                 checkIsShowScroll();
                 return;
@@ -156,7 +167,7 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
         }
 
         // 循环等待
-        getActivity().getWindow().getDecorView()
+        getProxyActivity().getWindow().getDecorView()
                 .postDelayed(new Runnable() {
                     @Override
                     public void run() {
