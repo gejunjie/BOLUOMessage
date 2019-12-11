@@ -56,9 +56,9 @@ public class PushIntentService extends GTIntentService {
     public void onReceiveClientId(Context context, String cid) {
         LogUtils.d(TAG, "onReceiveClientId clientId : " + cid);
         // 设置设备Id
-        if (mAccountService.isLogin()) {
+//        if (mAccountService.isLogin()) {
             mAccountService.setPushId(cid);
-        }
+//        }
     }
 
     /**

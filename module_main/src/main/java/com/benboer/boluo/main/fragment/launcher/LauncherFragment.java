@@ -3,6 +3,7 @@ package com.benboer.boluo.main.fragment.launcher;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -92,6 +93,7 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
     }
 
     public void checkIsShowScroll() {
+
         if (!PreferenceUtil.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
             getSupportDelegate().startWithPop(new LauncherScrollFragment());
         } else {
@@ -131,13 +133,7 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
                             mTimer.cancel();
                             mTimer = null;
                         }
-                        checkIsShowScroll();
-                        if (tryReceiveIdTimes > 0) {
-                            tryReceiveIdTimes--;
-                            waitPushReceiverId();
-                        } else {
-                            LogUtils.e(TAG, "获取 push id 失败");
-                        }
+                        waitPushReceiverId();
                     }
                 }
             }
@@ -148,7 +144,7 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
      * 等待个推框架设置好PushId
      */
     private void waitPushReceiverId() {
-        checkIsShowScroll();//todo
+
         if (Account.isLogin()) {
             // 已经登录情况下，判断是否绑定
             if (Account.isBind()) {
@@ -166,14 +162,19 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
             }
         }
 
-        // 循环等待
-        getProxyActivity().getWindow().getDecorView()
-                .postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        waitPushReceiverId();
-                    }
-                }, 500);
+        if (tryReceiveIdTimes > 0) {
+            tryReceiveIdTimes--;
+            getProxyActivity().getWindow().getDecorView()
+                    .postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            waitPushReceiverId();
+                        }
+                    }, 500);
+        } else {
+            LogUtils.e(TAG, "获取 push id 失败");
+            return;
+        }
     }
 
     @Override
