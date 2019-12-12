@@ -17,7 +17,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.drawable.DrawableCompat;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.R2;
 import com.benboer.boluo.message.db.User;
@@ -60,6 +62,14 @@ public class PersonalFragment extends PresenterFragment<PersonalContract.Present
 
     private static final String ARG_USER_ID = "USER_ID";
     private static String userId;
+
+    @Autowired(name = "id")
+    String id;
+
+    public PersonalFragment(){
+        ARouter.getInstance().inject(this);
+    }
+
     /**
      *
      *
@@ -81,6 +91,9 @@ public class PersonalFragment extends PresenterFragment<PersonalContract.Present
         final Bundle args = getArguments();
         if (args != null) {
             userId = args.getString(ARG_USER_ID);
+        }
+        if (id != null){
+            userId = id;
         }
         super.onAttach(context);
     }

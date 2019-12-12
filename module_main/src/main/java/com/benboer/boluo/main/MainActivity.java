@@ -43,6 +43,7 @@ public class MainActivity extends ProxyActivity implements ILauncherListener {
                 getSupportDelegate().startWithPop(new LoginFragment());
                 break;
             default:
+                getSupportDelegate().startWithPop(new LoginFragment());
                 break;
         }
     }

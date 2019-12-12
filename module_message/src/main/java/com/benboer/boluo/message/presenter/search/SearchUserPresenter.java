@@ -1,5 +1,7 @@
 package com.benboer.boluo.message.presenter.search;
 
+import android.util.Log;
+
 import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.common.mvp.presenter.BasePresenter;
 import com.benboer.boluo.common.util.HandlerUtil;

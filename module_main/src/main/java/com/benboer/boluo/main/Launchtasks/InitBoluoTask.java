@@ -1,7 +1,5 @@
 package com.benboer.boluo.main.Launchtasks;
 
-import android.util.ArrayMap;
-
 import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.icon.FontBoluoModule;
 import com.benboer.boluo.common.net.interceptors.TokenInterceptor;
@@ -20,18 +18,7 @@ public class InitBoluoTask extends Task {
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontBoluoModule())
                 .withApiHost("http://172.20.10.2:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
-//                .withApiHost("http://192.168.31.210:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
-//                .withFragmentService(initService())
                 .withInterceptor(new TokenInterceptor())
                 .configure();
     }
-
-//    private ArrayMap initService(){
-//        ArrayMap map = new ArrayMap();
-//        map.put(IAccountService.class, new AccountService());
-//        map.put(IBottomFragmentService.class, new BottomFragmentService());
-//        map.put(IPersonalFragmentService.class, new PersonalFragmentService());
-//        map.put(IMessageModuleFragmentService.class, new MessageModuleFragmentService());
-//        return map;
-//    }
 }

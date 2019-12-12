@@ -126,32 +126,6 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
         setPlaceHolderView(mEmptyView);
     }
 
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        super.onCreateOptionsMenu(menu, inflater);
-//        inflater.inflate(R.menu.search, menu);
-//        MenuItem item = menu.findItem(R.id.action_search);
-//        SearchView searchView = (SearchView) item.getActionView();
-//        searchView.onActionViewExpanded();
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String content) {
-//                mPresenter.onSearch(content);
-//                return true;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String content) {
-//                if (TextUtils.isEmpty(content)) {
-//                    mPresenter.onSearch("");
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
-//    }
-
-
     class ViewHolder extends RecyclerAdapter.ViewHolder<UserCard> implements FollowContract.View {
 
         @BindView(R2.id.im_portrait)

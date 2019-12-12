@@ -10,6 +10,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.benboer.boluo.common.BaseApplication;
 import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.icon.FontBoluoModule;
+import com.benboer.boluo.common.net.interceptors.TokenInterceptor;
 import com.benboer.boluo.common.util.launchstarter.TaskDispatcher;
 import com.benboer.boluo.main.Launchtasks.InitAccountTask;
 import com.benboer.boluo.main.Launchtasks.InitBoluoTask;
@@ -33,9 +34,9 @@ public class App extends BaseApplication {
         TaskDispatcher.init(this);
         TaskDispatcher dispatcher = TaskDispatcher.createInstance();
         dispatcher
-                .addTask(new InitAccountTask())
                 .addTask(new InitBoluoTask())
                 .addTask(new InitDbFlowTask())
+                .addTask(new InitAccountTask())
 //                .addTask(new InitPushManagerTask())
                 .start();
 
@@ -47,20 +48,20 @@ public class App extends BaseApplication {
         MultiDex.install(this);
     }
 
-    private void initDBFlow() {
-        // 初始化数据库
-        FlowManager.init(new FlowConfig.Builder(BoLuo.getApplicationContext())
-                .openDatabasesOnInit(true) // 数据库初始化的时候就开始打开
-                .build());
-    }
-
-    private void initBoluo() {
-        BoLuo.initConfig(this)
-                .withIcon(new FontAwesomeModule())
-                .withIcon(new FontBoluoModule())
-                .withApiHost("http://172.20.10.2:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
-//                .withApiHost("http://192.168.31.210:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
+//    private void initDBFlow() {
+//        // 初始化数据库
+//        FlowManager.init(new FlowConfig.Builder(BoLuo.getApplicationContext())
+//                .openDatabasesOnInit(true) // 数据库初始化的时候就开始打开
+//                .build());
+//    }
+//
+//    private void initBoluo() {
+//        BoLuo.initConfig(this)
+//                .withIcon(new FontAwesomeModule())
+//                .withIcon(new FontBoluoModule())
+//                .withApiHost("http://172.20.10.2:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
+////                .withApiHost("http://192.168.31.210:6000/Gradle___boluo___boluo_1_0_SNAPSHOT_war/api/")
 //                .withInterceptor(new TokenInterceptor())
-                .configure();
-    }
+//                .configure();
+//    }
 }

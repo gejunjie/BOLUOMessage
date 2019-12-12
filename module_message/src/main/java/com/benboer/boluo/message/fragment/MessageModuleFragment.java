@@ -90,10 +90,10 @@ public class MessageModuleFragment extends SupportFragment {
     void onSearch(){
         switch (mViewPager.getCurrentItem()) {
                 case 1:
-                    getParentFragments().start(new SearchGroupFragment());
+                    getParentFragments().start(new SearchUserFragment());
                     break;
                 case 2:
-                    getParentFragments().start(new SearchUserFragment());
+                    getParentFragments().start(new SearchGroupFragment());
                     break;
                 default:
                     break;

@@ -19,7 +19,6 @@ import com.raizlabs.android.dbflow.sql.language.SQLite;
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/5.
  */
-//@Route(path = "/main/account_service")
 public class Account{
 
     private static final String KEY_TOKEN   = "KEY_TOKEN";
@@ -134,6 +133,7 @@ public class Account{
 
         if (isLogin()) {
             User self = getUser();
+            if (self == null) return false;
             return !TextUtils.isEmpty(self.getDesc())
                     && !TextUtils.isEmpty(self.getPortrait())
                     && self.getSex() != 0;

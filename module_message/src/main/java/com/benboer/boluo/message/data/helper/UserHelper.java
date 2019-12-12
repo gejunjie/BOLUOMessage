@@ -96,6 +96,7 @@ public class UserHelper {
      * @return
      */
     public static Call userSearch(String name, final DataSource.Callback<List<UserCard>> callback) {
+
         Call<RspModel<List<UserCard>>> call = service.userSearch(name);
 
         call.enqueue(new Callback<RspModel<List<UserCard>>>() {
