@@ -1,5 +1,6 @@
 package com.benboer.boluo.message.db;
 
+import com.benboer.boluo.common.util.storage.PreferenceUtil;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.ForeignKey;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
@@ -134,6 +135,9 @@ public class Message extends BaseDbModel<Message> implements Serializable {
      * @return 和我聊天的人
      */
     public User getOther() {
+        if (ACCOUNT_ID == null) {
+            ACCOUNT_ID = PreferenceUtil.getCustomAppProfile("KEY_USER_ID");
+        }
         if (ACCOUNT_ID.equals(sender.getId())) {
             return receiver;
         } else {

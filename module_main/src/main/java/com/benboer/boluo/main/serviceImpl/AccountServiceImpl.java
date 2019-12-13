@@ -24,7 +24,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public boolean isComplete() {
-        return Account.isComplete();
+//        return Account.isComplete();
+        return false;
     }
 
     @Override

@@ -2,9 +2,7 @@ package com.benboer.boluo.common.net.interceptors;
 
 import android.text.TextUtils;
 
-import com.alibaba.android.arouter.facade.annotation.Autowired;
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.benboer.boluo.common.service.AccountService;
+import com.benboer.boluo.common.util.storage.PreferenceUtil;
 
 import java.io.IOException;
 
@@ -17,19 +15,16 @@ import okhttp3.Response;
  */
 public class TokenInterceptor implements Interceptor {
 
-    @Autowired(name = "/main/account_service")
-    protected AccountService mAccountService;
-
-    public TokenInterceptor(){
-        ARouter.getInstance().inject( this);
-    }
 
     @Override
     public Response intercept(Chain chain) throws IOException {
+
+        String token = PreferenceUtil.getCustomAppProfile("KEY_TOKEN");
+
         Request original = chain.request();
         Request.Builder builder = original.newBuilder();
-        if (mAccountService != null && !TextUtils.isEmpty(mAccountService.getToken())){
-            builder.addHeader("token", mAccountService.getToken());
+        if (!TextUtils.isEmpty(token)) {
+            builder.addHeader("token", token);
         }
         builder.addHeader("Content-Type", "application/json");
         Request newRequest = builder.build();

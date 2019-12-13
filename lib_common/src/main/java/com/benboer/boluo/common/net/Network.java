@@ -48,11 +48,8 @@ public class Network {
 
         Retrofit.Builder builder = new Retrofit.Builder();
         instance.retrofit = builder.baseUrl(URL)
-                // 设置client
                 .client(client)
-                // 设置Json解析器
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder()
-                        // 设置时间格式
                         .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")
                         // 设置一个过滤器，数据库级别的Model不进行Json转换
                         .setExclusionStrategies(new DBFlowExclusionStrategy())

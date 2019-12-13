@@ -87,6 +87,6 @@ public class RegisterFragment extends PresenterFragment<RegisterContract.Present
 
     @Override
     public void registerSuccess() {
-        getSupportDelegate().startWithPop(( SupportFragment ) ARouter.getInstance().build("/main/bottomFragmentt").navigation());
+        getSupportDelegate().startWithPop((SupportFragment) ARouter.getInstance().build("/main/bottomFragment").navigation());
     }
 }

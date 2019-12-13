@@ -18,9 +18,7 @@ import com.benboer.boluo.message.fragment.main.ContactFragment;
 import com.benboer.boluo.message.fragment.main.GroupFragment;
 import com.benboer.boluo.message.fragment.search.SearchGroupFragment;
 import com.benboer.boluo.message.fragment.search.SearchUserFragment;
-import com.benboer.boluo.message.fragment.user.PersonalFragment;
 import com.benboer.boluo.message.widget.PortraitView;
-import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 

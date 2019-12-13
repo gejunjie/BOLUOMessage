@@ -19,11 +19,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.benboer.boluo.common.service.AccountService;
+import com.benboer.boluo.common.mvp.PresenterFragment;
 import com.benboer.boluo.common.ui.adapter.TextWatcherAdapter;
 import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.common.util.storage.PreferenceUtil;
 import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.R2;
 import com.benboer.boluo.message.db.Message;
@@ -32,7 +32,6 @@ import com.benboer.boluo.message.fragment.panel.PanelFragment;
 import com.benboer.boluo.message.presenter.message.ChatContract;
 import com.benboer.boluo.message.widget.PortraitView;
 import com.benboer.boluo.message.widget.face.Face;
-import com.benboer.boluo.common.mvp.PresenterFragment;
 import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -59,8 +58,9 @@ public abstract class ChatFragment<InitModel>
         implements AppBarLayout.OnOffsetChangedListener,
         ChatContract.View<InitModel>,
         PanelFragment.PanelCallback {
-    @Autowired(name = "/main/account_service")
-    protected AccountService mAccountService;
+//    @Autowired(name = "/main/account_service")
+//    protected AccountService mAccountService;
+
     protected String mReceiverId;
     protected Adapter mAdapter;
 
@@ -233,7 +233,8 @@ public abstract class ChatFragment<InitModel>
         @Override
         protected int getItemViewType(int position, Message message) {
             // 我发送的在右边，收到的在左边
-            boolean isRight = Objects.equals(message.getSender().getId(), mAccountService.getUserId());
+
+            boolean isRight = Objects.equals(message.getSender().getId(), PreferenceUtil.getCustomAppProfile("KEY_USER_ID"));
 
             switch (message.getType()) {
                 // 文字内容
@@ -279,7 +280,6 @@ public abstract class ChatFragment<InitModel>
     }
 
 
-    // Holder的基类
     class BaseHolder extends RecyclerAdapter.ViewHolder<Message> {
         @BindView(R2.id.im_portrait)
         PortraitView mPortrait;

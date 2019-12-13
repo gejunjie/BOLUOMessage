@@ -1,16 +1,9 @@
 package com.benboer.boluo.main.serviceImpl;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.benboer.boluo.common.BaseApplication;
-import com.benboer.boluo.common.app.BoLuo;
-import com.benboer.boluo.message.db.Group;
-import com.benboer.boluo.message.db.GroupMember;
+import com.benboer.boluo.common.util.storage.PreferenceUtil;
 import com.benboer.boluo.message.db.Message;
-import com.benboer.boluo.message.db.Session;
 import com.benboer.boluo.message.db.User;
 import com.benboer.boluo.message.db.User_Table;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
@@ -27,15 +20,17 @@ public class Account{
     private static final String KEY_USER_ID = "KEY_USER_ID";
     private static final String KEY_ACCOUNT = "KEY_ACCOUNT";
 
-    // 设备的推送Id
+    /**
+     * 设备的推送Id
+     */
     private static String pushId;
-    // 设备Id是否已经绑定到了服务器
+    /** 设备Id是否已经绑定到了服务器*/
     private static boolean isBind;
-    // 登录状态的Token，用来接口请求
+    /** 登录状态的Token，用来接口请求*/
     private static String token;
-    // 登录的用户ID
+    /** 登录的用户ID*/
     private static String userId;
-    // 登录的账户
+    /** 登录的账户*/
     private static String account;
 
     /**
@@ -51,7 +46,6 @@ public class Account{
      * 保存我自己的信息到持久化XML中
      */
     public static void login(String token, String account, String userId) {
-        // 存储当前登录的账户, token, 用户Id
         Account.token = token;
         Account.account = account;
         Account.userId = userId;
@@ -59,33 +53,31 @@ public class Account{
         save();
     }
 
-    /**
-     * 清除用户信息
-     */
-    public static void logout() {
-        SharedPreferences sp = BoLuo.getApplicationContext()
-                .getSharedPreferences( Account.class.getName(), Context.MODE_PRIVATE);
-        sp.edit()
-                .remove(KEY_PUSH_ID)
-                .remove(KEY_IS_BIND)
-                .remove(KEY_TOKEN)
-                .remove(KEY_USER_ID)
-                .apply();
-        SQLite.delete().tables(new Class[]{GroupMember.class, Message.class,
-                Group.class, Session.class, User.class});
-    }
+//    /**
+//     * 清除用户信息
+//     */
+//    public static void logout() {
+//        SharedPreferences sp = BoLuo.getApplicationContext()
+//                .getSharedPreferences( Application.class.getName(), Context.MODE_PRIVATE);
+//        sp.edit()
+//                .remove(KEY_PUSH_ID)
+//                .remove(KEY_IS_BIND)
+//                .remove(KEY_TOKEN)
+//                .remove(KEY_USER_ID)
+//                .apply();
+//        SQLite.delete().tables(new Class[]{GroupMember.class, Message.class,
+//                Group.class, Session.class, User.class});
+//    }
 
     /**
      * 进行数据加载
      */
     public static void load() {
-        SharedPreferences sp = BaseApplication.getInstance()
-                .getSharedPreferences( Account.class.getName(), Context.MODE_PRIVATE);
-        pushId = sp.getString(KEY_PUSH_ID, "");
-        isBind = sp.getBoolean(KEY_IS_BIND, false);
-        token = sp.getString(KEY_TOKEN, "");
-        userId = sp.getString(KEY_USER_ID, "");
-        account = sp.getString(KEY_ACCOUNT, "");
+        pushId = PreferenceUtil.getCustomAppProfile(KEY_PUSH_ID);
+        isBind = Boolean.valueOf(PreferenceUtil.getCustomAppProfile(KEY_IS_BIND));
+        token = PreferenceUtil.getCustomAppProfile(KEY_TOKEN);
+        userId = PreferenceUtil.getCustomAppProfile(KEY_USER_ID);
+        account = PreferenceUtil.getCustomAppProfile(KEY_ACCOUNT);
     }
 
     /**
@@ -94,7 +86,6 @@ public class Account{
      * @return True已登录
      */
     public static boolean isLogin() {
-        // 用户Id 和 Token 不为空
         return !TextUtils.isEmpty(userId)
                 && !TextUtils.isEmpty(token);
     }
@@ -112,34 +103,11 @@ public class Account{
      * 存储数据到XML文件，持久化
      */
     private static void save() {
-        SharedPreferences sp = BoLuo.getApplicationContext()
-                .getSharedPreferences( Account.class.getName(),
-                Context.MODE_PRIVATE);
-        sp.edit()
-                .putString(KEY_PUSH_ID, pushId)
-                .putBoolean(KEY_IS_BIND, isBind)
-                .putString(KEY_TOKEN, token)
-                .putString(KEY_USER_ID, userId)
-                .putString(KEY_ACCOUNT, account)
-                .apply();
-    }
-
-    /**
-     * 是否已经完善了用户信息（描述信息和头像）
-     *
-     * @return True 是完成了
-     */
-    public static boolean isComplete() {
-
-        if (isLogin()) {
-            User self = getUser();
-            if (self == null) return false;
-            return !TextUtils.isEmpty(self.getDesc())
-                    && !TextUtils.isEmpty(self.getPortrait())
-                    && self.getSex() != 0;
-        }
-        // 未登录返回信息不完全
-        return false;
+        PreferenceUtil.addCustomAppProfile(KEY_PUSH_ID, pushId);
+        PreferenceUtil.addCustomAppProfile(KEY_IS_BIND, String.valueOf(isBind));
+        PreferenceUtil.addCustomAppProfile(KEY_TOKEN, token);
+        PreferenceUtil.addCustomAppProfile(KEY_USER_ID, userId);
+        PreferenceUtil.addCustomAppProfile(KEY_ACCOUNT, account);
     }
 
     /**

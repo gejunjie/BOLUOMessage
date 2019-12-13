@@ -22,8 +22,8 @@ ext {
     dependencies = [
             constraintlayout            : "androidx.constraintlayout:constraintlayout:1.1.3",
             //Fragment
-            fragmentation               : "me.yokeyword:fragmentation:1.3.4",
-            swipebackfragment           : "me.yokeyword:swipebackfragment:0.4.0",
+            fragmentation               : "me.yokeyword:fragmentationx:1.0.2",
+            swipebackfragment           : "me.yokeyword:fragmentationx-swipeback:1.0.2",
             //权限
             permissionsdispatcher       : "com.github.hotchemi:permissionsdispatcher:3.2.0",
             permissionsdispatcher_processor: "com.github.hotchemi:permissionsdispatcher-processor:3.2.0",

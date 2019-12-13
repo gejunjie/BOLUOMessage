@@ -107,7 +107,7 @@ public class AccountHelper {
      *
      */
     public static void logout() {
-        Account.logout();
+//        Account.logout();
     }
 
     /**

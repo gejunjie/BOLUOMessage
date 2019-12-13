@@ -1,7 +1,6 @@
 package com.benboer.boluo.main;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
