@@ -65,7 +65,7 @@ public class GroupMemberFragment extends PresenterFragment<GroupMembersContract.
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // 开始数据刷新
+
         mPresenter.refresh();
 
         // 显示管理员界面，添加成员

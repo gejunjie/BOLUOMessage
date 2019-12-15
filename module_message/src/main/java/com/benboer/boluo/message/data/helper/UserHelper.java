@@ -1,12 +1,9 @@
 package com.benboer.boluo.message.data.helper;
 
-import com.alibaba.android.arouter.facade.annotation.Autowired;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.common.net.Network;
 import com.benboer.boluo.common.net.RspCodeDecoder;
 import com.benboer.boluo.common.net.model.RspModel;
-import com.benboer.boluo.common.service.AccountService;
 import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.data.user.UserDispatcher;
 import com.benboer.boluo.message.db.User;
@@ -30,14 +27,8 @@ import retrofit2.Response;
  */
 public class UserHelper {
 
-    @Autowired(name = "/main/account_service")
-    protected static AccountService mAccountService;
 
     static RemoteService service = Network.getRetrofit().create(RemoteService.class);
-
-    private UserHelper(){
-        ARouter.getInstance().inject( this);
-    }
 
 
     // 异步更新用户信息的操作
@@ -203,7 +194,7 @@ public class UserHelper {
      * 获取一个联系人列表
      * @return
      */
-    public static List<UserSampleModel> getSampleContact() {
+    public static List<UserSampleModel> getSampleContact(String userId) {
         //"select id = ??";
         //"select User_id = ??";
         return SQLite.select( User_Table.id.withTable().as("id"),
@@ -211,7 +202,7 @@ public class UserHelper {
                 User_Table.portrait.withTable().as("portrait"))
                 .from(User.class)
                 .where(User_Table.isFollow.eq(true))
-                .and(User_Table.id.notEq(mAccountService.getUserId()))
+                .and(User_Table.id.notEq(userId))
                 .orderBy(User_Table.name, true)
                 .queryCustomList(UserSampleModel.class);
     }

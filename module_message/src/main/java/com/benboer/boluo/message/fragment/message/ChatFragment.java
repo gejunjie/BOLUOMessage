@@ -58,8 +58,6 @@ public abstract class ChatFragment<InitModel>
         implements AppBarLayout.OnOffsetChangedListener,
         ChatContract.View<InitModel>,
         PanelFragment.PanelCallback {
-//    @Autowired(name = "/main/account_service")
-//    protected AccountService mAccountService;
 
     protected String mReceiverId;
     protected Adapter mAdapter;
@@ -122,13 +120,10 @@ public abstract class ChatFragment<InitModel>
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
         // 初始化面板操作
-        mPanelBoss = (AirPanel.Boss) root.findViewById(R.id.lay_content);
-        mPanelBoss.setup(new AirPanel.PanelListener() {
-            @Override
-            public void requestHideSoftKeyboard() {
-                // 请求隐藏软键盘
-                Util.hideKeyboard(mContent);
-            }
+        mPanelBoss = bind(R.id.lay_content);
+        mPanelBoss.setup(() -> {
+            // 请求隐藏软键盘
+            Util.hideKeyboard(mContent);
         });
         mPanelFragment = (PanelFragment) getChildFragmentManager().findFragmentById(R.id.frag_panel);
         mPanelFragment.setup(this);
@@ -152,12 +147,7 @@ public abstract class ChatFragment<InitModel>
     protected void initToolbar() {
         Toolbar toolbar = mToolbar;
         toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getSupportDelegate().pop();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> getSupportDelegate().pop());
     }
 
     //  给界面的Appbar设置一个监听，得到关闭与打开的时候的进度
@@ -198,7 +188,6 @@ public abstract class ChatFragment<InitModel>
     @OnClick(R2.id.btn_submit)
     void onSubmitClick() {
         if (mSubmit.isActivated()) {
-            // 发送
             String content = mContent.getText().toString();
             mContent.setText("");
             mPresenter.pushText(content);

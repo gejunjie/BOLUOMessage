@@ -24,13 +24,17 @@ public class BaseRecyclerPresenter<ViewModel, View extends BaseContract.Recycler
      */
     protected void refreshData(final List<ViewModel> dataList) {
          View view = getView();
-            if (view == null)
-                return;
+         if (view == null) return;
+         HandlerUtil.runOnUiThread(new Runnable() {
+             @Override
+             public void run() {
+                 // 基本的更新数据并刷新界面
+                 RecyclerAdapter<ViewModel> adapter = view.getRecyclerAdapter();
+                 adapter.replace(dataList);
+                 view.onAdapterDataChanged();
+             }
+         });
 
-            // 基本的更新数据并刷新界面
-            RecyclerAdapter<ViewModel> adapter = view.getRecyclerAdapter();
-            adapter.replace(dataList);
-            view.onAdapterDataChanged();
     }
 
     /**

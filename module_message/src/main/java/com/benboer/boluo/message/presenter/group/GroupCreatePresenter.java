@@ -2,10 +2,14 @@ package com.benboer.boluo.message.presenter.group;
 
 import android.text.TextUtils;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.benboer.boluo.common.app.BoLuo;
 import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.common.mvp.presenter.BaseRecyclerPresenter;
+import com.benboer.boluo.common.net.Network;
 import com.benboer.boluo.common.net.UploadHelper;
+import com.benboer.boluo.common.service.AccountService;
 import com.benboer.boluo.common.util.HandlerUtil;
 import com.benboer.boluo.message.db.view.UserSampleModel;
 import com.benboer.boluo.message.R;
@@ -13,6 +17,7 @@ import com.benboer.boluo.message.data.helper.GroupHelper;
 import com.benboer.boluo.message.data.helper.UserHelper;
 import com.benboer.boluo.message.model.api.group.GroupCreateModel;
 import com.benboer.boluo.message.model.card.GroupCard;
+import com.benboer.boluo.message.net.RemoteService;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -29,26 +34,27 @@ public class GroupCreatePresenter extends BaseRecyclerPresenter<GroupCreateContr
 
     private Set<String> users = new HashSet<>();
 
+    @Autowired(name = "/main/account_service")
+    protected static AccountService mAccountService;
+
     public GroupCreatePresenter(GroupCreateContract.View view) {
         super(view);
+        ARouter.getInstance().inject( this);
     }
 
     @Override
     public void start() {
         super.start();
-        BoLuo.runOnAsync(new Runnable() {
-            @Override
-            public void run() {
-                List<UserSampleModel> sampleModels = UserHelper.getSampleContact();
-                List<GroupCreateContract.ViewModel> models = new ArrayList<>();
-                for (UserSampleModel sampleModel : sampleModels) {
-                    GroupCreateContract.ViewModel viewModel = new GroupCreateContract.ViewModel();
-                    viewModel.author = sampleModel;
-                    models.add(viewModel);
-                }
-
-                refreshData(models);
+        BoLuo.runOnAsync(() -> {
+            List<UserSampleModel> sampleModels = UserHelper.getSampleContact(mAccountService.getUserId());
+            List<GroupCreateContract.ViewModel> models = new ArrayList<>();
+            for (UserSampleModel sampleModel : sampleModels) {
+                GroupCreateContract.ViewModel viewModel = new GroupCreateContract.ViewModel();
+                viewModel.author = sampleModel;
+                models.add(viewModel);
             }
+
+            refreshData(models);
         });
     }
 
@@ -91,16 +97,12 @@ public class GroupCreatePresenter extends BaseRecyclerPresenter<GroupCreateContr
         }
 
         // 上传图片
-        BoLuo.runOnAsync(new Runnable() {
-            @Override
-            public void run() {
-                String url = uploadPicture(picture);
-                if (TextUtils.isEmpty(url))
-                    return;
-                // 进行网络请求
-                GroupCreateModel model = new GroupCreateModel(name, desc, url, users);
-                GroupHelper.create(model, GroupCreatePresenter.this);
-            }
+        BoLuo.runOnAsync(() -> {
+            String url = uploadPicture(picture);
+            if (TextUtils.isEmpty(url))
+                return;
+            GroupCreateModel model = new GroupCreateModel(name, desc, url, users);
+            GroupHelper.create(model, GroupCreatePresenter.this);
         });
     }
 

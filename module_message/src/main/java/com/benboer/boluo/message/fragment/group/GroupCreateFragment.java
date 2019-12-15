@@ -1,10 +1,11 @@
 package com.benboer.boluo.message.fragment.group;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
@@ -12,26 +13,24 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.benboer.boluo.common.app.BoLuo;
+import com.benboer.boluo.common.mvp.ToolbarPresenterFragment;
 import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
-import com.benboer.boluo.common.util.file.FileUtil;
+import com.benboer.boluo.common.util.callback.CallbackManager;
+import com.benboer.boluo.common.util.callback.CallbackType;
+import com.benboer.boluo.common.util.callback.IGlobalCallback;
 import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.R2;
-import com.benboer.boluo.common.ui.media.GalleryFragment;
 import com.benboer.boluo.message.presenter.group.GroupCreateContract;
 import com.benboer.boluo.message.presenter.group.GroupCreatePresenter;
 import com.benboer.boluo.message.widget.PortraitView;
-import com.benboer.boluo.common.mvp.PresenterFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
-import com.yalantis.ucrop.UCrop;
 
 import net.qiujuer.genius.ui.widget.EditText;
-
-import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnCheckedChanged;
@@ -39,8 +38,10 @@ import butterknife.OnClick;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/7/4.
+ *
+ * 群组创建界面
  */
-public class GroupCreateFragment extends PresenterFragment<GroupCreateContract.Presenter>
+public class GroupCreateFragment extends ToolbarPresenterFragment<GroupCreateContract.Presenter>
         implements GroupCreateContract.View{
 
     @BindView(R2.id.recycler)
@@ -73,6 +74,7 @@ public class GroupCreateFragment extends PresenterFragment<GroupCreateContract.P
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
+        super.onBindView(savedInstanceState,root);
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycler.setAdapter(mAdapter = new GroupCreateFragment.Adapter());
     }
@@ -85,6 +87,27 @@ public class GroupCreateFragment extends PresenterFragment<GroupCreateContract.P
     }
 
     @Override
+    public void initToolbar(Toolbar toolbar) {
+        super.initToolbar(toolbar);
+        mToolbar.inflateMenu(R.menu.group_create);
+        mToolbar.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.action_create) {
+                hideSoftKeyboard();
+                String name = mName.getText().toString().trim();
+                String desc = mDesc.getText().toString().trim();
+                mPresenter.create(name, desc, mPortraitPath);
+            }
+            return false;
+        });
+    }
+
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        inflater.inflate(R.menu.group_create, menu);
+//    }
+
+    @Override
     public RecyclerAdapter<GroupCreateContract.ViewModel> getRecyclerAdapter() {
         return mAdapter;
     }
@@ -94,55 +117,25 @@ public class GroupCreateFragment extends PresenterFragment<GroupCreateContract.P
         hideLoading();
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // 收到从Activity传递过来的回调，然后取出其中的值进行图片加载
-        if (resultCode == RESULT_OK && requestCode == UCrop.REQUEST_CROP) {
-            // 通过UCrop得到对应的Uri
-            final Uri resultUri = UCrop.getOutput(data);
-            if (resultUri != null) {
-                loadPortrait(resultUri);
+    @OnClick(R2.id.im_portrait)
+    void onPortraitClick() {
+        CallbackManager.getInstance().addCallback(CallbackType.ON_CROP,
+                (IGlobalCallback<Uri>) uri -> {
+            if (uri != null) {
+                loadPortrait(uri);
             }
-        } else if (resultCode == UCrop.RESULT_ERROR) {
-            ToastUtils.showLong(R.string.data_rsp_error_unknown);
-        }
+        });
+        startCameraWithCheck();
     }
 
     private void loadPortrait(Uri uri) {
-        // 得到头像地址
         mPortraitPath = uri.getPath();
-
         Glide.with(this)
                 .load(uri)
                 .centerCrop()
                 .into(mPortrait);
     }
 
-    @OnClick(R2.id.im_portrait)
-    void onPortraitClick() {
-        hideSoftKeyboard();
-        new GalleryFragment()
-                .setOnSelectedListener(new GalleryFragment.OnSelectedListener() {
-                    @Override
-                    public void onSelectedImage(String path) {
-                        UCrop.Options options = new UCrop.Options();
-                        // 设置图片处理的格式JPEG
-                        options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
-                        // 设置压缩后的图片精度
-                        options.setCompressionQuality(96);
-                        // 得到头像的缓存地址
-                        File dPath = FileUtil.getPortraitTmpFile(BoLuo.getApplicationContext());
-                        // 发起剪切
-                        UCrop.of(Uri.fromFile(new File(path)), Uri.fromFile(dPath))
-                                .withAspectRatio(1, 1) // 1比1比例
-                                .withMaxResultSize(520, 520) // 返回最大的尺寸
-                                .withOptions(options) // 相关参数
-                                .start(getProxyActivity());
-                    }
-                }).show(getFragmentManager(), GalleryFragment.class.getName());
-    }
-
-    // 隐藏软件盘
     private void hideSoftKeyboard() {
         // 当前焦点的View
         View view = getActivity().getCurrentFocus();
