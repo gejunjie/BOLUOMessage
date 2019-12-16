@@ -3,27 +3,20 @@ package com.benboer.boluo.common.base.fragment;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
 
-import com.benboer.boluo.common.app.BoLuo;
-import com.benboer.boluo.common.ui.camera.BoluoCamera;
-import com.benboer.boluo.common.ui.camera.CameraImageBean;
-import com.benboer.boluo.common.ui.camera.RequestCodes;
-import com.benboer.boluo.common.ui.media.GalleryFragment;
-import com.benboer.boluo.common.ui.scanner.ScannerFragment;
+import com.benboer.boluo.common.comm_ui.camera.BoluoCamera;
+import com.benboer.boluo.common.comm_ui.camera.CameraImageBean;
+import com.benboer.boluo.common.comm_ui.camera.RequestCodes;
+import com.benboer.boluo.common.comm_ui.scanner.ScannerFragment;
 import com.benboer.boluo.common.util.callback.CallbackManager;
 import com.benboer.boluo.common.util.callback.CallbackType;
 import com.benboer.boluo.common.util.callback.IGlobalCallback;
-import com.benboer.boluo.common.util.file.FileUtil;
 import com.blankj.utilcode.util.ToastUtils;
 import com.yalantis.ucrop.UCrop;
-
-import java.io.File;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;

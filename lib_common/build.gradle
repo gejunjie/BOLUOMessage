@@ -112,4 +112,5 @@ dependencies {
     api rootProject.ext.dependencies["dbflow"]
     annotationProcessor rootProject.ext.dependencies["dbflow_processor"]
 //    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
+
 }

@@ -5,9 +5,9 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
+import com.benboer.boluo.common.comm_ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.R2;
-import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.message.widget.face.Face;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;

@@ -2,8 +2,8 @@ package com.benboer.boluo.message.fragment.panel;
 
 import android.view.View;
 
+import com.benboer.boluo.common.comm_ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.message.R;
-import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.message.widget.face.Face;
 
 import java.util.List;

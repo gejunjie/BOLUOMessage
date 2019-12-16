@@ -6,7 +6,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.benboer.boluo.common.app.BoLuo;
-import com.benboer.boluo.common.ui.loader.FragmentLoader;
+import com.benboer.boluo.common.comm_ui.loader.FragmentLoader;
 import com.benboer.boluo.common.util.log.LogUtils;
 import com.benboer.boluo.common.web.IPageLoadListener;
 import com.benboer.boluo.common.web.WebFragment;

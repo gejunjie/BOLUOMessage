@@ -3,9 +3,6 @@ package com.benboer.boluo.message.fragment.group;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
@@ -17,8 +14,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.benboer.boluo.common.comm_ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.common.mvp.ToolbarPresenterFragment;
-import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.common.util.callback.CallbackManager;
 import com.benboer.boluo.common.util.callback.CallbackType;
 import com.benboer.boluo.common.util.callback.IGlobalCallback;
@@ -67,8 +64,8 @@ public class GroupCreateFragment extends ToolbarPresenterFragment<GroupCreateCon
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void onFirstInit() {
+        super.onFirstInit();
         mPresenter.start();
     }
 
@@ -100,12 +97,6 @@ public class GroupCreateFragment extends ToolbarPresenterFragment<GroupCreateCon
             return false;
         });
     }
-
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        super.onCreateOptionsMenu(menu, inflater);
-//        inflater.inflate(R.menu.group_create, menu);
-//    }
 
     @Override
     public RecyclerAdapter<GroupCreateContract.ViewModel> getRecyclerAdapter() {

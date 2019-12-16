@@ -1,6 +1,11 @@
 package com.benboer.boluo.message.data.helper;
 
+import com.benboer.boluo.common.mvp.data.DataSource;
+import com.benboer.boluo.common.net.Network;
+import com.benboer.boluo.common.net.RspCodeDecoder;
+import com.benboer.boluo.common.net.model.RspModel;
 import com.benboer.boluo.message.R;
+import com.benboer.boluo.message.data.group.GroupDispatcher;
 import com.benboer.boluo.message.db.Group;
 import com.benboer.boluo.message.db.GroupMember;
 import com.benboer.boluo.message.db.GroupMember_Table;
@@ -8,15 +13,10 @@ import com.benboer.boluo.message.db.Group_Table;
 import com.benboer.boluo.message.db.User;
 import com.benboer.boluo.message.db.User_Table;
 import com.benboer.boluo.message.db.view.MemberUserModel;
-import com.benboer.boluo.message.data.group.GroupDispatcher;
 import com.benboer.boluo.message.model.api.group.GroupCreateModel;
 import com.benboer.boluo.message.model.card.GroupCard;
 import com.benboer.boluo.message.model.card.GroupMemberCard;
 import com.benboer.boluo.message.net.RemoteService;
-import com.benboer.boluo.common.net.model.RspModel;
-import com.benboer.boluo.common.mvp.data.DataSource;
-import com.benboer.boluo.common.net.Network;
-import com.benboer.boluo.common.net.RspCodeDecoder;
 import com.raizlabs.android.dbflow.sql.language.Join;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
@@ -143,7 +143,7 @@ public class GroupHelper {
             @Override
             public void onResponse(Call<RspModel<List<GroupCard>>> call, Response<RspModel<List<GroupCard>>> response) {
                 RspModel<List<GroupCard>> rspModel = response.body();
-                if (rspModel.success()) {
+                if (rspModel != null && rspModel.success()) {
                     List<GroupCard> groupCards = rspModel.getResult();
                     if (groupCards != null && groupCards.size() > 0) {
                         // 进行调度显示

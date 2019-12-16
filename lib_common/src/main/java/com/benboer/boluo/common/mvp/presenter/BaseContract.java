@@ -2,8 +2,7 @@ package com.benboer.boluo.common.mvp.presenter;
 
 import androidx.annotation.StringRes;
 
-import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
-
+import com.benboer.boluo.common.comm_ui.recycler.RecyclerAdapter;
 
 /**
  * Created by BenBoerBoluojiushiwo on 2019/5/6.

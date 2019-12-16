@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.benboer.boluo.common.base.activity.ProxyActivity;
-import com.benboer.boluo.common.ui.convention.PlaceHolderView;
+import com.benboer.boluo.common.comm_ui.convention.PlaceHolderView;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

@@ -2,14 +2,14 @@ package com.benboer.boluo.message.presenter.contact;
 
 import androidx.recyclerview.widget.DiffUtil;
 
-import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
-import com.benboer.boluo.message.db.DiffUiDataCallback;
-import com.benboer.boluo.message.db.User;
+import com.benboer.boluo.common.comm_ui.recycler.RecyclerAdapter;
+import com.benboer.boluo.common.mvp.data.DataSource;
 import com.benboer.boluo.message.data.helper.UserHelper;
 import com.benboer.boluo.message.data.user.ContactDataSource;
 import com.benboer.boluo.message.data.user.ContactRepository;
+import com.benboer.boluo.message.db.DiffUiDataCallback;
+import com.benboer.boluo.message.db.User;
 import com.benboer.boluo.message.presenter.BaseSourcePresenter;
-import com.benboer.boluo.common.mvp.data.DataSource;
 
 import java.util.List;
 

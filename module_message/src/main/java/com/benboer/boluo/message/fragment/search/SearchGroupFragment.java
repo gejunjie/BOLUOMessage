@@ -17,17 +17,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-//import com.benboer.boluo.boluomessage.R;
+import com.benboer.boluo.common.comm_ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.common.mvp.PresenterFragment;
 import com.benboer.boluo.message.R;
 import com.benboer.boluo.message.R2;
 import com.benboer.boluo.message.fragment.user.PersonalFragment;
-import com.benboer.boluo.message.widget.EmptyView;
-import com.benboer.boluo.message.widget.PortraitView;
-import com.benboer.boluo.common.ui.recycler.RecyclerAdapter;
 import com.benboer.boluo.message.model.card.GroupCard;
 import com.benboer.boluo.message.presenter.search.SearchContract;
 import com.benboer.boluo.message.presenter.search.SearchGroupPresenter;
+import com.benboer.boluo.message.widget.EmptyView;
+import com.benboer.boluo.message.widget.PortraitView;
 import com.bumptech.glide.Glide;
 
 import java.util.List;

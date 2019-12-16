@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.benboer.boluo.common.ui.media.GalleryFragment">
+    tools:context="com.benboer.boluo.common.com.benboer.boluo.comm_ui.ui.media.GalleryFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             app:titleTextColor="@color/textPrimary" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.benboer.boluo.common.ui.GalleryView
+    <com.benboer.boluo.comm_ui.ui.GalleryView
         android:id="@+id/galleryView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
