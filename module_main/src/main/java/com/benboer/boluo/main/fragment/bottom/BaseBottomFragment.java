@@ -89,6 +89,8 @@ public abstract class BaseBottomFragment extends SupportFragment implements View
             //初始化底部数据
             itemIcon.setText(bean.getIcon());
             itemTitle.setText(bean.getTitle());
+            itemIcon.setTextColor(Color.GRAY);
+            itemTitle.setTextColor(Color.GRAY);
             if (i == mIndexFragment) {
                 itemIcon.setTextColor(mClickedColor);
                 itemTitle.setTextColor(mClickedColor);

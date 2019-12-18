@@ -3,21 +3,18 @@ package com.benboer.boluo.common.icon;
 import com.joanzapata.iconify.Icon;
 
 /**
- * @ClassName: FontIcons
- * @Description: java类作用描述
- * @Author:  BenBoerBoluojiushiwo
- * @CreateDate: 2019-08-04 13:27
- * @Version: 1.0
+ * 字体图标库
  */
 public enum  FontIcons implements Icon {
     icon_close('\ue606'),
     icon_setup('\ue605'),
     icon_scan('\ue604'),
-    icon_return_1('\ue602'),
-    icon_return_2('\ue601'),
-    icon_user_unpressed('\ue842'),
-    icon_user_pressed('\ue841'),
-    icon_message('\ue611');
+    icon_add('\ue69a'),
+    //主界面底部图标
+    icon_chat('\ue6f0'),
+    icon_user('\ue68d'),
+    icon_discover('\ue68e');
+
     private char character;
 
     FontIcons(char character) {
@@ -32,4 +29,5 @@ public enum  FontIcons implements Icon {
     @Override
     public char character() {
         return character;
-    }}
+    }
+}

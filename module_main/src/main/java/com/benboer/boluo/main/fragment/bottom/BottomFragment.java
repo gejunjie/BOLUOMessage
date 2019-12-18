@@ -33,11 +33,11 @@ public class BottomFragment extends BaseBottomFragment {
     @Override
     public LinkedHashMap<BottomTabBean, SupportFragment> setItems(BottomItemBuilder builder) {
         final LinkedHashMap<BottomTabBean, SupportFragment> items = new LinkedHashMap<>();
-        items.put(new BottomTabBean("{fa-home}", "聊天"),
+        items.put(new BottomTabBean("{icon-chat}", "聊天"),
                 (SupportFragment) ARouter.getInstance().build("/message/messageFragment").navigation());
-        items.put(new BottomTabBean("{fa-home}", "发现"),
+        items.put(new BottomTabBean("{icon-discover}", "发现"),
                 (SupportFragment) ARouter.getInstance().build("/discover/discoverFragment").navigation());
-        items.put(new BottomTabBean("{icon-user-unpressed}","我的"),
+        items.put(new BottomTabBean("{icon-user}", "我的"),
                 (SupportFragment) ARouter.getInstance().build("/message/personalFragment").navigation());
         return items;
     }

@@ -3,7 +3,6 @@ package com.benboer.boluo.main.fragment.launcher;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -43,7 +42,7 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
     public AppCompatTextView mTvTimer = null;
     private FrameLayout mSplashLayout;
     private Timer mTimer = null;
-    private int mCount = 5;
+    private int mCount = 3;
     //等待个推的PushId次数，重复3次
     private int tryReceiveIdTimes = 3;
 
@@ -70,7 +69,7 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View root) {
         initTimer();
-        mSplashLayout = bind(R.id.splash_layout);
+//        mSplashLayout = bind(R.id.splash_layout);
         mTvTimer = bind(R.id.tv_launcher_timer);
         mTvTimer.setOnClickListener(v -> onClickTimerView());
     }
@@ -123,10 +122,10 @@ public class LauncherFragment extends SupportFragment implements ITimerListener 
             public void run() {
                 if (mTvTimer != null) {
                     mTvTimer.setText(MessageFormat.format("跳过 {0}s", mCount));
-                    //隐藏splash界面
-                    if (mCount < 2 && mSplashLayout.getVisibility() == View.VISIBLE){
-                        mSplashLayout.setVisibility(View.INVISIBLE);
-                    }
+//                    //隐藏splash界面
+//                    if (mCount < 2 && mSplashLayout.getVisibility() == View.VISIBLE){
+//                        mSplashLayout.setVisibility(View.INVISIBLE);
+//                    }
                     mCount--;
                     if (mCount < 1) {
                         if (mTimer != null) {
